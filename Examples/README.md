@@ -6,7 +6,7 @@ GroupDocs.Conversion for Java is a universal document conversion library designe
 
 <p align="center">
 
-  <a title="Download complete GroupDocs.Conversion for Java source code" href="https://codeload.github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java">
+  <a title="Download complete GroupDocs.Conversion for Java source code" href="https://codeload.github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/zip/master">
 	<img src="https://raw.github.com/AsposeExamples/java-examples-dashboard/master/images/downloadZip-Button-Large.png" />
   </a>
 </p>
