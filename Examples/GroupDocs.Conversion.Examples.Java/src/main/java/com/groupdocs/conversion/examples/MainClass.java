@@ -4,8 +4,8 @@ public class MainClass {
 
 	public static void main(String[] args) throws Throwable {
 
-		// apply license
-		Utilities.applyLicenseFromFile();
+		// uncomment to apply license
+		//Utilities.applyLicenseFromFile();
 
 		// convert document to cells, result as file path
 		// Conversion.convertToCellsAsFilePath("intelligent systems.docx");
