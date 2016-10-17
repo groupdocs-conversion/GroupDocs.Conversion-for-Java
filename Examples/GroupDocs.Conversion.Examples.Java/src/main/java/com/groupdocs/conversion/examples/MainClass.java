@@ -95,10 +95,10 @@ public class MainClass {
 		//CommonOperations.getSourceDocFromStream();
 		
 		//custom input data handler
-		Conversion.inputDataHandler("intelligent systems.docx");
+		//Conversion.inputDataHandler("intelligent systems.docx");
 		
 		//custom output data handler
-		Conversion.outputDataHanlder();
+		//Conversion.outputDataHanlder();
 		
 		
 
