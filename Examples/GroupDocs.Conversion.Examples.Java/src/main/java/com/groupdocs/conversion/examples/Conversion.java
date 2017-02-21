@@ -1,17 +1,32 @@
 package com.groupdocs.conversion.examples;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.util.Dictionary;
+import java.util.Enumeration;
 import java.util.List;
 
+import com.aspose.ms.System.IO.FileMode;
+import com.aspose.ms.System.IO.FileStream;
 import com.groupdocs.conversion.converter.option.CellsSaveOptions;
 import com.groupdocs.conversion.converter.option.HtmlSaveOptions;
 import com.groupdocs.conversion.converter.option.ImageSaveOptions;
 import com.groupdocs.conversion.converter.option.LoadOptions;
 import com.groupdocs.conversion.converter.option.OutputType;
 import com.groupdocs.conversion.converter.option.PdfSaveOptions;
+import com.groupdocs.conversion.converter.option.PsdOptions;
 import com.groupdocs.conversion.converter.option.SaveOptions;
 import com.groupdocs.conversion.converter.option.SlidesSaveOptions;
+import com.groupdocs.conversion.converter.option.WatermarkOptions;
 import com.groupdocs.conversion.converter.option.WordsSaveOptions;
+import com.groupdocs.conversion.handler.ConversionCompleteEventArgs;
+import com.groupdocs.conversion.handler.ConversionCompleteHandler;
 import com.groupdocs.conversion.handler.ConversionHandler;
+import com.groupdocs.conversion.handler.ConversionProgressEventArgs;
+import com.groupdocs.conversion.handler.ConversionProgressHandler;
+import com.groupdocs.conversion.handler.ConversionStartEventArgs;
+import com.groupdocs.conversion.handler.ConversionStartHandler;
+import com.groupdocs.conversion.handler.PdfConversionCompleteEventArgs;
 import com.groupdocs.conversion.handler.output.IOutputDataHandler;
 import com.groupdocs.foundation.domain.FileType;
 import com.groupdocs.foundation.utils.wrapper.stream.GroupDocsInputStream;
@@ -55,7 +70,7 @@ public class Conversion {
 
 		// convert file to Xls, starting from page 2 and convert 2 pages
 		SaveOptions saveOptions = new CellsSaveOptions();
-		saveOptions.setConvertFileType(CellsSaveOptions.CellsFileType.Xls);
+		saveOptions.setConvertFileType(CellsSaveOptions.CellsFileType.XLS);
 		saveOptions.setPageNumber(2);
 		saveOptions.setNumPagesToConvert(2);
 		saveOptions.setOutputType(OutputType.String);
@@ -78,7 +93,7 @@ public class Conversion {
 
 		// convert file to Xls, starting from page 2 and convert 2 pages
 		SaveOptions saveOptions = new CellsSaveOptions();
-		saveOptions.setConvertFileType(CellsSaveOptions.CellsFileType.Xls);
+		saveOptions.setConvertFileType(CellsSaveOptions.CellsFileType.XLS);
 		saveOptions.setPageNumber(2);
 		saveOptions.setNumPagesToConvert(2);
 
@@ -129,7 +144,7 @@ public class Conversion {
 		SaveOptions saveOptions = new WordsSaveOptions();
 		saveOptions.setPageNumber(2);
 		saveOptions.setNumPagesToConvert(2);
-		saveOptions.setConvertFileType(WordsSaveOptions.WordsFileType.Doc);
+		saveOptions.setConvertFileType(WordsSaveOptions.WordsFileType.DOC);
 		saveOptions.setOutputType(OutputType.String);
 
 		String convertedDocumentPath = conversionHandler.<String> convert(fileName, loadOptions, saveOptions);
@@ -151,7 +166,7 @@ public class Conversion {
 		SaveOptions saveOptions = new WordsSaveOptions();
 		saveOptions.setPageNumber(2);
 		saveOptions.setNumPagesToConvert(2);
-		saveOptions.setConvertFileType(WordsSaveOptions.WordsFileType.Doc);
+		saveOptions.setConvertFileType(WordsSaveOptions.WordsFileType.DOC);
 		GroupDocsInputStream convertedDocumentPath = conversionHandler.<GroupDocsInputStream> convert(fileName,
 				loadOptions, saveOptions);
 	}
@@ -239,7 +254,7 @@ public class Conversion {
 		// Instantiating the conversion handler
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		SaveOptions saveOption = new ImageSaveOptions();
-		saveOption.setConvertFileType(ImageSaveOptions.ImageFileType.Jpg);
+		saveOption.setConvertFileType(ImageSaveOptions.ImageFileType.JPG);
 		saveOption.setOutputType(OutputType.String);
 
 		List<String> convertedDocumentPath = conversionHandler.<List<String>> convert(fileName, saveOption);
@@ -429,7 +444,7 @@ public class Conversion {
 		SaveOptions saveOptions = new SlidesSaveOptions();
 		saveOptions.setPageNumber(2);
 		saveOptions.setNumPagesToConvert(2);
-		saveOptions.setConvertFileType(SlidesSaveOptions.SlidesFileType.Ppt);
+		saveOptions.setConvertFileType(SlidesSaveOptions.SlidesFileType.PPT);
 		saveOptions.setOutputType(OutputType.String);
 
 		String convertedDocumentPath = conversionHandler.<String> convert(fileName, loadOptions, saveOptions);
@@ -450,7 +465,7 @@ public class Conversion {
 		SaveOptions saveOptions = new SlidesSaveOptions();
 		saveOptions.setPageNumber(2);
 		saveOptions.setNumPagesToConvert(2);
-		saveOptions.setConvertFileType(SlidesSaveOptions.SlidesFileType.Ppt);
+		saveOptions.setConvertFileType(SlidesSaveOptions.SlidesFileType.PPT);
 
 		GroupDocsInputStream convertedDocumentPath = conversionHandler.<GroupDocsInputStream> convert(fileName,
 				loadOptions, saveOptions);
@@ -470,19 +485,223 @@ public class Conversion {
 	}
 
 	// endregion custom input data handler
-	
-	//region custom output data handler
-	
-	public static void outputDataHanlder(){
+
+	// region custom output data handler
+	public static void outputDataHanlder() {
 		// Instantiating the conversion handler
-		AmazonOutputDataHandler outputDataHandler = new AmazonOutputDataHandler(Utilities.getConfiguration(), "AccessKey", "SecretKey");
-		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration(), (IOutputDataHandler) outputDataHandler);
+		AmazonOutputDataHandler outputDataHandler = new AmazonOutputDataHandler(Utilities.getConfiguration(),
+				"AccessKey", "SecretKey");
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration(),
+				(IOutputDataHandler) outputDataHandler);
 		PdfSaveOptions saveOptions = new PdfSaveOptions();
 		saveOptions.setOutputType(OutputType.String);
-		 
-		String convertedDocumentPath = conversionHandler.<String>convert("DOCXsample.docx", saveOptions);
-	}
-	
-	//endregion custom output data handler
 
+		String convertedDocumentPath = conversionHandler.<String> convert("DOCXsample.docx", saveOptions);
+	}
+	// endregion custom output data handler
+
+	// conversion progress
+	public static void conversionProgress(String fileName) {
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		conversionHandler.ConversionProgress.add(new ConversionProgressHandler() {
+			// Here is the implementation of the conversion progress handler
+			// method
+			@Override
+			public void invoke(ConversionProgressEventArgs args) {
+				System.out.println("Conversion progress: {" + args.getProgress() + "}");
+			}
+		});
+		PdfSaveOptions saveOptions = new PdfSaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		String resultPath = conversionHandler.<String> convert(fileName, saveOptions);
+		System.out.println("The conversion finished. The result can be located here: " + resultPath
+				+ ". Press <<ENTER>> to exit.");
+	}
+
+	// get available save options by file extension
+	public static void getAvailableSaveOptionsByExtension(String sourceDocument) {
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		String file = sourceDocument.substring(sourceDocument.lastIndexOf("."));
+		String documentExtension = file.substring(file.indexOf(".") + 1);
+		Dictionary<String, SaveOptions> availableConversions = conversionHandler.getSaveOptions(documentExtension);
+
+		// list all available conversions
+		for (Enumeration name = availableConversions.keys(); name.hasMoreElements();) {
+			System.out.println(name.nextElement());
+		}
+
+		// use prepared save option for ToPdf conversion
+		GroupDocsInputStream result = conversionHandler.<GroupDocsInputStream> convert(sourceDocument,
+				availableConversions.get("pdf"));
+	}
+
+	// get available save options by file stream
+	public static void getAvailableSaveOptionsByStream(String sourceDocument) {
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		FileStream sourceStream = new FileStream(sourceDocument, FileMode.Open);
+		Dictionary<String, SaveOptions> availableConversions = conversionHandler
+				.getSaveOptions(sourceStream.toInputStream());
+		sourceStream.setPosition(0);
+
+		// list all available conversions
+		for (Enumeration name = availableConversions.keys(); name.hasMoreElements();) {
+			System.out.println(name.nextElement());
+		}
+		// use prepared save option for ToPdf conversion
+		GroupDocsInputStream result = conversionHandler.<GroupDocsInputStream> convert(sourceStream.toInputStream(),
+				availableConversions.get("pdf"));
+	}
+
+	// Usage of PageMode when converting to PDF
+	public static void usePageModeConvertingToPdf(String sourceFileName) {
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		PdfSaveOptions saveOptions = new PdfSaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setPageMode(true);
+
+		// Note: when using PageMode expected result is either IList<string> or
+		// IList<Stream> depending
+		// of used OutputType in save options provided
+		List<String> resultPaths = conversionHandler.<List<String>> convert(sourceFileName, saveOptions);
+		for (String path : resultPaths) {
+			System.out.println(path);
+		}
+	}
+
+	// Usage of PageMode when converting to HTML
+	public static void usePageModeConvertingToHtml(String sourceFileName) {
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		HtmlSaveOptions saveOptions = new HtmlSaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setPageMode(true);
+
+		// Note: when using PageMode expected result is either IList<string> or
+		// IList<Stream> depending
+		// of used OutputType in save options provided
+		List<String> resultPaths = conversionHandler.<List<String>> convert(sourceFileName, saveOptions);
+		for (String path : resultPaths) {
+			System.out.println(path);
+		}
+	}
+
+	// adding watermark on converted documents
+	public static void addWatermarkOnConvertedDocs(String sourceFileName) {
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+
+		// Save options
+		PdfSaveOptions saveOptions = new PdfSaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		WatermarkOptions watermarkOptions = new WatermarkOptions("Watermark text");
+		watermarkOptions.setColor(Color.blue);
+		watermarkOptions.setFont(new Font("Arial", 40, 12));
+		watermarkOptions.setRotationAngle(45);
+		watermarkOptions.setTransparency(0.1);
+		watermarkOptions.setLeft(200);
+		watermarkOptions.setTop(400);
+		saveOptions.setWatermarkOptions(watermarkOptions);
+
+		String result = conversionHandler.<String> convert(sourceFileName, saveOptions);
+		System.out.println(
+				"The conversion finished. The result can be located here: " + result + ". Press <<ENTER>> to exit.");
+	}
+
+	// Convert document to psd
+	public static void convertToPsd(String sourceFileName) {
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		// Save options
+		ImageSaveOptions saveOptions = new ImageSaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setConvertFileType(ImageSaveOptions.ImageFileType.PSD);
+		PsdOptions psdOptions = new PsdOptions();
+		psdOptions.setColorMode(PsdOptions.ColorModes.GRAYSCALE);
+		psdOptions.setCompressionMethod(PsdOptions.CompressionMethods.RAW);
+		saveOptions.setPsdOptions(psdOptions);
+
+		List<String> result = conversionHandler.<List<String>> convert(sourceFileName, saveOptions);
+	}
+
+	// convert from psd
+	public static void convertFromPsd(String sourceFileName) {
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		// Save options
+		SaveOptions saveOptions = new PdfSaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		String result = conversionHandler.<String> convert(sourceFileName, saveOptions);
+	}
+
+	// use conversion events
+	public static void useConversionEvents(String sourceFileName) {
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		conversionHandler.ConversionStart.add(new ConversionStartHandler() {
+			@Override
+			public void invoke(ConversionStartEventArgs args) {
+				System.out.println("Conversion " + args.getConversionGuid() + " started");
+			}
+		});
+		conversionHandler.ConversionProgress.add(new ConversionProgressHandler() {
+			@Override
+			public void invoke(ConversionProgressEventArgs args) {
+				System.out
+						.println("Conversion " + args.getConversionGuid() + " progress: " + args.getProgress() + " %");
+			}
+		});
+		conversionHandler.ConversionComplete.add(new ConversionCompleteHandler() {
+			@Override
+			public void invoke(ConversionCompleteEventArgs args) {
+				System.out.println("Conversion " + args.getConversionGuid() + " completed");
+				System.out.println(
+						"Result document is " + args.getConversionType() + ". Cache is " + args.getUsedCache());
+				System.out.println(
+						"Result document has " + ((PdfConversionCompleteEventArgs) args).getPageCount() + " page(s).");
+			}
+		});
+		// Save options
+		SaveOptions saveOptions = new PdfSaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		String result = conversionHandler.<String> convert(sourceFileName, saveOptions);
+	}
+
+	// show grid lines when converting from excel
+	public static void showGridLinesConvertingFromExcel(String sourceFileName) {
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+
+		// Save options
+		SaveOptions saveOptions = new HtmlSaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setShowGridLines(true);
+
+		String result = conversionHandler.<String> convert(sourceFileName, saveOptions);
+	}
+
+	// show hidden sheets when converting from excel
+	public static void showHiddenSheetesWhenConvertingFromExcel(String sourceFileName) {
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		// Save options
+		SaveOptions saveOptions = new HtmlSaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setShowHiddenSheets(true);
+		String result = conversionHandler.<String> convert(sourceFileName, saveOptions);
+	}
+
+	// remove slide comments
+	public static void removeSlideComments(String sourceFileName) {
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		// Save options
+		SlidesSaveOptions saveOptions = new SlidesSaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setRemoveSlidesComments(true);
+
+		String result = conversionHandler.<String> convert(sourceFileName, saveOptions);
+	}
+
+	// hide tracked changes
+	public static void hideTrackedChanges(String sourceFileName) {
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		// Save options
+		SaveOptions saveOptions = new PdfSaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setHideWordTrackedChanges(false);
+
+		String result = conversionHandler.<String> convert(sourceFileName, saveOptions);
+	}
 }

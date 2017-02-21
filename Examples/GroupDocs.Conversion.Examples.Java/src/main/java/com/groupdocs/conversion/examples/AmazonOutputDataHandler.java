@@ -3,6 +3,7 @@ package com.groupdocs.conversion.examples;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,7 +31,6 @@ public class AmazonOutputDataHandler implements IOutputDataHandler {
         _client = new AmazonS3Client(credentials);
     }
      
-    @Override
     public String saveFile(FileDescription fileDescription, Stream stream, SaveOptions saveOptions) {
         String fileName = "";
         try {
@@ -94,5 +94,11 @@ public class AmazonOutputDataHandler implements IOutputDataHandler {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public String saveFile(FileDescription arg0, InputStream arg1, SaveOptions arg2) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
