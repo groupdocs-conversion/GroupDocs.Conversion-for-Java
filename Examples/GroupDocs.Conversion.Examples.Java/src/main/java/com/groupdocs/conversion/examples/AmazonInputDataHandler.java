@@ -39,7 +39,6 @@ public class AmazonInputDataHandler implements IInputDataHandler {
         return result;
     }
  
-    @Override
     public com.aspose.ms.System.IO.Stream getFile(String guid) {
         GetObjectRequest request = new GetObjectRequest(bucketName, guid);
         Stream  result = null;
