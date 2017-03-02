@@ -11,7 +11,7 @@ import com.groupdocs.conversion.handler.ConversionHandler;
 import com.groupdocs.conversion.handler.ConversionProgressEventArgs;
 import com.groupdocs.conversion.handler.IConversionProgressListener;
 import com.groupdocs.conversion.handler.IConversionStatusListener;
-
+//ExStart:conversionmanager
 public class ConversionManager implements IConversionProgressListener, IConversionStatusListener {
 	private ConversionHandler _conversionHandler = null;
 
@@ -38,3 +38,4 @@ public class ConversionManager implements IConversionProgressListener, IConversi
 		return _conversionHandler.<String> convert(file, option);
 	}
 }
+//ExEnd:conversionmanager
