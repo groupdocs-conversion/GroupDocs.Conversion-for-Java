@@ -50,6 +50,7 @@ public class Utilities {
 		}
 		
 		public static ConversionConfig getConfiguration(){
+			//ExStart:getConfiguration
 			try{
 				// Setup Conversion configuration
 				ConversionConfig conversionConfig = new ConversionConfig();
@@ -65,5 +66,6 @@ public class Utilities {
 				exp.printStackTrace();
 				return null;
 			}
+			//ExEnd:getConfiguration
 		}
 }
