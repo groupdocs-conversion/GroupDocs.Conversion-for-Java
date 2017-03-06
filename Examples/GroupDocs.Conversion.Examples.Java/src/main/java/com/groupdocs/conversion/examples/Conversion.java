@@ -278,9 +278,9 @@ public class Conversion {
 		//ExStart:convertToImageAsFilePath
 		// Instantiating the conversion handler
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
-		SaveOptions saveOption = new ImageSaveOptions();
-		saveOption.setConvertFileType(ImageSaveOptions.ImageFileType.JPG);
-		saveOption.setOutputType(OutputType.String);
+		ImageSaveOptions saveOption = new ImageSaveOptions(); 
+		saveOption.setConvertFileType(ImageSaveOptions.ImageFileType.JPG); 
+		saveOption.setOutputType(OutputType.String); 
 
 		List<String> convertedDocumentPath = conversionHandler.<List<String>> convert(fileName, saveOption);
 		//ExEnd:convertToImageAsFilePath
