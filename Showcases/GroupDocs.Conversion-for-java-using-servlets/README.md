@@ -1,4 +1,4 @@
-##GroupDocs.Conversion for Java using Servlets
+# GroupDocs.Conversion for Java using Servlets
 
 Front-end for GroupDocs.Conversion for Java using servlet is an open source front end to demonstrate all of the core functionalities provided by this API. In this application user needs to upload a document file, select the target file type and convert the file, a file with the target type will automatically downloaded to user's PC.
 
@@ -22,7 +22,7 @@ You may find following resources helpful:
 3. Maven <a href="http://www.tutorialspoint.com/maven/maven_intellij_idea.htm">support</a> for IntelliJ IDEA
 4. Maven <a href="http://www.tutorialspoint.com/maven/maven_eclispe_ide.htm">support</a> for Eclipse IDE 
 
-## Features 
+# Features 
 
 * Upload Source file
 * Select Target file Type
