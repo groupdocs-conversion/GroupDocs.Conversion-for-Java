@@ -44,7 +44,7 @@ public class MainClass {
 		// Conversion.convertProtectedFilesToHtmlAsStream("intelligent systems.pdf");
 
 		// convert to image and get result as path
-		 Conversion.convertToImageAsFilePath("Sapporo-Otaru.pdf");
+		 Conversion.convertToImageAsFilePath("The butterfly effect.pptx");
 
 		// convert to image and get result as stream
 		// Conversion.convertToImageAsStream("intelligent systems.pdf");
