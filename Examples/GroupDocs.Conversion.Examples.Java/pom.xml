@@ -21,11 +21,11 @@
 			<version>1.11.34</version>
 		</dependency>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.groupdocs</groupId>
 			<artifactId>groupdocs-conversion</artifactId>
 			<version>16.10.1</version>
-		</dependency>
+		</dependency> -->
 	</dependencies>
 	<build>
 		<resources>

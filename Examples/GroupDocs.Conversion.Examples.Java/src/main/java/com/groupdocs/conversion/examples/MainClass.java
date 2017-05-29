@@ -5,7 +5,7 @@ public class MainClass {
 	public static void main(String[] args) throws Throwable {
 
 		// uncomment to apply license
-		Utilities.applyLicenseFromFile();
+		//Utilities.applyLicenseFromFile();
 
 		// convert document to cells, result as file path
 		// Conversion.convertToCellsAsFilePath("intelligent systems.docx");
@@ -44,7 +44,7 @@ public class MainClass {
 		// Conversion.convertProtectedFilesToHtmlAsStream("intelligent systems.pdf");
 
 		// convert to image and get result as path
-		 Conversion.convertToImageAsFilePath("The butterfly effect.pptx");
+		 //Conversion.convertToImageAsFilePath("The butterfly effect.pptx");
 
 		// convert to image and get result as stream
 		// Conversion.convertToImageAsStream("intelligent systems.pdf");
@@ -139,5 +139,24 @@ public class MainClass {
 		// Conversion.removeSlideComments("The butterfly effect.pptx");
 		// hide tracked changes
 		// Conversion.hideTrackedChanges("demo.docx");
+		// count document pages
+		//Conversion.countDocumentPages("demo.docx");
+		// get possible conversions from file extension
+		//Conversion.getPossibleConversionsFromFileExtension("docx");
+		// possible conversion from stream
+		//Conversion.getPossibleConversionsFromStream("demo.docx");
+		// convert files to WebP and get result as stream
+		//Conversion.convertFilesToWebPAsStream("demo.docx");
+		// convert file to greyscale image and get result as stream
+		//Conversion.convertFileToGreyscaleImageAsStream("demo.docx");
+		// convert file to SVG and get result as stream
+		//Conversion.convertFileToSVGAsStream("demo.docx");
+		// convert file to XPS and get result as stream
+		// metered licensing
+		//Conversion.meteredLicensingOnFile("demo.docx");
+		// hide comments when converting from word
+		//Conversion.hideCommentsWhenConvertingFromWord("demo.docx");
+		// mark image Dpi as Obsolete
+		//Conversion.markImageDpiAsObsolete("demo.docx");
 	}
 }
