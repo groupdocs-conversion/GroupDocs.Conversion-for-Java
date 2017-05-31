@@ -798,17 +798,17 @@ public class Conversion {
 	
 	//get possible conversions from file extension
 	public static void getPossibleConversionsFromFileExtension(String fileExtension){
-		//ExStart:possibleConversionsFromFile
+		//ExStart:possibleConversionsFromFileExtension
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 				
 		String[] possibleConversions = conversionHandler.getPossibleConversions(fileExtension);
 		System.out.print("Possible conversions: " + possibleConversions);
-		//ExEnd:possibleConversionsFromFile
+		//ExEnd:possibleConversionsFromFileExtension
 	}
 	
 	//get possible conversions from stream
 	public static void getPossibleConversionsFromStream(String sourceFileName) throws FileNotFoundException{
-		//ExStart:possibleConversionsFromFile
+		//ExStart:possibleConversionsFromFileStream
 		ConversionConfig conversionConfig = Utilities.getConfiguration();
 		ConversionHandler conversionHandler = new ConversionHandler(conversionConfig);
 		
@@ -816,7 +816,7 @@ public class Conversion {
 		
 		String[] possibleConversions = conversionHandler.getPossibleConversions(fileStream);
 		System.out.print("Possible conversions: " + possibleConversions);
-		//ExEnd:possibleConversionsFromFile
+		//ExEnd:possibleConversionsFromFileStream
 	}
 	
 	//convert files to WebP and get result as stream
@@ -830,6 +830,19 @@ public class Conversion {
 		List<GroupDocsInputStream> convertedDocumentStream = conversionHandler.<List<GroupDocsInputStream>>convert(sourceFileName, options);
 		System.out.print("Converted file path is: " + convertedDocumentStream);
 		//ExEnd:convertFilesToWebPAsStream
+	}
+	
+	//convert files to WebP and get result as stream
+	public static void convertFromWebPAsStream(String sourceFileName){
+		//ExStart:convertFromWebPAsStream
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		ImageSaveOptions options = new ImageSaveOptions();
+		options.setConvertFileType(ImageSaveOptions.ImageFileType.JPG);
+		options.setOutputType(OutputType.String);
+		
+		List<GroupDocsInputStream> convertedDocumentStream = conversionHandler.<List<GroupDocsInputStream>>convert(sourceFileName, options);		
+		System.out.print("Converted file path is: " + convertedDocumentStream);
+		//ExEnd:convertFromWebPAsStream
 	}
 	
 	//convert file to greyscale image and get result as stream

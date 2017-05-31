@@ -147,6 +147,8 @@ public class MainClass {
 		//Conversion.getPossibleConversionsFromStream("demo.docx");
 		// convert files to WebP and get result as stream
 		//Conversion.convertFilesToWebPAsStream("demo.docx");
+		// convert from WebP and get result as stream
+		//Conversion.convertFromWebPAsStream("mountain.webp");
 		// convert file to greyscale image and get result as stream
 		//Conversion.convertFileToGreyscaleImageAsStream("demo.docx");
 		// convert file to SVG and get result as stream
