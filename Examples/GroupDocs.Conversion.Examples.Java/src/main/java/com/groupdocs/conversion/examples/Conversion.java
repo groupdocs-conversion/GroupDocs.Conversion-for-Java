@@ -31,7 +31,7 @@ import com.groupdocs.conversion.handler.ConversionStartEventArgs;
 import com.groupdocs.conversion.handler.ConversionStartHandler;
 import com.groupdocs.conversion.handler.PdfConversionCompleteEventArgs;
 import com.groupdocs.conversion.handler.output.IOutputDataHandler;
-import com.groupdocs.conversion.internal.c.a.d.Metered;
+//import com.groupdocs.conversion.internal.c.a.d.Metered;
 import com.groupdocs.foundation.domain.FileType;
 import com.groupdocs.foundation.utils.wrapper.stream.GroupDocsInputStream;
 
@@ -49,6 +49,7 @@ public class Conversion {
 		CellsSaveOptions saveOption = new CellsSaveOptions();
 		saveOption.setOutputType(OutputType.String);
 		String convertedDocumentPath = conversionHandler.<String> convert(fileName, saveOption);
+		System.out.print("Converted file path is: " + convertedDocumentPath);
 		//ExEnd:convertToCellsAsFilePath
 	}
 
@@ -128,6 +129,7 @@ public class Conversion {
 		// Set absolute path to file
 		String guid = fileName;
 		String convertedDocumentPath = conversionHandler.<String> convert(guid, saveOption);
+		//System.out.print("Converted file path is: " + convertedDocumentPath);
 		//ExEnd:convertToWordAsFilePath
 	}
 
@@ -209,6 +211,7 @@ public class Conversion {
 		String guid = fileName;
 
 		String convertedDocumentPath = conversionHandler.<String> convert(guid, saveOption);
+		//System.out.print("Converted file path is: " + convertedDocumentPath);
 		//ExEnd:convertToHtmlAsFilePath
 	}
 
@@ -287,6 +290,7 @@ public class Conversion {
 		saveOption.setOutputType(OutputType.String); 
 
 		List<String> convertedDocumentPath = conversionHandler.<List<String>> convert(fileName, saveOption);
+		//System.out.print("Converted file path is: " + convertedDocumentPath);
 		//ExEnd:convertToImageAsFilePath
 	}
 
@@ -376,6 +380,7 @@ public class Conversion {
 		String guid = fileName;
 
 		String convertedDocumentPath = conversionHandler.<String> convert(guid, saveOption);
+		//System.out.print("Converted file path is: " + convertedDocumentPath);
 		//ExEnd:convertToPdfAsFilePath
 	}
 
@@ -787,7 +792,7 @@ public class Conversion {
 	}
 	
 	//count document pages
-	public static void countDocumentPages(String sourceFileName){
+	/*public static void countDocumentPages(String sourceFileName){
 		//ExStart:countDocumentPages
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		
@@ -832,7 +837,7 @@ public class Conversion {
 		//ExEnd:convertFilesToWebPAsStream
 	}
 	
-	//convert files to WebP and get result as stream
+	//convert files from WebP and get result as stream
 	public static void convertFromWebPAsStream(String sourceFileName){
 		//ExStart:convertFromWebPAsStream
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
@@ -933,5 +938,5 @@ public class Conversion {
 		List<GroupDocsInputStream> convertedDocumentStream = conversionHandler.<List<GroupDocsInputStream>>convert(sourceFileName, options);
 		System.out.print("Converted file path is: " + convertedDocumentStream);
 		//ExEnd:markImageDpiAsObsolete
-	}
+	}*/
 }
