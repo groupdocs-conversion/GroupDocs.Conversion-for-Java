@@ -2,12 +2,15 @@ package com.groupdocs.conversion.examples;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.List;
 
 import com.aspose.ms.System.IO.FileMode;
 import com.aspose.ms.System.IO.FileStream;
+import com.groupdocs.conversion.config.ConversionConfig;
 import com.groupdocs.conversion.converter.option.CellsSaveOptions;
 import com.groupdocs.conversion.converter.option.HtmlSaveOptions;
 import com.groupdocs.conversion.converter.option.ImageSaveOptions;
@@ -28,6 +31,7 @@ import com.groupdocs.conversion.handler.ConversionStartEventArgs;
 import com.groupdocs.conversion.handler.ConversionStartHandler;
 import com.groupdocs.conversion.handler.PdfConversionCompleteEventArgs;
 import com.groupdocs.conversion.handler.output.IOutputDataHandler;
+//import com.groupdocs.conversion.internal.c.a.d.Metered;
 import com.groupdocs.foundation.domain.FileType;
 import com.groupdocs.foundation.utils.wrapper.stream.GroupDocsInputStream;
 
@@ -45,6 +49,7 @@ public class Conversion {
 		CellsSaveOptions saveOption = new CellsSaveOptions();
 		saveOption.setOutputType(OutputType.String);
 		String convertedDocumentPath = conversionHandler.<String> convert(fileName, saveOption);
+		System.out.print("Converted file path is: " + convertedDocumentPath);
 		//ExEnd:convertToCellsAsFilePath
 	}
 
@@ -124,6 +129,7 @@ public class Conversion {
 		// Set absolute path to file
 		String guid = fileName;
 		String convertedDocumentPath = conversionHandler.<String> convert(guid, saveOption);
+		//System.out.print("Converted file path is: " + convertedDocumentPath);
 		//ExEnd:convertToWordAsFilePath
 	}
 
@@ -205,6 +211,7 @@ public class Conversion {
 		String guid = fileName;
 
 		String convertedDocumentPath = conversionHandler.<String> convert(guid, saveOption);
+		//System.out.print("Converted file path is: " + convertedDocumentPath);
 		//ExEnd:convertToHtmlAsFilePath
 	}
 
@@ -283,6 +290,7 @@ public class Conversion {
 		saveOption.setOutputType(OutputType.String); 
 
 		List<String> convertedDocumentPath = conversionHandler.<List<String>> convert(fileName, saveOption);
+		//System.out.print("Converted file path is: " + convertedDocumentPath);
 		//ExEnd:convertToImageAsFilePath
 	}
 
@@ -372,6 +380,7 @@ public class Conversion {
 		String guid = fileName;
 
 		String convertedDocumentPath = conversionHandler.<String> convert(guid, saveOption);
+		//System.out.print("Converted file path is: " + convertedDocumentPath);
 		//ExEnd:convertToPdfAsFilePath
 	}
 
@@ -781,4 +790,153 @@ public class Conversion {
 		String result = conversionHandler.<String> convert(sourceFileName, saveOptions);
 		//ExEnd:hideTrackedChanges
 	}
+	
+	//count document pages
+	/*public static void countDocumentPages(String sourceFileName){
+		//ExStart:countDocumentPages
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		
+		int count = conversionHandler.getDocumentPagesCount(sourceFileName);
+		System.out.print("Page Count: " + count);
+		//ExEnd:countDocumentPages
+	}
+	
+	//get possible conversions from file extension
+	public static void getPossibleConversionsFromFileExtension(String fileExtension){
+		//ExStart:possibleConversionsFromFileExtension
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+				
+		String[] possibleConversions = conversionHandler.getPossibleConversions(fileExtension);
+		System.out.print("Possible conversions: " + possibleConversions);
+		//ExEnd:possibleConversionsFromFileExtension
+	}
+	
+	//get possible conversions from stream
+	public static void getPossibleConversionsFromStream(String sourceFileName) throws FileNotFoundException{
+		//ExStart:possibleConversionsFromFileStream
+		ConversionConfig conversionConfig = Utilities.getConfiguration();
+		ConversionHandler conversionHandler = new ConversionHandler(conversionConfig);
+		
+		FileInputStream fileStream = new FileInputStream(conversionConfig.getStoragePath() + "/" + sourceFileName);
+		
+		String[] possibleConversions = conversionHandler.getPossibleConversions(fileStream);
+		System.out.print("Possible conversions: " + possibleConversions);
+		//ExEnd:possibleConversionsFromFileStream
+	}
+	
+	//convert files to WebP and get result as stream
+	public static void convertFilesToWebPAsStream(String sourceFileName){
+		//ExStart:convertFilesToWebPAsStream
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		ImageSaveOptions options = new ImageSaveOptions();
+		options.setConvertFileType(ImageSaveOptions.ImageFileType.WEBP);
+		options.getWebpOptions().setLossless(true);
+		
+		List<GroupDocsInputStream> convertedDocumentStream = conversionHandler.<List<GroupDocsInputStream>>convert(sourceFileName, options);
+		System.out.print("Converted file path is: " + convertedDocumentStream);
+		//ExEnd:convertFilesToWebPAsStream
+	}
+	
+	//convert files from WebP and get result as stream
+	public static void convertFromWebPAsStream(String sourceFileName){
+		//ExStart:convertFromWebPAsStream
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		ImageSaveOptions options = new ImageSaveOptions();
+		options.setConvertFileType(ImageSaveOptions.ImageFileType.JPG);
+		options.setOutputType(OutputType.String);
+		
+		List<GroupDocsInputStream> convertedDocumentStream = conversionHandler.<List<GroupDocsInputStream>>convert(sourceFileName, options);		
+		System.out.print("Converted file path is: " + convertedDocumentStream);
+		//ExEnd:convertFromWebPAsStream
+	}
+	
+	//convert file to greyscale image and get result as stream
+	public static void convertFileToGreyscaleImageAsStream(String sourceFileName){
+		//ExStart:convertFileToGreyscaleImageAsStream
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		ImageSaveOptions options = new ImageSaveOptions();
+		options.setConvertFileType(ImageSaveOptions.ImageFileType.JPG);
+		options.setGrayscale(true);
+		
+		List<GroupDocsInputStream> convertedDocumentStream = conversionHandler.<List<GroupDocsInputStream>>convert(sourceFileName, options);
+		System.out.print("Converted file path is: " + convertedDocumentStream);
+		//ExEnd:convertFileToGreyscaleImageAsStream
+	}
+	
+	//convert file to SVG and get result as stream
+	public static void convertFileToSVGAsStream(String sourceFileName){
+		//ExStart:convertFileToSVGAsStream
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		ImageSaveOptions options = new ImageSaveOptions();
+		options.setConvertFileType(ImageSaveOptions.ImageFileType.SVG);
+		 
+		List<GroupDocsInputStream> convertedDocumentStream = conversionHandler.<List<GroupDocsInputStream>>convert(sourceFileName, options);
+		System.out.print("Converted file path is: " + convertedDocumentStream);
+		//ExEnd:convertFileToSVGAsStream
+	}
+	
+	//convert file to XPS and get result as stream
+	public static void convertFileToXPSAsStream(String sourceFileName){
+		//ExStart:convertFileToXPSAsStream
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		ImageSaveOptions options = new ImageSaveOptions();
+		options.setConvertFileType(PdfSaveOptions.PdfFileType.XPS);
+		 
+		List<GroupDocsInputStream> convertedDocumentStream = conversionHandler.<List<GroupDocsInputStream>>convert("DOCXsample.docx", options);
+		System.out.print("Converted file path is: " + convertedDocumentStream);
+		//ExEnd:convertFileToXPSAsStream
+	}
+	
+	//metered licensing
+	public static void meteredLicensingOnFile(String sourceFileName) throws Exception{
+		//ExStart:meteredLicensingOnFile
+		Metered metered = new Metered();		 
+		// Set public and private key to metered instance
+		metered.setMeteredKey("***","***");
+		
+		// Get metered value before usage of the conversion
+		double amountBefore = Metered.getConsumptionQuantity();
+		System.out.print("Amount consumed before: " + amountBefore);
+		
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		PdfSaveOptions options = new PdfSaveOptions();
+		options.setConvertFileType(PdfSaveOptions.PdfFileType.PDF);
+		 
+		GroupDocsInputStream convertedDocumentStream = conversionHandler.<GroupDocsInputStream>convert(sourceFileName, options);
+		 
+		// Get metered value after usage of the conversion
+		double amountAfter = Metered.getConsumptionQuantity();
+		System.out.print("Amount consumed after: " + amountAfter);
+		//ExEnd:meteredLicensingOnFile
+	}
+	
+	//hide comments when converting from word
+	public static void hideCommentsWhenConvertingFromWord(String sourceFileName){
+		//ExStart:hideCommentsWhenConvertingFromWord
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		
+		SaveOptions saveOptions = new PdfSaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setHideWordComments(false);
+		 
+		String result = conversionHandler.<String>convert(sourceFileName, saveOptions);		 
+		System.out.print("Converted file path is: " + result);
+		//ExEnd:hideCommentsWhenConvertingFromWord
+	}
+	
+	// mark image Dpi as Obsolete
+	public static void markImageDpiAsObsolete(String sourceFileName){
+		//ExStart:markImageDpiAsObsolete
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		
+		ImageSaveOptions options = new ImageSaveOptions();
+		options.setConvertFileType(ImageSaveOptions.ImageFileType.TIFF);
+		// Dpi is obsolete, now horizontal and vertical resolutions can be set independently
+		options.setHorizontalResolution(96);
+		options.setVerticalResolution(96);
+		 
+		List<GroupDocsInputStream> convertedDocumentStream = conversionHandler.<List<GroupDocsInputStream>>convert(sourceFileName, options);
+		System.out.print("Converted file path is: " + convertedDocumentStream);
+		//ExEnd:markImageDpiAsObsolete
+	}*/
 }
