@@ -5,11 +5,11 @@ public class MainClass {
 	public static void main(String[] args) throws Throwable {
 
 		// uncomment to apply license
-		Utilities.applyLicenseFromFile();
+		//Utilities.applyLicenseFromFile();
 
 		// convert document to cells, result as file path
 		// Conversion.convertToCellsAsFilePath("intelligent systems.docx");
-
+		
 		// convert document to cells, result as stream
 		// Conversion.convertToCellsAsStream("intelligent systems.docx");
 
@@ -21,7 +21,7 @@ public class MainClass {
 
 		// convert to word and get result as path
 		// Conversion.convertToWordAsFilePath("intelligent systems.pdf");
-
+		
 		// convert to word and get result as stream
 		// Conversion.convertToWordAsStream("intelligent systems.pdf");
 
@@ -33,7 +33,7 @@ public class MainClass {
 
 		// convert to html and get result as path
 		// Conversion.convertToHtmlAsFilePath("intelligent systems.pdf");
-
+		
 		// convert to html and get result as stream
 		// Conversion.convertToHtmlAsStream("intelligent systems.pdf");
 
@@ -44,8 +44,8 @@ public class MainClass {
 		// Conversion.convertProtectedFilesToHtmlAsStream("intelligent systems.pdf");
 
 		// convert to image and get result as path
-		 Conversion.convertToImageAsFilePath("The butterfly effect.pptx");
-
+		// Conversion.convertToImageAsFilePath("The butterfly effect.pptx");
+		
 		// convert to image and get result as stream
 		// Conversion.convertToImageAsStream("intelligent systems.pdf");
 
@@ -57,7 +57,7 @@ public class MainClass {
 
 		// convert to pdf and get result as path
 		// Conversion.convertToPdfAsFilePath("intelligent systems.docx");
-
+		
 		// convert to pdf and get result as stream
 		// Conversion.convertToPdfAsStream("intelligent systems.docx");
 
@@ -115,6 +115,7 @@ public class MainClass {
 		// Conversion.usePageModeConvertingToHtml("The butterfly effect.pptx");
 		// adding watermarks on converted documents
 		// Conversion.addWatermarkOnConvertedDocs("The butterfly effect.pptx");
+		
 		// convert to psd
 		// Conversion.convertToPsd("demo.docx");
 		// convert from psd
@@ -139,5 +140,26 @@ public class MainClass {
 		// Conversion.removeSlideComments("The butterfly effect.pptx");
 		// hide tracked changes
 		// Conversion.hideTrackedChanges("demo.docx");
+		// count document pages
+		//Conversion.countDocumentPages("demo.docx");
+		// get possible conversions from file extension
+		//Conversion.getPossibleConversionsFromFileExtension("docx");
+		// possible conversion from stream
+		//Conversion.getPossibleConversionsFromStream("demo.docx");
+		// convert files to WebP and get result as stream
+		//Conversion.convertFilesToWebPAsStream("demo.docx");
+		// convert from WebP and get result as stream
+		//Conversion.convertFromWebPAsStream("mountain.webp");
+		// convert file to greyscale image and get result as stream
+		//Conversion.convertFileToGreyscaleImageAsStream("demo.docx");
+		// convert file to SVG and get result as stream
+		//Conversion.convertFileToSVGAsStream("demo.docx");
+		// convert file to XPS and get result as stream
+		// metered licensing
+		//Conversion.meteredLicensingOnFile("demo.docx");
+		// hide comments when converting from word
+		//Conversion.hideCommentsWhenConvertingFromWord("demo.docx");
+		// mark image Dpi as Obsolete
+		//Conversion.markImageDpiAsObsolete("demo.docx");
 	}
 }
