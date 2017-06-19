@@ -31,6 +31,7 @@ import com.groupdocs.conversion.handler.ConversionStartEventArgs;
 import com.groupdocs.conversion.handler.ConversionStartHandler;
 import com.groupdocs.conversion.handler.PdfConversionCompleteEventArgs;
 import com.groupdocs.conversion.handler.output.IOutputDataHandler;
+import com.groupdocs.conversion.metered.Metered;
 //import com.groupdocs.conversion.internal.c.a.d.Metered;
 import com.groupdocs.foundation.domain.FileType;
 import com.groupdocs.foundation.utils.wrapper.stream.GroupDocsInputStream;
@@ -792,7 +793,7 @@ public class Conversion {
 	}
 	
 	//count document pages
-	/*public static void countDocumentPages(String sourceFileName){
+	public static void countDocumentPages(String sourceFileName){
 		//ExStart:countDocumentPages
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		
@@ -938,5 +939,5 @@ public class Conversion {
 		List<GroupDocsInputStream> convertedDocumentStream = conversionHandler.<List<GroupDocsInputStream>>convert(sourceFileName, options);
 		System.out.print("Converted file path is: " + convertedDocumentStream);
 		//ExEnd:markImageDpiAsObsolete
-	}*/
+	}
 }
