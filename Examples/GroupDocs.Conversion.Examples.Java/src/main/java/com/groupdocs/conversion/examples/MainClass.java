@@ -32,7 +32,8 @@ public class MainClass {
 		// Conversion.convertProtectedFilesToWordAsStream("intelligent systems.pdf");
 
 		// convert to html and get result as path
-		// Conversion.convertToHtmlAsFilePath("intelligent systems.pdf");
+		//Conversion.convertToHtmlAsFilePath("intelligent systems.pdf");
+		//Conversion.convertToHtmlAsFilePath("sample.eml");
 		
 		// convert to html and get result as stream
 		// Conversion.convertToHtmlAsStream("intelligent systems.pdf");
@@ -44,7 +45,7 @@ public class MainClass {
 		// Conversion.convertProtectedFilesToHtmlAsStream("intelligent systems.pdf");
 
 		// convert to image and get result as path
-		// Conversion.convertToImageAsFilePath("The butterfly effect.pptx");
+		//Conversion.convertToImageAsFilePath("The butterfly effect.pptx");
 		
 		// convert to image and get result as stream
 		// Conversion.convertToImageAsStream("intelligent systems.pdf");

@@ -1,6 +1,5 @@
 package com.groupdocs.conversion.examples;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.FileSystems;
@@ -17,7 +16,8 @@ public class Utilities {
 		public final static String outputPath = "./Data/OutputFiles/";
 		public final static String cachePath = "./Data/Cache/";
 	    public static final Path licensePath = getProjectBaseDir().resolve("GroupDocs.Total.Java.lic");
-	    //ExEnd:CommonProperties
+	    
+	  //ExEnd:CommonProperties
 		/**
 		 * This method applies product license from file
 		 * 
@@ -34,7 +34,6 @@ public class Utilities {
 			}
 			//ExEnd:applyLicenseFromFile
 		}
-		
 		/*
 		 * get project base directories
 		 */
@@ -68,4 +67,5 @@ public class Utilities {
 			}
 			//ExEnd:getConfiguration
 		}
+		
 }
