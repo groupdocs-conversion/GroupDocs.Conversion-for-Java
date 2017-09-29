@@ -19,10 +19,10 @@ Directory | Description
 # Resources
 
 + **Website:** [www.groupdocs.com](http://www.groupdocs.com)
-+ **Product Home:** [GroupDocs.Conversion for Java](#)
-+ **Download:** [Download GroupDocs.Conversion for Java](#)
-+ **Documentation:** [GroupDocs.Conversion for Java Documentation](#)
-+ **Forum:** [GroupDocs.Conversion for Java Forum](http://groupdocs.com/Community/forums/groupdocs.conversion-product-family/7/showforum.aspx)
-+ **Blog:** [GroupDocs.Conversion for Java Blog](http://groupdocs.com/blog/category/conversion)
++ **Product Home:** [GroupDocs.Conversion for Java](https://www.groupdocs.com/products/conversion/java)
++ **Download:** [Download GroupDocs.Conversion for Java](https://downloads.groupdocs.com/conversion/java)
++ **Documentation:** [GroupDocs.Conversion for Java Documentation](https://docs.groupdocs.com/display/conversionjava)
++ **Forum:** [GroupDocs.Conversion for Java Forum](https://forum.groupdocs.com/c/conversion)
++ **Blog:** [GroupDocs.Conversion for Java Blog](https://blog.groupdocs.com/category/groupdocs-conversions-product-family/)
 
 
