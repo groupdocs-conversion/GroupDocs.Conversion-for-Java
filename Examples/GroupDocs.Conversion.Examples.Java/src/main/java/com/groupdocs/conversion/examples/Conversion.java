@@ -22,6 +22,7 @@ import com.groupdocs.conversion.converter.option.SaveOptions;
 import com.groupdocs.conversion.converter.option.SlidesSaveOptions;
 import com.groupdocs.conversion.converter.option.WatermarkOptions;
 import com.groupdocs.conversion.converter.option.WordsSaveOptions;
+import com.groupdocs.conversion.converter.option.XmlLoadOptions;
 import com.groupdocs.conversion.handler.ConversionCompleteEventArgs;
 import com.groupdocs.conversion.handler.ConversionCompleteHandler;
 import com.groupdocs.conversion.handler.ConversionHandler;
@@ -29,6 +30,7 @@ import com.groupdocs.conversion.handler.ConversionProgressEventArgs;
 import com.groupdocs.conversion.handler.ConversionProgressHandler;
 import com.groupdocs.conversion.handler.ConversionStartEventArgs;
 import com.groupdocs.conversion.handler.ConversionStartHandler;
+import com.groupdocs.conversion.handler.DocumentInfo;
 import com.groupdocs.conversion.handler.PdfConversionCompleteEventArgs;
 import com.groupdocs.conversion.handler.output.IOutputDataHandler;
 import com.groupdocs.conversion.metered.Metered;
@@ -939,5 +941,91 @@ public class Conversion {
 		List<GroupDocsInputStream> convertedDocumentStream = conversionHandler.<List<GroupDocsInputStream>>convert(sourceFileName, options);
 		System.out.print("Converted file path is: " + convertedDocumentStream);
 		//ExEnd:markImageDpiAsObsolete
+	}
+	//Get source document metadata
+	public static void sourceDocMetadata(String sourceFileName){
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		DocumentInfo documentInfo = conversionHandler.getDocumentInfo(sourceFileName); 
+		 
+		System.out.print("Size: %s}" + documentInfo.getSize());
+		System.out.print("File type: %s" + documentInfo.getFileType());
+		System.out.print("Pages count: %s" + documentInfo.getPageCount());
+		System.out.print("Last modified: %s" + documentInfo.getModifiedDate());
+	}
+	
+	//convert xml-fo/xsl to pdf
+	public static void xmlToPdfConversion(String sourceFileName, String foFileName) throws Throwable{
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		FileInputStream foStream = new FileInputStream(Utilities.storagePath + "/" + foFileName); 
+		 
+		PdfSaveOptions pdfSaveOptions = new PdfSaveOptions();
+		pdfSaveOptions.setOutputType(OutputType.String); 
+		 
+		XmlLoadOptions xmlLoadOptions = new XmlLoadOptions();
+		xmlLoadOptions.setXslFo(foStream); 
+		 
+		String result = conversionHandler.<String>convert(sourceFileName, xmlLoadOptions, pdfSaveOptions);
+		System.out.print(result);
+	}
+	
+	//Zoom when converting slides to HTML
+	public static void zoomWhileConvertingToHtml(String sourceFileName){
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		HtmlSaveOptions saveOptions = new HtmlSaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setZoom(150); 
+		 
+		String resultPath = conversionHandler.<String>convert(sourceFileName, saveOptions); 
+		 
+		System.out.print(resultPath);
+	}
+	
+	//get available layouts in a CAD document 
+	public static void availableLayoutsInCad(String sourceFileName){
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		DocumentInfo result = conversionHandler.getDocumentInfo(sourceFileName); 
+		 
+		for (String layer : result.getLayers()) {
+		System.out.println(layer);
+		}
+	}
+	
+	//convert specific layout from a CAD document 
+	public static void convertSpecificLayoutFromCad(String sourceFileName){
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		String[] layoutNames = new String[1];
+		layoutNames[0] = "layout-1"; 
+		PdfSaveOptions options = new PdfSaveOptions();
+		options.setOutputType(OutputType.String);
+		options.getCadOptions().setLayoutNames(layoutNames); 
+		 
+		String result = conversionHandler.<String>convert(sourceFileName, options); 
+		 
+		System.out.print(result);
+	}
+	
+	//set specific width and height for each layout from CAD document 
+	public static void setWidthHeightForCad(String sourceFileName){
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		PdfSaveOptions options = new PdfSaveOptions();
+		options.setOutputType(OutputType.String);
+		options.getCadOptions().setWidth(800);
+		options.getCadOptions().setHeight(600); 
+		 
+		String result = conversionHandler.<String>convert(sourceFileName, options); 
+		 
+		System.out.print(result);
+	}
+	
+	//Hide annotations when converting from PDF
+	public static void hideAnnotations(String sourceFileName){
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		WordsSaveOptions options = new WordsSaveOptions();
+		options.setOutputType(OutputType.String);
+		options.setHidePdfAnnotations(true); 
+		 
+		String result = conversionHandler.<String>convert(sourceFileName, options); 
+		 
+		System.out.print(result);
 	}
 }

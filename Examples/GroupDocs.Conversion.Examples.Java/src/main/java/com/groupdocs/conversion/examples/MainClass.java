@@ -162,5 +162,26 @@ public class MainClass {
 		//Conversion.hideCommentsWhenConvertingFromWord("demo.docx");
 		// mark image Dpi as Obsolete
 		//Conversion.markImageDpiAsObsolete("demo.docx");
+		
+		//Get source document metadata
+		//Conversion.sourceDocMetadata("demo.docx");
+		
+		//convert xml-fo/xsl to pdf
+		//Conversion.xmlToPdfConversion("sample.xlsx", "sample.xslt");
+		
+		//set zoom when converting slides to HTML
+		//Conversion.zoomWhileConvertingToHtml("The butterfly effect.pptx");
+		
+		//get available layouts in a CAD document 
+		//Conversion.availableLayoutsInCad("sample.dwg");
+		
+		//convert specific layout from a CAD document 
+		//Conversion.convertSpecificLayoutFromCad("sample.dwg");
+		
+		//set specific width and height for each layout from CAD document 
+		//Conversion.setWidthHeightForCad("sample.dwg");
+		
+		//Hide annotations when converting from PDF
+		//Conversion.hideAnnotations("intelligent systems.pdf");
 	}
 }
