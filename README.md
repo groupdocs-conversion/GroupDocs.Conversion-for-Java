@@ -19,7 +19,7 @@ Directory | Description
 # Resources
 
 + **Website:** [www.groupdocs.com](http://www.groupdocs.com)
-+ **Product Home:** [GroupDocs.Conversion for Java](https://www.groupdocs.com/products/conversion/java)
++ **Product Home:** [GroupDocs.Conversion for Java](https://products.groupdocs.com/conversion/java)
 + **Download:** [Download GroupDocs.Conversion for Java](https://downloads.groupdocs.com/conversion/java)
 + **Documentation:** [GroupDocs.Conversion for Java Documentation](https://docs.groupdocs.com/display/conversionjava)
 + **Forum:** [GroupDocs.Conversion for Java Forum](https://forum.groupdocs.com/c/conversion)
