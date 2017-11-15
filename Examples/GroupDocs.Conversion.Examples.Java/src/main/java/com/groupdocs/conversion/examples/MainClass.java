@@ -57,7 +57,7 @@ public class MainClass {
 		// Conversion.convertProtectedFilesToImageAsStream("intelligent systems.pdf");
 
 		// convert to pdf and get result as path
-		// Conversion.convertToPdfAsFilePath("intelligent systems.docx");
+		// Conversion.convertToPdfAsFilePath("Assignment__2_7.1-7.3.docx");
 		
 		// convert to pdf and get result as stream
 		// Conversion.convertToPdfAsStream("intelligent systems.docx");

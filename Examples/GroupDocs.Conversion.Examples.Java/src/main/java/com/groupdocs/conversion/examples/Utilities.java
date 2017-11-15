@@ -15,6 +15,7 @@ public class Utilities {
 		public final static String storagePath = "./Data/SourceFiles/";
 		public final static String outputPath = "./Data/OutputFiles/";
 		public final static String cachePath = "./Data/Cache/";
+		public final static String fontsPath = "./Data/Fonts/";
 	    public static final Path licensePath = getProjectBaseDir().resolve("GroupDocs.Total.Java.lic");
 	    
 	  //ExEnd:CommonProperties
@@ -56,6 +57,7 @@ public class Utilities {
 				conversionConfig.setStoragePath(storagePath);
 				conversionConfig.setOutputPath(outputPath);
 				conversionConfig.setCachePath(cachePath);
+				//conversionConfig.getFontDirectories().add(fontsPath);
 				// Generate cache 
 				conversionConfig.setUseCache(true);
 				return conversionConfig;
