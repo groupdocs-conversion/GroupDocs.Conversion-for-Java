@@ -101,4 +101,14 @@ public class AmazonOutputDataHandler implements IOutputDataHandler {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public String saveFile(String arg0, InputStream arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String saveFileInternal(String arg0, Stream arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
