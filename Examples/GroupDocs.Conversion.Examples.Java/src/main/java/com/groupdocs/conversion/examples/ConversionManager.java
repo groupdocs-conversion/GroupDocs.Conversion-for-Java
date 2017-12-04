@@ -9,6 +9,7 @@ import com.groupdocs.conversion.converter.option.SaveOptions;
 import com.groupdocs.conversion.handler.ConversionEventArgs;
 import com.groupdocs.conversion.handler.ConversionHandler;
 import com.groupdocs.conversion.handler.ConversionProgressEventArgs;
+import com.groupdocs.conversion.handler.ConvertedDocument;
 import com.groupdocs.conversion.handler.IConversionProgressListener;
 import com.groupdocs.conversion.handler.IConversionStatusListener;
 //ExStart:conversionmanager
@@ -31,7 +32,7 @@ public class ConversionManager implements IConversionProgressListener, IConversi
 		System.out.println("Conversion status changed to: " + args.getStatus());
 	}
 
-	public String convert(String file) throws IOException {
+	public ConvertedDocument convert(String file) throws IOException {
 		PdfSaveOptions option = new PdfSaveOptions();
 		option.setOutputType(OutputType.String);
 

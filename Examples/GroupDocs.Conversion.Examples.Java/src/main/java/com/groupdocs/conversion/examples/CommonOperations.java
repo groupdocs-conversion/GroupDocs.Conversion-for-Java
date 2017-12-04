@@ -7,6 +7,7 @@ import com.groupdocs.conversion.converter.option.HtmlSaveOptions;
 import com.groupdocs.conversion.converter.option.OutputType;
 import com.groupdocs.conversion.converter.option.PdfSaveOptions;
 import com.groupdocs.conversion.handler.ConversionHandler;
+import com.groupdocs.conversion.handler.ConvertedDocument;
 
 public class CommonOperations {
 
@@ -23,7 +24,7 @@ public class CommonOperations {
 		// Set absolute path to file
 		String guid = "C:/Storage/DOCXsample.docx"; 	
 
-		String convertedDocumentPath = conversionHandler.<String> convert(guid, saveOption);
+		ConvertedDocument convertedDocumentPath = conversionHandler.<String> convert(guid, saveOption);
 		System.out.print("Converted file path is: " + convertedDocumentPath);
 	}
 
@@ -40,7 +41,7 @@ public class CommonOperations {
 		// Set relative path. So that full path will be C:/Storage/DOCXsample.docx
 		String guid = "DOCXsample.docx";
 
-		String convertedDocumentPath = conversionHandler.<String> convert(guid, saveOption);
+		ConvertedDocument convertedDocumentPath = conversionHandler.<String> convert(guid, saveOption);
 		System.out.print("Converted file path is: " + convertedDocumentPath);
 	}
 
@@ -56,7 +57,7 @@ public class CommonOperations {
 		// Set Uri path.
 		String guid = "http://example.com/DOCXsample.docx";
 
-		String convertedDocumentPath = conversionHandler.<String> convert(guid, saveOption);
+		ConvertedDocument convertedDocumentPath = conversionHandler.<String> convert(guid, saveOption);
 		System.out.print("Converted file path is: " + convertedDocumentPath);
 	}
 
@@ -73,7 +74,7 @@ public class CommonOperations {
 		FileInputStream fileStream = new FileInputStream(guid);
 		 
 		// Convert document
-		String convertedDocumentPath = conversionHandler.<String>convert(fileStream, guid, saveOption);
+		ConvertedDocument convertedDocumentPath = conversionHandler.<String>convert(fileStream, guid, saveOption);
 	}
 	
 	/*
@@ -88,7 +89,7 @@ public class CommonOperations {
 		FileInputStream fileStream = new FileInputStream("C:/Storage/DOCXsample.docx");
 		  
 		// Convert document
-		String convertedDocumentPath = conversionHandler.<String>convert(fileStream,"C:/Storage/DOCXsample.docx", saveOption);
+		ConvertedDocument convertedDocumentPath = conversionHandler.<String>convert(fileStream,"C:/Storage/DOCXsample.docx", saveOption);
 		
 	}
 }

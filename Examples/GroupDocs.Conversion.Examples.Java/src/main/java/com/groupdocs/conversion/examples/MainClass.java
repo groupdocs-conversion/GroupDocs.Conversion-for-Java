@@ -45,7 +45,7 @@ public class MainClass {
 		// Conversion.convertProtectedFilesToHtmlAsStream("intelligent systems.pdf");
 
 		// convert to image and get result as path
-		//Conversion.convertToImageAsFilePath("The butterfly effect.pptx");
+		//Conversion.convertToImageAsFilePath("intelligent systems.pdf");
 		
 		// convert to image and get result as stream
 		// Conversion.convertToImageAsStream("intelligent systems.pdf");
@@ -183,5 +183,14 @@ public class MainClass {
 		
 		//Hide annotations when converting from PDF
 		//Conversion.hideAnnotations("intelligent systems.pdf");
+		
+		//Hide comments when converting from cells
+		//Conversion.hideCommentsConvertingFromCells("sample.xlsx");
+		
+		//Convert Specific Pages From Source Doc
+		//Conversion.convertSpecificPagesFromSourceDoc("demo.docx");
+		
+		//Get simplified Markup When Converting To Html
+		//Conversion.getMarkupWhenConvertingToHtml("demo.docx");
 	}
 }
