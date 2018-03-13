@@ -11,10 +11,13 @@ import com.groupdocs.conversion.domain.CacheFileDescription;
 import com.groupdocs.conversion.handler.cache.ICacheDataHandler;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Calendar;
 import java.util.stream.Stream;
 
@@ -96,43 +99,19 @@ public class AmazonCacheDataHandler implements ICacheDataHandler {
 	}
 
 	@Override
-	public OutputStream getOutputSaveStream(CacheFileDescription cacheFileDescription) {
-//		try {
-//			if (!_conversionConfig.getUseCache()) {
-//				return new InputStream() {
-//
-//					@Override
-//					public int read() throws IOException {
-//						// TODO Auto-generated method stub
-//						return 0;
-//					}
-//				};
-//			}
-//			if (cacheFileDescription == null || extensionNullOrEmpty(cacheFileDescription.getGuid())) {
-//				try {
-//					throw new Exception("CacheFileDescription is not set");
-//				} catch (Exception e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//			}
-//			String key = null;
-//			try {
-//				key = getCachePath(_conversionConfig.getCachePath(), cacheFileDescription);
-//			} catch (Throwable e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			File file = File.createTempFile("temp", "tmp");
-//
-//			return new PutObjectRequest(bucketName, key, file).getInputStream();
-//		} catch (IOException ex) {
-//			System.out.println(ex);
-//		}
-		return null;
-}
-
-	@Override
+	/*
+	 * public OutputStream getOutputSaveStream(CacheFileDescription
+	 * cacheFileDescription) { try { if (!_conversionConfig.getUseCache()) {
+	 * return new ByteArrayOutputStream(); } if (cacheFileDescription == null ||
+	 * !extensionNullOrEmpty(cacheFileDescription.getGuid())) {
+	 * System.out.println("CacheFileDescription.Options is not set"); } String
+	 * key = getCachePath(_conversionConfig.getCachePath(),
+	 * cacheFileDescription); File file = File.createTempFile("temp", "tmp");
+	 * 
+	 * return new PutObjectRequest(bucketName, key, file); } catch (Exception
+	 * ex) { System.out.println(ex); } return null; }
+	 */
+ 
 	public String getCacheUri(CacheFileDescription cacheFileDescription) {
 		try {
 			return getCachePath(_conversionConfig.getCachePath(), cacheFileDescription);
@@ -148,37 +127,13 @@ public class AmazonCacheDataHandler implements ICacheDataHandler {
 			throw new Exception("CacheFileDescription.Options is not set");
 		}
 		String filePath = "";
-		String fileName = "";
-		ImageSaveOptions options = null;
-		try {
-			options = (ImageSaveOptions) cacheFileDescription.getSaveOptions();
-		} catch (Exception ex) {
-			System.out.println(ex);
-		}
-		if (options != null) {
-			if (extensionNullOrEmpty(options.getCustomName())) {
-				if (options.getUseWidthForCustomName()) {
-					fileName = String.format("%s_%s.%s", options.getCustomName(), options.getWidth(),
-							options.getConvertFileType().toString().toLowerCase());
-				} else {
-					fileName = String.format("%s.%s", options.getCustomName(),
-							options.getConvertFileType().toString().toLowerCase());
-				}
-			} else {
-				fileName = String.format("%s.%s", cacheFileDescription.getBaseName(),
-						options.getConvertFileType().toString().toLowerCase());
-			}
-			filePath = String.format("%s\\%s\\%s\\%s", path, cacheFileDescription.getGuid(), options.getPageNumber(),
-					fileName);
-		} else {
-			fileName = extensionNullOrEmpty(cacheFileDescription.getSaveOptions().getCustomName())
-					? String.format("%s.%s", cacheFileDescription.getSaveOptions().getCustomName(),
-							cacheFileDescription.getSaveOptions().getConvertFileType().toExtension())
-					: String.format("%s.%s", cacheFileDescription.getBaseName(),
-							cacheFileDescription.getSaveOptions().getConvertFileType().toExtension());
-			filePath = String.format("%s%s/%s", path, cacheFileDescription.getGuid(), fileName);
-		}
-		return filePath;
+		String fileName = String.format("{0}.{1}", cacheFileDescription.getBaseName(),
+				cacheFileDescription.getSaveOptions().getConvertFileType().toString().toLowerCase());
+		String pathGet = Paths.get(_conversionConfig.getCachePath(), cacheFileDescription.getGuid(), fileName)
+				.normalize().toString();
+		// String filePath = Path.Combine(_conversionConfig.getCachePath(),
+		// cacheFileDescription.Guid, fileName);
+		return pathGet;
 	}
 
 	private boolean extensionNullOrEmpty(String customName) {
@@ -201,6 +156,12 @@ public class AmazonCacheDataHandler implements ICacheDataHandler {
 	// define your own logic here
 	@Override
 	public com.aspose.ms.System.IO.Stream getOutputSaveStreamInternal(CacheFileDescription arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public OutputStream getOutputSaveStream(CacheFileDescription arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}

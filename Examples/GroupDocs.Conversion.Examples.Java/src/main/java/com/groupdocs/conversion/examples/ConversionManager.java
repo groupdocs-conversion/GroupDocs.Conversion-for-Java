@@ -34,7 +34,7 @@ public class ConversionManager implements IConversionProgressListener, IConversi
 
 	public ConvertedDocument convert(String file) throws IOException {
 		PdfSaveOptions option = new PdfSaveOptions();
-		option.setOutputType(OutputType.String);
+		//option.setOutputType(OutputType.String);
 
 		return _conversionHandler.<String> convert(file, option);
 	}

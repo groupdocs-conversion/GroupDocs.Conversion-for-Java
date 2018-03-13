@@ -34,7 +34,7 @@ public class AmazonOutputDataHandler implements IOutputDataHandler {
     public String saveFile(FileDescription fileDescription, Stream stream, SaveOptions saveOptions) {
         String fileName = "";
         try {
-            fileName = getOutputPath(fileDescription, saveOptions);
+            //fileName = getOutputPath(fileDescription, saveOptions);
             File file = File.createTempFile("temp", "tmp");
             OutputStream outputStream = new FileOutputStream(file);
             IOUtils.copy(stream.toInputStream(), outputStream);
@@ -47,68 +47,16 @@ public class AmazonOutputDataHandler implements IOutputDataHandler {
         }
         return fileName;
     }
-     
-    private String getOutputPath(FileDescription fileDescription, SaveOptions saveOptions) {
-        String filePath = "";
-        String fileName = "";
-        ImageSaveOptions options = null;
-        try {
-            options = (ImageSaveOptions) saveOptions;
-        } catch(Exception ex) {
-            System.out.println(ex);
-        }
-        if (options != null) {
-            fileName = extensionNullOrEmpty(options.getCustomName())
-                    ? (options.getUseWidthForCustomName()
-                            ? String.format("%s_%s_%s.%s", options.getCustomName(),
-                                    options.getPageNumber(),
-                                    options.getWidth(),
-                                    options.getConvertFileType().toString().toLowerCase())
-                            : String.format("%s_%s.%s", options.getCustomName(),
-                                    options.getPageNumber(),
-                                    options.getConvertFileType().toString().toLowerCase()))
-                    : String.format("%s_%s.%s", fileDescription.getBaseName(),
-                            options.getPageNumber(),
-                            options.getConvertFileType().toString().toLowerCase());
-            filePath = String.format("%s\\%s", _conversionConfig.getOutputPath(), fileName);
-        } else {            
-            fileName = extensionNullOrEmpty(saveOptions.getCustomName())
-                    ? String.format("%s.%s", saveOptions.getCustomName(),
-                            saveOptions.getConvertFileType().toExtension())
-                    : String.format("%s.%s", fileDescription.getBaseName(),
-                            saveOptions.getConvertFileType().toExtension());
-            filePath = String.format("%s\\%s", _conversionConfig.getOutputPath(), fileName);
-        }
-        return filePath;
-    }
- 
-    @Override
-    public String saveFileInternal(FileDescription fileDescription, Stream stream, SaveOptions saveOptions) {
-        return saveFile(fileDescription, stream, saveOptions);
-    }
-	private boolean extensionNullOrEmpty(String customName) {
-		String extension = "";
-		int i = customName.lastIndexOf('.');
-		if (i > 0) {
-			extension = customName.substring(i + 1);
-			return true;
-		}
-		return false;
-	}
 
 	@Override
-	public String saveFile(FileDescription arg0, InputStream arg1, SaveOptions arg2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public String saveFile(String arg0, InputStream arg1) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public String saveFileInternal(String arg0, Stream arg1) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	} 
 }
