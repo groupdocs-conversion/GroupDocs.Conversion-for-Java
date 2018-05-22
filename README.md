@@ -2,7 +2,7 @@
 
 This package contains [Examples](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/tree/master/Examples) for [GroupDocs.Conversion for Java](#) that will help you understand API's working and write your own applications.
 
-GroupDocs.Conversion for Java is a universal document conversion library designed for easy integration into any Java application. Allows you to convert back and forth between over 50 types of documents and images, including all Microsoft Office and OpenDocument file formats, PDF documents, HTML, CAD, raster images (TIFF, JPEG, GIF, PNG, BMP) and 
+GroupDocs.Conversion for Java is a universal document conversion library designed for easy integration into any Java application. Allows you to convert back and forth between over 50 types of documents and images, including all Microsoft Office and OpenDocument file formats, PDF documents, HTML, CAD, raster images (TIFF, JPEG, GIF, PNG, BMP). 
 
 <p align="center">
 
@@ -20,9 +20,8 @@ Directory | Description
 
 + **Website:** [www.groupdocs.com](http://www.groupdocs.com)
 + **Product Home:** [GroupDocs.Conversion for Java](https://products.groupdocs.com/conversion/java)
-+ **Download:** [Download GroupDocs.Conversion for Java](https://downloads.groupdocs.com/conversion/java)
++ **Download:** [Download GroupDocs.Conversion for Java](https://artifact.groupdocs.com/repo/com/groupdocs/groupdocs-conversion/)
 + **Documentation:** [GroupDocs.Conversion for Java Documentation](https://docs.groupdocs.com/display/conversionjava)
-+ **Forum:** [GroupDocs.Conversion for Java Forum](https://forum.groupdocs.com/c/conversion)
-+ **Blog:** [GroupDocs.Conversion for Java Blog](https://blog.groupdocs.com/category/groupdocs-conversions-product-family/)
-
-
++ **Free Support:** [GroupDocs.Comparison for Java Free Support Forum](https://forum.groupdocs.com/c/conversion)
++ **Paid Support:** [GroupDocs.Comparison for Java Paid Support Helpdesk](https://helpdesk.groupdocs.com/)
++ **Blog:** [GroupDocs.Comparison for Java Blog](https://blog.groupdocs.com/category/groupdocs-conversion-product-family/)
