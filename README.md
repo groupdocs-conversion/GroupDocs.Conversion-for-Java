@@ -20,6 +20,7 @@ Directory | Description
 
 + **Website:** [www.groupdocs.com](http://www.groupdocs.com)
 + **Product Home:** [GroupDocs.Conversion for Java](https://products.groupdocs.com/conversion/java)
++ **API Reference:** [GroupDocs.Conversion for Java API Reference](https://apireference.groupdocs.com/java/conversion)
 + **Download:** [Download GroupDocs.Conversion for Java](https://artifact.groupdocs.com/repo/com/groupdocs/groupdocs-conversion/)
 + **Documentation:** [GroupDocs.Conversion for Java Documentation](https://docs.groupdocs.com/display/conversionjava)
 + **Free Support:** [GroupDocs.Conversion for Java Free Support Forum](https://forum.groupdocs.com/c/conversion)
