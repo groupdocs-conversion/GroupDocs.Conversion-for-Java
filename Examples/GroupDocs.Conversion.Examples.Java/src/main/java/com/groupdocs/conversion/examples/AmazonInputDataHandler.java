@@ -38,25 +38,12 @@ public class AmazonInputDataHandler implements IInputDataHandler {
         result.setSize(size);
         return result;
     }
+
+	@Override
+	public com.groupdocs.conversion.internal.c.a.ms.System.IO.Stream lO(String arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
  
-    public com.aspose.ms.System.IO.Stream getFile(String guid) {
-        GetObjectRequest request = new GetObjectRequest(bucketName, guid);
-        Stream  result = null;
-        S3Object response = _client.getObject(request);
-        byte[] buffer = new byte[16384]; //16*1024
-        int read;
-        try {
-            while ((read = response.getObjectContent().read(buffer, 0, buffer.length)) > 0) {
-                ((ByteArrayOutputStream) result).write(buffer, 0, read);
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(AmazonInputDataHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return (com.aspose.ms.System.IO.Stream) result;
-    }
- 
-    @Override
-    public com.aspose.ms.System.IO.Stream getFileInternal(String guid) {    
-        return getFile(guid);
-    }
+    
 }

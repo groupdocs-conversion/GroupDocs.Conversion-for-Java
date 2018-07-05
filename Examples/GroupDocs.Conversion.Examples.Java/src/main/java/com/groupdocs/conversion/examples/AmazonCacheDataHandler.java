@@ -147,21 +147,23 @@ public class AmazonCacheDataHandler implements ICacheDataHandler {
 	}
 
 	// define your own logic here
-	@Override
-	public com.aspose.ms.System.IO.Stream getInputStreamInternal(CacheFileDescription arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	// define your own logic here
-	@Override
-	public com.aspose.ms.System.IO.Stream getOutputSaveStreamInternal(CacheFileDescription arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	 
 
 	@Override
 	public OutputStream getOutputSaveStream(CacheFileDescription arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public com.groupdocs.conversion.internal.c.a.ms.System.IO.Stream getInputStreamInternal(CacheFileDescription arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public com.groupdocs.conversion.internal.c.a.ms.System.IO.Stream getOutputSaveStreamInternal(
+			CacheFileDescription arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
