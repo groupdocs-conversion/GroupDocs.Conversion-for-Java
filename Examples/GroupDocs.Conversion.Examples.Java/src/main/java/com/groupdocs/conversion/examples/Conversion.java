@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.List;
-
-import com.aspose.ms.System.IO.FileMode;
-import com.aspose.ms.System.IO.FileStream;
+ 
 import com.groupdocs.conversion.config.ConversionConfig;
 import com.groupdocs.conversion.converter.option.CellsSaveOptions;
 import com.groupdocs.conversion.converter.option.HtmlSaveOptions;
@@ -607,20 +605,19 @@ public class Conversion {
 	}
 
 	// get available save options by file stream
-	public static void getAvailableSaveOptionsForDocumentStream(String sourceDocument) {
+	public static void getAvailableSaveOptionsForDocumentStream(String sourceDocument) throws Throwable {
 		//ExStart:getAvailableSaveOptionsByStream
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
-		FileStream sourceStream = new FileStream(sourceDocument, FileMode.Open);
+		FileInputStream sourceStream = new FileInputStream(sourceDocument);
 		Dictionary<String, SaveOptions> availableConversions = conversionHandler
-				.getSaveOptions(sourceStream.toInputStream());
-		sourceStream.setPosition(0);
+				.getSaveOptions(sourceStream);
 
 		// list all available conversions
 		for (Enumeration name = availableConversions.keys(); name.hasMoreElements();) {
 			System.out.println(name.nextElement());
 		}
 		// use prepared save option for ToPdf conversion
-		ConvertedDocument result = conversionHandler.<GroupDocsInputStream> convert(sourceStream.toInputStream(),
+		ConvertedDocument result = conversionHandler.<GroupDocsInputStream> convert(sourceStream,
 				availableConversions.get("pdf")); 
 		//ExEnd:getAvailableSaveOptionsByStream
 	}
@@ -663,8 +660,9 @@ public class Conversion {
 
 		// Save options
 		PdfSaveOptions saveOptions = new PdfSaveOptions(); 
-		WatermarkOptions watermarkOptions = new WatermarkOptions("Watermark text");
+		WatermarkOptions watermarkOptions = new WatermarkOptions();
 		watermarkOptions.setColor(Color.blue);
+		watermarkOptions.setText("Watermark text");
 		watermarkOptions.setFont(new Font("Arial", 40, 12));
 		watermarkOptions.setRotationAngle(45);
 		watermarkOptions.setTransparency(0.1);
@@ -747,7 +745,7 @@ public class Conversion {
 
 		// Save options
 		SaveOptions saveOptions = new HtmlSaveOptions(); 
-		saveOptions.setShowGridLines(true);
+		saveOptions.getCellsOptions().setShowGridLines(true);
 
 		ConvertedDocument result = conversionHandler.<String> convert(sourceFileName, saveOptions);
 		result.save(sourceFileName + "." + result.getFileType());
@@ -760,7 +758,7 @@ public class Conversion {
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		// Save options
 		SaveOptions saveOptions = new HtmlSaveOptions(); 
-		saveOptions.setShowHiddenSheets(true);
+		saveOptions.getCellsOptions().setShowHiddenSheets(true);
 		ConvertedDocument result = conversionHandler.<String> convert(sourceFileName, saveOptions);
 		result.save(sourceFileName + "." + result.getFileType());
 		//ExEnd:showHiddenSheetesWhenConvertingFromExcel
