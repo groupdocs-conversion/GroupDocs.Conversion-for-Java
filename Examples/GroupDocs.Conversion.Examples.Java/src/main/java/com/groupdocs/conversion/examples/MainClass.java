@@ -8,16 +8,16 @@ public class MainClass {
 		//Utilities.applyLicenseFromFile();
 
 		// convert document to cells, result as file path
-		// Conversion.convertToCellsAsFilePath("intelligent systems.docx");
+		// Conversion.convertToCellsAsFilePath("demo.docx");
 		
 		// convert document to cells, result as stream
-		// Conversion.convertToCellsAsStream("intelligent systems.docx");
+		// Conversion.convertToCellsAsStream("demo.docx");
 
 		// convert protected document to cells and get result as file path
-		//   Conversion.convertProtectedFilesToCellsAsPath("intelligent systems.docx");
+		//   Conversion.convertProtectedFilesToCellsAsPath("demo.docx");
 
 		// convert protected document to cells and get result as stream
-		// Conversion.convertProtectedFilesToCellsAsStream("intelligent systems.docx");
+		// Conversion.convertProtectedFilesToCellsAsStream("demo.docx");
 
 		// convert to word and get result as path
 		// Conversion.convertToWordAsFilePath("intelligent systems.pdf");
@@ -45,7 +45,7 @@ public class MainClass {
 		// Conversion.convertProtectedFilesToHtmlAsStream("intelligent systems.pdf");
 
 		// convert to image and get result as path
-		//Conversion.convertToImageAsFilePath("The butterfly effect.pptx");
+		//Conversion.convertToImageAsFilePath("intelligent systems.pdf");
 		
 		// convert to image and get result as stream
 		// Conversion.convertToImageAsStream("intelligent systems.pdf");
@@ -57,28 +57,28 @@ public class MainClass {
 		// Conversion.convertProtectedFilesToImageAsStream("intelligent systems.pdf");
 
 		// convert to pdf and get result as path
-		// Conversion.convertToPdfAsFilePath("intelligent systems.docx");
+		// Conversion.convertToPdfAsFilePath("demo.docx");
 		
 		// convert to pdf and get result as stream
-		// Conversion.convertToPdfAsStream("intelligent systems.docx");
+		// Conversion.convertToPdfAsStream("demo.docx");
 
 		// convert protected document to pdf and get result as file path
-		// Conversion.convertProtectedFilesToPdfAsPath("intelligent systems.docx");
+		// Conversion.convertProtectedFilesToPdfAsPath("demo.docx");
 
 		// convert protected document to pdf and get result as stream
-		// Conversion.convertProtectedFilesToPdfAsStream("intelligent systems.docx");
+		// Conversion.convertProtectedFilesToPdfAsStream("demo.docx");
 
 		// convert to slide and get result as path
-		// Conversion.convertToSlideAsFilePath("intelligent systems.docx");
+		// Conversion.convertToSlideAsFilePath("demo.docx");
 
 		// convert to slide and get result as stream
-		// Conversion.convertToSlideAsStream("intelligent systems.docx");
+		// Conversion.convertToSlideAsStream("demo.docx");
 
 		// convert protected document to slide and get result as file path
-		// Conversion.convertProtectedFilesToSlideAsPath("intelligent systems.docx");
+		// Conversion.convertProtectedFilesToSlideAsPath("demo.docx");
 
 		// convert protected document to slide and get result as stream
-		// Conversion.convertProtectedFilesToSlideAsStream("intelligent systems.docx");
+		// Conversion.convertProtectedFilesToSlideAsStream("demo.docx");
 
 		// get source document from absolute path
 		// CommonOperations.getSourceDocFromAbsolutePath();
@@ -96,13 +96,13 @@ public class MainClass {
 		// CommonOperations.getSourceDocFromStream();
 
 		// custom input data handler
-		// Conversion.inputDataHandler("intelligent systems.docx");
+		// Conversion.inputDataHandler("demo.docx");
 
 		// custom output data handler
 		// Conversion.outputDataHanlder();
 
 		// conversion progress
-		// Conversion.conversionProgress("intelligent systems.docx");
+		// Conversion.conversionProgress("demo.docx");
 
 		// get available save options by file extension
 		// Conversion.getAvailableSaveOptionsByExtension("demo.docx");
@@ -162,5 +162,35 @@ public class MainClass {
 		//Conversion.hideCommentsWhenConvertingFromWord("demo.docx");
 		// mark image Dpi as Obsolete
 		//Conversion.markImageDpiAsObsolete("demo.docx");
+		
+		//Get source document metadata
+		//Conversion.sourceDocMetadata("demo.docx");
+		
+		//convert xml-fo/xsl to pdf
+		//Conversion.xmlToPdfConversion("sample.xlsx", "sample.xslt");
+		
+		//set zoom when converting slides to HTML
+		//Conversion.zoomWhileConvertingToHtml("The butterfly effect.pptx");
+		
+		//get available layouts in a CAD document 
+		//Conversion.availableLayoutsInCad("sample.dwg");
+		
+		//convert specific layout from a CAD document 
+		//Conversion.convertSpecificLayoutFromCad("sample.dwg");
+		
+		//set specific width and height for each layout from CAD document 
+		//Conversion.setWidthHeightForCad("sample.dwg");
+		
+		//Hide annotations when converting from PDF
+		//Conversion.hideAnnotations("intelligent systems.pdf");
+		
+		//Hide comments when converting from cells
+		//Conversion.hideCommentsConvertingFromCells("sample.xlsx");
+		
+		//Convert Specific Pages From Source Doc
+		//Conversion.convertSpecificPagesFromSourceDoc("demo.docx");
+		
+		//Get simplified Markup When Converting To Html
+		//Conversion.getMarkupWhenConvertingToHtml("demo.docx");
 	}
 }

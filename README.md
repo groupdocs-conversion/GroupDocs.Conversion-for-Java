@@ -2,7 +2,7 @@
 
 This package contains [Examples](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/tree/master/Examples) for [GroupDocs.Conversion for Java](#) that will help you understand API's working and write your own applications.
 
-GroupDocs.Conversion for Java is a universal document conversion library designed for easy integration into any Java application. Allows you to convert back and forth between over 50 types of documents and images, including all Microsoft Office and OpenDocument file formats, PDF documents, HTML, CAD, raster images (TIFF, JPEG, GIF, PNG, BMP) and 
+GroupDocs.Conversion for Java is a universal document conversion library designed for easy integration into any Java application. Allows you to convert back and forth between over 50 types of documents and images, including all Microsoft Office and OpenDocument file formats, PDF documents, HTML, CAD, raster images (TIFF, JPEG, GIF, PNG, BMP). 
 
 <p align="center">
 
@@ -19,10 +19,10 @@ Directory | Description
 # Resources
 
 + **Website:** [www.groupdocs.com](http://www.groupdocs.com)
-+ **Product Home:** [GroupDocs.Conversion for Java](#)
-+ **Download:** [Download GroupDocs.Conversion for Java](#)
-+ **Documentation:** [GroupDocs.Conversion for Java Documentation](#)
-+ **Forum:** [GroupDocs.Conversion for Java Forum](http://groupdocs.com/Community/forums/groupdocs.conversion-product-family/7/showforum.aspx)
-+ **Blog:** [GroupDocs.Conversion for Java Blog](http://groupdocs.com/blog/category/conversion)
-
-
++ **Product Home:** [GroupDocs.Conversion for Java](https://products.groupdocs.com/conversion/java)
++ **API Reference:** [GroupDocs.Conversion for Java API Reference](https://apireference.groupdocs.com/java/conversion)
++ **Download:** [Download GroupDocs.Conversion for Java](https://artifact.groupdocs.com/repo/com/groupdocs/groupdocs-conversion/)
++ **Documentation:** [GroupDocs.Conversion for Java Documentation](https://docs.groupdocs.com/display/conversionjava)
++ **Free Support:** [GroupDocs.Conversion for Java Free Support Forum](https://forum.groupdocs.com/c/conversion)
++ **Paid Support:** [GroupDocs.Conversion for Java Paid Support Helpdesk](https://helpdesk.groupdocs.com/)
++ **Blog:** [GroupDocs.Conversion for Java Blog](https://blog.groupdocs.com/category/groupdocs-conversion-product-family/)
