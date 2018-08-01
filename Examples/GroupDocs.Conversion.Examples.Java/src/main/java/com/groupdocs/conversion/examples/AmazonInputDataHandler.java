@@ -1,11 +1,5 @@
 package com.groupdocs.conversion.examples;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.stream.Stream;
-
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3Client;
@@ -39,8 +33,13 @@ public class AmazonInputDataHandler implements IInputDataHandler {
         return result;
     }
 
-	@Override
 	public com.groupdocs.conversion.internal.c.a.ms.System.IO.Stream lO(String arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public com.groupdocs.conversion.internal.c.a.ms.System.IO.Stream hM(String arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}

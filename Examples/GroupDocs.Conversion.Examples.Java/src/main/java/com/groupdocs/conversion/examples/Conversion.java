@@ -11,6 +11,7 @@ import java.util.List;
  
 import com.groupdocs.conversion.config.ConversionConfig;
 import com.groupdocs.conversion.converter.option.CellsSaveOptions;
+import com.groupdocs.conversion.converter.option.EmailOptions;
 import com.groupdocs.conversion.converter.option.HtmlSaveOptions;
 import com.groupdocs.conversion.converter.option.ImageSaveOptions;
 import com.groupdocs.conversion.converter.option.LoadOptions;
@@ -208,6 +209,13 @@ public class Conversion {
 		// Instantiating the conversion handler
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		HtmlSaveOptions saveOption = new HtmlSaveOptions(); 
+		EmailOptions emailOptions = saveOption.getEmailOptions();
+		emailOptions.setDisplayHeader(true);
+		emailOptions.setDisplayEmailAddress(true);        
+		emailOptions.setDisplayFromEmailAddress(true);
+		emailOptions.setDisplayToEmailAddress(true);
+		emailOptions.setDisplayCcEmailAddress(true);
+		emailOptions.setDisplayBccEmailAddress(true);
 		// Set absolute path to file
 		String guid = fileName;
 
