@@ -2,16 +2,13 @@ package com.groupdocs.conversion.examples;
 
 import java.io.IOException;
 
-import com.groupdocs.conversion.converter.option.HtmlSaveOptions;
-import com.groupdocs.conversion.converter.option.OutputType;
-import com.groupdocs.conversion.converter.option.PdfSaveOptions;
-import com.groupdocs.conversion.converter.option.SaveOptions;
 import com.groupdocs.conversion.handler.ConversionEventArgs;
 import com.groupdocs.conversion.handler.ConversionHandler;
 import com.groupdocs.conversion.handler.ConversionProgressEventArgs;
 import com.groupdocs.conversion.handler.ConvertedDocument;
 import com.groupdocs.conversion.handler.IConversionProgressListener;
 import com.groupdocs.conversion.handler.IConversionStatusListener;
+import com.groupdocs.conversion.options.save.PdfSaveOptions;
 //ExStart:conversionmanager
 public class ConversionManager implements IConversionProgressListener, IConversionStatusListener {
 	private ConversionHandler _conversionHandler = null;

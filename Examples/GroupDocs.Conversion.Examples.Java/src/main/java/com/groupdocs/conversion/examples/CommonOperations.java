@@ -3,11 +3,10 @@ package com.groupdocs.conversion.examples;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import com.groupdocs.conversion.converter.option.HtmlSaveOptions;
-import com.groupdocs.conversion.converter.option.OutputType;
-import com.groupdocs.conversion.converter.option.PdfSaveOptions;
 import com.groupdocs.conversion.handler.ConversionHandler;
 import com.groupdocs.conversion.handler.ConvertedDocument;
+import com.groupdocs.conversion.options.save.HtmlSaveOptions;
+import com.groupdocs.conversion.options.save.PdfSaveOptions;
 
 public class CommonOperations {
 
