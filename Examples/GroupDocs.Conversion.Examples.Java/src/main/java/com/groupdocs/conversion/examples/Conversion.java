@@ -10,19 +10,6 @@ import java.util.Enumeration;
 import java.util.List;
  
 import com.groupdocs.conversion.config.ConversionConfig;
-import com.groupdocs.conversion.converter.option.CellsSaveOptions;
-import com.groupdocs.conversion.converter.option.EmailOptions;
-import com.groupdocs.conversion.converter.option.HtmlSaveOptions;
-import com.groupdocs.conversion.converter.option.ImageSaveOptions;
-import com.groupdocs.conversion.converter.option.LoadOptions;
-import com.groupdocs.conversion.converter.option.OutputType;
-import com.groupdocs.conversion.converter.option.PdfSaveOptions;
-import com.groupdocs.conversion.converter.option.PsdOptions;
-import com.groupdocs.conversion.converter.option.SaveOptions;
-import com.groupdocs.conversion.converter.option.SlidesSaveOptions;
-import com.groupdocs.conversion.converter.option.WatermarkOptions;
-import com.groupdocs.conversion.converter.option.WordsSaveOptions;
-import com.groupdocs.conversion.converter.option.XmlLoadOptions;
 import com.groupdocs.conversion.handler.ConversionCompleteEventArgs;
 import com.groupdocs.conversion.handler.ConversionCompleteHandler;
 import com.groupdocs.conversion.handler.ConversionHandler;
@@ -34,9 +21,22 @@ import com.groupdocs.conversion.handler.ConvertedDocument;
 import com.groupdocs.conversion.handler.DocumentInfo;
 import com.groupdocs.conversion.handler.PdfConversionCompleteEventArgs;
 import com.groupdocs.conversion.handler.output.IOutputDataHandler;
-import com.groupdocs.conversion.metered.Metered;
+import com.groupdocs.conversion.options.load.EmailLoadOptions;
+import com.groupdocs.conversion.options.load.LoadOptions;
+import com.groupdocs.conversion.options.load.XmlLoadOptions;
+import com.groupdocs.conversion.options.save.CellsSaveOptions;
+import com.groupdocs.conversion.options.save.HtmlSaveOptions;
+import com.groupdocs.conversion.options.save.ImageSaveOptions;
+import com.groupdocs.conversion.options.save.PdfFormattingOptions;
+import com.groupdocs.conversion.options.save.PdfSaveOptions;
+import com.groupdocs.conversion.options.save.PsdOptions;
+import com.groupdocs.conversion.options.save.SaveOptions;
+import com.groupdocs.conversion.options.save.SlidesSaveOptions;
+import com.groupdocs.conversion.options.save.WatermarkOptions;
+import com.groupdocs.conversion.options.save.WordsSaveOptions;
 //import com.groupdocs.conversion.internal.c.a.d.Metered;
 import com.groupdocs.foundation.domain.FileType;
+import com.groupdocs.foundation.license.aspose.metered.Metered;
 import com.groupdocs.foundation.utils.wrapper.stream.GroupDocsInputStream;
 
 public class Conversion {
@@ -84,7 +84,7 @@ public class Conversion {
 
 		// convert file to Xls, starting from page 2 and convert 2 pages
 		SaveOptions saveOptions = new CellsSaveOptions();
-		saveOptions.setConvertFileType(CellsSaveOptions.CellsFileType.XLS);
+		saveOptions.setConvertFileType(CellsSaveOptions.CellsFileType.Xls);
 		saveOptions.setPageNumber(2);
 		saveOptions.setNumPagesToConvert(2); 
 
@@ -109,7 +109,7 @@ public class Conversion {
 
 		// convert file to Xls, starting from page 2 and convert 2 pages
 		SaveOptions saveOptions = new CellsSaveOptions();
-		saveOptions.setConvertFileType(CellsSaveOptions.CellsFileType.XLS);
+		saveOptions.setConvertFileType(CellsSaveOptions.CellsFileType.Xls);
 		saveOptions.setPageNumber(2);
 		saveOptions.setNumPagesToConvert(2);
 
@@ -167,7 +167,7 @@ public class Conversion {
 		SaveOptions saveOptions = new WordsSaveOptions();
 		saveOptions.setPageNumber(2);
 		saveOptions.setNumPagesToConvert(2);
-		saveOptions.setConvertFileType(WordsSaveOptions.WordsFileType.DOC); 
+		saveOptions.setConvertFileType(WordsSaveOptions.WordsFileType.Doc); 
 
 		ConvertedDocument convertedDocumentPath = conversionHandler.<String> convert(fileName, loadOptions, saveOptions);
 		convertedDocumentPath.save(fileName + "." + convertedDocumentPath.getFileType());
@@ -191,7 +191,7 @@ public class Conversion {
 		SaveOptions saveOptions = new WordsSaveOptions();
 		saveOptions.setPageNumber(2);
 		saveOptions.setNumPagesToConvert(2);
-		saveOptions.setConvertFileType(WordsSaveOptions.WordsFileType.DOC);
+		saveOptions.setConvertFileType(WordsSaveOptions.WordsFileType.Doc);
 		ConvertedDocument convertedDocumentPath = conversionHandler.<GroupDocsInputStream> convert(fileName,
 				loadOptions, saveOptions);
 		//ExEnd:convertProtectedFilesToWordAsStream
@@ -209,7 +209,7 @@ public class Conversion {
 		// Instantiating the conversion handler
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		HtmlSaveOptions saveOption = new HtmlSaveOptions(); 
-		EmailOptions emailOptions = saveOption.getEmailOptions();
+		EmailLoadOptions emailOptions = saveOption.getEmailOptions();
 		emailOptions.setDisplayHeader(true);
 		emailOptions.setDisplayEmailAddress(true);        
 		emailOptions.setDisplayFromEmailAddress(true);
@@ -296,6 +296,8 @@ public class Conversion {
 		// Instantiating the conversion handler
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		SaveOptions saveOption = new ImageSaveOptions();
+		//ImageFileType enumeration contains the following members:
+		//BMP, GIF, ICO, JP2, JPEG, JPG, PNG, PSD, SVG, TIF, TIFF, WEBP
 		saveOption.setConvertFileType(ImageSaveOptions.ImageFileType.JPG); 
 		 
 		ConvertedDocument convertedDocumentPath = conversionHandler.<List<String>>convert(fileName, saveOption);
@@ -335,6 +337,8 @@ public class Conversion {
 		//saveOptions.setDpi(300);
 		saveOptions.setWidth(1024);
 		saveOptions.setHeight(768);
+		//FileType enumeration contains many file formats not limited to:
+		//Bmp, Cgm, Csv, Dcm, Dgn, Djvu, Dng, Doc, Docm, Docx, Dot
 		saveOptions.setConvertFileType(FileType.Tiff); 
 
 		ConvertedDocument convertedDocumentPath = conversionHandler.<List<String>> convert(fileName, loadOptions,
@@ -362,7 +366,9 @@ public class Conversion {
 		saveOptions.setPageNumber(2);
 		saveOptions.setNumPagesToConvert(2); 
 		saveOptions.setWidth(1024);
-		saveOptions.setHeight(768);
+		saveOptions.setHeight(768); 
+		//FileType enumeration contains many file formats not limited to:
+		//Bmp, Cgm, Csv, Dcm, Dgn, Djvu, Dng, Doc, Docm, Docx, Dot
 		saveOptions.setConvertFileType(FileType.Tiff);
 
 		ConvertedDocument convertedDocumentStream = conversionHandler
@@ -382,7 +388,8 @@ public class Conversion {
 		// Instantiating the conversion handler
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		PdfSaveOptions saveOption = new PdfSaveOptions(); 
-
+		//set page layout
+		saveOption.getPdfOptions().getFormatingOptions().setPageLayout(PdfFormattingOptions.PdfPageLayout.TwoColumnLeft);
 		// Set absolute path to file
 		String guid = fileName;
 
@@ -507,7 +514,7 @@ public class Conversion {
 		SaveOptions saveOptions = new SlidesSaveOptions();
 		saveOptions.setPageNumber(2);
 		saveOptions.setNumPagesToConvert(2);
-		saveOptions.setConvertFileType(SlidesSaveOptions.SlidesFileType.PPT); 
+		saveOptions.setConvertFileType(SlidesSaveOptions.SlidesFileType.Ppt); 
 
 		ConvertedDocument convertedDocumentPath = conversionHandler.<String> convert(fileName, loadOptions, saveOptions);
 		convertedDocumentPath.save(fileName + "." + convertedDocumentPath.getFileType());
@@ -530,7 +537,7 @@ public class Conversion {
 		SaveOptions saveOptions = new SlidesSaveOptions();
 		saveOptions.setPageNumber(2);
 		saveOptions.setNumPagesToConvert(2);
-		saveOptions.setConvertFileType(SlidesSaveOptions.SlidesFileType.PPT);
+		saveOptions.setConvertFileType(SlidesSaveOptions.SlidesFileType.Ppt);
 
 		ConvertedDocument convertedDocumentPath = conversionHandler.<GroupDocsInputStream> convert(fileName,
 				loadOptions, saveOptions); 
@@ -545,7 +552,7 @@ public class Conversion {
 		//ExStart:inputDataHandler
 		// Instantiating the conversion handler
 		AmazonInputDataHandler inputDataHandler = new AmazonInputDataHandler("AccessKey", "SecretKey");
-		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration(), inputDataHandler);
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 
 		ConvertedDocument convertedDocumentPath = conversionHandler.<GroupDocsInputStream> convert(fileName,
 				new PdfSaveOptions());
@@ -562,7 +569,7 @@ public class Conversion {
 		AmazonOutputDataHandler outputDataHandler = new AmazonOutputDataHandler(Utilities.getConfiguration(),
 				"AccessKey", "SecretKey");
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration(),
-				(IOutputDataHandler) outputDataHandler);
+				(IOutputDataHandler) outputDataHandler, null, null, null);
 		PdfSaveOptions saveOptions = new PdfSaveOptions(); 
 
 		ConvertedDocument convertedDocumentPath = conversionHandler.<String> convert("DOCXsample.docx", saveOptions);
@@ -859,6 +866,8 @@ public class Conversion {
 		//ExStart:convertFileToGreyscaleImageAsStream
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		ImageSaveOptions options = new ImageSaveOptions();
+		//ImageFileType enumeration contains the following members:
+		//BMP, GIF, ICO, JP2, JPEG, JPG, PNG, PSD, SVG, TIF, TIFF, WEBP
 		options.setConvertFileType(ImageSaveOptions.ImageFileType.JPG);
 		options.setGrayscale(true);
 		
@@ -882,7 +891,7 @@ public class Conversion {
 		//ExStart:convertFileToXPSAsStream
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		ImageSaveOptions options = new ImageSaveOptions();
-		options.setConvertFileType(PdfSaveOptions.PdfFileType.XPS);
+		options.setConvertFileType(PdfSaveOptions.PdfFileType.Xps);
 		 
 		ConvertedDocument result = conversionHandler.<List<GroupDocsInputStream>>convert(sourceFileName, options);
 		//ExEnd:convertFileToXPSAsStream
@@ -901,7 +910,7 @@ public class Conversion {
 		
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		PdfSaveOptions options = new PdfSaveOptions();
-		options.setConvertFileType(PdfSaveOptions.PdfFileType.PDF);
+		options.setConvertFileType(PdfSaveOptions.PdfFileType.Pdf);
 		 
 		ConvertedDocument result = conversionHandler.<GroupDocsInputStream>convert(sourceFileName, options);
 		result.save(sourceFileName + "." + result.getFileType());
@@ -931,6 +940,8 @@ public class Conversion {
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		
 		ImageSaveOptions options = new ImageSaveOptions();
+		//ImageFileType enumeration contains the following members:
+		//BMP, GIF, ICO, JP2, JPEG, JPG, PNG, PSD, SVG, TIF, TIFF, WEBP
 		options.setConvertFileType(ImageSaveOptions.ImageFileType.TIFF);
 		// Dpi is obsolete, now horizontal and vertical resolutions can be set independently
 		options.setHorizontalResolution(96);
@@ -1060,7 +1071,7 @@ public class Conversion {
 		arrayList.add(1);
 		arrayList.add(3);
 		arrayList.add(5);
-		options.setConvertPages(arrayList); 
+		options.getConvertPages().addAll(arrayList); 
 		 
 		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName, options);
 		result.save(sourceFileName + "." + result.getFileType());

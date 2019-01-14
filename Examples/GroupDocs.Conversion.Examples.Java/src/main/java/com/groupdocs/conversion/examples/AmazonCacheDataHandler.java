@@ -6,7 +6,6 @@ import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 import com.groupdocs.conversion.config.ConversionConfig;
-import com.groupdocs.conversion.converter.option.ImageSaveOptions;
 import com.groupdocs.conversion.domain.CacheFileDescription;
 import com.groupdocs.conversion.handler.cache.ICacheDataHandler;
 
@@ -21,7 +20,7 @@ import java.nio.file.Paths;
 import java.util.Calendar;
 import java.util.stream.Stream;
 
-public class AmazonCacheDataHandler implements ICacheDataHandler {
+public abstract class AmazonCacheDataHandler implements ICacheDataHandler {
 
 	private static String bucketName = ""; // TODO: Put you bucketname here
 	private final ConversionConfig _conversionConfig;
@@ -128,7 +127,7 @@ public class AmazonCacheDataHandler implements ICacheDataHandler {
 		}
 		String filePath = "";
 		String fileName = String.format("{0}.{1}", cacheFileDescription.getBaseName(),
-				cacheFileDescription.getSaveOptions().getConvertFileType().toString().toLowerCase());
+				cacheFileDescription.getSaveOptions().getConvertFileType());
 		String pathGet = Paths.get(_conversionConfig.getCachePath(), cacheFileDescription.getGuid(), fileName)
 				.normalize().toString();
 		// String filePath = Path.Combine(_conversionConfig.getCachePath(),
@@ -155,16 +154,5 @@ public class AmazonCacheDataHandler implements ICacheDataHandler {
 		return null;
 	}
 
-	@Override
-	public com.groupdocs.conversion.internal.c.a.ms.System.IO.Stream getInputStreamInternal(CacheFileDescription arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public com.groupdocs.conversion.internal.c.a.ms.System.IO.Stream getOutputSaveStreamInternal(
-			CacheFileDescription arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	 
 }
