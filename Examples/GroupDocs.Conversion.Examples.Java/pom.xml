@@ -23,8 +23,8 @@
 		<dependency>
 			<groupId>com.groupdocs</groupId>
 			<artifactId>groupdocs-conversion</artifactId>
-			<version>18.7</version>
-		</dependency> 
+			<version>18.12</version>
+		</dependency>  
 	</dependencies>
 	 <repositories>
 		<repository>
