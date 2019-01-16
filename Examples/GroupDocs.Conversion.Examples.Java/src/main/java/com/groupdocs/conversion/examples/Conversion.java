@@ -388,8 +388,10 @@ public class Conversion {
 		// Instantiating the conversion handler
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		PdfSaveOptions saveOption = new PdfSaveOptions(); 
-		//set page layout
-		saveOption.getPdfOptions().getFormatingOptions().setPageLayout(PdfFormattingOptions.PdfPageLayout.TwoColumnLeft);
+		//set page mode and layout
+		saveOption.getPdfOptions().getFormatingOptions().setPageMode(PdfFormatingOptions.PdfPageMode.FullScreen);
+		saveOption.getPdfOptions().getFormatingOptions().setPageLayout(PdfFormatingOptions.PdfPageLayout.SinglePage);
+		
 		// Set absolute path to file
 		String guid = fileName;
 
