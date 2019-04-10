@@ -8,8 +8,9 @@ import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.List;
- 
+
 import com.groupdocs.conversion.config.ConversionConfig;
+import com.groupdocs.conversion.converter.option.PdfFormatingOptions;
 import com.groupdocs.conversion.handler.ConversionCompleteEventArgs;
 import com.groupdocs.conversion.handler.ConversionCompleteHandler;
 import com.groupdocs.conversion.handler.ConversionHandler;
@@ -21,23 +22,28 @@ import com.groupdocs.conversion.handler.ConvertedDocument;
 import com.groupdocs.conversion.handler.DocumentInfo;
 import com.groupdocs.conversion.handler.PdfConversionCompleteEventArgs;
 import com.groupdocs.conversion.handler.output.IOutputDataHandler;
+import com.groupdocs.conversion.internal.c.a.d.Metered;
+import com.groupdocs.conversion.internal.c.a.ms.System.Collections.Generic.KeyValuePair;
+import com.groupdocs.conversion.internal.c.g.f.domain.FileType;
+import com.groupdocs.conversion.options.load.DiagramLoadOptions;
 import com.groupdocs.conversion.options.load.EmailLoadOptions;
+import com.groupdocs.conversion.options.load.ImageLoadOptions;
 import com.groupdocs.conversion.options.load.LoadOptions;
+import com.groupdocs.conversion.options.load.OneLoadOptions;
+import com.groupdocs.conversion.options.load.PdfLoadOptions;
+import com.groupdocs.conversion.options.load.SlidesLoadOptions;
 import com.groupdocs.conversion.options.load.XmlLoadOptions;
 import com.groupdocs.conversion.options.save.CellsSaveOptions;
 import com.groupdocs.conversion.options.save.HtmlSaveOptions;
 import com.groupdocs.conversion.options.save.ImageSaveOptions;
-import com.groupdocs.conversion.options.save.PdfFormattingOptions;
 import com.groupdocs.conversion.options.save.PdfSaveOptions;
 import com.groupdocs.conversion.options.save.PsdOptions;
 import com.groupdocs.conversion.options.save.SaveOptions;
 import com.groupdocs.conversion.options.save.SlidesSaveOptions;
 import com.groupdocs.conversion.options.save.WatermarkOptions;
 import com.groupdocs.conversion.options.save.WordsSaveOptions;
-//import com.groupdocs.conversion.internal.c.a.d.Metered;
-import com.groupdocs.foundation.domain.FileType;
-import com.groupdocs.foundation.license.aspose.metered.Metered;
-import com.groupdocs.foundation.utils.wrapper.stream.GroupDocsInputStream;
+
+import com.groupdocs.conversion.utils.wrapper.stream.GroupDocsInputStream;
 
 public class Conversion {
 
@@ -54,6 +60,7 @@ public class Conversion {
 		ConvertedDocument convertedDocumentPath = conversionHandler.<String> convert(fileName, saveOption);
 		convertedDocumentPath.save(fileName + "." + convertedDocumentPath.getFileType());
 		System.out.print("Converted file path is: " + convertedDocumentPath);
+		
 		//ExEnd:convertToCellsAsFilePath
 	}
 
@@ -1090,5 +1097,111 @@ public class Conversion {
 		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName, options);
 		result.save(sourceFileName + "." + result.getFileType());
 		//ExEnd:getMarkupWhenConvertingToHtml
+	}
+	
+	
+	public static void measureConversionTime(String sourceFileName){
+		//ExStart:measureConversionTime
+		// Setup Conversion configuration
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration()); 
+		PdfSaveOptions options = new PdfSaveOptions(); 
+		
+		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName, options);
+		System.out.println("Elapsed time: " + result.getElapsed() + "ms");
+		
+		//ExEnd:measureConversionTime
+	}
+	
+	public static void includeHiddenSlidesInConvertedDocument(String sourceFileName){
+		//ExStart:includeHiddenSlidesInConvertedDocument
+		// Setup Conversion configuration
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration()); 
+		SlidesLoadOptions loadOptions = new SlidesLoadOptions();
+		loadOptions.setShowHiddenSlides(true);
+		PdfSaveOptions options = new PdfSaveOptions(); 
+		
+		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName,loadOptions, options);
+		result.save(sourceFileName + "." + result.getFileType());
+		
+		//ExEnd:includeHiddenSlidesInConvertedDocument
+	}
+	
+	public static void rotatePagesWhenConvertingToPDF(String sourceFileName){
+		//ExStart:rotatePagesWhenConvertingToPDF
+		// Setup Conversion configuration
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration()); 
+		PdfSaveOptions options = new PdfSaveOptions(); 
+		options.setRotate(PdfSaveOptions.Rotation.On90);
+		 
+		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName, options);
+		result.save(sourceFileName + "." + result.getFileType());
+		//ExEnd:rotatePagesWhenConvertingToPDF
+	}
+	
+	public static void flattenAllFormFieldsWhileConvertingPDF(String sourceFileName){
+		//ExStart:flattenAllFormFieldsWhileConvertingPDF
+		// Setup Conversion configuration
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration()); 
+		PdfLoadOptions loadOptions = new PdfLoadOptions();
+		loadOptions.setFlattenAllFields(true);
+		WordsSaveOptions options = new WordsSaveOptions();
+		
+		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName,loadOptions, options);
+		result.save(sourceFileName + "." + result.getFileType());
+		//ExEnd:flattenAllFormFieldsWhileConvertingPDF
+	}
+	
+	public static void rotatePagesWhenConvertingToImage(String sourceFileName){
+		//ExStart:rotatePagesWhenConvertingToImage
+		// Setup Conversion configuration
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration()); 
+		ImageSaveOptions options = new ImageSaveOptions();
+		options.setRotateAngle(45);
+		 
+		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName, options);
+		result.save(sourceFileName + "." + result.getFileType());
+		//ExEnd:rotatePagesWhenConvertingToImage
+	}
+	
+	public static void setDefaultFontAndSubstitutionWhenConvertingOneDocument(String sourceFileName){
+		//ExStart:setDefaultFontAndSubstitutionWhenConvertingOneDocument
+		// Setup Conversion configuration
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration()); 
+		OneLoadOptions loadOptions = new OneLoadOptions();
+		loadOptions.setDefaultFont("Helvetica");
+		loadOptions.getFontSubstitutes().addItem(new KeyValuePair<String, String>("Arial", "Helvetica"));
+		loadOptions.getFontSubstitutes().addItem(new KeyValuePair<String, String>("Harriet", "Transcript"));
+		
+		PdfSaveOptions options = new PdfSaveOptions();
+		 
+		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName,loadOptions, options);
+		result.save(sourceFileName + "." + result.getFileType());
+		//ExEnd:setDefaultFontAndSubstitutionWhenConvertingOneDocument
+	}
+	
+	public static void setDefaultFontWhenConvertingFromDiagram(String sourceFileName){
+		//ExStart:setDefaultFontWhenConvertingFromDiagram
+		// Setup Conversion configuration
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration()); 
+		DiagramLoadOptions loadOptions = new DiagramLoadOptions();
+		loadOptions.setDefaultFont("Helvetica");
+		PdfSaveOptions options = new PdfSaveOptions(); 
+		
+		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName,loadOptions, options);
+		result.save(sourceFileName + "." + result.getFileType());
+		//ExEnd:setDefaultFontWhenConvertingFromDiagram
+	}
+	
+	public static void setDefaultFontWhenConvertingFromImage(String sourceFileName){
+		//ExStart:setDefaultFontWhenConvertingFromImage
+		// Setup Conversion configuration
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration()); 
+		ImageLoadOptions loadOptions = new ImageLoadOptions();
+		loadOptions.setDefaultFont("Helvetica");
+		PdfSaveOptions options = new PdfSaveOptions(); 
+		
+		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName, options);
+		result.save(sourceFileName + "." + result.getFileType());
+		//ExEnd:setDefaultFontWhenConvertingFromImage
 	}
 }
