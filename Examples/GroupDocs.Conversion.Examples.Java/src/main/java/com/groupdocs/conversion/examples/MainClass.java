@@ -192,5 +192,31 @@ public class MainClass {
 		
 		//Get simplified Markup When Converting To Html
 		//Conversion.getMarkupWhenConvertingToHtml("demo.docx");
+		
+		
+		//Measure conversion time and return it as property of ConvertedDocument class
+		//Conversion.measureConversionTime("demo.docx");
+		
+		//Option for including hidden slides in converted document when converting from Slides
+		//Conversion.includeHiddenSlidesInConvertedDocument("The butterfly effect.pptx");
+		
+		//Option for page rotation when converting to Pdf
+		//Conversion.rotatePagesWhenConvertingToPDF("demo.docx");
+		
+		//Option to flatten all form fields when converting Pdf
+		//Conversion.flattenAllFormFieldsWhileConvertingPDF("intelligent systems.pdf");
+		
+		//Rotation feature when converting to image
+		//Conversion.rotatePagesWhenConvertingToImage("sample.pdf");
+		
+		//Set default font and font substitution options when converting One document
+		//Conversion.setDefaultFontAndSubstitutionWhenConvertingOneDocument("Sample.one");
+		
+		//Set default font when converting from Diagram
+		//Conversion.setDefaultFontWhenConvertingFromDiagram("sample.vsd");
+		
+		//Set default font when converting Psd, Emf, Wmf documents
+		//Conversion.setDefaultFontWhenConvertingFromImage("demo.Psd");
+	
 	}
 }

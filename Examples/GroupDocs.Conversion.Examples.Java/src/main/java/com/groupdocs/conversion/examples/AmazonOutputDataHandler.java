@@ -6,19 +6,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.amazonaws.util.IOUtils; 
+import com.amazonaws.util.IOUtils;
 import com.groupdocs.conversion.config.ConversionConfig;
 import com.groupdocs.conversion.domain.FileDescription;
 import com.groupdocs.conversion.handler.output.IOutputDataHandler;
-import com.groupdocs.conversion.internal.c.a.ms.System.IO.r;
 import com.groupdocs.conversion.options.save.SaveOptions;
 
 public class AmazonOutputDataHandler implements IOutputDataHandler {
@@ -65,8 +62,14 @@ public class AmazonOutputDataHandler implements IOutputDataHandler {
 		return null;
 	}
 
-	@Override
+	/*@Override
 	public String saveFileInternal(String arg0, r arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}*/
+
+	@Override
+	public String saveFileInternal(String arg0, com.groupdocs.conversion.internal.c.a.ms.System.IO.Stream arg1) {
 		// TODO Auto-generated method stub
 		return null;
 	} 

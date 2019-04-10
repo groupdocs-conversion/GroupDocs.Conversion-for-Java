@@ -7,7 +7,7 @@ import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 import com.groupdocs.conversion.domain.FileDescription;
 import com.groupdocs.conversion.handler.input.IInputDataHandler;
-import com.groupdocs.conversion.internal.c.a.ms.System.IO.r;
+import com.groupdocs.conversion.internal.c.a.ms.System.IO.Stream;
 
 public class AmazonInputDataHandler implements IInputDataHandler {
 	 
@@ -34,8 +34,14 @@ public class AmazonInputDataHandler implements IInputDataHandler {
         return result;
     }
 
-	@Override
+	/*@Override
 	public r PW(String arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}*/
+
+	@Override
+	public Stream bf(String arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	} 

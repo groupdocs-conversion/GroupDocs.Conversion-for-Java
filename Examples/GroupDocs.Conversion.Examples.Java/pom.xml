@@ -20,11 +20,12 @@
 			<artifactId>aws-java-sdk-s3</artifactId>
 			<version>1.11.34</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>com.groupdocs</groupId>
 			<artifactId>groupdocs-conversion</artifactId>
-			<version>18.12</version>
-		</dependency>  
+			<version>19.4</version>
+		</dependency>
 	</dependencies>
 	 <repositories>
 		<repository>

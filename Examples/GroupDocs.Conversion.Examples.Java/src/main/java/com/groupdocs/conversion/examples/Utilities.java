@@ -16,7 +16,7 @@ public class Utilities {
 		public final static String outputPath = "./Data/OutputFiles/";
 		public final static String cachePath = "./Data/Cache/";
 		public final static String fontsPath = "./Data/Fonts/";
-	    public static final Path licensePath = getProjectBaseDir().resolve("GroupDocs.Total.Java.lic");
+	    public static final String licensePath = ("E://GroupDocs.Total.Java.lic");
 	    
 	  //ExEnd:CommonProperties
 		/**
@@ -28,7 +28,7 @@ public class Utilities {
 			try {
 				// Setup license
 				License lic = new License();
-				lic.setLicense(licensePath.toString());
+				lic.setLicense(licensePath);
 			} catch (Exception exp) {
 				System.out.println("Exception: " + exp.getMessage());
 				exp.printStackTrace();
