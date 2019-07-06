@@ -812,8 +812,8 @@ public class Conversion {
 
 	// remove slide comments
 	 
-	public static void hideSlideComments(String sourceFileName) {
-		//ExStart:removeSlideComments
+	public static void hideSlidesComments(String sourceFileName) {
+		//ExStart:hideSlidesComments
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		SlidesLoadOptions loadOptions = new SlidesLoadOptions();
 		loadOptions.setHideComments(true);
@@ -821,9 +821,9 @@ public class Conversion {
 		SlidesSaveOptions saveOptions = new SlidesSaveOptions(); 
 		
 
-		ConvertedDocument result = conversionHandler.<String> convert(sourceFileName, saveOptions);
+		ConvertedDocument result = conversionHandler.<String> convert(sourceFileName, loadOptions, saveOptions);
 		result.save(sourceFileName + "." + result.getFileType());
-		//ExEnd:removeSlideComments
+		//ExEnd:hideSlidesComments
 	}
 	 
 	// hide tracked changes

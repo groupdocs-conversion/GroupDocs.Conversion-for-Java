@@ -138,7 +138,7 @@ public class MainClass {
 		// show hidden sheets
 		// Conversion.showHiddenSheetesWhenConvertingFromExcel("sample.xlsx");
 		// remove slide comments
-		// Conversion.removeSlideComments("The butterfly effect.pptx");
+		// Conversion.hideSlidesComments("The butterfly effect.pptx");
 		// hide tracked changes
 		// Conversion.hideTrackedChanges("demo.docx");
 		// count document pages
