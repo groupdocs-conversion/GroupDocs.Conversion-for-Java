@@ -217,6 +217,9 @@ public class MainClass {
 		
 		//Set default font when converting Psd, Emf, Wmf documents
 		//Conversion.setDefaultFontWhenConvertingFromImage("demo.Psd");
+		
+		//Get saved file name and size
+		//Conversion.getSavedFileNameAndSize("demo.docx");
 	
 	}
 }

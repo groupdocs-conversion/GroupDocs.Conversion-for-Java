@@ -10,7 +10,6 @@ import java.util.Enumeration;
 import java.util.List;
 
 import com.groupdocs.conversion.config.ConversionConfig;
-import com.groupdocs.conversion.converter.option.PdfFormatingOptions;
 import com.groupdocs.conversion.handler.ConversionCompleteEventArgs;
 import com.groupdocs.conversion.handler.ConversionCompleteHandler;
 import com.groupdocs.conversion.handler.ConversionHandler;
@@ -21,10 +20,13 @@ import com.groupdocs.conversion.handler.ConversionStartHandler;
 import com.groupdocs.conversion.handler.ConvertedDocument;
 import com.groupdocs.conversion.handler.DocumentInfo;
 import com.groupdocs.conversion.handler.PdfConversionCompleteEventArgs;
+import com.groupdocs.conversion.handler.SaveInfo;
 import com.groupdocs.conversion.handler.output.IOutputDataHandler;
 import com.groupdocs.conversion.internal.c.a.d.Metered;
 import com.groupdocs.conversion.internal.c.a.ms.System.Collections.Generic.KeyValuePair;
 import com.groupdocs.conversion.internal.c.g.f.domain.FileType;
+import com.groupdocs.conversion.options.load.CadLoadOptions;
+import com.groupdocs.conversion.options.load.CellsLoadOptions;
 import com.groupdocs.conversion.options.load.DiagramLoadOptions;
 import com.groupdocs.conversion.options.load.EmailLoadOptions;
 import com.groupdocs.conversion.options.load.ImageLoadOptions;
@@ -32,10 +34,12 @@ import com.groupdocs.conversion.options.load.LoadOptions;
 import com.groupdocs.conversion.options.load.OneLoadOptions;
 import com.groupdocs.conversion.options.load.PdfLoadOptions;
 import com.groupdocs.conversion.options.load.SlidesLoadOptions;
+import com.groupdocs.conversion.options.load.WordsLoadOptions;
 import com.groupdocs.conversion.options.load.XmlLoadOptions;
 import com.groupdocs.conversion.options.save.CellsSaveOptions;
 import com.groupdocs.conversion.options.save.HtmlSaveOptions;
 import com.groupdocs.conversion.options.save.ImageSaveOptions;
+import com.groupdocs.conversion.options.save.PdfFormattingOptions;
 import com.groupdocs.conversion.options.save.PdfSaveOptions;
 import com.groupdocs.conversion.options.save.PsdOptions;
 import com.groupdocs.conversion.options.save.SaveOptions;
@@ -80,14 +84,15 @@ public class Conversion {
 	 * Generate cache, set password to un-protect password protected files and
 	 * return path to the converted file
 	 */
+	 
 	public static void convertProtectedFilesToCellsAsPath(String fileName) {
 		//ExStart:convertProtectedFilesToCellsAsPath
 		// instantiating the conversion handler
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 
 		// Set password to unprotect protected document during loading
-		LoadOptions loadOptions = new LoadOptions();
-		loadOptions.setPassword("secret");
+		WordsLoadOptions loadOptions = new WordsLoadOptions();
+		loadOptions.setPassword_WordsLoadOptions_New("secret");
 
 		// convert file to Xls, starting from page 2 and convert 2 pages
 		SaveOptions saveOptions = new CellsSaveOptions();
@@ -105,14 +110,15 @@ public class Conversion {
 	 * Generate cache, set password to un-protect password protected files and
 	 * return stream to the converted file
 	 */
+	 
 	public static void convertProtectedFilesToCellsAsStream(String fileName) {
 		//ExStart:convertProtectedFilesToCellsAsStream
 		// instantiating the conversion handler
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 
 		// Set password to unprotect protected document during loading
-		LoadOptions loadOptions = new LoadOptions();
-		loadOptions.setPassword("secret");
+		WordsLoadOptions loadOptions = new WordsLoadOptions();
+		loadOptions.setPassword_WordsLoadOptions_New("secret");
 
 		// convert file to Xls, starting from page 2 and convert 2 pages
 		SaveOptions saveOptions = new CellsSaveOptions();
@@ -161,14 +167,15 @@ public class Conversion {
 	 * Generate cache, set password to un-protect password protected files and
 	 * return path to the converted file
 	 */
+	 
 	public static void convertProtectedFilesToWordAsPath(String fileName) {
 		//ExStart:convertProtectedFilesToWordAsPath
 		// Instantiating the conversion handler
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 
 		// Set password to unprotect protected document during loading
-		LoadOptions loadOptions = new LoadOptions();
-		loadOptions.setPassword("secret");
+		PdfLoadOptions loadOptions = new PdfLoadOptions();
+		loadOptions.setPassword_PdfLoadOptions_New("secret");
 
 		// Convert file to Doc, starting from page 2 and convert 2 pages
 		SaveOptions saveOptions = new WordsSaveOptions();
@@ -185,14 +192,15 @@ public class Conversion {
 	 * Generate cache, set password to un-protect password protected files and
 	 * return stream
 	 */
+	 
 	public static void convertProtectedFilesToWordAsStream(String fileName) {
 		//ExStart:convertProtectedFilesToWordAsStream
 		// Instantiating the conversion handler
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 
 		// Set password to unprotect protected document during loading
-		LoadOptions loadOptions = new LoadOptions();
-		loadOptions.setPassword("secret");
+		PdfLoadOptions loadOptions = new PdfLoadOptions();
+		loadOptions.setPassword_PdfLoadOptions_New("secret");
 
 		// Convert file to Doc, starting from page 2 and convert 2 pages
 		SaveOptions saveOptions = new WordsSaveOptions();
@@ -211,22 +219,24 @@ public class Conversion {
 	/*
 	 * Convert document to html and get result as file path
 	 */
+	 
 	public static void convertToHtmlAsFilePath(String fileName) {
 		//ExStart:convertToHtmlAsFilePath
 		// Instantiating the conversion handler
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
-		HtmlSaveOptions saveOption = new HtmlSaveOptions(); 
-		EmailLoadOptions emailOptions = saveOption.getEmailOptions();
-		emailOptions.setDisplayHeader(true);
-		emailOptions.setDisplayEmailAddress(true);        
-		emailOptions.setDisplayFromEmailAddress(true);
-		emailOptions.setDisplayToEmailAddress(true);
-		emailOptions.setDisplayCcEmailAddress(true);
-		emailOptions.setDisplayBccEmailAddress(true);
-		// Set absolute path to file
-		String guid = fileName;
+		
+		
+		EmailLoadOptions loadOptions = new EmailLoadOptions();
+		loadOptions.setDisplayHeader(true);
+		loadOptions.setDisplayEmailAddress(true);        
+		loadOptions.setDisplayFromEmailAddress(true);
+		loadOptions.setDisplayToEmailAddress(true);
+		loadOptions.setDisplayCcEmailAddress(true);
+		loadOptions.setDisplayBccEmailAddress(true);
 
-		ConvertedDocument convertedDocumentPath = conversionHandler.<String> convert(guid, saveOption);
+		HtmlSaveOptions saveOption = new HtmlSaveOptions(); 
+		
+		ConvertedDocument convertedDocumentPath = conversionHandler.<String> convert(fileName, loadOptions, saveOption);
 		convertedDocumentPath.save(fileName + "." + convertedDocumentPath.getFileType());
 		System.out.print("Converted file path is: " + convertedDocumentPath);
 		//ExEnd:convertToHtmlAsFilePath
@@ -249,14 +259,15 @@ public class Conversion {
 	 * Generate cache, set password to un-protect password protected files and
 	 * return path to the converted file
 	 */
+	 
 	public static void convertProtectedFilesToHtmlAsPath(String fileName) {
 		//ExStart:convertProtectedFilesToHtmlAsPath
 		// Instantiating the conversion handler
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 
 		// Set password to unprotect protected document during loading
-		LoadOptions loadOptions = new LoadOptions();
-		loadOptions.setPassword("secret");
+		PdfLoadOptions loadOptions = new PdfLoadOptions();
+		loadOptions.setPassword_PdfLoadOptions_New("secret");
 
 		// Convert starting from page 2 and convert 2 pages
 		HtmlSaveOptions saveOptions = new HtmlSaveOptions();
@@ -272,14 +283,15 @@ public class Conversion {
 	 * Generate cache, set password to un-protect password protected files and
 	 * return stream
 	 */
+	 
 	public static void convertProtectedFilesToHtmlAsStream(String fileName) {
 		//ExStart:convertProtectedFilesToHtmlAsStream
 		// Instantiating the conversion handler
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 
 		// Set password to unprotect protected document during loading
-		LoadOptions loadOptions = new LoadOptions();
-		loadOptions.setPassword("secret");
+		PdfLoadOptions loadOptions = new PdfLoadOptions();
+		loadOptions.setPassword_PdfLoadOptions_New("secret");
 
 		// Сonvert starting from page 2 and convert 2 pages
 		SaveOptions saveOptions = new HtmlSaveOptions();
@@ -328,13 +340,14 @@ public class Conversion {
 	 * Generate cache, set password to un-protect password protected files and
 	 * return path to the converted image
 	 */
+	 
 	public static void convertProtectedFilesToImageAsPath(String fileName) {
 		//ExStart:convertProtectedFilesToImageAsPath
 		// Instantiating the conversion handler
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		// Set password to unprotect protected document during loading
-		LoadOptions loadOptions = new LoadOptions();
-		loadOptions.setPassword("secret");
+		PdfLoadOptions loadOptions = new PdfLoadOptions();
+		loadOptions.setPassword_PdfLoadOptions_New("secret");
 
 		// Сonvert file to Tiff, starting from page 2 and convert 2 pages,
 		// use DPI 300, image width 1024, image height 768
@@ -358,14 +371,15 @@ public class Conversion {
 	 * Generate cache, set password to un-protect password protected files and
 	 * return stream
 	 */
+	 
 	public static void convertProtectedFilesToImageAsStream(String fileName) {
 		//ExStart:convertProtectedFilesToImageAsStream
 		// Instantiating the conversion handler
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 
 		// Set password to unprotect protected document during loading
-		LoadOptions loadOptions = new LoadOptions();
-		loadOptions.setPassword("secret");
+		PdfLoadOptions loadOptions = new PdfLoadOptions();
+		loadOptions.setPassword_PdfLoadOptions_New("secret");
 
 		// Сonvert file to Tiff, starting from page 2 and convert 2 pages,
 		// use DPI 300, image width 1024, image height 768
@@ -396,8 +410,8 @@ public class Conversion {
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		PdfSaveOptions saveOption = new PdfSaveOptions(); 
 		//set page mode and layout
-		saveOption.getPdfOptions().getFormatingOptions().setPageMode(PdfFormatingOptions.PdfPageMode.FullScreen);
-		saveOption.getPdfOptions().getFormatingOptions().setPageLayout(PdfFormatingOptions.PdfPageLayout.SinglePage);
+		saveOption.getPdfOptions().getFormatingOptions().setPageMode(PdfFormattingOptions.PdfPageMode.FullScreen);
+		saveOption.getPdfOptions().getFormatingOptions().setPageLayout(PdfFormattingOptions.PdfPageLayout.SinglePage);
 		
 		// Set absolute path to file
 		String guid = fileName;
@@ -424,13 +438,14 @@ public class Conversion {
 	 * Generate cache, set password to un-protect password protected files and
 	 * return path to the converted file
 	 */
+	 
 	public static void convertProtectedFilesToPdfAsPath(String fileName) {
 		//ExStart:convertProtectedFilesToPdfAsPath
 		// Instantiating the conversion handler
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		// Set password to unprotect protected document during loading
-		LoadOptions loadOptions = new LoadOptions();
-		loadOptions.setPassword("secret");
+		WordsLoadOptions loadOptions = new WordsLoadOptions();
+		loadOptions.setPassword_WordsLoadOptions_New("secret");
 
 		// Convert starting from page 2 and convert 2 pages,
 		// use DPI 300, page width 1024, page height 768
@@ -450,14 +465,15 @@ public class Conversion {
 	 * Generate cache, set password to un-protect password protected files and
 	 * return stream
 	 */
+	 
 	public static void convertProtectedFilesToPdfAsStream(String fileName) {
 		//ExStart:convertProtectedFilesToPdfAsStream
 		// Instantiating the conversion handler
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 
 		// Set password to unprotect protected document during loading
-		LoadOptions loadOptions = new LoadOptions();
-		loadOptions.setPassword("secret");
+		WordsLoadOptions loadOptions = new WordsLoadOptions();
+		loadOptions.setPassword_WordsLoadOptions_New("secret");
 
 		// Convert starting from page 2 and convert 2 pages,
 		// use DPI 300, page width 1024, page height 768
@@ -511,13 +527,14 @@ public class Conversion {
 	 * Generate cache, set password to un-protect password protected files and
 	 * return path to the converted file
 	 */
+	 
 	public static void convertProtectedFilesToSlideAsPath(String fileName) {
 		//ExStart:convertProtectedFilesToSlideAsPath
 		// Instantiating the conversion handler
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		// Set password to unprotect protected document during loading
-		LoadOptions loadOptions = new LoadOptions();
-		loadOptions.setPassword("secret");
+		WordsLoadOptions loadOptions = new WordsLoadOptions();
+		loadOptions.setPassword_WordsLoadOptions_New("secret");
 
 		// Convert file to Ppt, starting from page 2 and convert 2 pages,
 		SaveOptions saveOptions = new SlidesSaveOptions();
@@ -534,13 +551,14 @@ public class Conversion {
 	 * Generate cache, set password to un-protect password protected files and
 	 * return stream
 	 */
+	 
 	public static void convertProtectedFilesToSlideAsStream(String fileName) {
 		//ExStart:convertProtectedFilesToSlideAsStream
 		// Instantiating the conversion handler
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		// Set password to unprotect protected document during loading
-		LoadOptions loadOptions = new LoadOptions();
-		loadOptions.setPassword("secret");
+		WordsLoadOptions loadOptions = new WordsLoadOptions();
+		loadOptions.setPassword_WordsLoadOptions_New("secret");
 
 		// Convert file to Ppt, starting from page 2 and convert 2 pages,
 		SaveOptions saveOptions = new SlidesSaveOptions();
@@ -761,54 +779,64 @@ public class Conversion {
 		result.save(sourceFileName + "." + result.getFileType());
 		//ExEnd:useConversionEvents
 	}
-
+	 
 	// show grid lines when converting from excel
 	public static void showGridLinesConvertingFromExcel(String sourceFileName) {
 		//ExStart:showGridLinesConvertingFromExcel
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 
+		CellsLoadOptions loadOptions = new CellsLoadOptions();
+		loadOptions.setShowGridLines(true);
 		// Save options
-		SaveOptions saveOptions = new HtmlSaveOptions(); 
-		saveOptions.getCellsOptions().setShowGridLines(true);
+		SaveOptions saveOptions = new HtmlSaveOptions();
 
-		ConvertedDocument result = conversionHandler.<String> convert(sourceFileName, saveOptions);
+		ConvertedDocument result = conversionHandler.<String> convert(sourceFileName, loadOptions, saveOptions);
 		result.save(sourceFileName + "." + result.getFileType());
 		//ExEnd:showGridLinesConvertingFromExcel
 	}
-
+	 
 	// show hidden sheets when converting from excel
 	public static void showHiddenSheetesWhenConvertingFromExcel(String sourceFileName) {
 		//ExStart:showHiddenSheetesWhenConvertingFromExcel
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		
+		CellsLoadOptions loadOptions = new CellsLoadOptions();
+		loadOptions.setShowHiddenSheets(true);		
 		// Save options
-		SaveOptions saveOptions = new HtmlSaveOptions(); 
-		saveOptions.getCellsOptions().setShowHiddenSheets(true);
-		ConvertedDocument result = conversionHandler.<String> convert(sourceFileName, saveOptions);
+		SaveOptions saveOptions = new HtmlSaveOptions();
+		
+		ConvertedDocument result = conversionHandler.<String> convert(sourceFileName, loadOptions, saveOptions);
 		result.save(sourceFileName + "." + result.getFileType());
 		//ExEnd:showHiddenSheetesWhenConvertingFromExcel
 	}
 
 	// remove slide comments
-	public static void removeSlideComments(String sourceFileName) {
+	 
+	public static void hideSlideComments(String sourceFileName) {
 		//ExStart:removeSlideComments
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		SlidesLoadOptions loadOptions = new SlidesLoadOptions();
+		loadOptions.setHideComments(true);
 		// Save options
 		SlidesSaveOptions saveOptions = new SlidesSaveOptions(); 
+		
 
 		ConvertedDocument result = conversionHandler.<String> convert(sourceFileName, saveOptions);
 		result.save(sourceFileName + "." + result.getFileType());
 		//ExEnd:removeSlideComments
 	}
-
+	 
 	// hide tracked changes
 	public static void hideTrackedChanges(String sourceFileName) {
 		//ExStart:hideTrackedChanges
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		
+		WordsLoadOptions loadOption = new WordsLoadOptions();
+		loadOption.setHideWordTrackedChanges(false);		
 		// Save options
-		SaveOptions saveOptions = new PdfSaveOptions(); 
-		saveOptions.setHideWordTrackedChanges(false);
+		SaveOptions saveOptions = new PdfSaveOptions();
 
-		ConvertedDocument result = conversionHandler.<String> convert(sourceFileName, saveOptions);
+		ConvertedDocument result = conversionHandler.<String> convert(sourceFileName, loadOption, saveOptions);
 		result.save(sourceFileName + "." + result.getFileType());
 		//ExEnd:hideTrackedChanges
 	}
@@ -928,16 +956,18 @@ public class Conversion {
 		System.out.print("Amount consumed after: " + amountAfter);
 		//ExEnd:meteredLicensingOnFile
 	}
-	
+	 
 	//hide comments when converting from word
 	public static void hideCommentsWhenConvertingFromWord(String sourceFileName){
 		//ExStart:hideCommentsWhenConvertingFromWord
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		
+		WordsLoadOptions loadOptions = new WordsLoadOptions();
+		loadOptions.setHideComments(true);
+		//save options
 		SaveOptions saveOptions = new PdfSaveOptions(); 
-		saveOptions.setHideComments(false);
-		 
-		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName, saveOptions);		 
+		
+		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName, loadOptions, saveOptions);		 
 		result.save(sourceFileName + "." + result.getFileType());
 		System.out.print("Converted file path is: " + result);
 		//ExEnd:hideCommentsWhenConvertingFromWord
@@ -1015,58 +1045,69 @@ public class Conversion {
 		}
 		//ExEnd:availableLayoutsInCad
 	}
-	
+	 
 	//convert specific layout from a CAD document 
 	public static void convertSpecificLayoutFromCad(String sourceFileName){
 		//ExStart:convertSpecificLayoutFromCad
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		String[] layoutNames = new String[1];
 		layoutNames[0] = "layout-1"; 
-		PdfSaveOptions options = new PdfSaveOptions(); 
-		options.getCadOptions().setLayoutNames(layoutNames); 
+		
+		CadLoadOptions loadOptions = new CadLoadOptions();
+		loadOptions.setLayoutNames(layoutNames);
+		
+		PdfSaveOptions saveOptions = new PdfSaveOptions(); 
 		 
-		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName, options); 
+		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName, loadOptions, saveOptions); 
 		result.save(sourceFileName + "." + result.getFileType());
 		System.out.print(result);
 		//ExEnd:convertSpecificLayoutFromCad
 	}
-	
+	 
 	//set specific width and height for each layout from CAD document 
 	public static void setWidthHeightForCad(String sourceFileName){
 		//ExStart:setWidthHeightForCad
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
-		PdfSaveOptions options = new PdfSaveOptions(); 
-		options.getCadOptions().setWidth(800);
-		options.getCadOptions().setHeight(600); 
+		
+		CadLoadOptions loadOptions = new CadLoadOptions();
+		loadOptions.setHeight(600);
+		loadOptions.setWidth(800);
+		
+		PdfSaveOptions saveOptions = new PdfSaveOptions(); 		
 		 
-		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName, options); 
+		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName, loadOptions, saveOptions); 
 		result.save(sourceFileName + "." + result.getFileType());
 		System.out.print(result);
 		//ExEnd:setWidthHeightForCad
 	}
-	
+	 
 	//Hide annotations when converting from PDF
 	public static void hideAnnotations(String sourceFileName){
 		//ExStart:hideAnnotations
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
-		WordsSaveOptions options = new WordsSaveOptions(); 
-		options.setHidePdfAnnotations(true); 
+		
+		PdfLoadOptions loadOptions = new PdfLoadOptions();
+		loadOptions.setHidePdfAnnotations(true);
+		
+		WordsSaveOptions saveOptions = new WordsSaveOptions(); 
 		 
-		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName, options); 
+		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName, loadOptions, saveOptions); 
 		result.save(sourceFileName + "." + result.getFileType());
 		System.out.print(result);
 		//ExEnd:hideAnnotations
 	}
-	
+	 
 	public static void hideCommentsConvertingFromCells(String sourceFileName){ 
 		 //ExStart:hideCommentsConvertingFromCells
 		// Setup Conversion configuration
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration()); 
+		
+		CellsLoadOptions loadOptions = new CellsLoadOptions();
+		loadOptions.setHideComments(true);
+		
+		PdfSaveOptions saveOptions = new PdfSaveOptions(); 
 		 
-		PdfSaveOptions options = new PdfSaveOptions(); 
-		options.setHideComments(true); 
-		 
-		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName, options);
+		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName, loadOptions, saveOptions);
 		result.save(sourceFileName + "." + result.getFileType());
 		//ExEnd:hideCommentsConvertingFromCells
 	}
@@ -1202,6 +1243,18 @@ public class Conversion {
 		
 		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName, options);
 		result.save(sourceFileName + "." + result.getFileType());
+		//ExEnd:setDefaultFontWhenConvertingFromImage
+	}
+	
+	public static void getSavedFileNameAndSize(String sourceFileName){
+		//ExStart:setDefaultFontWhenConvertingFromImage
+		// Setup Conversion configuration		
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
+		SaveOptions saveOptions = new PdfSaveOptions();
+		ConvertedDocument result = conversionHandler.convert(sourceFileName, saveOptions);
+		SaveInfo saveInfo = result.save(sourceFileName + "." + result.getFileType(), 1);
+		System.out.println(String.format("Page 1 file size: %d", saveInfo.getSize()));
+		System.out.println(String.format("Page 1 saved path: %s", saveInfo.getFileName()));
 		//ExEnd:setDefaultFontWhenConvertingFromImage
 	}
 }
