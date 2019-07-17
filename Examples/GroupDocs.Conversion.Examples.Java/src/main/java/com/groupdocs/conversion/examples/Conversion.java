@@ -85,6 +85,7 @@ public class Conversion {
 	 * return path to the converted file
 	 */
 	 
+	 
 	public static void convertProtectedFilesToCellsAsPath(String fileName) {
 		//ExStart:convertProtectedFilesToCellsAsPath
 		// instantiating the conversion handler
@@ -92,7 +93,7 @@ public class Conversion {
 
 		// Set password to unprotect protected document during loading
 		WordsLoadOptions loadOptions = new WordsLoadOptions();
-		loadOptions.setPassword_WordsLoadOptions_New("secret");
+		loadOptions.setPassword("secret");
 
 		// convert file to Xls, starting from page 2 and convert 2 pages
 		SaveOptions saveOptions = new CellsSaveOptions();
@@ -118,7 +119,7 @@ public class Conversion {
 
 		// Set password to unprotect protected document during loading
 		WordsLoadOptions loadOptions = new WordsLoadOptions();
-		loadOptions.setPassword_WordsLoadOptions_New("secret");
+		loadOptions.setPassword("secret");
 
 		// convert file to Xls, starting from page 2 and convert 2 pages
 		SaveOptions saveOptions = new CellsSaveOptions();
@@ -175,7 +176,7 @@ public class Conversion {
 
 		// Set password to unprotect protected document during loading
 		PdfLoadOptions loadOptions = new PdfLoadOptions();
-		loadOptions.setPassword_PdfLoadOptions_New("secret");
+		loadOptions.setPassword("secret");
 
 		// Convert file to Doc, starting from page 2 and convert 2 pages
 		SaveOptions saveOptions = new WordsSaveOptions();
@@ -200,7 +201,7 @@ public class Conversion {
 
 		// Set password to unprotect protected document during loading
 		PdfLoadOptions loadOptions = new PdfLoadOptions();
-		loadOptions.setPassword_PdfLoadOptions_New("secret");
+		loadOptions.setPassword("secret");
 
 		// Convert file to Doc, starting from page 2 and convert 2 pages
 		SaveOptions saveOptions = new WordsSaveOptions();
@@ -267,7 +268,7 @@ public class Conversion {
 
 		// Set password to unprotect protected document during loading
 		PdfLoadOptions loadOptions = new PdfLoadOptions();
-		loadOptions.setPassword_PdfLoadOptions_New("secret");
+		loadOptions.setPassword("secret");
 
 		// Convert starting from page 2 and convert 2 pages
 		HtmlSaveOptions saveOptions = new HtmlSaveOptions();
@@ -291,7 +292,7 @@ public class Conversion {
 
 		// Set password to unprotect protected document during loading
 		PdfLoadOptions loadOptions = new PdfLoadOptions();
-		loadOptions.setPassword_PdfLoadOptions_New("secret");
+		loadOptions.setPassword("secret");
 
 		// Сonvert starting from page 2 and convert 2 pages
 		SaveOptions saveOptions = new HtmlSaveOptions();
@@ -347,7 +348,7 @@ public class Conversion {
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		// Set password to unprotect protected document during loading
 		PdfLoadOptions loadOptions = new PdfLoadOptions();
-		loadOptions.setPassword_PdfLoadOptions_New("secret");
+		loadOptions.setPassword("secret");
 
 		// Сonvert file to Tiff, starting from page 2 and convert 2 pages,
 		// use DPI 300, image width 1024, image height 768
@@ -379,7 +380,7 @@ public class Conversion {
 
 		// Set password to unprotect protected document during loading
 		PdfLoadOptions loadOptions = new PdfLoadOptions();
-		loadOptions.setPassword_PdfLoadOptions_New("secret");
+		loadOptions.setPassword("secret");
 
 		// Сonvert file to Tiff, starting from page 2 and convert 2 pages,
 		// use DPI 300, image width 1024, image height 768
@@ -445,7 +446,7 @@ public class Conversion {
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		// Set password to unprotect protected document during loading
 		WordsLoadOptions loadOptions = new WordsLoadOptions();
-		loadOptions.setPassword_WordsLoadOptions_New("secret");
+		loadOptions.setPassword("secret");
 
 		// Convert starting from page 2 and convert 2 pages,
 		// use DPI 300, page width 1024, page height 768
@@ -473,7 +474,7 @@ public class Conversion {
 
 		// Set password to unprotect protected document during loading
 		WordsLoadOptions loadOptions = new WordsLoadOptions();
-		loadOptions.setPassword_WordsLoadOptions_New("secret");
+		loadOptions.setPassword("secret");
 
 		// Convert starting from page 2 and convert 2 pages,
 		// use DPI 300, page width 1024, page height 768
@@ -534,7 +535,7 @@ public class Conversion {
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		// Set password to unprotect protected document during loading
 		WordsLoadOptions loadOptions = new WordsLoadOptions();
-		loadOptions.setPassword_WordsLoadOptions_New("secret");
+		loadOptions.setPassword("secret");
 
 		// Convert file to Ppt, starting from page 2 and convert 2 pages,
 		SaveOptions saveOptions = new SlidesSaveOptions();
@@ -558,7 +559,7 @@ public class Conversion {
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration());
 		// Set password to unprotect protected document during loading
 		WordsLoadOptions loadOptions = new WordsLoadOptions();
-		loadOptions.setPassword_WordsLoadOptions_New("secret");
+		loadOptions.setPassword("secret");
 
 		// Convert file to Ppt, starting from page 2 and convert 2 pages,
 		SaveOptions saveOptions = new SlidesSaveOptions();
