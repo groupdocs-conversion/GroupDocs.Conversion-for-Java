@@ -1099,7 +1099,7 @@ public class Conversion {
 	}
 	 
 	public static void hideCommentsConvertingFromCells(String sourceFileName){ 
-		 //ExStart:hideCommentsConvertingFromCells
+		//ExStart:hideCommentsConvertingFromCells
 		// Setup Conversion configuration
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration()); 
 		
@@ -1257,5 +1257,35 @@ public class Conversion {
 		System.out.println(String.format("Page 1 file size: %d", saveInfo.getSize()));
 		System.out.println(String.format("Page 1 saved path: %s", saveInfo.getFileName()));
 		//ExEnd:setDefaultFontWhenConvertingFromImage
+	}
+	
+	public static void convertEachSpreedsheet(String sourceFileName){ 
+		//ExStart:convertEachSpreedsheet
+		// Setup Conversion configuration
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration()); 
+		
+		CellsLoadOptions loadOptions = new CellsLoadOptions();
+		loadOptions.setOnePagePerSheet(true);
+		
+		PdfSaveOptions saveOptions = new PdfSaveOptions(); 
+		 
+		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName, loadOptions, saveOptions);
+		result.save(sourceFileName + "." + result.getFileType());
+		//ExEnd:convertEachSpreedsheet
+	}
+	
+	public static void convertSpreedsheetPartially(String sourceFileName){ 
+		//ExStart:convertSpreedsheetPartially
+		// Setup Conversion configuration
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration()); 
+		
+		CellsLoadOptions loadOptions = new CellsLoadOptions();
+		loadOptions.setConvertRange("A1:B3"); 
+		
+		PdfSaveOptions saveOptions = new PdfSaveOptions(); 
+		 
+		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName, loadOptions, saveOptions);
+		result.save(sourceFileName + "." + result.getFileType());
+		//ExEnd:convertSpreedsheetPartially
 	}
 }
