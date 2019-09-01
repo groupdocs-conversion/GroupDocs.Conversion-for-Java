@@ -220,6 +220,12 @@ public class MainClass {
 		
 		//Get saved file name and size
 		//Conversion.getSavedFileNameAndSize("demo.docx");
+		
+		//Convert each Spreadsheet into PDF
+		//Conversion.convertEachSpreedsheet("sample.xlsx");
+		
+		//Partial conversion of Spreadsheet
+		//Conversion.convertSpreedsheetPartially("sample.xlsx");
 	
 	}
 }
