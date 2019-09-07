@@ -21,6 +21,7 @@ Directory | Description
 + You can either clone the repository using your favorite GitHub client or download the ZIP file from the above button.
 + Extract the contents of the ZIP file to any folder on your computer.
 + Open Java IDE and import the project to get started with it.
++ On the first run, the dependencies will automatically be downloaded.
 + Open MainClass.java file, all the examples are called from here.
 + Uncomment the examples you want to run from within the project.
 
