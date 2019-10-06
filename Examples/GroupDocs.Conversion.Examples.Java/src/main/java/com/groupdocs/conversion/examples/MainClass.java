@@ -226,6 +226,9 @@ public class MainClass {
 		
 		//Partial conversion of Spreadsheet
 		//Conversion.convertSpreedsheetPartially("sample.xlsx");
+		
+		//Control brightness, contrast, gamma and flip when convert to image
+		//Conversion.flipAndAdjutColorsWhenConvertingToImage("sample.pdf");
 	
 	}
 }

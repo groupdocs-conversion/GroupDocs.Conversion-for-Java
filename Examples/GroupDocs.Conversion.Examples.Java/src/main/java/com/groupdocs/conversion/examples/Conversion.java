@@ -84,8 +84,6 @@ public class Conversion {
 	 * Generate cache, set password to un-protect password protected files and
 	 * return path to the converted file
 	 */
-	 
-	 
 	public static void convertProtectedFilesToCellsAsPath(String fileName) {
 		//ExStart:convertProtectedFilesToCellsAsPath
 		// instantiating the conversion handler
@@ -97,7 +95,7 @@ public class Conversion {
 
 		// convert file to Xls, starting from page 2 and convert 2 pages
 		SaveOptions saveOptions = new CellsSaveOptions();
-		saveOptions.setConvertFileType(CellsSaveOptions.CellsFileType.Xls);
+		saveOptions.setConvertFileType(FileType.Xls);
 		saveOptions.setPageNumber(2);
 		saveOptions.setNumPagesToConvert(2); 
 
@@ -111,7 +109,6 @@ public class Conversion {
 	 * Generate cache, set password to un-protect password protected files and
 	 * return stream to the converted file
 	 */
-	 
 	public static void convertProtectedFilesToCellsAsStream(String fileName) {
 		//ExStart:convertProtectedFilesToCellsAsStream
 		// instantiating the conversion handler
@@ -123,7 +120,7 @@ public class Conversion {
 
 		// convert file to Xls, starting from page 2 and convert 2 pages
 		SaveOptions saveOptions = new CellsSaveOptions();
-		saveOptions.setConvertFileType(CellsSaveOptions.CellsFileType.Xls);
+		saveOptions.setConvertFileType(FileType.Xls);
 		saveOptions.setPageNumber(2);
 		saveOptions.setNumPagesToConvert(2);
 
@@ -528,7 +525,6 @@ public class Conversion {
 	 * Generate cache, set password to un-protect password protected files and
 	 * return path to the converted file
 	 */
-	 
 	public static void convertProtectedFilesToSlideAsPath(String fileName) {
 		//ExStart:convertProtectedFilesToSlideAsPath
 		// Instantiating the conversion handler
@@ -541,7 +537,7 @@ public class Conversion {
 		SaveOptions saveOptions = new SlidesSaveOptions();
 		saveOptions.setPageNumber(2);
 		saveOptions.setNumPagesToConvert(2);
-		saveOptions.setConvertFileType(SlidesSaveOptions.SlidesFileType.Ppt); 
+		saveOptions.setConvertFileType(FileType.Ppt); 
 
 		ConvertedDocument convertedDocumentPath = conversionHandler.<String> convert(fileName, loadOptions, saveOptions);
 		convertedDocumentPath.save(fileName + "." + convertedDocumentPath.getFileType());
@@ -552,7 +548,6 @@ public class Conversion {
 	 * Generate cache, set password to un-protect password protected files and
 	 * return stream
 	 */
-	 
 	public static void convertProtectedFilesToSlideAsStream(String fileName) {
 		//ExStart:convertProtectedFilesToSlideAsStream
 		// Instantiating the conversion handler
@@ -565,7 +560,7 @@ public class Conversion {
 		SaveOptions saveOptions = new SlidesSaveOptions();
 		saveOptions.setPageNumber(2);
 		saveOptions.setNumPagesToConvert(2);
-		saveOptions.setConvertFileType(SlidesSaveOptions.SlidesFileType.Ppt);
+		saveOptions.setConvertFileType(FileType.Ppt);
 
 		ConvertedDocument convertedDocumentPath = conversionHandler.<GroupDocsInputStream> convert(fileName,
 				loadOptions, saveOptions); 
@@ -597,7 +592,7 @@ public class Conversion {
 		AmazonOutputDataHandler outputDataHandler = new AmazonOutputDataHandler(Utilities.getConfiguration(),
 				"AccessKey", "SecretKey");
 		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration(),
-				(IOutputDataHandler) outputDataHandler, null, null, null);
+				null, (IOutputDataHandler) outputDataHandler, null, null, null);
 		PdfSaveOptions saveOptions = new PdfSaveOptions(); 
 
 		ConvertedDocument convertedDocumentPath = conversionHandler.<String> convert("DOCXsample.docx", saveOptions);
@@ -1287,5 +1282,20 @@ public class Conversion {
 		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName, loadOptions, saveOptions);
 		result.save(sourceFileName + "." + result.getFileType());
 		//ExEnd:convertSpreedsheetPartially
+	}
+	
+	public static void flipAndAdjutColorsWhenConvertingToImage(String sourceFileName){
+		//ExStart:flipAndAdjutColorsWhenConvertingToImage
+		// Setup Conversion configuration
+		ConversionHandler conversionHandler = new ConversionHandler(Utilities.getConfiguration()); 
+		ImageSaveOptions saveOptions = new ImageSaveOptions();
+		saveOptions.setFlipMode(ImageSaveOptions.FlipModes.FLIP_X);
+		saveOptions.setBrightness(50);
+		saveOptions.setContrast(50);
+		saveOptions.setGamma(0.5f);
+		
+		ConvertedDocument result = conversionHandler.<String>convert(sourceFileName, saveOptions);
+		result.save(sourceFileName + "." + result.getFileType());
+		//ExEnd:flipAndAdjutColorsWhenConvertingToImage
 	}
 }

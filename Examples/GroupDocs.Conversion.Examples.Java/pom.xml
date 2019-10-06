@@ -24,7 +24,7 @@
 		<dependency>
 			<groupId>com.groupdocs</groupId>
 			<artifactId>groupdocs-conversion</artifactId>
-			<version>19.6.2</version>
+			<version>19.10</version>
 		</dependency>
 	</dependencies>
 	 <repositories>
