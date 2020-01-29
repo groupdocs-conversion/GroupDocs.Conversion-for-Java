@@ -1,0 +1,16 @@
+Employee,Quarter,Product,Continent,Country,Sale
+David,1,Maxilaku,Asia,China,2000
+David,2,Maxilaku,Asia,India,500
+David,3,Chai,Asia,Korea,1200
+David,4,Maxilaku,Asia,India,1500
+James,1,Chang,Europe,France,500
+James,2,Chang,Europe,France,1500
+James,3,Chang,Europe,Germany,800
+James,4,Chang,Europe,Italy,900
+James,4,Chang,Europe,France,500
+Miya,1,Geitost,America,U.S.,1600
+Miya,1,Chai,America,U.S.,600
+Miya,2,Geitost,America,Brazil,2000
+Miya,2,Geitost,America,U.S.,500
+Miya,2,Geitost,America,U.S.,900
+Total,,,,,
