@@ -1,5 +1,6 @@
 package com.groupdocs.conversion.examples.quick_start;
 
+import com.groupdocs.conversion.License;
 import com.groupdocs.conversion.examples.Constants;
 
 import java.io.File;

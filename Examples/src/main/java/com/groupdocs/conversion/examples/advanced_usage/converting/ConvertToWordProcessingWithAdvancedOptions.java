@@ -1,6 +1,9 @@
 package com.groupdocs.conversion.examples.advanced_usage.converting;
 
+import com.groupdocs.conversion.Converter;
 import com.groupdocs.conversion.examples.Constants;
+import com.groupdocs.conversion.filetypes.WordProcessingFileType;
+import com.groupdocs.conversion.options.convert.WordProcessingConvertOptions;
 
 import java.io.File;
 

@@ -1,5 +1,8 @@
 package com.groupdocs.conversion.examples.basic_usage;
 
+import com.groupdocs.conversion.Converter;
+import com.groupdocs.conversion.contracts.IDocumentInfo;
+import com.groupdocs.conversion.contracts.PdfDocumentInfo;
 import com.groupdocs.conversion.examples.Constants;
 
 
@@ -15,15 +18,15 @@ public class GetSourceDocumentInfo {
 
             PdfDocumentInfo pdfInfo = (PdfDocumentInfo) info;
 
-            System.out.print("Author: {0}", pdfInfo.getAuthor());
-            System.out.print("Creation date: {0}", pdfInfo.getCreationDate());
-            System.out.print("Title: {0}", pdfInfo.getTitle());
-            System.out.print("Version: {0}", pdfInfo.getVersion());
-            System.out.print("Pages count: {0}", pdfInfo.getPagesCount());
-            System.out.print("Width: {0}", pdfInfo.getWidth());
-            System.out.print("Height: {0}", pdfInfo.getHeight());
-            System.out.print("Is landscaped: {0}", pdfInfo.getIsLandscape());
-            System.out.print("Is Encrypted: {0}", pdfInfo.getIsEncrypted());
+            System.out.print("Author: " + pdfInfo.getAuthor());
+            System.out.print("Creation date: " + pdfInfo.getCreationDate());
+            System.out.print("Title: " + pdfInfo.getTitle());
+            System.out.print("Version: " + pdfInfo.getVersion());
+            System.out.print("Pages count: " + pdfInfo.getPagesCount());
+            System.out.print("Width: " + pdfInfo.getWidth());
+            System.out.print("Height: " + pdfInfo.getHeight());
+            System.out.print("Is landscaped: "+ pdfInfo.isLandscape());
+            System.out.print("Is Encrypted: "+ pdfInfo.isEncrypted());
 
 
         System.out.print("\nDocument info retrieved successfully.");

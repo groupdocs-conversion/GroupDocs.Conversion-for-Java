@@ -1,7 +1,10 @@
 package com.groupdocs.conversion.examples.advanced_usage.loading.load_options_by_document_type.email;
 
 
+import com.groupdocs.conversion.Converter;
 import com.groupdocs.conversion.examples.Constants;
+import com.groupdocs.conversion.options.convert.PdfConvertOptions;
+import com.groupdocs.conversion.options.load.EmailLoadOptions;
 
 import java.io.File;
 
@@ -15,12 +18,10 @@ public class ConvertEmailWithTimezoneOffset {
         String outputFile = new File(outputFolder, "converted.pdf").getPath();
 
 
-        Contracts.Func<LoadOptions> getLoadOptions = () => new EmailLoadOptions
-        {
-            TimeZoneOffset = TimeSpan.FromHours(5)
-        };
+        EmailLoadOptions loadOptions =  new EmailLoadOptions();
+        loadOptions.setTimeZoneOffset(new Double(5));
 
-        Converter converter = new Converter(Constants.SAMPLE_EML, getLoadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_EML, loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(outputFile, options);
 

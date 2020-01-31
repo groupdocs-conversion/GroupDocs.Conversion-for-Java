@@ -1,6 +1,8 @@
 package com.groupdocs.conversion.examples.advanced_usage.loading.loading_documents_from_different_sources;
 
+import com.groupdocs.conversion.Converter;
 import com.groupdocs.conversion.examples.Constants;
+import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 
 import java.io.File;
 

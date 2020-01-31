@@ -1,7 +1,10 @@
 package com.groupdocs.conversion.examples.advanced_usage.loading.loading_documents_from_different_sources;
 
+import com.groupdocs.conversion.Converter;
 import com.groupdocs.conversion.examples.Constants;
-import com.groupdocs.conversion.exception.GroupDocsException;
+
+import com.groupdocs.conversion.exceptions.GroupDocsConversionException;
+import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 import com.microsoft.azure.storage.CloudStorageAccount;
 import com.microsoft.azure.storage.blob.CloudBlob;
 import com.microsoft.azure.storage.blob.CloudBlobClient;
@@ -22,11 +25,11 @@ public class LoadDocumentFromAzureBlobStorage {
         String outputDirectory = Constants.getOutputDirectoryPath(null);
         String outputFile = new File(outputDirectory, "converted.pdf").getPath();
         try {
-        Converter converter = new Converter(DownloadFile(blobName));
+        Converter converter = new Converter(new ByteArrayInputStream(DownloadFile(blobName).toByteArray()));
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(outputFile, options);
         }catch(Exception e){
-            throw new GroupDocsException(e.getMessage());
+            throw new GroupDocsConversionException(e.getMessage());
         }
 
         System.out.print("\nSource document converted successfully.\nCheck output in "+outputDirectory);

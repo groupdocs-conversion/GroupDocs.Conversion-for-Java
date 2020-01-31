@@ -1,6 +1,11 @@
 package com.groupdocs.conversion.examples.advanced_usage.converting;
 
+import com.groupdocs.conversion.Converter;
+import com.groupdocs.conversion.contracts.SavePageStream;
 import com.groupdocs.conversion.examples.Constants;
+import com.groupdocs.conversion.filetypes.ImageFileType;
+import com.groupdocs.conversion.options.convert.ImageConvertOptions;
+import com.groupdocs.conversion.options.convert.ImageFlipModes;
 
 import java.io.File;
 

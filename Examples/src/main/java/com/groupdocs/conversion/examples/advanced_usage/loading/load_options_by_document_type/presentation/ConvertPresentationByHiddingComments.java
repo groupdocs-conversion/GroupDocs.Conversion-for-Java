@@ -1,6 +1,9 @@
 package com.groupdocs.conversion.examples.advanced_usage.loading.load_options_by_document_type.presentation;
 
+import com.groupdocs.conversion.Converter;
 import com.groupdocs.conversion.examples.Constants;
+import com.groupdocs.conversion.options.convert.PdfConvertOptions;
+import com.groupdocs.conversion.options.load.PresentationLoadOptions;
 
 import java.io.File;
 
@@ -13,12 +16,10 @@ public class ConvertPresentationByHiddingComments {
         String outputFolder = Constants.getOutputDirectoryPath(null);
         String outputFile = new File(outputFolder, "converted.pdf").getPath();
 
-        Contracts.Func<LoadOptions> getLoadOptions = () => new PresentationLoadOptions
-        {
-            HideComments = true
-        };
+        PresentationLoadOptions loadOptions = new PresentationLoadOptions();
+        loadOptions.setHideComments(true);
 
-        Converter converter = new Converter(Constants.PPTX_WITH_NOTES, getLoadOptions);
+        Converter converter = new Converter(Constants.PPTX_WITH_NOTES, loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(outputFile, options);
 

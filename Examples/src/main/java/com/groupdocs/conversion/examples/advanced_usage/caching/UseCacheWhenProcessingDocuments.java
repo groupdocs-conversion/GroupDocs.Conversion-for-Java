@@ -14,11 +14,8 @@ public class UseCacheWhenProcessingDocuments {
 
         FileCache cache = new FileCache(cachePath);
 
-
-        Contracts.Func<ConverterSettings> settingsFactory = () => new ConverterSettings
-        {
-            Cache = cache
-        };
+        ConverterSettings settingsFactory =  new ConverterSettings();
+        settingsFactory.setCache(cache);
 
         Converter converter = new Converter(Constants.SAMPLE_DOCX, settingsFactory);
         PdfConvertOptions options = new PdfConvertOptions();

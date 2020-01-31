@@ -1,6 +1,10 @@
 package com.groupdocs.conversion.examples.basic_usage.convert_to_image;
 
+import com.groupdocs.conversion.Converter;
+import com.groupdocs.conversion.contracts.SavePageStream;
 import com.groupdocs.conversion.examples.Constants;
+import com.groupdocs.conversion.filetypes.ImageFileType;
+import com.groupdocs.conversion.options.convert.ImageConvertOptions;
 
 import java.io.File;
 

@@ -1,9 +1,15 @@
 package com.groupdocs.conversion.examples.advanced_usage.loading.load_options_by_document_type.note;
 
 
+import com.groupdocs.conversion.Converter;
+import com.groupdocs.conversion.contracts.FontSubstitute;
 import com.groupdocs.conversion.examples.Constants;
+import com.groupdocs.conversion.options.convert.PdfConvertOptions;
+import com.groupdocs.conversion.options.load.NoteLoadOptions;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
 * This example demonstrates how to convert a note document to pdf with advanced options
@@ -15,17 +21,15 @@ public class ConvertNoteBySpecifyingFontSubstitution {
         String outputFile = new File(outputFolder, "converted.pdf").getPath();
 
 
-        Contracts.Func<LoadOptions> getLoadOptions = () => new NoteLoadOptions
-        {
-            FontSubstitutes = new List<FontSubstitute>
-            {
-                FontSubstitute.Create("Tahoma", "Arial"),
-                        FontSubstitute.Create("Times New Roman", "Arial"),
-            },
-            DefaultFont = "Helvetica"
-        };
+        NoteLoadOptions loadOptions = new NoteLoadOptions();
 
-        Converter converter = new Converter(Constants.SAMPLE_ONE, getLoadOptions);
+        List<FontSubstitute> fontSubstitutes = new ArrayList<FontSubstitute>();
+        fontSubstitutes.add(FontSubstitute.create("Tahoma", "Arial"));
+        fontSubstitutes.add(FontSubstitute.create("Times New Roman", "Arial"));
+        loadOptions.setFontSubstitutes(fontSubstitutes);
+        loadOptions.setDefaultFont("Helvetica");
+
+        Converter converter = new Converter(Constants.SAMPLE_ONE, loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(outputFile, options);
 

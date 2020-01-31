@@ -1,6 +1,8 @@
 package com.groupdocs.conversion.examples.quick_start;
 
+import com.groupdocs.conversion.Converter;
 import com.groupdocs.conversion.examples.Constants;
+import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 
 import java.io.File;
 /**
@@ -15,9 +17,9 @@ public class HelloWorld {
         Converter converter = new Converter(Constants.SAMPLE_DOCX);
 
         PdfConvertOptions options = new PdfConvertOptions();
-        converter.Convert(convertedFile, options);
+        converter.convert(convertedFile, options);
 
 
-        System.out.print("\nSource document converted successfully.\nCheck output in {outputDirectory}.");
+        System.out.print("\nSource document converted successfully.\nCheck output in "+outputDirectory);
     }
 }
