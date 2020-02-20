@@ -1,5 +1,13 @@
 package com.groupdocs.conversion.examples.advanced_usage.loading.loading_documents_from_different_sources;
 
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.S3Object;
+import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import com.groupdocs.conversion.Converter;
 import com.groupdocs.conversion.examples.Constants;
 

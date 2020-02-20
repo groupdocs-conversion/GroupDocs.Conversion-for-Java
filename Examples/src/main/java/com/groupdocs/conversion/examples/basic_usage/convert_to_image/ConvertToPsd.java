@@ -7,6 +7,8 @@ import com.groupdocs.conversion.filetypes.ImageFileType;
 import com.groupdocs.conversion.options.convert.ImageConvertOptions;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 
 /**
@@ -16,14 +18,18 @@ public class ConvertToPsd {
     public static void run()
     {
         String outputFolder = Constants.getOutputDirectoryPath(null);
-        String outputFileTemplate = new File(outputFolder, "converted-page-{0}.psd").getPath();
+        String outputFileTemplate = new File(outputFolder, "converted-page-%s.psd").getPath();
 
-        SavePageStream getPageStream = page => new FileStream(string.Format(outputFileTemplate, page), FileMode.Create);
+        try(FileOutputStream getPageStream = new FileOutputStream(String.format(outputFileTemplate, 1))) {
 
-        Converter converter = new Converter(Constants.SAMPLE_PDF);
-        ImageConvertOptions options = new ImageConvertOptions();
-        options.setFormat(ImageFileType.Psd);
-        converter.convert(getPageStream, options);
+            Converter converter = new Converter(Constants.SAMPLE_PDF);
+            ImageConvertOptions options = new ImageConvertOptions();
+            options.setFormat(ImageFileType.Psd);
+            options.setPagesCount(1);
+            converter.convert(getPageStream, options);
+        } catch (IOException e ){
+            System.out.println(e.getMessage());
+        }
 
 
         System.out.print("\nConversion to psd completed successfully. \nCheck output in " + outputFolder);

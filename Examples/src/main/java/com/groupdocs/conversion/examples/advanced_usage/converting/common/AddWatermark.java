@@ -1,6 +1,9 @@
 package com.groupdocs.conversion.examples.advanced_usage.converting.common;
 
+import com.groupdocs.conversion.Converter;
 import com.groupdocs.conversion.examples.Constants;
+import com.groupdocs.conversion.options.convert.PdfConvertOptions;
+import com.groupdocs.conversion.options.convert.WatermarkOptions;
 
 import java.awt.*;
 import java.io.File;
@@ -20,7 +23,7 @@ public class AddWatermark {
         watermark.setColor(Color.red);
         watermark.setWidth(100);
         watermark.setHeight(100);
-        watermark.setBackground = true;
+        watermark.setBackground(true);
 
         options.setWatermark(watermark);
 

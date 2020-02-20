@@ -1,6 +1,8 @@
 package com.groupdocs.conversion.examples.advanced_usage.converting.common;
 
+import com.groupdocs.conversion.Converter;
 import com.groupdocs.conversion.examples.Constants;
+import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 
 import java.io.File;
 import java.lang.reflect.Array;

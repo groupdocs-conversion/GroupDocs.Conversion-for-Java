@@ -3,7 +3,6 @@ package com.groupdocs.conversion.examples;
 import com.groupdocs.conversion.examples.advanced_usage.converting.*;
 import com.groupdocs.conversion.examples.advanced_usage.converting.common.AddWatermark;
 import com.groupdocs.conversion.examples.advanced_usage.converting.common.ConvertSpecificPages;
-import com.groupdocs.conversion.examples.advanced_usage.listening.ListenConversionStateAndProgress;
 import com.groupdocs.conversion.examples.advanced_usage.loading.LoadPasswordProtectedDocument;
 import com.groupdocs.conversion.examples.advanced_usage.loading.load_options_by_document_type.cad.ConvertCadAndSpecifyLayouts;
 import com.groupdocs.conversion.examples.advanced_usage.loading.load_options_by_document_type.cad.ConvertCadAndSpecifyWidthAndHeight;
@@ -33,7 +32,7 @@ import com.groupdocs.conversion.examples.basic_usage.convert_to_image.ConvertToP
 import com.groupdocs.conversion.examples.basic_usage.convert_to_presentation.ConvertToPresentation;
 import com.groupdocs.conversion.examples.basic_usage.convert_to_spreadsheet.ConvertToSpreadsheet;
 import com.groupdocs.conversion.examples.basic_usage.convert_to_word_processing.ConvertToWordProcessing;
-import com.groupdocs.conversion.examples.basic_usage.Òonvert_to_pdf.ConvertToPdf;
+import com.groupdocs.conversion.examples.basic_usage.—Åonvert_to_pdf.ConvertToPdf;
 import com.groupdocs.conversion.examples.quick_start.HelloWorld;
 import com.groupdocs.conversion.examples.quick_start.SetLicenseFromFile;
 import com.groupdocs.conversion.examples.quick_start.SetLicenseFromStream;
@@ -52,7 +51,7 @@ public class RunExamples {
 
         SetLicenseFromFile.run();
         SetLicenseFromStream.run();
-        SetMeteredLicense.run();
+        //SetMeteredLicense.run(); //todo fails
         HelloWorld.run();
 
         //endregion
@@ -121,9 +120,9 @@ public class RunExamples {
         LoadDocumentFromLocalDisk.run();
         LoadDocumentFromStream.run();
         LoadDocumentFromUrl.run();
-        LoadDocumentFromFtp.run();
-        LoadDocumentFromAmazonS3.run();
-        LoadDocumentFromAzureBlobStorage.run();
+        //LoadDocumentFromFtp.run();
+        //LoadDocumentFromAmazonS3.run();
+        //LoadDocumentFromAzureBlobStorage.run();
 
         //endregion
 
@@ -202,8 +201,6 @@ public class RunExamples {
         ConvertToPresentationWithAdvancedOptions.run();
         ConvertToSpreadsheetWithAdvancedOptions.run();
         ConvertToWordProcessingWithAdvancedOptions.run();
-
-        ListenConversionStateAndProgress.run();
 
         //endregion
 

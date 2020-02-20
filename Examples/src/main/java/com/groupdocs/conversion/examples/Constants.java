@@ -102,7 +102,7 @@ public class Constants {
 
     public static String getOutputDirectoryPath(String callerFilePath )
     {
-        String outputDirectory = new File(OutputPath, callerFilePath).getPath();
+        String outputDirectory = new File(OutputPath, callerFilePath != null ? callerFilePath : "").getPath();
         return outputDirectory;
     }
 

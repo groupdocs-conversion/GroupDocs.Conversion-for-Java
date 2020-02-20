@@ -1,39 +1,37 @@
 package com.groupdocs.conversion.examples.advanced_usage.caching;
 
-public class RedisCache implements ICache, IDisposable {
+import com.groupdocs.conversion.caching.ICache;
 
-    private String _cacheKeyPrefix;
+public class RedisCache implements ICache {
+
+    /*private String _cacheKeyPrefix;
 
     private ConnectionMultiplexer _redis;
     private IDatabase _db;
     private String _host = "192.168.0.1:6379";
 
-    public RedisCache(String cacheKeyPrefix)
-    {
+    public RedisCache(String cacheKeyPrefix) {
         _cacheKeyPrefix = cacheKeyPrefix;
         _redis = ConnectionMultiplexer.Connect(_host);
         _db = _redis.GetDatabase();
     }
 
-    public void Set(String key, Object data)
-    {
+    public void Set(String key, Object data) {
         if (data == null)
             return;
 
         string prefixedKey = GetPrefixedKey(key);
-        using (MemoryStream stream = GetStream(data))
+        using(MemoryStream stream = GetStream(data))
         {
             _db.StringSet(prefixedKey, RedisValue.CreateFrom(stream));
         }
     }
 
-    public boolean TryGetValue(String key, Object value)
-    {
+    public boolean TryGetValue(String key, Object value) {
         var prefixedKey = GetPrefixedKey(key);
         var redisValue = _db.StringGet(prefixedKey);
 
-        if (redisValue.HasValue)
-        {
+        if (redisValue.HasValue) {
             var data = Deserialize(redisValue);
             value = data;
 
@@ -41,37 +39,33 @@ public class RedisCache implements ICache, IDisposable {
         }
 
 
-        value = default;
+        value = default
+        ;
         return false;
     }
 
-    public IEnumerable<string> GetKeys(string filter)
-    {
-        return _redis.GetServer(_host).Keys(pattern: $"*{filter}*")
-        .Select(x => x.ToString().Replace(_cacheKeyPrefix, string.Empty))
-        .Where(x => x.StartsWith(filter, StringComparison.InvariantCultureIgnoreCase))
+    public IEnumerable<string> GetKeys(string filter) {
+        return _redis.GetServer(_host).Keys(pattern:$ "*{filter}*")
+        .Select(x = > x.ToString().Replace(_cacheKeyPrefix, string.Empty))
+        .Where(x = > x.StartsWith(filter, StringComparison.InvariantCultureIgnoreCase))
         .ToList();
     }
 
     private String GetPrefixedKey(string key)
-    => $"{_cacheKeyPrefix}{key}";
+    =>$"{_cacheKeyPrefix}{key}";
 
-    private Object Deserialize(RedisValue redisValue)
-    {
+    private Object Deserialize(RedisValue redisValue) {
         Object data;
-        using (MemoryStream stream = new MemoryStream(redisValue))
+        using(MemoryStream stream = new MemoryStream(redisValue))
         {
             BinaryFormatter formatter = new BinaryFormatter
             {
                 Binder = new IgnoreAssemblyVersionSerializationBinder()
-            };
+            } ;
 
-            try
-            {
+            try {
                 data = formatter.Deserialize(stream);
-            }
-            catch (SerializationException)
-            {
+            } catch (SerializationException) {
                 data = null;
             }
         }
@@ -79,8 +73,7 @@ public class RedisCache implements ICache, IDisposable {
         return data;
     }
 
-    private MemoryStream GetStream(Object data)
-    {
+    private MemoryStream GetStream(Object data) {
         MemoryStream result = new MemoryStream();
 
         if (data is Stream stream)
@@ -97,12 +90,11 @@ public class RedisCache implements ICache, IDisposable {
         return result;
     }
 
-    public void Dispose()
-    {
+    public void Dispose() {
         _redis.Dispose();
     }
 
-    private class IgnoreAssemblyVersionSerializationBinder : SerializationBinder
+    private class IgnoreAssemblyVersionSerializationBinder :SerializationBinder
 
     {
         public override Type BindToType(string assemblyName, string typeName)
@@ -112,5 +104,20 @@ public class RedisCache implements ICache, IDisposable {
 
             return type;
         }
+    }*/
+
+    //todo delete
+    public void set(String var1, Object var2) {
+
+    }
+
+    //todo delete
+    public Object tryGetValue(String var1) {
+        return null;
+    }
+
+    //todo delete
+    public  Iterable<String> getKeys(String var1) {
+        return null;
     }
 }
