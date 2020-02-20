@@ -32,11 +32,11 @@ import com.groupdocs.conversion.examples.basic_usage.convert_to_image.ConvertToP
 import com.groupdocs.conversion.examples.basic_usage.convert_to_presentation.ConvertToPresentation;
 import com.groupdocs.conversion.examples.basic_usage.convert_to_spreadsheet.ConvertToSpreadsheet;
 import com.groupdocs.conversion.examples.basic_usage.convert_to_word_processing.ConvertToWordProcessing;
-import com.groupdocs.conversion.examples.basic_usage.сonvert_to_pdf.ConvertToPdf;
+import com.groupdocs.conversion.examples.basic_usage.convert_to_pdf.ConvertToPdf;
 import com.groupdocs.conversion.examples.quick_start.HelloWorld;
 import com.groupdocs.conversion.examples.quick_start.SetLicenseFromFile;
 import com.groupdocs.conversion.examples.quick_start.SetLicenseFromStream;
-import com.groupdocs.conversion.examples.quick_start.SetMeteredLicense;
+//import com.groupdocs.conversion.examples.quick_start.SetMeteredLicense;
 
 public class RunExamples {
 
@@ -47,133 +47,84 @@ public class RunExamples {
 
         //NOTE: Please uncomment the example you want to try out
 
-        //region Quick Start
+        // Quick Start
 
         SetLicenseFromFile.run();
         SetLicenseFromStream.run();
         //SetMeteredLicense.run(); //todo fails
-        HelloWorld.run();
+        
+        HelloWorld.run();        
 
-        //endregion
-
-        //region Basic Usage
-
+        // Basic Usage
         GetPossibleConversions.run();
         GetSourceDocumentInfo.run();
 
-        //region Convert document to HTML
-
+        // Convert document to HTML
         ConvertToHtml.run();
 
-        //endregion
-
-        //region Convert document to Image
-
+        // Convert document to Image
         ConvertToJpg.run();
         ConvertToPng.run();
-        ConvertToPsd.run();
+        ConvertToPsd.run();       
 
-        //endregion
+        // Convert document to PDF
+        ConvertToPdf.run();        
 
-        //region Convert document to PDF
+        // Convert document to Presentation
+        ConvertToPresentation.run();        
 
-        ConvertToPdf.run();
+        // Convert document to Spreadsheet
+        ConvertToSpreadsheet.run();        
 
-        //endregion
-
-        //region Convert document to Presentation
-
-        ConvertToPresentation.run();
-
-        //endregion
-
-        //region Convert document to Spreadsheet
-
-        ConvertToSpreadsheet.run();
-
-        //endregion
-
-        //region Convert document to WordProcessing
-
+        // Convert document to WordProcessing
         ConvertToWordProcessing.run();
+               
 
-        //endregion
-
-        //endregion
-
-        //region Advanced Usage
-
-        //region Common rendering options
-
-
+        // Advanced Usage
+        // Common rendering options
         AddWatermark.run();
-        ConvertSpecificPages.run();
+        ConvertSpecificPages.run();        
 
-        //endregion
-
-        //region Loading
-
+        // Loading
         LoadPasswordProtectedDocument.run();
 
-        //region Loading documents from different sources
-
+        // Loading documents from different sources
         LoadDocumentFromLocalDisk.run();
         LoadDocumentFromStream.run();
-        LoadDocumentFromUrl.run();
+        //LoadDocumentFromUrl.run(); // TODO: Check - An exception occured while executing the Java class. com.groupdocs.conversion.internal.c.a.w.FileCorruptedException cannot be cast to java.lang.RuntimeException
         //LoadDocumentFromFtp.run();
         //LoadDocumentFromAmazonS3.run();
         //LoadDocumentFromAzureBlobStorage.run();
 
-        //endregion
+        // Load options by document type
+        // Cad
+        //ConvertCadAndSpecifyLayouts.run(); // TODO - com.groupdocs.conversion.exceptions.FileTypeNotSupportedException: Can not save a to pdf
+        
+        //ConvertCadAndSpecifyWidthAndHeight.run();   // TODO - com.groupdocs.conversion.exceptions.FileTypeNotSupportedException: Can not save a to pdf    
 
-        //region Load options by document type
-
-        //region Cad
-
-        ConvertCadAndSpecifyLayouts.run();
-        ConvertCadAndSpecifyWidthAndHeight.run();
-
-        //endregion
-
-        //region Csv
-
+        // Csv
         ConvertCsvByConvertingDateTimeAndNumericData.run();
         ConvertCsvBySpecifyingDelimiter.run();
-        ConvertCsvBySpecifyingEncoding.run();
+        ConvertCsvBySpecifyingEncoding.run();        
 
-        //endregion
-
-        //region Email
-
+        // Email
         ConvertEmailWithAlteringFieldsVisibility.run();
-        ConvertEmailWithTimezoneOffset.run();
+        ConvertEmailWithTimezoneOffset.run();        
 
-        //endregion
+        // Note
+        //ConvertNoteBySpecifyingFontSubstitution.run();        // TODO - Caused by: com.groupdocs.conversion.internal.c.a.n.system.exceptions.d: DefaultFont is not initialized properly: null Parameter name: DefaultFont
 
-        //region Note
-
-        ConvertNoteBySpecifyingFontSubstitution.run();
-
-        //endregion
-
-        //region Pdf
-
+        // Pdf
         ConvertPdfAndFlattenAllFields.run();
         ConvertPdfAndHideAnnotations.run();
         ConvertPdfAndRemoveEmbeddedFiles.run();
 
-        //endregion
-
-        //region Presentation
-
+        // Presentation
         ConvertPresentationByHiddingComments.run();
         ConvertPresentationBySpecifyingFontSubstitution.run();
         ConvertPresentationWithHiddenSlidesIncluded.run();
 
-        //endregion
-
-        //region Spreadsheet
-
+        // Spreadsheet
         ConvertSpreadsheetAndHideComments.run();
         ConvertSpreadsheetByShowingGridLines.run();
         ConvertSpreadsheetBySkippingEmptyRowsAndColumns.run();
@@ -181,31 +132,21 @@ public class RunExamples {
         ConvertSpreadsheetBySpecifyingRange.run();
         ConvertSpreadsheetWithHiddenSheetsIncluded.run();
 
-        //endregion
 
-        //region WordProcessing
-
+        // WordProcessing
         ConvertWordProcessingByHiddingComments.run();
         ConvertWordProcessingByHiddingTrackedChanges.run();
         ConvertWordProcessingBySpecifyingFontSubstitution.run();
 
-        //endregion
-
-        //endregion
-
-        //endregion
-
+        // Convert options
         ConvertToHtmlWithAdvancedOptions.run();
-        ConvertToImageWithAdvancedOptions.run();
+        //ConvertToImageWithAdvancedOptions.run(); // TODO - com.groupdocs.conversion.internal.c.a.ms.System.NotSupportedException: Saving complete multi page document to image is not supported. Please save by page.
+        
         ConvertToPdfWithAdvancedOptions.run();
         ConvertToPresentationWithAdvancedOptions.run();
         ConvertToSpreadsheetWithAdvancedOptions.run();
         ConvertToWordProcessingWithAdvancedOptions.run();
-
-        //endregion
-
+        
         System.out.print("\nAll done.");
-
-	
 	}
 }

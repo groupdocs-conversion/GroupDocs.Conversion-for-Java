@@ -1,4 +1,4 @@
-package com.groupdocs.conversion.examples.basic_usage.сonvert_to_pdf;
+package com.groupdocs.conversion.examples.basic_usage.convert_to_pdf;
 
 import com.groupdocs.conversion.Converter;
 import com.groupdocs.conversion.examples.Constants;

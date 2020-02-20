@@ -8,7 +8,7 @@ public class Constants {
     public static String LicensePath = (System.getProperty("user.dir") + "\\Resources\\GroupDocs.Conversion.lic");
     public static String SamplesPath = (System.getProperty("user.dir") +"\\Resources\\SampleFiles\\");
     public static String FontsPath = (System.getProperty("user.dir") +"\\Resources\\Fonts\\");
-    public static String OutputPath = (System.getProperty("user.dir") +"\\Output\\");
+    public static String OutputPath = (System.getProperty("user.dir") +"\\Resources\\Output\\");
 
     // CAD
     public static String SAMPLE_DWG_WITH_LAYOUTS_AND_LAYERS =
