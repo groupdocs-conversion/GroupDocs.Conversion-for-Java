@@ -22,18 +22,20 @@ public class LoadDocumentFromAzureBlobStorage {
     public static void run()
     {
         String blobName = "sample.docx";
-        String outputDirectory = Constants.getOutputDirectoryPath(null);
-        String outputFile = new File(outputDirectory, "converted.pdf").getPath();
+        String convertedFile = Constants.getConvertedPath("LoadDocumentFromAzureBlobStorage.pdf"); 
+        
         try {
         Converter converter = new Converter(new ByteArrayInputStream(DownloadFile(blobName).toByteArray()));
         PdfConvertOptions options = new PdfConvertOptions();
-        converter.convert(outputFile, options);
-        }catch(Exception e){
+        converter.convert(convertedFile, options);
+        }
+        catch(Exception e){
             throw new GroupDocsConversionException(e.getMessage());
         }
 
-        System.out.print("\nSource document converted successfully.\nCheck output in "+outputDirectory);
+        System.out.print("\nSource document converted successfully.\nCheck output in "+ convertedFile);
     }
+    
     public static final String STORAGE_CONNECTION_STRING
             = "DefaultEndpointsProtocol=https;"
             + "AccountName=Ram;" //Your account name.

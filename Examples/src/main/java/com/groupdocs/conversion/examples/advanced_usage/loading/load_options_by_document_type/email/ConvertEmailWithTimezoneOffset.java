@@ -14,17 +14,13 @@ import java.io.File;
 public class ConvertEmailWithTimezoneOffset {
     public static void run()
     {
-        String outputFolder = Constants.getOutputDirectoryPath(null);
-        String outputFile = new File(outputFolder, "converted.pdf").getPath();
-
-
+        String convertedFile =  Constants.getConvertedPath("ConvertEmailWithTimezoneOffset.pdf");   
         EmailLoadOptions loadOptions =  new EmailLoadOptions();
         loadOptions.setTimeZoneOffset(new Double(5));
-
         Converter converter = new Converter(Constants.SAMPLE_EML, loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
-        converter.convert(outputFile, options);
+        converter.convert(convertedFile, options);
 
-        System.out.print("\nEmail document converted successfully. \nCheck output in " + outputFolder);
+        System.out.print("\nEmail document converted successfully. \nCheck output in " + convertedFile);
     }
 }

@@ -13,17 +13,13 @@ import java.io.File;
 public class ConvertPdfAndHideAnnotations {
     public static void run()
     {
-        String outputFolder = Constants.getOutputDirectoryPath(null);
-        String outputFile = new File(outputFolder, "converted.docx").getPath();
-
-
+        String convertedFile = Constants.getConvertedPath("ConvertPdfAndHideAnnotations.docx");    
         PdfLoadOptions loadOptions = new PdfLoadOptions();
         loadOptions.setHidePdfAnnotations(true);
-
         Converter converter = new Converter(Constants.SAMPLE_PDF, loadOptions);
         WordProcessingConvertOptions options = new WordProcessingConvertOptions();
-        converter.convert(outputFile, options);
+        converter.convert(convertedFile, options);
 
-        System.out.print("\nPdf document converted successfully. \nCheck output in "+ outputFolder);
+        System.out.print("\nPdf document converted successfully. \nCheck output in "+ convertedFile);
     }
 }

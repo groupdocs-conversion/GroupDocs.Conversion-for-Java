@@ -17,12 +17,8 @@ import java.util.List;
 public class ConvertNoteBySpecifyingFontSubstitution {
     public static void run()
     {
-        String outputFolder = Constants.getOutputDirectoryPath(null);
-        String outputFile = new File(outputFolder, "converted.pdf").getPath();
-
-
+        String convertedFile =  Constants.getConvertedPath("ConvertNoteBySpecifyingFontSubstitution.pdf");   
         NoteLoadOptions loadOptions = new NoteLoadOptions();
-
         List<FontSubstitute> fontSubstitutes = new ArrayList<FontSubstitute>();
         fontSubstitutes.add(FontSubstitute.create("Tahoma", "Arial"));
         fontSubstitutes.add(FontSubstitute.create("Times New Roman", "Arial"));
@@ -31,8 +27,8 @@ public class ConvertNoteBySpecifyingFontSubstitution {
 
         Converter converter = new Converter(Constants.SAMPLE_ONE, loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
-        converter.convert(outputFile, options);
+        converter.convert(convertedFile, options);
 
-        System.out.print("\nNote document converted successfully. \nCheck output in " + outputFolder);
+        System.out.print("\nNote document converted successfully. \nCheck output in " + convertedFile);
     }
 }

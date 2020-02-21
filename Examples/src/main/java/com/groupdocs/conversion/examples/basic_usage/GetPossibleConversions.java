@@ -14,15 +14,16 @@ public class GetPossibleConversions {
     public static void run()
     {
         Converter converter = new Converter(Constants.SAMPLE_DOCX);
-
         PossibleConversions conversions = converter.getPossibleConversions();
 
-        System.out.print(Constants.SAMPLE_DOCX +" is of type "+conversions.getSource().getExtension()+" and could be converted to:" );
+        System.out.print(String.format("%s is of type %s and could be converted to:\n",
+            Constants.SAMPLE_DOCX, conversions.getSource().getExtension()));
 
         for(Pair<FileType, Boolean> conversion : conversions.getAll())
         {
-            System.out.print(String.format("\t %s as %s conversion.", conversion.getKey().toString(), conversion.getValue() ? "primary" : "secondary"));
+            System.out.print(String.format("\t %s as %s conversion.\n", conversion.getKey().toString(), conversion.getValue() ? "primary" : "secondary"));
         }
+
         System.out.print("\nPossible conversions retrieved successfully.");
     }
 }

@@ -15,17 +15,13 @@ import java.nio.charset.Charset;
 public class ConvertTxtBySpecifyingEncoding {
     public static void run()
     {
-        String outputFolder = Constants.getOutputDirectoryPath(null);
-        String outputFile = new File(outputFolder, "converted.pdf").getPath();
-
+        String convertedFile = Constants.getConvertedPath("ConvertTxtBySpecifyingEncoding.pdf");        
         TxtLoadOptions loadOptions =  new TxtLoadOptions();
         loadOptions.setEncoding(Charset.forName("shift_jis"));
-
         Converter converter = new Converter(Constants.SAMPLE_TXT_SHIFT_JS_ENCODED, loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
-        converter.convert(outputFile, options);
+        converter.convert(convertedFile, options);
 
-
-        System.out.print("\nTxt document converted successfully. \nCheck output in " + outputFolder);
+        System.out.print("\nTxt document converted successfully. \nCheck output in " + convertedFile);
     }
 }

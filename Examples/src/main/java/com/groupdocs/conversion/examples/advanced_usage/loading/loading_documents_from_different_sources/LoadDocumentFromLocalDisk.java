@@ -13,16 +13,12 @@ import java.io.File;
 public class LoadDocumentFromLocalDisk {
     public static void run()
     {
-        String outputDirectory = Constants.getOutputDirectoryPath(null);
-        String outputFile = new File(outputDirectory, "converted.pdf").getPath();
+        String convertedFile =  Constants.getConvertedPath("LoadDocumentFromLocalDisk.pdf");
         String filePath = Constants.SAMPLE_DOCX;
-
         Converter converter = new Converter(filePath);
         PdfConvertOptions options = new PdfConvertOptions();
+        converter.convert(convertedFile, options);
 
-        converter.convert(outputFile, options);
-
-
-        System.out.println("\nSource document converted successfully.\nCheck output in "+outputDirectory);
+        System.out.println("\nSource document converted successfully.\nCheck output in "+ convertedFile);
     }
 }

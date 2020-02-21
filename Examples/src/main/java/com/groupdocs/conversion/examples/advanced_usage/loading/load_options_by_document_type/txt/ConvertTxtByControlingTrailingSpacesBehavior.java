@@ -15,18 +15,13 @@ import java.io.File;
 public class ConvertTxtByControlingTrailingSpacesBehavior {
     public static void run()
     {
-        String outputFolder = Constants.getOutputDirectoryPath(null);
-        String outputFile = new File(outputFolder, "converted.pdf").getPath();
-
-
+        String convertedFile = Constants.getConvertedPath("ConvertTxtByControlingLeadingSpacesBehavior.pdf");  
         TxtLoadOptions loadOptions =  new TxtLoadOptions();
         loadOptions.setTrailingSpacesOptions(TxtTrailingSpacesOptions.Trim);
-
         Converter converter = new Converter(Constants.SAMPLE_TXT, loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
-        converter.convert(outputFile, options);
+        converter.convert(convertedFile, options);
 
-
-        System.out.print("\nTxt document converted successfully. \nCheck output in "+ outputFolder);
+        System.out.print("\nTxt document converted successfully. \nCheck output in "+ convertedFile);
     }
 }

@@ -16,9 +16,7 @@ import java.util.List;
 public class ConvertWordProcessingBySpecifyingFontSubstitution {
     public static void run()
     {
-        String outputFolder = Constants.getOutputDirectoryPath(null);
-        String outputFile = new File(outputFolder, "converted.pdf").getPath();
-
+        String convertedFile = Constants.getConvertedPath("ConvertWordProcessingBySpecifyingFontSubstitution.pdf");        
         WordProcessingLoadOptions loadOptions = new WordProcessingLoadOptions();
         loadOptions.setAutoFontSubstitution(false);
         loadOptions.setDefaultFont("Helvetica");
@@ -27,11 +25,10 @@ public class ConvertWordProcessingBySpecifyingFontSubstitution {
         fontSubstitutes.add(FontSubstitute.create("Times New Roman", "Arial"));
         loadOptions.setAutoFontSubstitution(false);
         loadOptions.setFontSubstitutes(fontSubstitutes);
-
         Converter converter = new Converter(Constants.SAMPLE_DOCX_WITH_TRACKED_CHANGES, loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
-        converter.convert(outputFile, options);
+        converter.convert(convertedFile, options);
 
-        System.out.print("\nWordProcessing document converted successfully. \nCheck output in "+ outputFolder);
+        System.out.print("\nWordProcessing document converted successfully. \nCheck output in "+ convertedFile);
     }
 }

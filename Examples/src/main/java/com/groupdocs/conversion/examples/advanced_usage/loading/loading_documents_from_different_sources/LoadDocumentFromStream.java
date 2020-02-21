@@ -14,20 +14,16 @@ import java.io.FileInputStream;
 */
 public class LoadDocumentFromStream {
     public static void run()
-    {
-        String outputDirectory = Constants.getOutputDirectoryPath(null);
-        String outputFile = new File(outputDirectory, "converted.pdf").getPath();
+    {        
+        String convertedFile =  Constants.getConvertedPath("LoadDocumentFromStream.pdf");
 
     try{
         Converter converter = new Converter(new FileInputStream(Constants.SAMPLE_DOCX));
         PdfConvertOptions options = new PdfConvertOptions();
-
-        converter.convert(outputFile, options);
+        converter.convert(convertedFile, options);
     } catch (Exception e){
         throw new GroupDocsConversionException(e.getMessage());
     }
-
-        System.out.println("\nSource document converted successfully.\nCheck output in " + outputDirectory);
+        System.out.println("\nSource document converted successfully.\nCheck output in " + convertedFile);
     }
-
 }

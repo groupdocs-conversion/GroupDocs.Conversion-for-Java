@@ -14,17 +14,13 @@ import java.io.File;
 public class ConvertCsvBySpecifyingDelimiter {
     public static void run()
     {
-        String outputFolder = Constants.getOutputDirectoryPath(null);
-        String outputFile = new File(outputFolder, "converted.pdf").getPath();
-
+        String convertedFile =  Constants.getConvertedPath("ConvertCsvBySpecifyingDelimiter.pdf");
         CsvLoadOptions loadOptions = new CsvLoadOptions();
         loadOptions.setSeparator(',');
-
         Converter converter = new Converter(Constants.SAMPLE_CSV, loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
-        converter.convert(outputFile, options);
+        converter.convert(convertedFile, options);
 
-
-        System.out.print("\nCsv document converted successfully. \nCheck output in "+ outputFolder);
+        System.out.print("\nCsv document converted successfully. \nCheck output in "+ convertedFile);
     }
 }

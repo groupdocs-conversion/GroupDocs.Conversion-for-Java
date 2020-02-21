@@ -14,14 +14,10 @@ import java.io.File;
 */
 public class ConvertToPdfWithAdvancedOptions {
     public static void run()
-    {
-        String outputFolder = Constants.getOutputDirectoryPath(null);
-        String outputFile = new File(outputFolder, "converted.pdf").getPath();
-
-
+    {        
+        String convertedFile =  Constants.getConvertedPath("ConvertToPdfWithAdvancedOptions.pdf");  
         WordProcessingLoadOptions loadOptions = new WordProcessingLoadOptions();
         loadOptions.setPassword("12345");
-
         Converter converter = new Converter(Constants.SAMPLE_DOCX_WITH_PASSWORD, loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         options.setPageNumber(2);
@@ -30,9 +26,8 @@ public class ConvertToPdfWithAdvancedOptions {
         options.setDpi(300);
         options.setWidth(1024);
         options.setHeight(768);
+        converter.convert(convertedFile, options);
 
-        converter.convert(outputFile, options);
-
-        System.out.print("\nPassword protected document converted successfully. \nCheck output in " + outputFolder);
+        System.out.print("\nPassword protected document converted successfully. \nCheck output in " + convertedFile);
     }
 }

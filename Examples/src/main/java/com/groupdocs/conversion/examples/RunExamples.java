@@ -40,113 +40,111 @@ import com.groupdocs.conversion.examples.quick_start.SetLicenseFromStream;
 
 public class RunExamples {
 
-	public static void main(String[] args) throws Throwable {
+        public static void main(String[] args) throws Throwable 
+        {
 
-        System.out.print("Open RunExamples.cs. \nIn Main() method uncomment the example that you want to run.");
-        System.out.print("=====================================================");
+                System.out.print("Open RunExamples.cs. \nIn Main() method uncomment the example that you want to run.");
+                System.out.print("=====================================================");
 
-        //NOTE: Please uncomment the example you want to try out
+                //NOTE: Please uncomment the example you want to try out
 
-        // Quick Start
-
-        SetLicenseFromFile.run();
-        SetLicenseFromStream.run();
-        //SetMeteredLicense.run(); //todo fails
+                // Quick Start
+                SetLicenseFromFile.run();
+                SetLicenseFromStream.run();
+                //SetMeteredLicense.run(); //todo fails
         
-        HelloWorld.run();        
+                HelloWorld.run();        
 
-        // Basic Usage
-        GetPossibleConversions.run();
-        GetSourceDocumentInfo.run();
+                // Basic Usage
+                GetPossibleConversions.run();
+                GetSourceDocumentInfo.run();
 
-        // Convert document to HTML
-        ConvertToHtml.run();
-
-        // Convert document to Image
-        ConvertToJpg.run();
-        ConvertToPng.run();
-        ConvertToPsd.run();       
-
-        // Convert document to PDF
-        ConvertToPdf.run();        
-
-        // Convert document to Presentation
-        ConvertToPresentation.run();        
-
-        // Convert document to Spreadsheet
-        ConvertToSpreadsheet.run();        
-
-        // Convert document to WordProcessing
-        ConvertToWordProcessing.run();
-               
-
-        // Advanced Usage
-        // Common rendering options
-        AddWatermark.run();
-        ConvertSpecificPages.run();        
-
-        // Loading
-        LoadPasswordProtectedDocument.run();
-
-        // Loading documents from different sources
-        LoadDocumentFromLocalDisk.run();
-        LoadDocumentFromStream.run();
-        //LoadDocumentFromUrl.run(); // TODO: Check - An exception occured while executing the Java class. com.groupdocs.conversion.internal.c.a.w.FileCorruptedException cannot be cast to java.lang.RuntimeException
-        //LoadDocumentFromFtp.run();
-        //LoadDocumentFromAmazonS3.run();
-        //LoadDocumentFromAzureBlobStorage.run();
-
-        // Load options by document type
-        // Cad
-        //ConvertCadAndSpecifyLayouts.run(); // TODO - com.groupdocs.conversion.exceptions.FileTypeNotSupportedException: Can not save a to pdf
+                // Convert document to HTML
+                ConvertToHtml.run();
+                
+                // Convert document to Image        
+                ConvertToJpg.run(); // TODO - Check file name format logic
         
-        //ConvertCadAndSpecifyWidthAndHeight.run();   // TODO - com.groupdocs.conversion.exceptions.FileTypeNotSupportedException: Can not save a to pdf    
+                ConvertToPng.run(); // TODO - Check file name format logic
+                ConvertToPsd.run();  // TODO - Check file name format logic      
 
-        // Csv
-        ConvertCsvByConvertingDateTimeAndNumericData.run();
-        ConvertCsvBySpecifyingDelimiter.run();
-        ConvertCsvBySpecifyingEncoding.run();        
+                // Convert document to PDF
+                ConvertToPdf.run();       
 
-        // Email
-        ConvertEmailWithAlteringFieldsVisibility.run();
-        ConvertEmailWithTimezoneOffset.run();        
+                // Convert document to Presentation
+                ConvertToPresentation.run();         
 
-        // Note
-        //ConvertNoteBySpecifyingFontSubstitution.run();        // TODO - Caused by: com.groupdocs.conversion.internal.c.a.n.system.exceptions.d: DefaultFont is not initialized properly: null Parameter name: DefaultFont
-
-        // Pdf
-        ConvertPdfAndFlattenAllFields.run();
-        ConvertPdfAndHideAnnotations.run();
-        ConvertPdfAndRemoveEmbeddedFiles.run();
-
-        // Presentation
-        ConvertPresentationByHiddingComments.run();
-        ConvertPresentationBySpecifyingFontSubstitution.run();
-        ConvertPresentationWithHiddenSlidesIncluded.run();
-
-        // Spreadsheet
-        ConvertSpreadsheetAndHideComments.run();
-        ConvertSpreadsheetByShowingGridLines.run();
-        ConvertSpreadsheetBySkippingEmptyRowsAndColumns.run();
-        ConvertSpreadsheetBySpecifyingFontsubstitution.run();
-        ConvertSpreadsheetBySpecifyingRange.run();
-        ConvertSpreadsheetWithHiddenSheetsIncluded.run();
+                // Convert document to Spreadsheet
+                ConvertToSpreadsheet.run();  // TODO - Worksheet is broken https://prnt.sc/r5k7hk    
+                // Convert document to WordProcessing
+                // ConvertToWordProcessing.run(); // TODO - Doc is broken https://prnt.sc/r5kexx
 
 
-        // WordProcessing
-        ConvertWordProcessingByHiddingComments.run();
-        ConvertWordProcessingByHiddingTrackedChanges.run();
-        ConvertWordProcessingBySpecifyingFontSubstitution.run();
-
-        // Convert options
-        ConvertToHtmlWithAdvancedOptions.run();
-        //ConvertToImageWithAdvancedOptions.run(); // TODO - com.groupdocs.conversion.internal.c.a.ms.System.NotSupportedException: Saving complete multi page document to image is not supported. Please save by page.
+                // Advanced Usage
+                // Common rendering options
+                AddWatermark.run();             // TODO - watermark.setColor(Color.red); doesn't work
+                ConvertSpecificPages.run();     // TODO - wrong converted pages count (possibly because of trial watermarks)   
         
-        ConvertToPdfWithAdvancedOptions.run();
-        ConvertToPresentationWithAdvancedOptions.run();
-        ConvertToSpreadsheetWithAdvancedOptions.run();
-        ConvertToWordProcessingWithAdvancedOptions.run();
+                // Loading
+                LoadPasswordProtectedDocument.run();
+
+                // Loading documents from different sources
+                LoadDocumentFromLocalDisk.run();
+                LoadDocumentFromStream.run();
+                //LoadDocumentFromUrl.run(); // TODO: Check - An exception occured while executing the Java class. com.groupdocs.conversion.internal.c.a.w.FileCorruptedException cannot be cast to java.lang.RuntimeException
+                //LoadDocumentFromFtp.run();
+                //LoadDocumentFromAmazonS3.run();
+                //LoadDocumentFromAzureBlobStorage.run();
+
+                // Load options by document type
+                // Cad
+                //ConvertCadAndSpecifyLayouts.run(); // TODO - com.groupdocs.conversion.exceptions.FileTypeNotSupportedException: Can not save a to pdf
+                //ConvertCadAndSpecifyWidthAndHeight.run();   // TODO - com.groupdocs.conversion.exceptions.FileTypeNotSupportedException: Can not save a to pdf    
+
+                // Csv
+                ConvertCsvByConvertingDateTimeAndNumericData.run();
+                ConvertCsvBySpecifyingDelimiter.run();
+                ConvertCsvBySpecifyingEncoding.run();        
+
+                // Email
+                ConvertEmailWithAlteringFieldsVisibility.run();
+                ConvertEmailWithTimezoneOffset.run();        
+
+                // Note
+                //ConvertNoteBySpecifyingFontSubstitution.run();        // TODO - Caused by: com.groupdocs.conversion.internal.c.a.n.system.exceptions.d: DefaultFont is not initialized properly: null Parameter name: DefaultFont
         
-        System.out.print("\nAll done.");
+                // Pdf
+                ConvertPdfAndFlattenAllFields.run(); // TODO - Broken result file
+                ConvertPdfAndHideAnnotations.run(); // TODO - Broken result file
+                ConvertPdfAndRemoveEmbeddedFiles.run(); // TODO - Broken result file
+
+                // Presentation
+                ConvertPresentationByHiddingComments.run();
+                ConvertPresentationBySpecifyingFontSubstitution.run();
+                ConvertPresentationWithHiddenSlidesIncluded.run();
+
+                // Spreadsheet
+                ConvertSpreadsheetAndHideComments.run();
+                ConvertSpreadsheetByShowingGridLines.run();
+                ConvertSpreadsheetBySkippingEmptyRowsAndColumns.run();
+                ConvertSpreadsheetBySpecifyingFontsubstitution.run();
+                ConvertSpreadsheetBySpecifyingRange.run();
+                ConvertSpreadsheetWithHiddenSheetsIncluded.run();
+
+                // WordProcessing
+                ConvertWordProcessingByHiddingComments.run();
+                ConvertWordProcessingByHiddingTrackedChanges.run();
+                ConvertWordProcessingBySpecifyingFontSubstitution.run();
+
+                // Convert options
+                ConvertToHtmlWithAdvancedOptions.run();
+                //ConvertToImageWithAdvancedOptions.run(); // TODO - com.groupdocs.conversion.internal.c.a.ms.System.NotSupportedException: Saving complete multi page document to image is not supported. Please save by page.
+        
+                ConvertToPdfWithAdvancedOptions.run();
+                ConvertToPresentationWithAdvancedOptions.run();
+                ConvertToSpreadsheetWithAdvancedOptions.run();
+                ConvertToWordProcessingWithAdvancedOptions.run(); // TODO - Broken result file
+                
+                System.out.print("\nAll done.");
 	}
 }

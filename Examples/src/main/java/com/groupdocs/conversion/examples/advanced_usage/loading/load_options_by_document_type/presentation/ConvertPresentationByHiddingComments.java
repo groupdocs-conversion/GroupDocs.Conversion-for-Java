@@ -13,17 +13,13 @@ import java.io.File;
 public class ConvertPresentationByHiddingComments {
     public static void run()
     {
-        String outputFolder = Constants.getOutputDirectoryPath(null);
-        String outputFile = new File(outputFolder, "converted.pdf").getPath();
-
+        String convertedFile = Constants.getConvertedPath("ConvertPresentationByHiddingComments.pdf");                  
         PresentationLoadOptions loadOptions = new PresentationLoadOptions();
         loadOptions.setHideComments(true);
-
         Converter converter = new Converter(Constants.PPTX_WITH_NOTES, loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
-        converter.convert(outputFile, options);
+        converter.convert(convertedFile, options);
 
-
-        System.out.print("\nPresentation document converted successfully. \nCheck output in "+ outputFolder);
+        System.out.print("\nPresentation document converted successfully. \nCheck output in "+ convertedFile);
     }
 }

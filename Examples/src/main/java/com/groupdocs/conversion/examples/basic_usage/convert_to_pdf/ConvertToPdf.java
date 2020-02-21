@@ -12,14 +12,12 @@ import java.io.File;
 */
 public class ConvertToPdf {
     public static void run()
-    {
-        String outputFolder = Constants.getOutputDirectoryPath(null);
-        String outputFile = new File(outputFolder, "converted.pdf").getPath();
-
+    {        
+        String convertedFile =  Constants.getConvertedPath("ConvertToPdf.pdf");
         Converter converter = new Converter(Constants.SAMPLE_DOCX);
         PdfConvertOptions options = new PdfConvertOptions();
-        converter.convert(outputFile, options);
+        converter.convert(convertedFile, options);
 
-        System.out.print("\nConversion to pdf completed successfully. \nCheck output in " + outputFolder);
+        System.out.print("\nConversion to pdf completed successfully. \nCheck output in " + convertedFile);
     }
 }

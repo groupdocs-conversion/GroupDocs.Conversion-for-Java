@@ -18,8 +18,7 @@ import java.util.zip.ZipInputStream;
 public class HelloWorld {
     public static void run()
     {
-        String outputDirectory = Constants.getOutputDirectoryPath("");
-        String convertedFile =  new File(outputDirectory, "converted.pdf").getPath();
+        String convertedFile =  Constants.getConvertedPath("HelloWorld.pdf");
 
         Converter converter = new Converter(Constants.SAMPLE_DOCX);
 
@@ -27,6 +26,6 @@ public class HelloWorld {
         converter.convert(convertedFile, options);
 
 
-        System.out.print("\nSource document converted successfully.\nCheck output in "+outputDirectory);
+        System.out.print("\nSource document converted successfully.\nCheck output in "+ convertedFile);
     }
 }

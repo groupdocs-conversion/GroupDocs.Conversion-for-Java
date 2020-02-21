@@ -17,9 +17,8 @@ import java.io.IOException;
 public class ConvertToImageWithAdvancedOptions {
     public static void run()
     {
-        String outputFolder = Constants.getOutputDirectoryPath(null);
-        String outputFileTemplate = new File(outputFolder, "converted-page-{0}.png").getPath();
-
+        String outputFileTemplate = Constants.getConvertedPath("ConvertToImageWithAdvancedOptions-converted-page-{0}.png"); 
+       
         try {
             FileOutputStream getPageStream = new FileOutputStream(String.format(outputFileTemplate, 1));
 
@@ -41,6 +40,6 @@ public class ConvertToImageWithAdvancedOptions {
         }
 
 
-        System.out.print("\nDocument converted successfully. \nCheck output in " + outputFolder);
+        System.out.print("\nDocument converted successfully. \nCheck output in " + Constants.getConvertedPath(""));
     }
 }

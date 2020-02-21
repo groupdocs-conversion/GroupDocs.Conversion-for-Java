@@ -16,22 +16,17 @@ import java.util.List;
 public class ConvertPresentationBySpecifyingFontSubstitution {
     public static void run()
     {
-        String outputFolder = Constants.getOutputDirectoryPath(null);
-        String outputFile = new File(outputFolder, "converted.pdf").getPath();
-
-
+        String convertedFile = Constants.getConvertedPath("ConvertPresentationBySpecifyingFontSubstitution.pdf");                         
         PresentationLoadOptions loadOptions = new PresentationLoadOptions();
-
         List<FontSubstitute> fontSubstitutes = new ArrayList<FontSubstitute>();
         fontSubstitutes.add(FontSubstitute.create("Tahoma", "Arial"));
         fontSubstitutes.add(FontSubstitute.create("Times New Roman", "Arial"));
         loadOptions.setDefaultFont("Helvetica");
         loadOptions.setFontSubstitutes(fontSubstitutes);
-
         Converter converter = new Converter(Constants.PPTX_WITH_NOTES, loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
-        converter.convert(outputFile, options);
+        converter.convert(convertedFile, options);
 
-        System.out.print("\nPresentation document converted successfully. \nCheck output in "+ outputFolder);
+        System.out.print("\nPresentation document converted successfully. \nCheck output in "+ convertedFile);
     }
 }

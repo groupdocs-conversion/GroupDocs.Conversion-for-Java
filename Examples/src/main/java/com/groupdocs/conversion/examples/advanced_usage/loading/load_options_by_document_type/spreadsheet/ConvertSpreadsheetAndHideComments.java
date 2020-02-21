@@ -13,17 +13,14 @@ import java.io.File;
 public class ConvertSpreadsheetAndHideComments {
     public static void run()
     {
-        String outputFolder = Constants.getOutputDirectoryPath(null);
-        String outputFile = new File(outputFolder, "converted.pdf").getPath();
-
+        String convertedFile = Constants.getConvertedPath("ConvertSpreadsheetAndHideComments.pdf");          
         SpreadsheetLoadOptions loadOptions = new SpreadsheetLoadOptions();
         loadOptions.setHideComments(true);
         loadOptions.setOnePagePerSheet(true);
-
         Converter converter = new Converter(Constants.SAMPLE_XLSX, loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
-        converter.convert(outputFile, options);
+        converter.convert(convertedFile, options);
 
-        System.out.print("\nSpreadsheet document converted successfully. \nCheck output in "+ outputFolder);
+        System.out.print("\nSpreadsheet document converted successfully. \nCheck output in " + convertedFile);
     }
 }

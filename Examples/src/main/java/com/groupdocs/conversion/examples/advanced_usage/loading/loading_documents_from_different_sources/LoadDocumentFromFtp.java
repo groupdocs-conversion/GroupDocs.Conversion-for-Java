@@ -15,22 +15,20 @@ import java.io.InputStream;
 public class LoadDocumentFromFtp {
     public static void run()
     {
-
         String server = "ftp.example.com";
-
-        String outputDirectory = Constants.getOutputDirectoryPath(null);
-        String outputFile = new File(outputDirectory, "converted.pdf").getPath();
+        String convertedFile = Constants.getConvertedPath("LoadDocumentFromFtp.pdf");       
         String filePath = "ftp://localhost/sample.doc";
+
         try {
             Converter converter = new Converter(getFileFromFtp(server, filePath));
             PdfConvertOptions options = new PdfConvertOptions();
-
-            converter.convert(outputFile, options);
-        } catch (Exception e){
+            converter.convert(convertedFile, options);
+        } 
+        catch (Exception e){
             throw new GroupDocsConversionException(e.getMessage());
         }
 
-        System.out.println("\nSource document converted successfully.\nCheck output in " +outputDirectory);
+        System.out.println("\nSource document converted successfully.\nCheck output in " + convertedFile);
 
     }
 

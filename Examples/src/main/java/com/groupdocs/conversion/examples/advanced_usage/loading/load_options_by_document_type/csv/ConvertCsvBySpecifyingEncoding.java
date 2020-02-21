@@ -13,17 +13,13 @@ import java.io.File;
 public class ConvertCsvBySpecifyingEncoding {
     public static void run()
     {
-        String outputFolder = Constants.getOutputDirectoryPath(null);
-        String outputFile = new File(outputFolder, "converted.pdf").getPath();
-
+        String convertedFile =  Constants.getConvertedPath("ConvertCsvBySpecifyingEncoding.pdf");       
         CsvLoadOptions loadOptions = new CsvLoadOptions();
         loadOptions.setEncoding(java.nio.charset.Charset.forName("shift_jis"));
-
         Converter converter = new Converter(Constants.SAMPLE_CSV, loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
-        converter.convert(outputFile, options);
+        converter.convert(convertedFile, options);
 
-
-        System.out.print("\nCsv document converted successfully. \nCheck output in " + outputFolder);
+        System.out.print("\nCsv document converted successfully. \nCheck output in " + convertedFile);
     }
 }
