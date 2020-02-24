@@ -52,7 +52,7 @@ public class RunExamples {
                 SetLicenseFromFile.run();
                 SetLicenseFromStream.run();
                 //SetMeteredLicense.run(); //todo fails
-        
+      
                 HelloWorld.run();        
 
                 // Basic Usage
@@ -77,13 +77,12 @@ public class RunExamples {
                 // Convert document to Spreadsheet
                 ConvertToSpreadsheet.run();  // TODO - Worksheet is broken https://prnt.sc/r5k7hk    
                 // Convert document to WordProcessing
-                // ConvertToWordProcessing.run(); // TODO - Doc is broken https://prnt.sc/r5kexx
-
+                ConvertToWordProcessing.run(); 
 
                 // Advanced Usage
                 // Common rendering options
                 AddWatermark.run();             // TODO - watermark.setColor(Color.red); doesn't work
-                ConvertSpecificPages.run();     // TODO - wrong converted pages count (possibly because of trial watermarks)   
+                //ConvertSpecificPages.run();     // TODO - wrong converted pages count (possibly because of trial watermarks)   
         
                 // Loading
                 LoadPasswordProtectedDocument.run();
@@ -91,15 +90,16 @@ public class RunExamples {
                 // Loading documents from different sources
                 LoadDocumentFromLocalDisk.run();
                 LoadDocumentFromStream.run();
-                //LoadDocumentFromUrl.run(); // TODO: Check - An exception occured while executing the Java class. com.groupdocs.conversion.internal.c.a.w.FileCorruptedException cannot be cast to java.lang.RuntimeException
+                LoadDocumentFromUrl.run(); 
+
                 //LoadDocumentFromFtp.run();
                 //LoadDocumentFromAmazonS3.run();
                 //LoadDocumentFromAzureBlobStorage.run();
 
                 // Load options by document type
                 // Cad
-                //ConvertCadAndSpecifyLayouts.run(); // TODO - com.groupdocs.conversion.exceptions.FileTypeNotSupportedException: Can not save a to pdf
-                //ConvertCadAndSpecifyWidthAndHeight.run();   // TODO - com.groupdocs.conversion.exceptions.FileTypeNotSupportedException: Can not save a to pdf    
+                ConvertCadAndSpecifyLayouts.run(); 
+                ConvertCadAndSpecifyWidthAndHeight.run();  
 
                 // Csv
                 ConvertCsvByConvertingDateTimeAndNumericData.run();
@@ -111,13 +111,13 @@ public class RunExamples {
                 ConvertEmailWithTimezoneOffset.run();        
 
                 // Note
-                //ConvertNoteBySpecifyingFontSubstitution.run();        // TODO - Caused by: com.groupdocs.conversion.internal.c.a.n.system.exceptions.d: DefaultFont is not initialized properly: null Parameter name: DefaultFont
-        
-                // Pdf
-                ConvertPdfAndFlattenAllFields.run(); // TODO - Broken result file
-                ConvertPdfAndHideAnnotations.run(); // TODO - Broken result file
-                ConvertPdfAndRemoveEmbeddedFiles.run(); // TODO - Broken result file
+                ConvertNoteBySpecifyingFontSubstitution.run();        
 
+                  // Pdf
+                ConvertPdfAndFlattenAllFields.run(); 
+                ConvertPdfAndHideAnnotations.run(); 
+                ConvertPdfAndRemoveEmbeddedFiles.run(); 
+      
                 // Presentation
                 ConvertPresentationByHiddingComments.run();
                 ConvertPresentationBySpecifyingFontSubstitution.run();
@@ -138,13 +138,13 @@ public class RunExamples {
 
                 // Convert options
                 ConvertToHtmlWithAdvancedOptions.run();
-                //ConvertToImageWithAdvancedOptions.run(); // TODO - com.groupdocs.conversion.internal.c.a.ms.System.NotSupportedException: Saving complete multi page document to image is not supported. Please save by page.
+                // ConvertToImageWithAdvancedOptions.run(); // TODO - com.groupdocs.conversion.internal.c.a.ms.System.NotSupportedException: Saving complete multi page document to image is not supported. Please save by page.
         
                 ConvertToPdfWithAdvancedOptions.run();
                 ConvertToPresentationWithAdvancedOptions.run();
                 ConvertToSpreadsheetWithAdvancedOptions.run();
-                ConvertToWordProcessingWithAdvancedOptions.run(); // TODO - Broken result file
-                
+                ConvertToWordProcessingWithAdvancedOptions.run(); 
+   
                 System.out.print("\nAll done.");
 	}
 }

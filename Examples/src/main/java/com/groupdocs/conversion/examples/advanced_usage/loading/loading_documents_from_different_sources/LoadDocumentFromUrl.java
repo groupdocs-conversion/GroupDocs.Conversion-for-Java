@@ -20,7 +20,7 @@ public class LoadDocumentFromUrl {
         String url = "https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-.NET/blob/master/Examples/GroupDocs.Conversion.Examples.CSharp/Resources/SampleFiles/sample.docx?raw=true";
             
         String outputDirectory = Constants.getOutputDirectoryPath(null);
-        String outputFile = new File(outputDirectory, "converted.pdf").getPath();
+        String outputFile = new File(outputDirectory, "LoadDocumentFromUrl.pdf").getPath();
 
         try {
             InputStream stream = new URL(url).openStream();
