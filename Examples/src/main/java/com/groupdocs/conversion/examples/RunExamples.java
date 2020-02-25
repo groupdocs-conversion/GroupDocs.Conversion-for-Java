@@ -75,7 +75,7 @@ public class RunExamples {
                 ConvertToPresentation.run();         
 
                 // Convert document to Spreadsheet
-                ConvertToSpreadsheet.run();  // TODO - Worksheet is broken https://prnt.sc/r5k7hk    
+                ConvertToSpreadsheet.run();  
                 // Convert document to WordProcessing
                 ConvertToWordProcessing.run(); 
 
