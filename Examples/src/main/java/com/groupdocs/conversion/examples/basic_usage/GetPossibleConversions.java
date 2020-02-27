@@ -21,7 +21,7 @@ public class GetPossibleConversions {
 
         for(Pair<FileType, Boolean> conversion : conversions.getAll())
         {
-            System.out.print(String.format("\t %s as %s conversion.\n", conversion.getKey().toString(), conversion.getValue() ? "primary" : "secondary"));
+            System.out.print(String.format("\t %s as %s conversion.\n", conversion.getKey().getExtension(), conversion.getValue() ? "primary" : "secondary"));
         }
 
         System.out.print("\nPossible conversions retrieved successfully.");
