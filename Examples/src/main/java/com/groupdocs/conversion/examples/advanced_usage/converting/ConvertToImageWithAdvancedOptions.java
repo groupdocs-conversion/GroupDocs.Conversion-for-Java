@@ -17,7 +17,7 @@ import java.io.IOException;
 public class ConvertToImageWithAdvancedOptions {
     public static void run()
     {
-        String outputFileTemplate = Constants.getConvertedPath("ConvertToImageWithAdvancedOptions-converted-page-{0}.png"); 
+        String outputFileTemplate = Constants.getConvertedPath("ConvertToImageWithAdvancedOptions-converted-page-%s.png"); 
        
         try {
             FileOutputStream getPageStream = new FileOutputStream(String.format(outputFileTemplate, 1));

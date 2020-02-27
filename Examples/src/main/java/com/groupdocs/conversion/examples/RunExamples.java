@@ -63,10 +63,10 @@ public class RunExamples {
                 ConvertToHtml.run();
                 
                 // Convert document to Image        
-                ConvertToJpg.run(); // TODO - Check file name format logic
+                ConvertToJpg.run(); 
         
-                ConvertToPng.run(); // TODO - Check file name format logic
-                ConvertToPsd.run();  // TODO - Check file name format logic      
+                ConvertToPng.run(); 
+                ConvertToPsd.run(); 
 
                 // Convert document to PDF
                 ConvertToPdf.run();       
@@ -82,7 +82,7 @@ public class RunExamples {
                 // Advanced Usage
                 // Common rendering options
                 AddWatermark.run();             // TODO - watermark.setColor(Color.red); doesn't work
-                //ConvertSpecificPages.run();     // TODO - wrong converted pages count (possibly because of trial watermarks)   
+                ConvertSpecificPages.run();    
         
                 // Loading
                 LoadPasswordProtectedDocument.run();
@@ -138,7 +138,7 @@ public class RunExamples {
 
                 // Convert options
                 ConvertToHtmlWithAdvancedOptions.run();
-                // ConvertToImageWithAdvancedOptions.run(); // TODO - com.groupdocs.conversion.internal.c.a.ms.System.NotSupportedException: Saving complete multi page document to image is not supported. Please save by page.
+                ConvertToImageWithAdvancedOptions.run(); 
         
                 ConvertToPdfWithAdvancedOptions.run();
                 ConvertToPresentationWithAdvancedOptions.run();
