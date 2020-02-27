@@ -33,6 +33,7 @@ public class ConvertToImageWithAdvancedOptions {
             options.setHorizontalResolution(300);
             options.setVerticalResolution(100);
             options.setPageNumber(1);
+            options.setPagesCount(1);
 
             converter.convert(getPageStream, options);
         } catch (IOException e) {
