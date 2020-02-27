@@ -15,17 +15,17 @@ public class GetSourceDocumentInfo {
         Converter converter = new Converter(Constants.SAMPLE_PDF);
         IDocumentInfo info = converter.getDocumentInfo();
         PdfDocumentInfo pdfInfo = (PdfDocumentInfo) info;
+        
+        System.out.println("Author: " + pdfInfo.getAuthor());
+        System.out.println("Creation date: " + pdfInfo.getCreationDate());
+        System.out.println("Title: " + pdfInfo.getTitle());
+        System.out.println("Version: " + pdfInfo.getVersion());
+        System.out.println("Pages count: " + pdfInfo.getPagesCount());
+        System.out.println("Width: " + pdfInfo.getWidth());
+        System.out.println("Height: " + pdfInfo.getHeight());
+        System.out.println("Is landscaped: "+ pdfInfo.isLandscape());
+        System.out.println("Is Encrypted: "+ pdfInfo.isEncrypted());
 
-        System.out.print("Author: " + pdfInfo.getAuthor());
-        System.out.print("Creation date: " + pdfInfo.getCreationDate());
-        System.out.print("Title: " + pdfInfo.getTitle());
-        System.out.print("Version: " + pdfInfo.getVersion());
-        System.out.print("Pages count: " + pdfInfo.getPagesCount());
-        System.out.print("Width: " + pdfInfo.getWidth());
-        System.out.print("Height: " + pdfInfo.getHeight());
-        System.out.print("Is landscaped: "+ pdfInfo.isLandscape());
-        System.out.print("Is Encrypted: "+ pdfInfo.isEncrypted());
-
-        System.out.print("\nDocument info retrieved successfully.");
+        System.out.println("\nDocument info retrieved successfully.");
     }
 }
