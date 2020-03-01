@@ -1,5 +1,6 @@
 package com.groupdocs.conversion.examples.quick_start;
 
+import com.groupdocs.conversion.licensing.License;
 import com.groupdocs.conversion.examples.Constants;
 
 import java.io.File;
@@ -20,7 +21,7 @@ public class SetLicenseFromStream {
             license.setLicense(stream);
 
 
-            System.out.print("License set successfully.");
+            System.out.println("License set successfully.");
         }
         else
         {

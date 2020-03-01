@@ -1,6 +1,9 @@
 package com.groupdocs.conversion.examples.advanced_usage.converting.common;
 
+import com.groupdocs.conversion.Converter;
 import com.groupdocs.conversion.examples.Constants;
+import com.groupdocs.conversion.options.convert.PdfConvertOptions;
+import com.groupdocs.conversion.options.convert.WatermarkOptions;
 
 import java.awt.*;
 import java.io.File;
@@ -10,9 +13,7 @@ import java.io.File;
 public class AddWatermark {
     public static void run()
     {
-        String outputFolder = Constants.getOutputDirectoryPath(null);
-        String outputFile = new File(outputFolder, "converted.pdf").getPath();
-
+        String convertedFile =  Constants.getConvertedPath("AddWatermark.pdf");
         Converter converter = new Converter(Constants.SAMPLE_DOCX);
         PdfConvertOptions options = new PdfConvertOptions();
         WatermarkOptions watermark = new WatermarkOptions();
@@ -20,13 +21,10 @@ public class AddWatermark {
         watermark.setColor(Color.red);
         watermark.setWidth(100);
         watermark.setHeight(100);
-        watermark.setBackground = true;
-
+        watermark.setBackground(true);
         options.setWatermark(watermark);
+        converter.convert(convertedFile, options);
 
-        converter.convert(outputFile, options);
-
-
-        System.out.print("\nDocument converted successfully. \nCheck output in " + outputFolder);
+        System.out.print("\nDocument converted successfully. \nCheck output in " + convertedFile);
     }
 }

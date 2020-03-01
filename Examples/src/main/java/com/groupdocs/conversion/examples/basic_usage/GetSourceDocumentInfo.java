@@ -1,5 +1,8 @@
 package com.groupdocs.conversion.examples.basic_usage;
 
+import com.groupdocs.conversion.Converter;
+import com.groupdocs.conversion.contracts.IDocumentInfo;
+import com.groupdocs.conversion.contracts.PdfDocumentInfo;
 import com.groupdocs.conversion.examples.Constants;
 
 
@@ -10,22 +13,19 @@ public class GetSourceDocumentInfo {
     public static void run()
     {
         Converter converter = new Converter(Constants.SAMPLE_PDF);
+        IDocumentInfo info = converter.getDocumentInfo();
+        PdfDocumentInfo pdfInfo = (PdfDocumentInfo) info;
+        
+        System.out.println("Author: " + pdfInfo.getAuthor());
+        System.out.println("Creation date: " + pdfInfo.getCreationDate());
+        System.out.println("Title: " + pdfInfo.getTitle());
+        System.out.println("Version: " + pdfInfo.getVersion());
+        System.out.println("Pages count: " + pdfInfo.getPagesCount());
+        System.out.println("Width: " + pdfInfo.getWidth());
+        System.out.println("Height: " + pdfInfo.getHeight());
+        System.out.println("Is landscaped: "+ pdfInfo.isLandscape());
+        System.out.println("Is Encrypted: "+ pdfInfo.isEncrypted());
 
-            IDocumentInfo info = converter.getDocumentInfo();
-
-            PdfDocumentInfo pdfInfo = (PdfDocumentInfo) info;
-
-            System.out.print("Author: {0}", pdfInfo.getAuthor());
-            System.out.print("Creation date: {0}", pdfInfo.getCreationDate());
-            System.out.print("Title: {0}", pdfInfo.getTitle());
-            System.out.print("Version: {0}", pdfInfo.getVersion());
-            System.out.print("Pages count: {0}", pdfInfo.getPagesCount());
-            System.out.print("Width: {0}", pdfInfo.getWidth());
-            System.out.print("Height: {0}", pdfInfo.getHeight());
-            System.out.print("Is landscaped: {0}", pdfInfo.getIsLandscape());
-            System.out.print("Is Encrypted: {0}", pdfInfo.getIsEncrypted());
-
-
-        System.out.print("\nDocument info retrieved successfully.");
+        System.out.println("\nDocument info retrieved successfully.");
     }
 }

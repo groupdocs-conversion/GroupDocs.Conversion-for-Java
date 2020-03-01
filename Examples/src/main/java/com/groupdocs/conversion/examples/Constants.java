@@ -8,7 +8,7 @@ public class Constants {
     public static String LicensePath = (System.getProperty("user.dir") + "\\Resources\\GroupDocs.Conversion.lic");
     public static String SamplesPath = (System.getProperty("user.dir") +"\\Resources\\SampleFiles\\");
     public static String FontsPath = (System.getProperty("user.dir") +"\\Resources\\Fonts\\");
-    public static String OutputPath = (System.getProperty("user.dir") +"\\Output\\");
+    public static String OutputPath = (System.getProperty("user.dir") +"\\Resources\\Output\\");
 
     // CAD
     public static String SAMPLE_DWG_WITH_LAYOUTS_AND_LAYERS =
@@ -100,10 +100,16 @@ public class Constants {
         return new File(SamplesPath, filePath).getPath();
     }
 
-    public static String getOutputDirectoryPath(String callerFilePath )
+    public static String getOutputDirectoryPath(String callerFilePath)
     {
-        String outputDirectory = new File(OutputPath, callerFilePath).getPath();
+        String outputDirectory = new File(OutputPath, callerFilePath != null ? callerFilePath : "").getPath();
         return outputDirectory;
+    }
+
+    public static String getConvertedPath(String convertedFileName)
+    {
+        String convertedPath = new File(OutputPath, convertedFileName).getPath();
+        return convertedPath;
     }
 
 		

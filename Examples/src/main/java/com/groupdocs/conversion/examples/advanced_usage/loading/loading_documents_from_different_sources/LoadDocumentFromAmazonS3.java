@@ -1,9 +1,5 @@
 package com.groupdocs.conversion.examples.advanced_usage.loading.loading_documents_from_different_sources;
 
-import com.groupdocs.conversion.examples.Constants;
-
-import java.io.File;
-import java.io.InputStream;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
@@ -12,6 +8,12 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
+import com.groupdocs.conversion.Converter;
+import com.groupdocs.conversion.examples.Constants;
+
+import java.io.File;
+import java.io.InputStream;
+import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 
 /**
 * This example demonstrates how to download document from Amazon S3 storage and convert document.
@@ -21,16 +23,12 @@ public class LoadDocumentFromAmazonS3 {
     public static void run()
     {
         String key = "sample.docx";
-        String outputDirectory = Constants.getOutputDirectoryPath(null);
-        String outputFile = new File(outputDirectory, "converted.pdf").getPath();
-
+        String convertedFile = Constants.getConvertedPath("LoadDocumentFromAmazonS3.pdf"); 
         Converter converter = new Converter(downloadFile(key));
-
         PdfConvertOptions options = new PdfConvertOptions();
-        converter.convert(outputFile, options);
+        converter.convert(convertedFile, options);
 
-
-        System.out.print("\nSource document converted successfully.\nCheck output in " +outputDirectory);
+        System.out.print("\nSource document converted successfully.\nCheck output in " + convertedFile);
     }
 
     public static InputStream downloadFile(String key)

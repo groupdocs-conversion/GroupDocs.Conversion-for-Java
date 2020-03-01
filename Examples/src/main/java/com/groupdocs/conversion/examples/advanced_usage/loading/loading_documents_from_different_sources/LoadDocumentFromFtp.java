@@ -1,6 +1,9 @@
 package com.groupdocs.conversion.examples.advanced_usage.loading.loading_documents_from_different_sources;
 
+import com.groupdocs.conversion.Converter;
 import com.groupdocs.conversion.examples.Constants;
+import com.groupdocs.conversion.exceptions.GroupDocsConversionException;
+import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 import org.apache.commons.net.ftp.FTPClient;
 import java.io.File;
 import java.io.InputStream;
@@ -12,22 +15,20 @@ import java.io.InputStream;
 public class LoadDocumentFromFtp {
     public static void run()
     {
-
         String server = "ftp.example.com";
-
-        String outputDirectory = Constants.getOutputDirectoryPath(null);
-        String outputFile = new File(outputDirectory, "converted.pdf").getPath();
+        String convertedFile = Constants.getConvertedPath("LoadDocumentFromFtp.pdf");       
         String filePath = "ftp://localhost/sample.doc";
+
         try {
             Converter converter = new Converter(getFileFromFtp(server, filePath));
             PdfConvertOptions options = new PdfConvertOptions();
-
-            converter.convert(outputFile, options);
-        } catch (Exception e){
-            throw new GroupDocsException(e.getMessage());
+            converter.convert(convertedFile, options);
+        } 
+        catch (Exception e){
+            throw new GroupDocsConversionException(e.getMessage());
         }
 
-        System.out.println("\nSource document converted successfully.\nCheck output in " +outputDirectory);
+        System.out.println("\nSource document converted successfully.\nCheck output in " + convertedFile);
 
     }
 
