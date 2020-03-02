@@ -16,8 +16,7 @@ import java.net.URL;
 public class LoadDocumentFromUrl {
     public static void run()
     {
-        //String url = "https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-.NET/tree/master/Examples/GroupDocs.Conversion.Examples.CSharp/Resources/SampleFiles/sample.docx?raw=true";
-        String url = "https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-.NET/blob/master/Examples/GroupDocs.Conversion.Examples.CSharp/Resources/SampleFiles/sample.docx?raw=true";
+        String url = "https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/blob/master/Examples/Resources/SampleFiles/sample.docx?raw=true";
 
         String outputDirectory = Constants.getOutputDirectoryPath(null);
         String outputFile = new File(outputDirectory, "LoadDocumentFromUrl.pdf").getPath();
