@@ -10,15 +10,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
-* This example demonstrates how to convert document to JPG.
-*/
+ * This example demonstrates how to convert document to JPG.
+ */
 public class ConvertToJpg {
-    public static void run()
-    {
+    public static void run() {
         String outputFolder = Constants.getOutputDirectoryPath(null);
-        String outputFileTemplate = new File(outputFolder, "converted-page-%s.jpg").getPath();
+        String outputFileTemplate = new File(outputFolder, "converted-page-%d.jpg").getPath();
 
-        try(FileOutputStream getPageStream = new FileOutputStream(String.format(outputFileTemplate, 1))) {
+        try (FileOutputStream getPageStream = new FileOutputStream(String.format(outputFileTemplate, 1))) {
 
             Converter converter = new Converter(Constants.SAMPLE_PDF);
 

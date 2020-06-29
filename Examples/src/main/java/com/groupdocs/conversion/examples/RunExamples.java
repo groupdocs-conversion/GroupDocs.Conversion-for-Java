@@ -36,7 +36,7 @@ import com.groupdocs.conversion.examples.basic_usage.convert_to_pdf.ConvertToPdf
 import com.groupdocs.conversion.examples.quick_start.HelloWorld;
 import com.groupdocs.conversion.examples.quick_start.SetLicenseFromFile;
 import com.groupdocs.conversion.examples.quick_start.SetLicenseFromStream;
-//import com.groupdocs.conversion.examples.quick_start.SetMeteredLicense;
+import com.groupdocs.conversion.examples.quick_start.SetMeteredLicense;
 
 public class RunExamples {
 
@@ -50,10 +50,10 @@ public class RunExamples {
 
                 // Quick Start
                 SetLicenseFromFile.run();
-                SetLicenseFromStream.run();
-                //SetMeteredLicense.run(); //todo fails
+                //SetLicenseFromStream.run();
+                //SetMeteredLicense.run();
       
-                HelloWorld.run();        
+                HelloWorld.run();
 
                 // Basic Usage
                 GetPossibleConversions.run();
@@ -63,26 +63,26 @@ public class RunExamples {
                 ConvertToHtml.run();
                 
                 // Convert document to Image        
-                ConvertToJpg.run(); 
+                ConvertToJpg.run();
         
-                ConvertToPng.run(); 
-                ConvertToPsd.run(); 
+                ConvertToPng.run();
+                ConvertToPsd.run();
 
                 // Convert document to PDF
-                ConvertToPdf.run();       
+                ConvertToPdf.run();
 
                 // Convert document to Presentation
-                ConvertToPresentation.run();         
+                ConvertToPresentation.run();
 
                 // Convert document to Spreadsheet
-                ConvertToSpreadsheet.run();  
+                ConvertToSpreadsheet.run();
                 // Convert document to WordProcessing
-                ConvertToWordProcessing.run(); 
+                ConvertToWordProcessing.run();
 
                 // Advanced Usage
                 // Common rendering options
-                AddWatermark.run();             // TODO - watermark.setColor(Color.red); doesn't work
-                ConvertSpecificPages.run();    
+                AddWatermark.run();
+                ConvertSpecificPages.run();
         
                 // Loading
                 LoadPasswordProtectedDocument.run();
@@ -90,7 +90,7 @@ public class RunExamples {
                 // Loading documents from different sources
                 LoadDocumentFromLocalDisk.run();
                 LoadDocumentFromStream.run();
-                LoadDocumentFromUrl.run(); 
+                LoadDocumentFromUrl.run();
 
                 //LoadDocumentFromFtp.run();
                 //LoadDocumentFromAmazonS3.run();
@@ -98,25 +98,25 @@ public class RunExamples {
 
                 // Load options by document type
                 // Cad
-                ConvertCadAndSpecifyLayouts.run(); 
-                ConvertCadAndSpecifyWidthAndHeight.run();  
+                ConvertCadAndSpecifyLayouts.run();
+                ConvertCadAndSpecifyWidthAndHeight.run();
 
                 // Csv
                 ConvertCsvByConvertingDateTimeAndNumericData.run();
                 ConvertCsvBySpecifyingDelimiter.run();
-                ConvertCsvBySpecifyingEncoding.run();        
+                ConvertCsvBySpecifyingEncoding.run();
 
                 // Email
                 ConvertEmailWithAlteringFieldsVisibility.run();
-                ConvertEmailWithTimezoneOffset.run();        
+                ConvertEmailWithTimezoneOffset.run();
 
                 // Note
-                ConvertNoteBySpecifyingFontSubstitution.run();        
+                ConvertNoteBySpecifyingFontSubstitution.run();
 
                   // Pdf
-                ConvertPdfAndFlattenAllFields.run(); 
-                ConvertPdfAndHideAnnotations.run(); 
-                ConvertPdfAndRemoveEmbeddedFiles.run(); 
+                ConvertPdfAndFlattenAllFields.run();
+                ConvertPdfAndHideAnnotations.run();
+                ConvertPdfAndRemoveEmbeddedFiles.run();
       
                 // Presentation
                 ConvertPresentationByHiddingComments.run();
@@ -138,7 +138,7 @@ public class RunExamples {
 
                 // Convert options
                 ConvertToHtmlWithAdvancedOptions.run();
-                ConvertToImageWithAdvancedOptions.run(); 
+                ConvertToImageWithAdvancedOptions.run();
         
                 ConvertToPdfWithAdvancedOptions.run();
                 ConvertToPresentationWithAdvancedOptions.run();

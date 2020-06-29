@@ -17,7 +17,7 @@ public class ConvertToPng {
     public static void run()
     {
         String outputFolder = Constants.getOutputDirectoryPath(null);
-        String outputFileTemplate = new File(outputFolder, "converted-page-%s.png").getPath();
+        String outputFileTemplate = new File(outputFolder, "converted-page-%d.png").getPath();
 
         try(FileOutputStream getPageStream = new FileOutputStream(String.format(outputFileTemplate, 1))) {
 
