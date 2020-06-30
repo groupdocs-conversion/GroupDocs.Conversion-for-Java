@@ -40,7 +40,7 @@ import com.groupdocs.conversion.examples.quick_start.SetLicenseFromStream;
 
 public class RunExamples {
 
-        public static void main(String[] args) throws Throwable 
+        public static void main(String[] args) throws Throwable
         {
 
                 System.out.print("Open RunExamples.cs. \nIn Main() method uncomment the example that you want to run.");
@@ -50,10 +50,10 @@ public class RunExamples {
 
                 // Quick Start
                 SetLicenseFromFile.run();
-                SetLicenseFromStream.run();
-                //SetMeteredLicense.run(); 
+                //SetLicenseFromStream.run();
+                //SetMeteredLicense.run();
 
-                HelloWorld.run();        
+                HelloWorld.run();
 
                 // Basic Usage
                 GetPossibleConversions.run();
@@ -61,36 +61,36 @@ public class RunExamples {
 
                 // Convert document to HTML
                 ConvertToHtml.run();
-                
-                // Convert document to Image        
-                ConvertToJpg.run(); 
-        
-                ConvertToPng.run(); 
-                ConvertToPsd.run(); 
+
+                // Convert document to Image
+                ConvertToJpg.run();
+
+                ConvertToPng.run();
+                ConvertToPsd.run();
 
                 // Convert document to PDF
-                ConvertToPdf.run();       
+                ConvertToPdf.run();
 
                 // Convert document to Presentation
-                ConvertToPresentation.run();         
+                ConvertToPresentation.run();
 
                 // Convert document to Spreadsheet
-                ConvertToSpreadsheet.run();  
+                ConvertToSpreadsheet.run();
                 // Convert document to WordProcessing
-                ConvertToWordProcessing.run(); 
+                ConvertToWordProcessing.run();
 
                 // Advanced Usage
                 // Common rendering options
-                AddWatermark.run();             
-                ConvertSpecificPages.run();    
-        
+                AddWatermark.run();
+                ConvertSpecificPages.run();
+
                 // Loading
                 LoadPasswordProtectedDocument.run();
 
                 // Loading documents from different sources
                 LoadDocumentFromLocalDisk.run();
                 LoadDocumentFromStream.run();
-                LoadDocumentFromUrl.run(); 
+                LoadDocumentFromUrl.run();
 
                 //LoadDocumentFromFtp.run();
                 //LoadDocumentFromAmazonS3.run();
@@ -98,26 +98,26 @@ public class RunExamples {
 
                 // Load options by document type
                 // Cad
-                ConvertCadAndSpecifyLayouts.run(); 
-                ConvertCadAndSpecifyWidthAndHeight.run();  
+                ConvertCadAndSpecifyLayouts.run();
+                ConvertCadAndSpecifyWidthAndHeight.run();
 
                 // Csv
                 ConvertCsvByConvertingDateTimeAndNumericData.run();
                 ConvertCsvBySpecifyingDelimiter.run();
-                ConvertCsvBySpecifyingEncoding.run();        
+                ConvertCsvBySpecifyingEncoding.run();
 
                 // Email
                 ConvertEmailWithAlteringFieldsVisibility.run();
-                ConvertEmailWithTimezoneOffset.run();        
+                ConvertEmailWithTimezoneOffset.run();
 
                 // Note
-                ConvertNoteBySpecifyingFontSubstitution.run();        
+                ConvertNoteBySpecifyingFontSubstitution.run();
 
                   // Pdf
-                ConvertPdfAndFlattenAllFields.run(); 
-                ConvertPdfAndHideAnnotations.run(); 
-                ConvertPdfAndRemoveEmbeddedFiles.run(); 
-      
+                ConvertPdfAndFlattenAllFields.run();
+                ConvertPdfAndHideAnnotations.run();
+                ConvertPdfAndRemoveEmbeddedFiles.run();
+
                 // Presentation
                 ConvertPresentationByHiddingComments.run();
                 ConvertPresentationBySpecifyingFontSubstitution.run();
@@ -138,13 +138,13 @@ public class RunExamples {
 
                 // Convert options
                 ConvertToHtmlWithAdvancedOptions.run();
-                ConvertToImageWithAdvancedOptions.run(); 
-        
+                ConvertToImageWithAdvancedOptions.run();
+
                 ConvertToPdfWithAdvancedOptions.run();
                 ConvertToPresentationWithAdvancedOptions.run();
                 ConvertToSpreadsheetWithAdvancedOptions.run();
-                ConvertToWordProcessingWithAdvancedOptions.run(); 
-   
+                ConvertToWordProcessingWithAdvancedOptions.run();
+
                 System.out.print("\nAll done.");
 	}
 }

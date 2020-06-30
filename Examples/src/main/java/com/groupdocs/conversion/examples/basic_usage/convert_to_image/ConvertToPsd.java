@@ -18,7 +18,7 @@ public class ConvertToPsd {
     public static void run()
     {
         String outputFolder = Constants.getOutputDirectoryPath(null);
-        String outputFileTemplate = new File(outputFolder, "converted-page-%s.psd").getPath();
+        String outputFileTemplate = new File(outputFolder, "converted-page-%d.psd").getPath();
 
         try(FileOutputStream getPageStream = new FileOutputStream(String.format(outputFileTemplate, 1))) {
 
