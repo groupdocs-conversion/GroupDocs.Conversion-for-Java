@@ -6,15 +6,12 @@ import com.groupdocs.conversion.examples.Constants;
 import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 import com.groupdocs.conversion.options.load.EmailLoadOptions;
 
-import java.io.File;
-
 /**
-* This example demonstrates how to convert an email document to pdf with advanced options
-*/
+ * This example demonstrates how to convert an email document to pdf with advanced options
+ */
 public class ConvertEmailWithAlteringFieldsVisibility {
-    public static void run()
-    {
-        String convertedFile =  Constants.getConvertedPath("ConvertEmailWithAlteringFieldsVisibility.pdf");   
+    public static void run() {
+        String convertedFile = Constants.getConvertedPath("ConvertEmailWithAlteringFieldsVisibility.pdf");
         EmailLoadOptions loadOptions = new EmailLoadOptions();
         loadOptions.setDisplayHeader(false);
         loadOptions.setDisplayFromEmailAddress(false);
@@ -26,6 +23,6 @@ public class ConvertEmailWithAlteringFieldsVisibility {
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 
-        System.out.print("\nEmail document converted successfully. \nCheck output in "+ convertedFile);
+        System.out.print("\nEmail document converted successfully. \nCheck output in " + convertedFile);
     }
 }

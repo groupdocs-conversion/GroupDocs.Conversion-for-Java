@@ -5,15 +5,12 @@ import com.groupdocs.conversion.examples.Constants;
 import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 import com.groupdocs.conversion.options.load.SpreadsheetLoadOptions;
 
-import java.io.File;
-
 /**
-* This example demonstrates how to convert a spreadsheet document to pdf with advanced options
-*/
+ * This example demonstrates how to convert a spreadsheet document to pdf with advanced options
+ */
 public class ConvertSpreadsheetBySpecifyingRange {
-    public static void run()
-    {
-        String convertedFile = Constants.getConvertedPath("ConvertSpreadsheetBySpecifyingRange.pdf");  
+    public static void run() {
+        String convertedFile = Constants.getConvertedPath("ConvertSpreadsheetBySpecifyingRange.pdf");
         SpreadsheetLoadOptions loadOptions = new SpreadsheetLoadOptions();
         loadOptions.setConvertRange("10:30");
         loadOptions.setOnePagePerSheet(true);
@@ -21,6 +18,6 @@ public class ConvertSpreadsheetBySpecifyingRange {
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 
-        System.out.print("\nSpreadsheet document converted successfully. \nCheck output in "+ convertedFile);
+        System.out.print("\nSpreadsheet document converted successfully. \nCheck output in " + convertedFile);
     }
 }

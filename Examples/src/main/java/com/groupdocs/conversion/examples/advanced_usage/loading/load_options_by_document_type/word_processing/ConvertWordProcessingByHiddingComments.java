@@ -5,15 +5,12 @@ import com.groupdocs.conversion.examples.Constants;
 import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 import com.groupdocs.conversion.options.load.WordProcessingLoadOptions;
 
-import java.io.File;
-
 /**
-* This example demonstrates how to convert a word-processing document to pdf with advanced options
-*/
+ * This example demonstrates how to convert a word-processing document to pdf with advanced options
+ */
 public class ConvertWordProcessingByHiddingComments {
-    public static void run()
-    {
-        String convertedFile = Constants.getConvertedPath("ConvertWordProcessingByHiddingComments.pdf");        
+    public static void run() {
+        String convertedFile = Constants.getConvertedPath("ConvertWordProcessingByHiddingComments.pdf");
         WordProcessingLoadOptions loadOptions = new WordProcessingLoadOptions();
         loadOptions.setHideComments(true);
         Converter converter = new Converter(Constants.SAMPLE_DOCX_WITH_TRACKED_CHANGES, loadOptions);

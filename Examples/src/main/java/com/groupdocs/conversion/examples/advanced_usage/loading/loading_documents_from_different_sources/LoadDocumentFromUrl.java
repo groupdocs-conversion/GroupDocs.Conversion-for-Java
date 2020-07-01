@@ -11,12 +11,10 @@ import java.net.URL;
 
 
 /**
-* This example demonstrates how to download and convert document.
-*/
+ * This example demonstrates how to download and convert document.
+ */
 public class LoadDocumentFromUrl {
-    public static void run()
-    {
-        //String url = "https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-.NET/tree/master/Examples/GroupDocs.Conversion.Examples.CSharp/Resources/SampleFiles/sample.docx?raw=true";
+    public static void run() {
         String url = "https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-.NET/blob/master/Examples/GroupDocs.Conversion.Examples.CSharp/Resources/SampleFiles/sample.docx?raw=true";
 
         String outputDirectory = Constants.getOutputDirectoryPath(null);
@@ -28,9 +26,9 @@ public class LoadDocumentFromUrl {
             PdfConvertOptions options = new PdfConvertOptions();
             converter.convert(outputFile, options);
 
-        }catch(Exception e){
+        } catch (Exception e) {
             throw new GroupDocsConversionException(e.getMessage());
         }
-        System.out.println("\nSource document converted successfully.\nCheck output in "+outputDirectory);
+        System.out.println("\nSource document converted successfully.\nCheck output in " + outputDirectory);
     }
 }

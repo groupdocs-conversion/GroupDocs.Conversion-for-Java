@@ -4,16 +4,13 @@ import com.groupdocs.conversion.Converter;
 import com.groupdocs.conversion.examples.Constants;
 import com.groupdocs.conversion.options.convert.PresentationConvertOptions;
 
-import java.io.File;
-
 
 /**
-* This example demonstrates how to convert document to Presentation.
-*/
+ * This example demonstrates how to convert document to Presentation.
+ */
 public class ConvertToPresentation {
-    public static void run()
-    {
-        String convertedFile =  Constants.getConvertedPath("ConvertToPresentation.pptx");
+    public static void run() {
+        String convertedFile = Constants.getConvertedPath("ConvertToPresentation.pptx");
         Converter converter = new Converter(Constants.SAMPLE_DOCX);
         PresentationConvertOptions options = new PresentationConvertOptions();
         converter.convert(convertedFile, options);

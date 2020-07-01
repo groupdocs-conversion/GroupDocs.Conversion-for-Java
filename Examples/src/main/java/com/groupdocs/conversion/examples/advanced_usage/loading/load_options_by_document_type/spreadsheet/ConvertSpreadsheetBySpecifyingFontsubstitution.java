@@ -6,17 +6,15 @@ import com.groupdocs.conversion.examples.Constants;
 import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 import com.groupdocs.conversion.options.load.SpreadsheetLoadOptions;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ConvertSpreadsheetBySpecifyingFontsubstitution {
     /**
-    * This example demonstrates how to convert a spreadsheet document to pdf with advanced options
-    */
-    public static void run()
-    {
-        String convertedFile = Constants.getConvertedPath("ConvertSpreadsheetBySpecifyingFontsubstitution.pdf");               
+     * This example demonstrates how to convert a spreadsheet document to pdf with advanced options
+     */
+    public static void run() {
+        String convertedFile = Constants.getConvertedPath("ConvertSpreadsheetBySpecifyingFontsubstitution.pdf");
         SpreadsheetLoadOptions loadOptions = new SpreadsheetLoadOptions();
         List<FontSubstitute> fontSubstitutes = new ArrayList<FontSubstitute>();
         fontSubstitutes.add(FontSubstitute.create("Tahoma", "Arial"));
@@ -28,6 +26,6 @@ public class ConvertSpreadsheetBySpecifyingFontsubstitution {
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 
-        System.out.print("\nSpreadsheet document converted successfully. \nCheck output in "+ convertedFile);
+        System.out.print("\nSpreadsheet document converted successfully. \nCheck output in " + convertedFile);
     }
 }

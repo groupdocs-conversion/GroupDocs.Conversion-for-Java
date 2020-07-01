@@ -6,16 +6,12 @@ import com.groupdocs.conversion.filetypes.SpreadsheetFileType;
 import com.groupdocs.conversion.options.convert.SpreadsheetConvertOptions;
 import com.groupdocs.conversion.options.load.WordProcessingLoadOptions;
 
-import java.io.File;
-
-
 /**
-* This example demonstrates how to convert password-protected document to Spreadsheet and specifying pages to be converted
-*/
+ * This example demonstrates how to convert password-protected document to Spreadsheet and specifying pages to be converted
+ */
 public class ConvertToSpreadsheetWithAdvancedOptions {
-    public static void run()
-    {
-        String convertedFile = Constants.getConvertedPath("ConvertToSpreadsheetWithAdvancedOptions.xls");  
+    public static void run() {
+        String convertedFile = Constants.getConvertedPath("ConvertToSpreadsheetWithAdvancedOptions.xls");
         WordProcessingLoadOptions loadOptions = new WordProcessingLoadOptions();
         loadOptions.setPassword("12345");
         Converter converter = new Converter(Constants.SAMPLE_DOCX_WITH_PASSWORD, loadOptions);

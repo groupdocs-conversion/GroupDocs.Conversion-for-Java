@@ -36,21 +36,21 @@ import com.groupdocs.conversion.examples.basic_usage.convert_to_pdf.ConvertToPdf
 import com.groupdocs.conversion.examples.quick_start.HelloWorld;
 import com.groupdocs.conversion.examples.quick_start.SetLicenseFromFile;
 import com.groupdocs.conversion.examples.quick_start.SetLicenseFromStream;
-//import com.groupdocs.conversion.examples.quick_start.SetMeteredLicense;
+import com.groupdocs.conversion.examples.quick_start.SetMeteredLicense;
 
 public class RunExamples {
 
         public static void main(String[] args) throws Throwable
         {
 
-                System.out.print("Open RunExamples.cs. \nIn Main() method uncomment the example that you want to run.");
-                System.out.print("=====================================================");
+                System.out.println("Open RunExamples.cs. \nIn Main() method uncomment the example that you want to run.");
+                System.out.println("=====================================================");
 
                 //NOTE: Please uncomment the example you want to try out
 
                 // Quick Start
                 SetLicenseFromFile.run();
-                //SetLicenseFromStream.run();
+                SetLicenseFromStream.run();
                 //SetMeteredLicense.run();
 
                 HelloWorld.run();

@@ -13,19 +13,17 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 /**
-* This example demonstrates how to convert document to PDF.
-*/
+ * This example demonstrates how to convert document to PDF.
+ */
 public class HelloWorld {
-    public static void run()
-    {
-        String convertedFile =  Constants.getConvertedPath("HelloWorld.pdf");
+    public static void run() {
+        String convertedFile = Constants.getConvertedPath("HelloWorld.pdf");
 
         Converter converter = new Converter(Constants.SAMPLE_DOCX);
 
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 
-
-        System.out.print("\nSource document converted successfully.\nCheck output in "+ convertedFile);
+        System.out.print("\nSource document converted successfully.\nCheck output in " + convertedFile);
     }
 }

@@ -5,15 +5,12 @@ import com.groupdocs.conversion.examples.Constants;
 import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 import com.groupdocs.conversion.options.load.SpreadsheetLoadOptions;
 
-import java.io.File;
-
 /**
-* This example demonstrates how to convert a spreadsheet document to pdf with advanced options
-*/
+ * This example demonstrates how to convert a spreadsheet document to pdf with advanced options
+ */
 public class ConvertSpreadsheetByShowingGridLines {
-    public static void run()
-    {
-        String convertedFile = Constants.getConvertedPath("ConvertSpreadsheetByShowingGridLines.pdf");          
+    public static void run() {
+        String convertedFile = Constants.getConvertedPath("ConvertSpreadsheetByShowingGridLines.pdf");
         SpreadsheetLoadOptions loadOptions = new SpreadsheetLoadOptions();
         loadOptions.setShowGridLines(true);
         loadOptions.setOnePagePerSheet(true);

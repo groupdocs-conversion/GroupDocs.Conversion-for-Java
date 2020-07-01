@@ -5,16 +5,13 @@ import com.groupdocs.conversion.examples.Constants;
 import com.groupdocs.conversion.options.convert.MarkupConvertOptions;
 import com.groupdocs.conversion.options.load.WordProcessingLoadOptions;
 
-import java.io.File;
-
 
 /**
-* This example demonstrates how to convert password-protected document to HTML and specifying pages to be converted
-*/
+ * This example demonstrates how to convert password-protected document to HTML and specifying pages to be converted
+ */
 public class ConvertToHtmlWithAdvancedOptions {
-    public static void run()
-    {
-        String convertedFile = Constants.getConvertedPath("ConvertToHtmlWithAdvancedOptions.html"); 
+    public static void run() {
+        String convertedFile = Constants.getConvertedPath("ConvertToHtmlWithAdvancedOptions.html");
         WordProcessingLoadOptions loadOptions = new WordProcessingLoadOptions();
         loadOptions.setPassword("12345");
         Converter converter = new Converter(Constants.SAMPLE_DOCX_WITH_PASSWORD, loadOptions);

@@ -7,17 +7,15 @@ import com.groupdocs.conversion.examples.Constants;
 import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 import com.groupdocs.conversion.options.load.NoteLoadOptions;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
-* This example demonstrates how to convert a note document to pdf with advanced options
-*/
+ * This example demonstrates how to convert a note document to pdf with advanced options
+ */
 public class ConvertNoteBySpecifyingFontSubstitution {
-    public static void run()
-    {
-        String convertedFile =  Constants.getConvertedPath("ConvertNoteBySpecifyingFontSubstitution.pdf");   
+    public static void run() {
+        String convertedFile = Constants.getConvertedPath("ConvertNoteBySpecifyingFontSubstitution.pdf");
         NoteLoadOptions loadOptions = new NoteLoadOptions();
         List<FontSubstitute> fontSubstitutes = new ArrayList<FontSubstitute>();
         fontSubstitutes.add(FontSubstitute.create("Tahoma", "Arial"));

@@ -6,15 +6,12 @@ import com.groupdocs.conversion.filetypes.PresentationFileType;
 import com.groupdocs.conversion.options.convert.PresentationConvertOptions;
 import com.groupdocs.conversion.options.load.WordProcessingLoadOptions;
 
-import java.io.File;
-
 /**
-* This example demonstrates how to convert password-protected document to presentation and specifying pages to be converted
-*/
+ * This example demonstrates how to convert password-protected document to presentation and specifying pages to be converted
+ */
 public class ConvertToPresentationWithAdvancedOptions {
-    public static void run() 
-    {
-        String convertedFile = Constants.getConvertedPath("ConvertToPresentationWithAdvancedOptions.ppt");  
+    public static void run() {
+        String convertedFile = Constants.getConvertedPath("ConvertToPresentationWithAdvancedOptions.ppt");
         WordProcessingLoadOptions loadOptions = new WordProcessingLoadOptions();
         loadOptions.setPassword("12345");
         Converter converter = new Converter(Constants.SAMPLE_DOCX_WITH_PASSWORD, loadOptions);

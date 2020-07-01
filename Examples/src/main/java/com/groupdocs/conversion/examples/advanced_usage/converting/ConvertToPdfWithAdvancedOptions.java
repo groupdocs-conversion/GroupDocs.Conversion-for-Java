@@ -6,16 +6,12 @@ import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 import com.groupdocs.conversion.options.convert.Rotation;
 import com.groupdocs.conversion.options.load.WordProcessingLoadOptions;
 
-import java.io.File;
-
-
 /**
-* This example demonstrates how to convert password-protected document to PDF and specifying pages to be converted
-*/
+ * This example demonstrates how to convert password-protected document to PDF and specifying pages to be converted
+ */
 public class ConvertToPdfWithAdvancedOptions {
-    public static void run()
-    {        
-        String convertedFile =  Constants.getConvertedPath("ConvertToPdfWithAdvancedOptions.pdf");  
+    public static void run() {
+        String convertedFile = Constants.getConvertedPath("ConvertToPdfWithAdvancedOptions.pdf");
         WordProcessingLoadOptions loadOptions = new WordProcessingLoadOptions();
         loadOptions.setPassword("12345");
         Converter converter = new Converter(Constants.SAMPLE_DOCX_WITH_PASSWORD, loadOptions);

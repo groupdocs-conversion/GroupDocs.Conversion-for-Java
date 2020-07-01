@@ -6,14 +6,13 @@ import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 import com.groupdocs.conversion.options.convert.WatermarkOptions;
 
 import java.awt.*;
-import java.io.File;
+
 /**
-* This example demonstrates how to add watermark during conversion
-*/
+ * This example demonstrates how to add watermark during conversion
+ */
 public class AddWatermark {
-    public static void run()
-    {
-        String convertedFile =  Constants.getConvertedPath("AddWatermark.pdf");
+    public static void run() {
+        String convertedFile = Constants.getConvertedPath("AddWatermark.pdf");
         Converter converter = new Converter(Constants.SAMPLE_DOCX);
         PdfConvertOptions options = new PdfConvertOptions();
         WatermarkOptions watermark = new WatermarkOptions();

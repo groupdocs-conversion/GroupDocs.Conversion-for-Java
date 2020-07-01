@@ -6,19 +6,16 @@ import com.groupdocs.conversion.filetypes.ImageFileType;
 import com.groupdocs.conversion.options.convert.ImageConvertOptions;
 import com.groupdocs.conversion.options.convert.ImageFlipModes;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-
 /**
-* This example demonstrates how to convert a pdf document to image with advanced options
-*/
+ * This example demonstrates how to convert a pdf document to image with advanced options
+ */
 public class ConvertToImageWithAdvancedOptions {
-    public static void run()
-    {
-        String outputFileTemplate = Constants.getConvertedPath("ConvertToImageWithAdvancedOptions-converted-page-%s.png"); 
-       
+    public static void run() {
+        String outputFileTemplate = Constants.getConvertedPath("ConvertToImageWithAdvancedOptions-converted-page-%s.png");
+
         try {
             FileOutputStream getPageStream = new FileOutputStream(String.format(outputFileTemplate, 1));
 

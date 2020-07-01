@@ -6,17 +6,14 @@ import com.groupdocs.conversion.examples.Constants;
 import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 import com.groupdocs.conversion.options.load.EmailLoadOptions;
 
-import java.io.File;
-
 /**
-* This example demonstrates how to convert an email document to pdf with advanced options
-*/
+ * This example demonstrates how to convert an email document to pdf with advanced options
+ */
 public class ConvertEmailWithTimezoneOffset {
-    public static void run()
-    {
-        String convertedFile =  Constants.getConvertedPath("ConvertEmailWithTimezoneOffset.pdf");   
-        EmailLoadOptions loadOptions =  new EmailLoadOptions();
-        loadOptions.setTimeZoneOffset(new Double(5));
+    public static void run() {
+        String convertedFile = Constants.getConvertedPath("ConvertEmailWithTimezoneOffset.pdf");
+        EmailLoadOptions loadOptions = new EmailLoadOptions();
+        loadOptions.setTimeZoneOffset(7200000);
         Converter converter = new Converter(Constants.SAMPLE_EML, loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);

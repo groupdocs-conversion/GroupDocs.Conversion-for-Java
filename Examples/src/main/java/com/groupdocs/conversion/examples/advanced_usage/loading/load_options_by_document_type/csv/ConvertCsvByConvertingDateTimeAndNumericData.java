@@ -5,17 +5,13 @@ import com.groupdocs.conversion.examples.Constants;
 import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 import com.groupdocs.conversion.options.load.CsvLoadOptions;
 
-import java.io.File;
-
-
 /**
-* This example demonstrates how to convert a csv document to pdf with advanced options
-*/
+ * This example demonstrates how to convert a csv document to pdf with advanced options
+ */
 public class ConvertCsvByConvertingDateTimeAndNumericData {
 
-    public static void run()
-    {     
-        String convertedFile =  Constants.getConvertedPath("ConvertCsvByConvertingDateTimeAndNumericData.pdf");
+    public static void run() {
+        String convertedFile = Constants.getConvertedPath("ConvertCsvByConvertingDateTimeAndNumericData.pdf");
         CsvLoadOptions loadOptions = new CsvLoadOptions();
         loadOptions.setConvertDateTimeData(true);
         loadOptions.setConvertNumericData(true);

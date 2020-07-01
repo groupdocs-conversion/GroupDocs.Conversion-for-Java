@@ -4,9 +4,6 @@ import com.groupdocs.conversion.Converter;
 import com.groupdocs.conversion.examples.Constants;
 import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 
-import java.io.File;
-
-
 /**
 * This example demonstrates how to convert document to PDF.
 */

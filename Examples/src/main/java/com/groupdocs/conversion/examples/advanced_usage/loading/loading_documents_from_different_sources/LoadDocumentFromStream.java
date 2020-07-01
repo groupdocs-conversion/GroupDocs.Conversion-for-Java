@@ -5,25 +5,22 @@ import com.groupdocs.conversion.examples.Constants;
 import com.groupdocs.conversion.exceptions.GroupDocsConversionException;
 import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 
-import java.io.File;
 import java.io.FileInputStream;
 
-
 /**
-* This example demonstrates how to convert document from stream.
-*/
+ * This example demonstrates how to convert document from stream.
+ */
 public class LoadDocumentFromStream {
-    public static void run()
-    {        
-        String convertedFile =  Constants.getConvertedPath("LoadDocumentFromStream.pdf");
+    public static void run() {
+        String convertedFile = Constants.getConvertedPath("LoadDocumentFromStream.pdf");
 
-    try{
-        Converter converter = new Converter(new FileInputStream(Constants.SAMPLE_DOCX));
-        PdfConvertOptions options = new PdfConvertOptions();
-        converter.convert(convertedFile, options);
-    } catch (Exception e){
-        throw new GroupDocsConversionException(e.getMessage());
-    }
+        try {
+            Converter converter = new Converter(new FileInputStream(Constants.SAMPLE_DOCX));
+            PdfConvertOptions options = new PdfConvertOptions();
+            converter.convert(convertedFile, options);
+        } catch (Exception e) {
+            throw new GroupDocsConversionException(e.getMessage());
+        }
         System.out.println("\nSource document converted successfully.\nCheck output in " + convertedFile);
     }
 }

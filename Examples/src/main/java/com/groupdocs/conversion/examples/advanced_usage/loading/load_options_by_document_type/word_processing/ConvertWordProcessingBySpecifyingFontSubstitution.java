@@ -6,17 +6,15 @@ import com.groupdocs.conversion.examples.Constants;
 import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 import com.groupdocs.conversion.options.load.WordProcessingLoadOptions;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
-* This example demonstrates how to convert a word-processing document to pdf with advanced options
-*/
+ * This example demonstrates how to convert a word-processing document to pdf with advanced options
+ */
 public class ConvertWordProcessingBySpecifyingFontSubstitution {
-    public static void run()
-    {
-        String convertedFile = Constants.getConvertedPath("ConvertWordProcessingBySpecifyingFontSubstitution.pdf");        
+    public static void run() {
+        String convertedFile = Constants.getConvertedPath("ConvertWordProcessingBySpecifyingFontSubstitution.pdf");
         WordProcessingLoadOptions loadOptions = new WordProcessingLoadOptions();
         loadOptions.setAutoFontSubstitution(false);
         loadOptions.setDefaultFont("Helvetica");
@@ -29,6 +27,6 @@ public class ConvertWordProcessingBySpecifyingFontSubstitution {
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 
-        System.out.print("\nWordProcessing document converted successfully. \nCheck output in "+ convertedFile);
+        System.out.print("\nWordProcessing document converted successfully. \nCheck output in " + convertedFile);
     }
 }

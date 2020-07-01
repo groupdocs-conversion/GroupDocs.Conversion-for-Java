@@ -5,15 +5,12 @@ import com.groupdocs.conversion.examples.Constants;
 import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 import com.groupdocs.conversion.options.load.SpreadsheetLoadOptions;
 
-import java.io.File;
-
 /**
-* This example demonstrates how to convert a spreadsheet document to pdf with advanced options
-*/
+ * This example demonstrates how to convert a spreadsheet document to pdf with advanced options
+ */
 public class ConvertSpreadsheetBySkippingEmptyRowsAndColumns {
-    public static void run()
-    {
-        String convertedFile = Constants.getConvertedPath("ConvertSpreadsheetBySkippingEmptyRowsAndColumns.pdf");          
+    public static void run() {
+        String convertedFile = Constants.getConvertedPath("ConvertSpreadsheetBySkippingEmptyRowsAndColumns.pdf");
         SpreadsheetLoadOptions loadOptions = new SpreadsheetLoadOptions();
         loadOptions.setSkipEmptyRowsAndColumns(true);
         loadOptions.setOnePagePerSheet(true);
@@ -21,6 +18,6 @@ public class ConvertSpreadsheetBySkippingEmptyRowsAndColumns {
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 
-        System.out.print("\nSpreadsheet document converted successfully. \nCheck output in "+ convertedFile);
+        System.out.print("\nSpreadsheet document converted successfully. \nCheck output in " + convertedFile);
     }
 }

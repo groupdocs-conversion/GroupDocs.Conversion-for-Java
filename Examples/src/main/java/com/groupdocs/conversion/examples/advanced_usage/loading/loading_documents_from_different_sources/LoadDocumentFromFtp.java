@@ -5,26 +5,25 @@ import com.groupdocs.conversion.examples.Constants;
 import com.groupdocs.conversion.exceptions.GroupDocsConversionException;
 import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 import org.apache.commons.net.ftp.FTPClient;
-import java.io.File;
+
 import java.io.InputStream;
 
 
 /**
-* This example demonstrates how to convert document downloaded from FTP.
-*/
+ * This example demonstrates how to convert document downloaded from FTP.
+ */
 public class LoadDocumentFromFtp {
-    public static void run()
-    {
-        String server = "ftp.example.com";
-        String convertedFile = Constants.getConvertedPath("LoadDocumentFromFtp.pdf");       
-        String filePath = "ftp://localhost/sample.doc";
+    public static void run() {
+        String server = "127.0.0.1"; //ftp.example.com
+        String convertedFile = Constants.getConvertedPath("LoadDocumentFromFtp.pdf");
+        String dirname = "pub";
+        String fileName = "sample.docx";
 
         try {
-            Converter converter = new Converter(getFileFromFtp(server, filePath));
+            Converter converter = new Converter(getFileFromFtp(server, dirname, fileName));
             PdfConvertOptions options = new PdfConvertOptions();
             converter.convert(convertedFile, options);
-        } 
-        catch (Exception e){
+        } catch (Exception e) {
             throw new GroupDocsConversionException(e.getMessage());
         }
 
@@ -32,10 +31,11 @@ public class LoadDocumentFromFtp {
 
     }
 
-    private static InputStream getFileFromFtp(String server, String filePath) throws Exception
-    {
+    private static InputStream getFileFromFtp(String server, String dirname, String fileName) throws Exception {
         FTPClient client = new FTPClient();
         client.connect(server);
-        return client.retrieveFileStream(filePath);
+        client.login("anonymous", "");
+        client.changeWorkingDirectory(dirname);
+        return client.retrieveFileStream(fileName);
     }
 }

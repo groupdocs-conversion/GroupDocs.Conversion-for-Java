@@ -5,22 +5,18 @@ import com.groupdocs.conversion.examples.Constants;
 import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 import com.groupdocs.conversion.options.load.CadLoadOptions;
 
-import java.io.File;
-
-
 /**
-* This example demonstrates how to convert a cad document to pdf with advanced options
-*/
+ * This example demonstrates how to convert a cad document to pdf with advanced options
+ */
 public class ConvertCadAndSpecifyLayouts {
-    public static void run()
-    {
-        String convertedFile =  Constants.getConvertedPath("ConvertCadAndSpecifyLayouts.pdf");   
-        CadLoadOptions loadOptions =  new CadLoadOptions();
-        loadOptions.setLayoutNames(new  String[]{ "Layout1", "Layout3" });
+    public static void run() {
+        String convertedFile = Constants.getConvertedPath("ConvertCadAndSpecifyLayouts.pdf");
+        CadLoadOptions loadOptions = new CadLoadOptions();
+        loadOptions.setLayoutNames(new String[]{"Layout1", "Layout3"});
         Converter converter = new Converter(Constants.SAMPLE_DWG_WITH_LAYOUTS_AND_LAYERS, loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 
-        System.out.print("\nCad document converted successfully. \nCheck output in "+ convertedFile);
+        System.out.print("\nCad document converted successfully. \nCheck output in " + convertedFile);
     }
 }
