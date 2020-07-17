@@ -8,4 +8,6 @@ keywords: GroupDocs.Conversion Developer Guide, GroupDocs.Conversion Java Develo
 productName: GroupDocs.Conversion for Java
 hideChildren: False
 ---
-{{< alert style="info" >}}This section describes some basic and advanced use cases of GroupDocs.Conversion for Java. Please refer to GitHub repository for more examples and samples.{{< /alert >}}
+{{< alert style="info" >}}
+This section describes some basic and advanced use cases of GroupDocs.Conversion for Java. Please refer to [GitHub repository](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java) for more examples and samples.
+{{< /alert >}}
