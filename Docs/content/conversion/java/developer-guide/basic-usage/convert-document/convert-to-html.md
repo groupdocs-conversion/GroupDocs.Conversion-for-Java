@@ -14,7 +14,7 @@ Conversion to markup format could be triggered by following below steps:
 
 *   Create new instance of [Converter](https://apireference.groupdocs.com/java/conversion/com.groupdocs.conversion/Converter) class and pass source document path as a constructor parameter;
 *   Instantiate [MarkupConvertOptions](https://apireference.groupdocs.com/java/conversion/com.groupdocs.conversion.options.convert/MarkupConvertOptions) class;
-*   Call [convert](https://apireference.groupdocs.com/java/conversion/com.groupdocs.conversion/Converter#convert(java.lang.String,%20com.groupdocs.conversion.options.convert.ConvertOptions)) method of [Converter](https://apireference.groupdocs.com/java/conversion/com.groupdocs.conversion/Converter) class instance and pass filename for the converted document and the instance of [MarkupConvertOptions](https://apireference.groupdocs.com/net/conversion/groupdocs.conversion.options.convert/markupconvertoptions) from the previous step.
+*   Call [convert](https://apireference.groupdocs.com/java/conversion/com.groupdocs.conversion/Converter#convert(java.lang.String,%20com.groupdocs.conversion.options.convert.ConvertOptions)) method of [Converter](https://apireference.groupdocs.com/java/conversion/com.groupdocs.conversion/Converter) class instance and pass filename for the converted document and the instance of [MarkupConvertOptions](https://apireference.groupdocs.com/conversion/java/com.groupdocs.conversion.options.convert/MarkupConvertOptions) from the previous step.
 
 The following code show how to convert any document to HTML. 
 

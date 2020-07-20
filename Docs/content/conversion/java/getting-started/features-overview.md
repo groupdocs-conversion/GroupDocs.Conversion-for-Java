@@ -10,7 +10,7 @@ hideChildren: False
 ---
 ## Document conversion
 
-GroupDocs.Conversion main feature is an ability to convert any document from wide list of supported source document formats into any supported target format (check full list of supported conversions [here]({{< ref "conversion/java/getting-started/features-overview.md" >}})). All these conversions are possible without any additional software installed (like MS Office, Apache Open Office, Adobe Acrobat Reader and others).
+GroupDocs.Conversion main feature is an ability to convert any document from wide list of supported source document formats into any supported target format (check full list of supported conversions [here]({{< ref "conversion/java/getting-started/supported-document-formats.md" >}})). All these conversions are possible without any additional software installed (like MS Office, Apache Open Office, Adobe Acrobat Reader and others).
 GroupDocs.Conversion provides flexible set of settings to customize conversion process to fulfill your needs:
 
 *   Convert whole document to desired target format;

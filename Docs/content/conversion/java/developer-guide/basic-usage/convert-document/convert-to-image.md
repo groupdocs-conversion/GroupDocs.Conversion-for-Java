@@ -16,7 +16,7 @@ Conversion to image format could be triggered by following below steps:
 *   Instantiate [ImageConvertOptions](https://apireference.groupdocs.com/java/conversion/com.groupdocs.conversion.options.convert/ImageConvertOptions) class.
 *   Call setFormatmethod of the [ImageConvertOptions](https://apireference.groupdocs.com/java/conversion/com.groupdocs.conversion.options.convert/ImageConvertOptions) instance to specify the desired image format
 *   Declare output stream each document page will be stored. This delegate will be called for each page during conversion.
-*   Call [Convert](https://apireference.groupdocs.com/net/conversion/groupdocs.conversion/converter/methods/convert/2) method of [Converter](https://apireference.groupdocs.com/java/conversion/com.groupdocs.conversion/Converter) class instance and pass the declared output stream and the instance of [ImageConvertOptions](https://apireference.groupdocs.com/java/conversion/com.groupdocs.conversion.options.convert/ImageConvertOptions) from the previous two steps
+*   Call [Convert](https://apireference.groupdocs.com/conversion/java/com.groupdocs.conversion/Converter#convert(java.io.OutputStream,%20com.groupdocs.conversion.options.convert.ConvertOptions)) method of [Converter](https://apireference.groupdocs.com/java/conversion/com.groupdocs.conversion/Converter) class instance and pass the declared output stream and the instance of [ImageConvertOptions](https://apireference.groupdocs.com/java/conversion/com.groupdocs.conversion.options.convert/ImageConvertOptions) from the previous two steps
 
 ## Conversion to JPG
 

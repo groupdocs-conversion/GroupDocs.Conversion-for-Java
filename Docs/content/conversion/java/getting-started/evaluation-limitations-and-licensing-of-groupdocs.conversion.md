@@ -52,7 +52,7 @@ using (FileStream fileStream = File.OpenRead("GroupDocs.Conversion.lic"))
 #### Setting Metered License
 
 {{< alert style="info" >}}
-You can also set [Metered](https://apireference.groupdocs.com/net/conversion/groupdocs.conversion/metered) license as an alternative to license file. It is a new licensing mechanism that will be used along with existing licensing method. It is useful for the customers who want to be billed based on the usage of the API features. For more details, please refer to [Metered Licensing FAQ](https://purchase.groupdocs.com/faqs/licensing/metered) section.
+You can also set [Metered](https://apireference.groupdocs.com/conversion/java/com.groupdocs.conversion.licensing/Metered) license as an alternative to license file. It is a new licensing mechanism that will be used along with existing licensing method. It is useful for the customers who want to be billed based on the usage of the API features. For more details, please refer to [Metered Licensing FAQ](https://purchase.groupdocs.com/faqs/licensing/metered) section.
 {{< /alert >}}
 
 Here are the simple steps to use the `Metered` class.

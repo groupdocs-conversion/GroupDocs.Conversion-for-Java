@@ -8,7 +8,7 @@ keywords: Convert document from local disk, Convert file
 productName: GroupDocs.Conversion for Java
 hideChildren: False
 ---
-When document is located on the local disk [**GroupDocs.Conversion**](https://products.groupdocs.com/conversion/java) enables you to convert the document by passing the path to the [Converter](https://apireference.groupdocs.com/net/conversion/groupdocs.conversion/converter) class constructor. GroupDocs.Conversion will open the file for reading only when any method of [Converter](https://apireference.groupdocs.com/net/conversion/groupdocs.conversion/converter) class is called.
+When document is located on the local disk [**GroupDocs.Conversion**](https://products.groupdocs.com/conversion/java) enables you to convert the document by passing the path to the [Converter](https://apireference.groupdocs.com/conversion/java/com.groupdocs.conversion/Converter) class constructor. GroupDocs.Conversion will open the file for reading only when any method of [Converter](https://apireference.groupdocs.com/conversion/java/com.groupdocs.conversion/Converter) class is called.
 
 Following code snippet shows how to load document from local disk:
 
