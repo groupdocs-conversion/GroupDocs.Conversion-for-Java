@@ -9,7 +9,8 @@ productName: GroupDocs.Conversion for Java
 hideChildren: True
 ---
 {{< alert style="info" >}}
-![](conversion/java/images/home.png) **Welcome to the GroupDocs.Conversion for Java** GroupDocs.Conversion for Java is a lightweight multi-format document conversion API designed as a middle-ware for Java applications. It allows you to enhance your app with the capability to convert back and forth over 50 document and image file formats. 
+![](conversion/java/images/home.png) **Welcome to the GroupDocs.Conversion for Java**  
+GroupDocs.Conversion for Java is a lightweight multi-format document conversion API designed as a middle-ware for Java applications. It allows you to enhance your app with the capability to convert back and forth over 50 document and image file formats. 
 {{< /alert >}}
 
 ## GroupDocs.Conversion for Java Resources
