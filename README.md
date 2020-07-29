@@ -25,9 +25,9 @@ Directory | Description
 - Add text or image watermarks to any page.
 - Extract document's basic information.
 - Load source document with extended options;
--- [Specify password for password-protected documents](https://docs.groupdocs.com/conversion/java/load-password-protected-document/).
--- Load specific part or pages of the document.
--- Hide or show document comments.
+   - [Specify password for password-protected documents](https://docs.groupdocs.com/conversion/java/load-password-protected-document/).
+   - Load specific part or pages of the document.
+   - Hide or show document comments.
 
 ## Get Started with GroupDocs.Conversion for Java
 
