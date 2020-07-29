@@ -1,8 +1,6 @@
-## GroupDocs.Conversion for Java
+# Document Conversion Java Library
 
-This package contains [Examples](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/tree/master/Examples) for [GroupDocs.Conversion for Java](https://products.groupdocs.com/conversion/java) that will help you understand API's working and write your own applications.
-
-GroupDocs.Conversion for Java is a universal document conversion library designed for easy integration into any Java application. Allows you to convert back and forth between over 50 types of documents and images, including all Microsoft Office and OpenDocument file formats, PDF documents, HTML, CAD, raster images (TIFF, JPEG, GIF, PNG, BMP). 
+GroupDocs.Conversion for Java is a [Document Conversion Library](https://products.groupdocs.com/conversion/java) designed to convert back and forth between over [50 types of documents and images](https://docs.groupdocs.com/conversion/java/supported-document-formats/), including all Microsoft Office and OpenDocument file formats, PDF documents, HTML, CAD, raster images (TIFF, JPEG, GIF, PNG, BMP) and more. 
 
 <p align="center">
 
@@ -13,27 +11,52 @@ GroupDocs.Conversion for Java is a universal document conversion library designe
 
 Directory | Description
 --------- | -----------
-[Examples](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/tree/master/Examples)  | Contains the package of all Java examples and sample files that will help you learn how to use product features.
-[Showcases](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/tree/master/Showcases)  | Explore the open source showcase projects in order to create your own front end project using the document conversion API. Moreover, you can extend any of our showcase project in order to contribute.
+[Docs](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/tree/master/Docs)  | Product documentation containing the Developer's Guide, Release Notes and more.
+[Examples](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/tree/master/Examples)  | Java examples and sample documents for you to get started quickly. 
+[Showcases](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/tree/master/Showcases)  | Build Document Conversion Applications using GroupDocs.Conversion for Java. 
 
-## How to Run the Examples
+## Universal Document Converter 
 
-+ You can either clone the repository using your favorite GitHub client or download the ZIP file from the above button.
-+ Extract the contents of the ZIP file to any folder on your computer.
-+ Open Java IDE and import the project to get started with it.
-+ On the first run, the dependencies will automatically be downloaded.
-+ Open MainClass.java file, all the examples are called from here.
-+ Uncomment the examples you want to run from within the project.
+- Convert whole document to desired target format.
+- [Convert specific document page(s) or page ranges](https://docs.groupdocs.com/conversion/java/convert-specific-pages/).
+- Auto-detect source document format on the fly without requiring the file extension.
+- Obtain a list of all supported conversion formats.
+- Replace missing fonts.
+- Add text or image watermarks to any page.
+- Extract document's basic information.
+- Load source document with extended options;
+-- [Specify password for password-protected documents](https://docs.groupdocs.com/conversion/java/load-password-protected-document/).
+-- Load specific part or pages of the document.
+-- Hide or show document comments.
 
-Please find more details for how to run the examples [here](https://docs.groupdocs.com/display/conversionjava/How+to+Run+Examples).
+## Get Started with GroupDocs.Conversion for Java
 
-## Resources
+GroupDocs.Conversion for Java requires J2SE 7.0 (1.7), J2SE 8.0 (1.8) or above. Please install Java first if you do not have it already. 
 
-+ **Website:** [www.groupdocs.com](http://www.groupdocs.com)
-+ **Product Home:** [GroupDocs.Conversion for Java](https://products.groupdocs.com/conversion/java)
-+ **API Reference:** [GroupDocs.Conversion for Java API Reference](https://apireference.groupdocs.com/java/conversion)
-+ **Download:** [Download GroupDocs.Conversion for Java](https://artifact.groupdocs.com/repo/com/groupdocs/groupdocs-conversion/)
-+ **Documentation:** [GroupDocs.Conversion for Java Documentation](https://docs.groupdocs.com/display/conversionjava)
-+ **Free Support:** [GroupDocs.Conversion for Java Free Support Forum](https://forum.groupdocs.com/c/conversion)
-+ **Paid Support:** [GroupDocs.Conversion for Java Paid Support Helpdesk](https://helpdesk.groupdocs.com/)
-+ **Blog:** [GroupDocs.Conversion for Java Blog](https://blog.groupdocs.com/category/groupdocs-conversion-product-family/)
+GroupDocs hosts all Java APIs on [GroupDocs Artifact Repository](https://artifact.groupdocs.com/webapp/#/artifacts/browse/tree/General/repo/com/groupdocs/groupdocs-conversion), so simply [configure](https://docs.groupdocs.com/conversion/java/installation/) your Maven project to fetch the dependencies automatically.
+
+## Convert DOCX to HTML
+
+```java
+Converter converter = new Converter("sample.docx");
+MarkupConvertOptions options = new MarkupConvertOptions();
+converter.convert("ConvertToHtml.html", options);
+```
+
+## Convert PDF to DOCX
+
+```java
+Converter converter = new Converter("sample.pdf");
+WordProcessingConvertOptions options = new WordProcessingConvertOptions();
+converter.convert("converted.docx", options);
+```
+
+## Convert Word to Presentation
+
+```java
+Converter converter = new Converter("sample.docx");
+PresentationConvertOptions options = new PresentationConvertOptions();
+converter.convert("converted.pptx", options);
+```
+
+[Home](https://www.groupdocs.com/) | [Product Page](https://products.groupdocs.com/conversion/java) | [Documentation](https://docs.groupdocs.com/conversion/java/) | [Demos](https://products.groupdocs.app/conversion/family) | [API Reference](https://apireference.groupdocs.com/java/conversion) | [Examples](https://github.com/groupdocs-conversion/GroupDocs.conversion-for-Java/tree/master/Examples) | [Blog](https://blog.groupdocs.com/category/annotation/) | [Free Support](https://forum.groupdocs.com/c/conversion) | [Temporary License](https://purchase.groupdocs.com/temporary-license)
