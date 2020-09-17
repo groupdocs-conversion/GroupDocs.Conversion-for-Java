@@ -12,8 +12,8 @@ hideChildren: False
 
 Conversion to any format could be triggered by following 3 unified steps:
 
-*   Create new instance of **Converter** class and pass source document path as a constructor parameter
-*   Instantiate the needed **ConvertOptions** object according to your requirements.
-*   Call **Convert** method of **Converter** class instance and pass name of the converted document and the instance of convert options from the previous step
+*   Create new instance of [**Converter**](https://apireference.groupdocs.com/conversion/java/com.groupdocs.conversion/Converter) class and pass source document path as a constructor parameter
+*   Instantiate the needed [**ConvertOptions**](https://apireference.groupdocs.com/conversion/java/com.groupdocs.conversion.options.convert/ConvertOptions) object according to your requirements.
+*   Call [**Convert**](https://apireference.groupdocs.com/conversion/java/com.groupdocs.conversion/Converter#convert(java.io.OutputStream,%20com.groupdocs.conversion.options.convert.ConvertOptions)) method of [**Converter**](https://apireference.groupdocs.com/conversion/java/com.groupdocs.conversion/Converter) class instance and pass name of the converted document and the instance of convert options from the previous step
 
 Following the above 3 steps any source document you can:
