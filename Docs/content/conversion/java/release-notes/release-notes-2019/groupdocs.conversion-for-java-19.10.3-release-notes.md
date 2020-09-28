@@ -2,7 +2,7 @@
 id: groupdocs-conversion-for-java-19-10-3-release-notes
 url: conversion/java/groupdocs-conversion-for-java-19-10-3-release-notes
 title: GroupDocs.Conversion for Java 19.10.3 Release Notes
-weight: 40
+weight: 1
 description: ""
 keywords: 
 productName: GroupDocs.Conversion for Java
