@@ -1,7 +1,7 @@
 ---
-id: groupdocs-conversion-for-java-20-9-release-notes
-url: conversion/java/groupdocs-conversion-for-java-20-9-release-notes
-title: GroupDocs.Conversion for Java 20.9 Release Notes
+id: groupdocs-conversion-for-java-20-10-release-notes
+url: conversion/java/groupdocs-conversion-for-java-20-10-release-notes
+title: GroupDocs.Conversion for Java 20.10 Release Notes
 weight: 16
 description: ""
 keywords: 
@@ -73,6 +73,8 @@ There are 20+ features, improvements and bug-fixes in this release, most notable
 | CONVERSIONJAVA-704 | Bug | CrossTableNotFoundException when converting a particular PDF to Image |
 | CONVERSIONJAVA-818 | Bug | Issue in converting a Word file to PDF with Arabic font |
 | CONVERSIONJAVA-844 | Bug | Error in converting a particular DOCX to PDF |
+| CONVERSIONJAVA-933 | Bug | Absolute URI is too short |
+| CONVERSIONJAVA-993 | Bug | DWG to JPG ImageSaveException (java heap space) |
 
 ## Public API and Backward Incompatible Changes
 
