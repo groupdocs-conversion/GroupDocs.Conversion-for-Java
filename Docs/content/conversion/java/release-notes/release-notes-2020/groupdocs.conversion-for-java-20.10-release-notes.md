@@ -75,6 +75,7 @@ There are 20+ features, improvements and bug-fixes in this release, most notable
 | CONVERSIONJAVA-844 | Bug | Error in converting a particular DOCX to PDF |
 | CONVERSIONJAVA-933 | Bug | Absolute URI is too short |
 | CONVERSIONJAVA-993 | Bug | DWG to JPG ImageSaveException (java heap space) |
+| CONVERSIONJAVA-1084| Bug | Heap - OutOfMemory issues |
 
 ## Public API and Backward Incompatible Changes
 
