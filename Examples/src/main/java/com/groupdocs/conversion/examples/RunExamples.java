@@ -19,9 +19,13 @@ import com.groupdocs.conversion.examples.advanced_usage.loading.load_options_by_
 import com.groupdocs.conversion.examples.advanced_usage.loading.load_options_by_document_type.presentation.ConvertPresentationBySpecifyingFontSubstitution;
 import com.groupdocs.conversion.examples.advanced_usage.loading.load_options_by_document_type.presentation.ConvertPresentationWithHiddenSlidesIncluded;
 import com.groupdocs.conversion.examples.advanced_usage.loading.load_options_by_document_type.spreadsheet.*;
+import com.groupdocs.conversion.examples.advanced_usage.loading.load_options_by_document_type.txt.ConvertTxtByControllingLeadingSpacesBehavior;
+import com.groupdocs.conversion.examples.advanced_usage.loading.load_options_by_document_type.txt.ConvertTxtByControllingTrailingSpacesBehavior;
+import com.groupdocs.conversion.examples.advanced_usage.loading.load_options_by_document_type.txt.ConvertTxtBySpecifyingEncoding;
 import com.groupdocs.conversion.examples.advanced_usage.loading.load_options_by_document_type.word_processing.ConvertWordProcessingByHiddingComments;
 import com.groupdocs.conversion.examples.advanced_usage.loading.load_options_by_document_type.word_processing.ConvertWordProcessingByHiddingTrackedChanges;
 import com.groupdocs.conversion.examples.advanced_usage.loading.load_options_by_document_type.word_processing.ConvertWordProcessingBySpecifyingFontSubstitution;
+import com.groupdocs.conversion.examples.advanced_usage.loading.load_options_by_document_type.xml.ConvertXmlAsDataSourceToSpreadsheet;
 import com.groupdocs.conversion.examples.advanced_usage.loading.loading_documents_from_different_sources.*;
 import com.groupdocs.conversion.examples.basic_usage.GetPossibleConversions;
 import com.groupdocs.conversion.examples.basic_usage.GetSourceDocumentInfo;
@@ -131,10 +135,18 @@ public class RunExamples {
                 ConvertSpreadsheetBySpecifyingRange.run();
                 ConvertSpreadsheetWithHiddenSheetsIncluded.run();
 
+                //Txt
+                 ConvertTxtByControllingLeadingSpacesBehavior.run();
+                 ConvertTxtByControllingTrailingSpacesBehavior.run();
+                 //ConvertTxtBySpecifyingEncoding.run();
+
                 // WordProcessing
                 ConvertWordProcessingByHiddingComments.run();
                 ConvertWordProcessingByHiddingTrackedChanges.run();
                 ConvertWordProcessingBySpecifyingFontSubstitution.run();
+
+                //Xml
+                //ConvertXmlAsDataSourceToSpreadsheet.run();
 
                 // Convert options
                 ConvertToHtmlWithAdvancedOptions.run();

@@ -96,6 +96,9 @@ public class Constants {
     public static String MISSING_FONT_ODG =
     getSampleFilePath("with_missing_font.odg");
 
+    //Xml
+    public static String SAMPLE_XML_DATASOURCE = getSampleFilePath("sample_datasource.xml");
+
     private static String getSampleFilePath(String filePath) {
         return new File(SamplesPath, filePath).getPath();
     }

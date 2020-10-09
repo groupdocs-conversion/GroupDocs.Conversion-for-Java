@@ -8,8 +8,8 @@ import com.groupdocs.conversion.licensing.Metered;
  */
 public class SetMeteredLicense {
     public static void run() {
-        String publicKey = "58170a16ca67489194199c30ee2b5ea0";
-        String privateKey = "mfMD9Pm5r4JypH7nQCDMSHZmGs8knji-YQ3SszNRTJ7qloJWTzGik8tWXClu1WQssnjpUlBrFsgb261ROotlj3qh1uExL3x4Z0KnivrD-xe5wxGmUHepva7Ur9ct4cexlApgvWhhFpMFvzhncFVUYf1nwk1Twi6Gk3Du*9mxbs8";
+        String publicKey = "*****";
+        String privateKey = "*****";
 
         Metered metered = new Metered();
         metered.setMeteredKey(publicKey, privateKey);

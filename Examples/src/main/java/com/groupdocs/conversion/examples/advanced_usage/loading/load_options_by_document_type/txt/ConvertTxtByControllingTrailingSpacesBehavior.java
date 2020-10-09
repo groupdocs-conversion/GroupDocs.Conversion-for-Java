@@ -5,19 +5,19 @@ import com.groupdocs.conversion.examples.Constants;
 import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 import com.groupdocs.conversion.options.load.TxtLeadingSpacesOptions;
 import com.groupdocs.conversion.options.load.TxtLoadOptions;
+import com.groupdocs.conversion.options.load.TxtTrailingSpacesOptions;
 
 import java.io.File;
 
 /**
 * This example demonstrates how to convert a txt document to pdf with advanced options
 */
-public class ConvertTxtByControlingLeadingSpacesBehavior {
+public class ConvertTxtByControllingTrailingSpacesBehavior {
     public static void run()
     {
         String convertedFile = Constants.getConvertedPath("ConvertTxtByControlingLeadingSpacesBehavior.pdf");  
         TxtLoadOptions loadOptions =  new TxtLoadOptions();
-        loadOptions.setLeadingSpacesOptions(TxtLeadingSpacesOptions.ConvertToIndent);
-        loadOptions.setDetectNumberingWithWhitespaces(true);
+        loadOptions.setTrailingSpacesOptions(TxtTrailingSpacesOptions.Trim);
         Converter converter = new Converter(Constants.SAMPLE_TXT, loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
