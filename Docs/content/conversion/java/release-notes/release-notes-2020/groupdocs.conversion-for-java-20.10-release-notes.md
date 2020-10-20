@@ -71,6 +71,7 @@ There are 20+ features, improvements and bug-fixes in this release, most notable
 | CONVERSIONNET-3928 | Bug | Doc to Xlsx conversion issue |
 | CONVERSIONNET-3938 | Bug | Wrong Height and Width are returning from GetDocumentInfo method  |
 | CONVERSIONJAVA-704 | Bug | CrossTableNotFoundException when converting a particular PDF to Image |
+| CONVERSIONJAVA-771 | Bug | The support for page numeration in the output document |
 | CONVERSIONJAVA-818 | Bug | Issue in converting a Word file to PDF with Arabic font |
 | CONVERSIONJAVA-844 | Bug | Error in converting a particular DOCX to PDF |
 | CONVERSIONJAVA-933 | Bug | Absolute URI is too short |
