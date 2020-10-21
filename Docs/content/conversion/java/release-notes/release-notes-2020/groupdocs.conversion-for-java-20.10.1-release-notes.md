@@ -10,7 +10,7 @@ hideChildren: False
 ---
 ## Major Features
 
-There are 1 improvement in this release:
+There is 1 improvement in this release:
 
 *   Improved FontsHelper for reading directories
   
