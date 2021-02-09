@@ -21,7 +21,7 @@ public class ConvertNoteBySpecifyingFontSubstitution {
         fontSubstitutes.add(FontSubstitute.create("Tahoma", "Arial"));
         fontSubstitutes.add(FontSubstitute.create("Times New Roman", "Arial"));
         loadOptions.setFontSubstitutes(fontSubstitutes);
-        loadOptions.setDefaultFont("Helvetica");
+        loadOptions.setDefaultFont(Constants.FontsPath + "terminal-grotesque_open.otf");
 
         Converter converter = new Converter(Constants.SAMPLE_ONE, loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
