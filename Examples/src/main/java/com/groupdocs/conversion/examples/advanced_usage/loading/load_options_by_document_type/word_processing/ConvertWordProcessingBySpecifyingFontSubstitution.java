@@ -17,7 +17,7 @@ public class ConvertWordProcessingBySpecifyingFontSubstitution {
         String convertedFile = Constants.getConvertedPath("ConvertWordProcessingBySpecifyingFontSubstitution.pdf");
         WordProcessingLoadOptions loadOptions = new WordProcessingLoadOptions();
         loadOptions.setAutoFontSubstitution(false);
-        loadOptions.setDefaultFont("Helvetica");
+        loadOptions.setDefaultFont("resources/fonts/Helvetica.ttf");
         List<FontSubstitute> fontSubstitutes = new ArrayList<FontSubstitute>();
         fontSubstitutes.add(FontSubstitute.create("Tahoma", "Arial"));
         fontSubstitutes.add(FontSubstitute.create("Times New Roman", "Arial"));

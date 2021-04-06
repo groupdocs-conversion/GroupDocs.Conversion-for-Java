@@ -19,7 +19,7 @@ public class ConvertPresentationBySpecifyingFontSubstitution {
         List<FontSubstitute> fontSubstitutes = new ArrayList<FontSubstitute>();
         fontSubstitutes.add(FontSubstitute.create("Tahoma", "Arial"));
         fontSubstitutes.add(FontSubstitute.create("Times New Roman", "Arial"));
-        loadOptions.setDefaultFont("Helvetica");
+        loadOptions.setDefaultFont("resources/fonts/Helvetica.ttf");
         loadOptions.setFontSubstitutes(fontSubstitutes);
         Converter converter = new Converter(Constants.PPTX_WITH_NOTES, loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
