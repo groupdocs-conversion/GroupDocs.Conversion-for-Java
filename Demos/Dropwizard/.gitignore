@@ -1,0 +1,21 @@
+# Add any directories, files, or patterns you don't want to be tracked by version control
+.idea/*
+*.iml
+*.ipr
+*.iws
+target/*
+.DS_Store
+vs.bin
+App_Data/*
+node_modules
+src/main/resources/assets/*
+!src/main/resources/assets/.gitkeep
+node/
+etc/
+package-lock.json
+Licenses/*
+!Licenses/.gitkeep
+DocumentSamples/*
+!DocumentSamples/.gitkeep
+src/test/resources/*
+!src/test/resources/calibre.docx

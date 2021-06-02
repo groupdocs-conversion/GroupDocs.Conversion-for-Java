@@ -1,0 +1,57 @@
+################################################
+# Server configurations
+################################################
+server:
+  type: simple
+  applicationContextPath: /
+  adminContextPath: /admin
+  connector:
+    type: http
+    port: 8080
+
+
+################################################
+# Application (global) configurations
+################################################
+application:
+  # License path
+  # Absolute or relative path to GroupDocs license file
+  licensePath:
+  # Host name or ip for server instance
+  hostAddress: ${application.hostAddress}
+
+################################################
+# Common configurations
+################################################
+common:
+  # File rewriting on document uploading
+  # Set false to keep both files
+  # Set true to replace files with same name
+  rewrite: true
+  # Page navigation
+  # Set false to disable document navigation (go to next, previous, last and first page)
+  pageSelector: true
+  # Document download
+  # Set false to disable document download
+  download: true
+  # Document upload
+  # Set false to disable document upload
+  upload: true
+  # Document print
+  # Set false to disable document print
+  print: true
+  # File browser
+  # Set false to disable document browse
+  browse: true
+
+
+################################################
+# GroupDocs.Conversion configurations
+################################################
+conversion:
+  # Files directory path
+  # Absolute or relative path to files directory
+  filesDirectory: DocumentSamples
+  # Result files directory path
+  # Absolute path to result files directory
+  resultDirectory: ''

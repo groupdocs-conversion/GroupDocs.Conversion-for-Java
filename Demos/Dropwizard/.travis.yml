@@ -1,0 +1,40 @@
+dist: trusty
+language: java
+jdk:
+- oraclejdk8
+- oraclejdk9
+- openjdk8
+#- oraclejdk11
+- openjdk10
+#- openjdk11
+services:
+  - docker
+jobs:
+  include:
+  - stage: Coverage
+    jdk: oraclejdk8
+    script:
+    - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+    - chmod +x ./cc-test-reporter
+    - ./cc-test-reporter before-build
+    - mvn clean package
+    - JACOCO_SOURCE_PATH=src/main/java ./cc-test-reporter format-coverage target/site/jacoco/jacoco.xml --input-type jacoco
+    - ./cc-test-reporter upload-coverage
+  - stage: Tag Release
+    if: type = push AND branch = master AND commit_message !~ /^Travis bot released/
+    install: skip
+    script: git checkout master && git reset --hard $sha1 && git config --global push.followTags true && git config --global user.email "travis@travis-ci.org" && git config --global user.name "Travis CI" && export current_version=$(mvn -q -Dexec.executable="echo" -Dexec.args='${project.version}' --non-recursive exec:exec) && echo "current version ${current_version}" && export minor=$(echo $current_version | sed "s/^[0-9]\{1,\}\.[0-9]\{1,\}\.\([0-9]\{1,\}\)/\1/") && export major=$(echo $current_version | sed "s/^\([0-9]\{1,\}\.[0-9]\{1,\}\)\.[0-9]\{1,\}/\1/") && export next_version=$major.$((minor+1)) && echo "next version ${next_version}" && sed -i.bak "s/$current_version/$next_version/g" README.md && rm README.md.bak && sed -i.bak "s/^    <version>$current_version<\\/version>/    <version>$next_version<\\/version>/g" pom.xml && rm pom.xml.bak && git status && git commit -am "Travis bot released $next_version" && git tag -a $next_version -m "Automated release" && git remote add target https://${GH_TOKEN}@github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java-Dropwizard.git > /dev/null 2>&1 && git remote -v && git push --set-upstream target master
+  - stage: Release
+    if: type = push AND branch = master AND commit_message =~ /^Travis bot released/
+    install: skip
+    jdk: oraclejdk8
+    script: mvn -B clean package && mkdir -p target/release/DocumentSamples && mkdir -p target/release/Licenses && cp target/conversion-*.jar target/release && cp configuration.yml target/release && cd target && tar -zcvf release.tar.gz release && cd .. 
+    deploy:
+      provider: releases
+      overwrite: true
+      skip_cleanup: true
+      api_key: $GH_TOKEN
+      file: target/release.tar.gz
+      on:
+        repo: groupdocs-conversion/GroupDocs.Conversion-for-Java-Dropwizard
+        branch: master

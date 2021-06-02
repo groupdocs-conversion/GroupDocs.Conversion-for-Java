@@ -1,4 +1,4 @@
-# Showcase
+# Demos
 
 As GroupDocs.Conversion for Java 3.x is a UI less API having no Front-End. So an open source front end for GroupDocs.Conversion has been published. By exploring this project users can seek the knwoledge about implementation of the project and make changes according to their needs. Also it provides free scripts and skins for user's own projects.
 
