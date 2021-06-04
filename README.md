@@ -12,9 +12,9 @@ GroupDocs.Conversion for Java is a [Document Conversion Library](https://product
 
 Directory | Description
 --------- | -----------
-[Docs](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/tree/master/Docs)  | Product documentation containing the Developer's Guide, Release Notes and more.
+[Docs](https://github.com/groupdocs-conversion/GroupDocs.Conversion-Docs)  | Product documentation containing the Developer's Guide, Release Notes and more.
 [Examples](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/tree/master/Examples)  | Java examples and sample documents for you to get started quickly. 
-[Showcases](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/tree/master/Showcases)  | Build Document Conversion Applications using GroupDocs.Conversion for Java. 
+[Demos](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/tree/master/Demos)  | Build Document Conversion applications using GroupDocs.Conversion for Java. 
 
 ## Universal Document Converter 
 
