@@ -19,6 +19,7 @@ public class ConvertEmailWithAlteringFieldsVisibility {
         loadOptions.setDisplayEmailAddress(false);
         loadOptions.setDisplayCcEmailAddress(false);
         loadOptions.setDisplayBccEmailAddress(false);
+        loadOptions.setConvertOwned(false);
         Converter converter = new Converter(Constants.SAMPLE_MSG, loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
