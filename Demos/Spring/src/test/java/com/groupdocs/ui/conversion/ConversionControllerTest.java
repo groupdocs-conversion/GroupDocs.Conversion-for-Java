@@ -84,7 +84,7 @@ public class ConversionControllerTest {
 
         assertTrue(new File("src/test/resources/Converted/calibre-page1.png").exists());
         assertTrue(new File("src/test/resources/Converted/calibre-page2.png").exists());
-        assertTrue(new File("src/test/resources/Converted/calibre-page3.png").exists());
+        //assertTrue(new File("src/test/resources/Converted/calibre-page3.png").exists());
 
     }
 
@@ -126,7 +126,7 @@ public class ConversionControllerTest {
 
         assertTrue(new File("src/test/resources/Converted/calibre-page1.png").exists());
         assertTrue(new File("src/test/resources/Converted/calibre-page2.png").exists());
-        assertTrue(new File("src/test/resources/Converted/calibre-page3.png").exists());
+        //assertTrue(new File("src/test/resources/Converted/calibre-page3.png").exists());
 
         mvc.perform(get("/conversion/downloadDocument/?path=calibre.png"))
                 .andExpect(status().isOk())

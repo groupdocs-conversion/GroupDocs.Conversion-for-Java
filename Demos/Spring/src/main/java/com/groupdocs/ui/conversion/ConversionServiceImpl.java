@@ -1,17 +1,17 @@
 package com.groupdocs.ui.conversion;
 
 import com.google.common.collect.Ordering;
-import com.groupdocs.conversion.License;
-import com.groupdocs.conversion.config.ConversionConfig;
-import com.groupdocs.conversion.handler.ConversionHandler;
-import com.groupdocs.conversion.handler.ConvertedDocument;
-import com.groupdocs.conversion.options.save.*;
+import com.groupdocs.conversion.Converter;
+import com.groupdocs.conversion.contracts.documentinfo.IDocumentInfo;
+import com.groupdocs.conversion.licensing.License;
+import com.groupdocs.conversion.options.convert.ConvertOptions;
+import com.groupdocs.conversion.options.convert.ImageConvertOptions;
 import com.groupdocs.ui.config.DefaultDirectories;
 import com.groupdocs.ui.config.GlobalConfiguration;
-import com.groupdocs.ui.model.request.ConversionPostedData;
-import com.groupdocs.ui.model.response.ConversionTypesEntity;
 import com.groupdocs.ui.exception.TotalGroupDocsException;
+import com.groupdocs.ui.model.request.ConversionPostedData;
 import com.groupdocs.ui.model.request.FileTreeRequest;
+import com.groupdocs.ui.model.response.ConversionTypesEntity;
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,9 +28,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -43,8 +43,6 @@ public class ConversionServiceImpl implements ConversionService {
     private ConversionConfiguration conversionConfiguration;
     @Autowired
     private GlobalConfiguration globalConfiguration;
-
-    private ConversionHandler handler;
 
     private List<String> supportedImageFormats =  Arrays.asList( "jp2", "ico", "psd", "svg", "bmp", "jpeg", "jpg", "tiff", "tif", "png", "gif", "emf", "wmf", "dwg", "dicom", "dxf", "jpe", "jfif" );
 
@@ -61,11 +59,6 @@ public class ConversionServiceImpl implements ConversionService {
         try {
             License license = new License();
             license.setLicense(globalConfiguration.getApplication().getLicensePath());
-            ConversionConfig conversionConfig = new ConversionConfig();
-            conversionConfig.setStoragePath(filesDirectory);
-            conversionConfig.setOutputPath(resultDirectory);
-
-            handler = new ConversionHandler(conversionConfig);
         } catch (Throwable exc) {
             logger.error("Can not verify Conversion license!");
         }
@@ -160,17 +153,17 @@ public class ConversionServiceImpl implements ConversionService {
         String destinationFile = FilenameUtils.removeExtension(FilenameUtils.getName(postedData.getGuid())) + "." + destinationType;
         String resultFileName = FilenameUtils.concat(conversionConfiguration.getResultDirectory(),destinationFile);
 
-        Dictionary<String, SaveOptions> availableSaveOptions = handler.getSaveOptions(sourceType);
-        SaveOptions saveOptions = availableSaveOptions.get(destinationType);
-        ConvertedDocument convertedDocument = handler.convert(postedData.getGuid(), saveOptions);
-
-        if(convertedDocument.getPageCount() > 1 && saveOptions instanceof ImageSaveOptions){
-            for(int i = 1; i <= convertedDocument.getPageCount(); i++){
-                String fileName = FilenameUtils.removeExtension(resultFileName) + "-page" + i + "." + destinationType;
-                convertedDocument.save(fileName,i);
+        Converter converter = new Converter(FilenameUtils.concat(conversionConfiguration.getFilesDirectory(), postedData.getGuid()));
+        ConvertOptions convertOptions = converter.getPossibleConversions().getTargetConversion(destinationType).getConvertOptions();
+        if (convertOptions instanceof ImageConvertOptions) {
+            IDocumentInfo documentInfo = converter.getDocumentInfo();
+            for (int i = 0; i < documentInfo.getPagesCount(); i++) {
+                ((ImageConvertOptions) convertOptions).setPageNumber(i + 1);
+                ((ImageConvertOptions) convertOptions).setPagesCount(1);
+                converter.convert(FilenameUtils.removeExtension(resultFileName) + "-page" + i + "." + destinationType, convertOptions);
             }
-        }else{
-            convertedDocument.save(resultFileName);
+        } else {
+            converter.convert(resultFileName, convertOptions);
         }
     }
 
