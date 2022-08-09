@@ -14,7 +14,7 @@ public class ConvertSpreadsheetWithHiddenSheetsIncluded {
         SpreadsheetLoadOptions loadOptions = new SpreadsheetLoadOptions();
         loadOptions.setShowHiddenSheets(true);
         loadOptions.setOnePagePerSheet(true);
-        Converter converter = new Converter(Constants.SAMPLE_XLSX_WITH_HIDDEN_SHEET, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_XLSX_WITH_HIDDEN_SHEET, () -> loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 

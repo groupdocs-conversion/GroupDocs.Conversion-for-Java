@@ -13,7 +13,7 @@ public class ConvertPresentationWithHiddenSlidesIncluded {
         String convertedFile = Constants.getConvertedPath("ConvertPresentationWithHiddenSlidesIncluded.pdf");
         PresentationLoadOptions loadOptions = new PresentationLoadOptions();
         loadOptions.setShowHiddenSlides(true);
-        Converter converter = new Converter(Constants.SAMPLE_PPTX_HIDDEN_PAGE, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_PPTX_HIDDEN_PAGE, () -> loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 

@@ -23,7 +23,7 @@ public class ConvertNoteBySpecifyingFontSubstitution {
         loadOptions.setFontSubstitutes(fontSubstitutes);
         loadOptions.setDefaultFont(Constants.FontsPath + "terminal-grotesque_open.otf");
 
-        Converter converter = new Converter(Constants.SAMPLE_ONE, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_ONE, () -> loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 

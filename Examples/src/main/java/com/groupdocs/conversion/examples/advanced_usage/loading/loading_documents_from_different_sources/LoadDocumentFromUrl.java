@@ -22,7 +22,7 @@ public class LoadDocumentFromUrl {
 
         try {
             InputStream stream = new URL(url).openStream();
-            Converter converter = new Converter(stream);
+            Converter converter = new Converter(() -> stream);
             PdfConvertOptions options = new PdfConvertOptions();
             converter.convert(outputFile, options);
 

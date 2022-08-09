@@ -14,7 +14,7 @@ public class ConvertToPresentationWithAdvancedOptions {
         String convertedFile = Constants.getConvertedPath("ConvertToPresentationWithAdvancedOptions.ppt");
         WordProcessingLoadOptions loadOptions = new WordProcessingLoadOptions();
         loadOptions.setPassword("12345");
-        Converter converter = new Converter(Constants.SAMPLE_DOCX_WITH_PASSWORD, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_DOCX_WITH_PASSWORD, () -> loadOptions);
         PresentationConvertOptions options = new PresentationConvertOptions();
         options.setPageNumber(2);
         options.setPagesCount(1);

@@ -13,7 +13,7 @@ public class ConvertCsvBySpecifyingDelimiter {
         String convertedFile = Constants.getConvertedPath("ConvertCsvBySpecifyingDelimiter.pdf");
         CsvLoadOptions loadOptions = new CsvLoadOptions();
         loadOptions.setSeparator(',');
-        Converter converter = new Converter(Constants.SAMPLE_CSV, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_CSV, () -> loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 

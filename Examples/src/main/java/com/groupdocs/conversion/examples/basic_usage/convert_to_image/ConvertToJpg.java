@@ -25,7 +25,7 @@ public class ConvertToJpg {
             options.setFormat(ImageFileType.Jpg);
             options.setPagesCount(1);
 
-            converter.convert(getPageStream, options);
+            converter.convert(() -> getPageStream, options);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

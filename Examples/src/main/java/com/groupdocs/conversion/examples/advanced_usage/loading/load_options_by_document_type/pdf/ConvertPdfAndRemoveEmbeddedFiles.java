@@ -14,7 +14,7 @@ public class ConvertPdfAndRemoveEmbeddedFiles {
         String convertedFile = Constants.getConvertedPath("ConvertPdfAndRemoveEmbeddedFiles.docx");
         PdfLoadOptions loadOptions = new PdfLoadOptions();
         loadOptions.setRemoveEmbeddedFiles(true);
-        Converter converter = new Converter(Constants.SAMPLE_PDF, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_PDF, () -> loadOptions);
         WordProcessingConvertOptions options = new WordProcessingConvertOptions();
         converter.convert(convertedFile, options);
 

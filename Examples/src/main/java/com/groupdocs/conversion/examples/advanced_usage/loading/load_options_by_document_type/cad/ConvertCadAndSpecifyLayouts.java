@@ -13,7 +13,7 @@ public class ConvertCadAndSpecifyLayouts {
         String convertedFile = Constants.getConvertedPath("ConvertCadAndSpecifyLayouts.pdf");
         CadLoadOptions loadOptions = new CadLoadOptions();
         loadOptions.setLayoutNames(new String[]{"Layout1", "Layout3"});
-        Converter converter = new Converter(Constants.SAMPLE_DWG_WITH_LAYOUTS_AND_LAYERS, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_DWG_WITH_LAYOUTS_AND_LAYERS, () -> loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 

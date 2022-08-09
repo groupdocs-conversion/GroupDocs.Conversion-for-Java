@@ -13,7 +13,7 @@ public class ConvertWordProcessingByHiddingTrackedChanges {
         String convertedFile = Constants.getConvertedPath("ConvertWordProcessingByHiddingTrackedChanges.pdf");
         WordProcessingLoadOptions loadOptions = new WordProcessingLoadOptions();
         loadOptions.setHideWordTrackedChanges(true);
-        Converter converter = new Converter(Constants.SAMPLE_DOCX_WITH_TRACKED_CHANGES, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_DOCX_WITH_TRACKED_CHANGES, () -> loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 

@@ -14,7 +14,7 @@ public class ConvertToPdfWithAdvancedOptions {
         String convertedFile = Constants.getConvertedPath("ConvertToPdfWithAdvancedOptions.pdf");
         WordProcessingLoadOptions loadOptions = new WordProcessingLoadOptions();
         loadOptions.setPassword("12345");
-        Converter converter = new Converter(Constants.SAMPLE_DOCX_WITH_PASSWORD, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_DOCX_WITH_PASSWORD, () -> loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         options.setPageNumber(2);
         options.setPagesCount(1);

@@ -18,7 +18,7 @@ public class ConvertTxtByControllingLeadingSpacesBehavior {
         TxtLoadOptions loadOptions =  new TxtLoadOptions();
         loadOptions.setLeadingSpacesOptions(TxtLeadingSpacesOptions.ConvertToIndent);
         loadOptions.setDetectNumberingWithWhitespaces(true);
-        Converter converter = new Converter(Constants.SAMPLE_TXT, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_TXT, () -> loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 

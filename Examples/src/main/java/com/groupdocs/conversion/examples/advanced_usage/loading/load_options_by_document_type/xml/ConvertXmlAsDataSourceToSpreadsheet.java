@@ -13,7 +13,7 @@ public class ConvertXmlAsDataSourceToSpreadsheet {
         String convertedFile = Constants.getConvertedPath("converted.xlsx");
         XmlLoadOptions loadOptions = new XmlLoadOptions();
         loadOptions.setUseAsDataSource(true);
-        Converter converter = new Converter(Constants.SAMPLE_XML_DATASOURCE, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_XML_DATASOURCE, () -> loadOptions);
         SpreadsheetConvertOptions options = new SpreadsheetConvertOptions();
         converter.convert(convertedFile, options);
 

@@ -13,7 +13,7 @@ public class ConvertPdfAndFlattenAllFields {
         String convertedFile = Constants.getConvertedPath("ConvertPdfAndFlattenAllFields.docx");
         PdfLoadOptions loadOptions = new PdfLoadOptions();
         loadOptions.setFlattenAllFields(true);
-        Converter converter = new Converter(Constants.SAMPLE_PDF, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_PDF, () -> loadOptions);
         WordProcessingConvertOptions options = new WordProcessingConvertOptions();
         converter.convert(convertedFile, options);
 

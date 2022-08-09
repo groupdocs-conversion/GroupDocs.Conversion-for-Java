@@ -13,7 +13,7 @@ public class ConvertPresentationByHiddingComments {
         String convertedFile = Constants.getConvertedPath("ConvertPresentationByHiddingComments.pdf");
         PresentationLoadOptions loadOptions = new PresentationLoadOptions();
         loadOptions.setHideComments(true);
-        Converter converter = new Converter(Constants.PPTX_WITH_NOTES, loadOptions);
+        Converter converter = new Converter(Constants.PPTX_WITH_NOTES, () -> loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 

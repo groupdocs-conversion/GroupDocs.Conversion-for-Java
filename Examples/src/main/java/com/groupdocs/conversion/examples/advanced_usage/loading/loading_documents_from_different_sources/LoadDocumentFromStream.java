@@ -6,6 +6,7 @@ import com.groupdocs.conversion.exceptions.GroupDocsConversionException;
 import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 /**
  * This example demonstrates how to convert document from stream.
@@ -15,7 +16,13 @@ public class LoadDocumentFromStream {
         String convertedFile = Constants.getConvertedPath("LoadDocumentFromStream.pdf");
 
         try {
-            Converter converter = new Converter(new FileInputStream(Constants.SAMPLE_DOCX));
+            Converter converter = new Converter(() -> {
+                try {
+                    return new FileInputStream(Constants.SAMPLE_DOCX);
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+            });
             PdfConvertOptions options = new PdfConvertOptions();
             converter.convert(convertedFile, options);
         } catch (Exception e) {

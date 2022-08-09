@@ -14,7 +14,7 @@ public class ConvertToHtmlWithAdvancedOptions {
         String convertedFile = Constants.getConvertedPath("ConvertToHtmlWithAdvancedOptions.html");
         WordProcessingLoadOptions loadOptions = new WordProcessingLoadOptions();
         loadOptions.setPassword("12345");
-        Converter converter = new Converter(Constants.SAMPLE_DOCX_WITH_PASSWORD, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_DOCX_WITH_PASSWORD, () -> loadOptions);
         MarkupConvertOptions options = new MarkupConvertOptions();
         options.setPageNumber(2);
         options.setFixedLayout(true);

@@ -14,7 +14,7 @@ public class ConvertToSpreadsheetWithAdvancedOptions {
         String convertedFile = Constants.getConvertedPath("ConvertToSpreadsheetWithAdvancedOptions.xls");
         WordProcessingLoadOptions loadOptions = new WordProcessingLoadOptions();
         loadOptions.setPassword("12345");
-        Converter converter = new Converter(Constants.SAMPLE_DOCX_WITH_PASSWORD, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_DOCX_WITH_PASSWORD, () -> loadOptions);
         SpreadsheetConvertOptions options = new SpreadsheetConvertOptions();
         options.setPageNumber(2);
         options.setPagesCount(1);

@@ -24,7 +24,7 @@ public class LoadDocumentFromAmazonS3 {
     {
         String key = "sample.docx";
         String convertedFile = Constants.getConvertedPath("LoadDocumentFromAmazonS3.pdf"); 
-        Converter converter = new Converter(downloadFile(key));
+        Converter converter = new Converter(() -> downloadFile(key));
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 

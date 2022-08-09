@@ -14,7 +14,7 @@ public class ConvertSpreadsheetAndHideComments {
         SpreadsheetLoadOptions loadOptions = new SpreadsheetLoadOptions();
         loadOptions.setHideComments(true);
         loadOptions.setOnePagePerSheet(true);
-        Converter converter = new Converter(Constants.SAMPLE_XLSX, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_XLSX, () -> loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 

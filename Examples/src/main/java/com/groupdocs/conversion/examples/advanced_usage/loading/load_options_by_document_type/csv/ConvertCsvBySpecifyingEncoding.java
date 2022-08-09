@@ -13,7 +13,7 @@ public class ConvertCsvBySpecifyingEncoding {
         String convertedFile = Constants.getConvertedPath("ConvertCsvBySpecifyingEncoding.pdf");
         CsvLoadOptions loadOptions = new CsvLoadOptions();
         loadOptions.setEncoding(java.nio.charset.Charset.forName("shift_jis"));
-        Converter converter = new Converter(Constants.SAMPLE_CSV, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_CSV, () -> loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 

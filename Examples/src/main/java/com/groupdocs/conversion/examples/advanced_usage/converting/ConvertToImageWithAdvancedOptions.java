@@ -32,7 +32,7 @@ public class ConvertToImageWithAdvancedOptions {
             options.setPageNumber(1);
             options.setPagesCount(1);
 
-            converter.convert(getPageStream, options);
+            converter.convert(() -> getPageStream, options);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

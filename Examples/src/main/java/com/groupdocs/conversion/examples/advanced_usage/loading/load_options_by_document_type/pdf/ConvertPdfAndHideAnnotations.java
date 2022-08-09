@@ -13,7 +13,7 @@ public class ConvertPdfAndHideAnnotations {
         String convertedFile = Constants.getConvertedPath("ConvertPdfAndHideAnnotations.docx");
         PdfLoadOptions loadOptions = new PdfLoadOptions();
         loadOptions.setHidePdfAnnotations(true);
-        Converter converter = new Converter(Constants.SAMPLE_PDF, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_PDF, () -> loadOptions);
         WordProcessingConvertOptions options = new WordProcessingConvertOptions();
         converter.convert(convertedFile, options);
 

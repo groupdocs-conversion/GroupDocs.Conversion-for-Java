@@ -16,7 +16,7 @@ public class ConvertCadAndSpecifyWidthAndHeight {
         CadLoadOptions loadOptions = new CadLoadOptions();
         loadOptions.setWidth(1920);
         loadOptions.setHeight(1080);
-        Converter converter = new Converter(Constants.SAMPLE_DWG_WITH_LAYOUTS_AND_LAYERS, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_DWG_WITH_LAYOUTS_AND_LAYERS, () -> loadOptions);
         ImageConvertOptions options = new ImageConvertOptions();
         options.setFormat_ConvertOptions_New(ImageFileType.Tiff);
         converter.convert(convertedFile, options);

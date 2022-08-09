@@ -15,7 +15,7 @@ public class ConvertCsvByConvertingDateTimeAndNumericData {
         CsvLoadOptions loadOptions = new CsvLoadOptions();
         loadOptions.setConvertDateTimeData(true);
         loadOptions.setConvertNumericData(true);
-        Converter converter = new Converter(Constants.SAMPLE_CSV, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_CSV, () -> loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 

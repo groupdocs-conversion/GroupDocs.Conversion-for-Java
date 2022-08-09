@@ -18,7 +18,7 @@ public class ConvertTxtBySpecifyingEncoding {
         String convertedFile = Constants.getConvertedPath("ConvertTxtBySpecifyingEncoding.pdf");        
         TxtLoadOptions loadOptions =  new TxtLoadOptions();
         loadOptions.setEncoding(Charset.forName("shift_jis"));
-        Converter converter = new Converter(Constants.SAMPLE_TXT_SHIFT_JS_ENCODED, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_TXT_SHIFT_JS_ENCODED, () -> loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 

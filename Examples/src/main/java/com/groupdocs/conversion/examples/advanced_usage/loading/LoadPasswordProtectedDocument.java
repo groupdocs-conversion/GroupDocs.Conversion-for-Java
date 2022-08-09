@@ -13,7 +13,7 @@ public class LoadPasswordProtectedDocument {
         String convertedFile = Constants.getConvertedPath("LoadPasswordProtectedDocument.pdf");
         WordProcessingLoadOptions loadOptions = new WordProcessingLoadOptions();
         loadOptions.setPassword("12345");
-        Converter converter = new Converter(Constants.SAMPLE_DOCX_WITH_PASSWORD, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_DOCX_WITH_PASSWORD, () -> loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 

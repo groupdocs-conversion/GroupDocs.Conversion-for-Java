@@ -21,7 +21,7 @@ public class ConvertPresentationBySpecifyingFontSubstitution {
         fontSubstitutes.add(FontSubstitute.create("Times New Roman", "Arial"));
         loadOptions.setDefaultFont("resources/fonts/Helvetica.ttf");
         loadOptions.setFontSubstitutes(fontSubstitutes);
-        Converter converter = new Converter(Constants.PPTX_WITH_NOTES, loadOptions);
+        Converter converter = new Converter(Constants.PPTX_WITH_NOTES, () -> loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 

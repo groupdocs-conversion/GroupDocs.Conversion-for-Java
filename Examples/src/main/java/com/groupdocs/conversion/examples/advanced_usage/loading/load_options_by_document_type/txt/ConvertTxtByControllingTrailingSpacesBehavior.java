@@ -18,7 +18,7 @@ public class ConvertTxtByControllingTrailingSpacesBehavior {
         String convertedFile = Constants.getConvertedPath("ConvertTxtByControlingLeadingSpacesBehavior.pdf");  
         TxtLoadOptions loadOptions =  new TxtLoadOptions();
         loadOptions.setTrailingSpacesOptions(TxtTrailingSpacesOptions.Trim);
-        Converter converter = new Converter(Constants.SAMPLE_TXT, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_TXT, () -> loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 

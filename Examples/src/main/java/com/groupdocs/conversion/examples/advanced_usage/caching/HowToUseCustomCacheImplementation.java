@@ -19,7 +19,7 @@ public class HowToUseCustomCacheImplementation {
         ConverterSettings settingsFactory = new ConverterSettings();
         settingsFactory.setCache(cache);
 
-        Converter converter = new Converter(Constants.SAMPLE_DOCX, settingsFactory);
+        Converter converter = new Converter(Constants.SAMPLE_DOCX, () -> settingsFactory);
         PdfConvertOptions options = new PdfConvertOptions();
 
         //Stopwatch stopWatch = Stopwatch.startNew();

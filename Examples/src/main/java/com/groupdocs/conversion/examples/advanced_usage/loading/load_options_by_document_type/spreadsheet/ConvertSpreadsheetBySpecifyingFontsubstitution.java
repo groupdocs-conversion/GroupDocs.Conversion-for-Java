@@ -22,7 +22,7 @@ public class ConvertSpreadsheetBySpecifyingFontsubstitution {
         loadOptions.setDefaultFont("resources/fonts/Helvetica.ttf");
         loadOptions.setOnePagePerSheet(true);
         loadOptions.setFontSubstitutes(fontSubstitutes);
-        Converter converter = new Converter(Constants.SAMPLE_XLSX, loadOptions);
+        Converter converter = new Converter(Constants.SAMPLE_XLSX, () -> loadOptions);
         PdfConvertOptions options = new PdfConvertOptions();
         converter.convert(convertedFile, options);
 

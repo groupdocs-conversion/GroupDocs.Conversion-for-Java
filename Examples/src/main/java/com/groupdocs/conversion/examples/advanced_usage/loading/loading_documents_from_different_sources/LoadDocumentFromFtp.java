@@ -20,7 +20,13 @@ public class LoadDocumentFromFtp {
         String fileName = "sample.docx";
 
         try {
-            Converter converter = new Converter(getFileFromFtp(server, dirname, fileName));
+            Converter converter = new Converter(() -> {
+                try {
+                    return getFileFromFtp(server, dirname, fileName);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            });
             PdfConvertOptions options = new PdfConvertOptions();
             converter.convert(convertedFile, options);
         } catch (Exception e) {

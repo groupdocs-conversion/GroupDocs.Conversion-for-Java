@@ -26,7 +26,7 @@ public class ConvertToPsd {
             ImageConvertOptions options = new ImageConvertOptions();
             options.setFormat(ImageFileType.Psd);
             options.setPagesCount(1);
-            converter.convert(getPageStream, options);
+            converter.convert(() -> getPageStream, options);
         } catch (IOException e ){
             System.out.println(e.getMessage());
         }
