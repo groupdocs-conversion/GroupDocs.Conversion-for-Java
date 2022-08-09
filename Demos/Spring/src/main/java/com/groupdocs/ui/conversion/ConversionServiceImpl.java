@@ -2,6 +2,7 @@ package com.groupdocs.ui.conversion;
 
 import com.google.common.collect.Ordering;
 import com.groupdocs.conversion.Converter;
+import com.groupdocs.conversion.contracts.SavePageStream;
 import com.groupdocs.conversion.contracts.documentinfo.IDocumentInfo;
 import com.groupdocs.conversion.licensing.License;
 import com.groupdocs.conversion.options.convert.ConvertOptions;
@@ -23,10 +24,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -156,12 +154,13 @@ public class ConversionServiceImpl implements ConversionService {
         Converter converter = new Converter(FilenameUtils.concat(conversionConfiguration.getFilesDirectory(), postedData.getGuid()));
         ConvertOptions convertOptions = converter.getPossibleConversions().getTargetConversion(destinationType).getConvertOptions();
         if (convertOptions instanceof ImageConvertOptions) {
-            IDocumentInfo documentInfo = converter.getDocumentInfo();
-            for (int i = 0; i < documentInfo.getPagesCount(); i++) {
-                ((ImageConvertOptions) convertOptions).setPageNumber(i + 1);
-                ((ImageConvertOptions) convertOptions).setPagesCount(1);
-                converter.convert(FilenameUtils.removeExtension(resultFileName) + "-page" + i + "." + destinationType, convertOptions);
-            }
+            converter.convert((SavePageStream) i -> {
+                try {
+                    return new FileOutputStream(FilenameUtils.removeExtension(resultFileName) + "-page" + i + "." + destinationType);
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+            }, convertOptions);
         } else {
             converter.convert(resultFileName, convertOptions);
         }
