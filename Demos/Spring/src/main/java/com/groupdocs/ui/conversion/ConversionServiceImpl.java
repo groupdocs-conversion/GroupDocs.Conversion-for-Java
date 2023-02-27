@@ -4,6 +4,7 @@ import com.google.common.collect.Ordering;
 import com.groupdocs.conversion.Converter;
 import com.groupdocs.conversion.contracts.SavePageStream;
 import com.groupdocs.conversion.contracts.documentinfo.IDocumentInfo;
+import com.groupdocs.conversion.filetypes.ImageFileType;
 import com.groupdocs.conversion.licensing.License;
 import com.groupdocs.conversion.options.convert.ConvertOptions;
 import com.groupdocs.conversion.options.convert.ImageConvertOptions;

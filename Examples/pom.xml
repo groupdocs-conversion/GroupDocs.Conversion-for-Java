@@ -41,7 +41,7 @@
 		<dependency>
 			<groupId>com.groupdocs</groupId>
 			<artifactId>groupdocs-conversion</artifactId>
-			<version>22.8</version>
+			<version>23.2</version>
 		</dependency>
 	</dependencies>
 	 <repositories>
