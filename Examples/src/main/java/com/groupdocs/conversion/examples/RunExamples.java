@@ -3,6 +3,7 @@ package com.groupdocs.conversion.examples;
 import com.groupdocs.conversion.examples.advanced_usage.converting.*;
 import com.groupdocs.conversion.examples.advanced_usage.converting.common.AddWatermark;
 import com.groupdocs.conversion.examples.advanced_usage.converting.common.ConvertSpecificPages;
+import com.groupdocs.conversion.examples.advanced_usage.converting.common.ListenConversionStateAndProgress;
 import com.groupdocs.conversion.examples.advanced_usage.loading.LoadPasswordProtectedDocument;
 import com.groupdocs.conversion.examples.advanced_usage.loading.load_options_by_document_type.cad.ConvertCadAndSpecifyLayouts;
 import com.groupdocs.conversion.examples.advanced_usage.loading.load_options_by_document_type.cad.ConvertCadAndSpecifyWidthAndHeight;
@@ -27,6 +28,7 @@ import com.groupdocs.conversion.examples.advanced_usage.loading.load_options_by_
 import com.groupdocs.conversion.examples.advanced_usage.loading.load_options_by_document_type.word_processing.ConvertWordProcessingBySpecifyingFontSubstitution;
 import com.groupdocs.conversion.examples.advanced_usage.loading.load_options_by_document_type.xml.ConvertXmlAsDataSourceToSpreadsheet;
 import com.groupdocs.conversion.examples.advanced_usage.loading.loading_documents_from_different_sources.*;
+import com.groupdocs.conversion.examples.basic_usage.GetAllPossibleConversions;
 import com.groupdocs.conversion.examples.basic_usage.GetPossibleConversions;
 import com.groupdocs.conversion.examples.basic_usage.GetSourceDocumentInfo;
 import com.groupdocs.conversion.examples.basic_usage.convert_to_html.ConvertToHtml;
@@ -49,12 +51,15 @@ public class RunExamples {
 
                 System.out.println("Open RunExamples.cs. \nIn Main() method uncomment the example that you want to run.");
                 System.out.println("=====================================================");
+                
+                
+                
 
                 //NOTE: Please uncomment the example you want to try out
 
                 // Quick Start
-                SetLicenseFromFile.run();
-                SetLicenseFromStream.run();
+                //SetLicenseFromFile.run();
+                //SetLicenseFromStream.run();
                 //SetMeteredLicense.run();
 
                 HelloWorld.run();
@@ -62,6 +67,7 @@ public class RunExamples {
                 // Basic Usage
                 GetPossibleConversions.run();
                 GetSourceDocumentInfo.run();
+                GetAllPossibleConversions.run();
 
                 // Convert document to HTML
                 ConvertToHtml.run();
@@ -87,6 +93,7 @@ public class RunExamples {
                 // Common rendering options
                 AddWatermark.run();
                 ConvertSpecificPages.run();
+                ListenConversionStateAndProgress.run();
 
                 // Loading
                 LoadPasswordProtectedDocument.run();
