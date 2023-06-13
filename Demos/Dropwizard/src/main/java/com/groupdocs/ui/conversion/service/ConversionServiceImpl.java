@@ -1,11 +1,9 @@
 package com.groupdocs.ui.conversion.service;
 
 import com.google.common.collect.Ordering;
-import com.groupdocs.conversion.License;
-import com.groupdocs.conversion.config.ConversionConfig;
-import com.groupdocs.conversion.handler.ConversionHandler;
-import com.groupdocs.conversion.handler.ConvertedDocument;
-import com.groupdocs.conversion.options.save.*;
+import com.groupdocs.conversion.Converter;
+import com.groupdocs.conversion.licensing.License;
+import com.groupdocs.conversion.options.convert.ConvertOptions;
 import com.groupdocs.ui.common.config.DefaultDirectories;
 import com.groupdocs.ui.common.config.GlobalConfiguration;
 import com.groupdocs.ui.common.entity.web.request.FileTreeRequest;
@@ -21,20 +19,25 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.file.Files;
-import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 public class ConversionServiceImpl implements ConversionService {
 
     private static final Logger logger = LoggerFactory.getLogger(ConversionServiceImpl.class);
+    public static final FileNameComparator FILE_NAME_COMPARATOR = new FileNameComparator();
+    public static final FileTypeComparator FILE_TYPE_COMPARATOR = new FileTypeComparator();
+
     private List<String> supportedImageFormats =  Arrays.asList( "jp2", "ico", "psd", "svg", "bmp", "jpeg", "jpg", "tiff", "tif", "png", "gif", "emf", "wmf", "dwg", "dicom", "dxf", "jpe", "jfif" );
     private GlobalConfiguration globalConfiguration;
-    private ConversionHandler handler;
     private ConversionConfiguration conversionConfiguration;
 
     public ConversionServiceImpl(GlobalConfiguration globalConfiguration) {
@@ -44,9 +47,6 @@ public class ConversionServiceImpl implements ConversionService {
         String filesDirectory = conversionConfiguration.getFilesDirectory();
         String resultDirectory = conversionConfiguration.getResultDirectory();
         DefaultDirectories.makeDirs(new File(resultDirectory));
-        ConversionConfig conversionConfig = new ConversionConfig();
-        conversionConfig.setStoragePath(filesDirectory);
-        conversionConfig.setOutputPath(resultDirectory);
         // set GroupDocs license
         try {
             License license = new License();
@@ -54,7 +54,6 @@ public class ConversionServiceImpl implements ConversionService {
         } catch (Throwable exc) {
             logger.error("Can not verify Conversion license!");
         }
-        handler = new ConversionHandler(conversionConfig);
     }
 
     /**
@@ -64,16 +63,16 @@ public class ConversionServiceImpl implements ConversionService {
     public List<ConversionTypesEntity> loadFiles(FileTreeRequest fileTreeRequest) {
         String currentPath = fileTreeRequest.getPath();
         if (StringUtils.isEmpty(currentPath)) {
-            currentPath = globalConfiguration.getConversion().getFilesDirectory();
+            currentPath = conversionConfiguration.getFilesDirectory();
         } else {
-            currentPath = String.format("%s%s%s", globalConfiguration.getConversion().getFilesDirectory(), File.separator, currentPath);
+            currentPath = String.format("%s%s%s", conversionConfiguration.getFilesDirectory(), File.separator, currentPath);
         }
         File directory = new File(currentPath);
         List<ConversionTypesEntity> fileList = new ArrayList<>();
         List<File> filesList = Arrays.asList(directory.listFiles());
         try {
             // sort list of files and folders
-            filesList = Ordering.from(FileTypeComparator.instance).compound(FileNameComparator.instance).sortedCopy(filesList);
+            filesList = Ordering.from(FILE_TYPE_COMPARATOR).compound(FILE_NAME_COMPARATOR).sortedCopy(filesList);
             for (File file : filesList) {
                 // check if current file/folder is hidden
                 if (file.isHidden()) {
@@ -104,18 +103,9 @@ public class ConversionServiceImpl implements ConversionService {
         String destinationFile = FilenameUtils.removeExtension(FilenameUtils.getName(postedData.getGuid())) + "." + destinationType;
         String resultFileName = FilenameUtils.concat(conversionConfiguration.getResultDirectory(),destinationFile);
 
-        Dictionary<String, SaveOptions> availableSaveOptions = handler.getSaveOptions(sourceType);
-        SaveOptions saveOptions = availableSaveOptions.get(destinationType);
-        ConvertedDocument convertedDocument = handler.convert(postedData.getGuid(), saveOptions);
-
-        if(convertedDocument.getPageCount() > 1 && saveOptions instanceof ImageSaveOptions){
-            for(int i = 1; i <= convertedDocument.getPageCount(); i++){
-                String fileName = FilenameUtils.removeExtension(resultFileName) + "-page" + i + "." + destinationType;
-                convertedDocument.save(fileName,i);
-            }
-        }else{
-            convertedDocument.save(resultFileName);
-        }
+        Converter converter = new Converter(FilenameUtils.concat(conversionConfiguration.getFilesDirectory(), postedData.getGuid()));
+        ConvertOptions convertOptions = converter.getPossibleConversions().getTargetConversion(destinationType).getConvertOptions();
+        converter.convert(resultFileName, convertOptions);
     }
 
     @Override
@@ -125,7 +115,7 @@ public class ConversionServiceImpl implements ConversionService {
             String destinationPath = FilenameUtils.concat(conversionConfiguration.getResultDirectory(),path);
             String ext = FilenameUtils.getExtension(destinationPath);
             String fileNameWithoutExt = FilenameUtils.removeExtension(path);
-            if(supportedImageFormats.contains(ext)){
+            if(supportedImageFormats.contains(ext) && !"tiff".equals(ext) && !"tif".equals(ext)){
                 String zipName = fileNameWithoutExt + ".zip";
                 File zipPath = new File(FilenameUtils.concat(conversionConfiguration.getResultDirectory(),zipName));
                 File[] files = new File(conversionConfiguration.getResultDirectory()).listFiles((d, name) ->
@@ -167,7 +157,7 @@ public class ConversionServiceImpl implements ConversionService {
         // set file size
         fileDescription.setSize(file.length());
 
-        String ext = FilenameUtils.getExtension(fileDescription.getGuid());
+        String ext = parseFileExtension(fileDescription.getGuid());
         if(ext != null && !ext.isEmpty()){
             fileDescription.conversionTypes = new ArrayList<>();
             String[] availableTypes = new DestinationTypesFilter().getPosibleConversions(ext);
@@ -178,4 +168,8 @@ public class ConversionServiceImpl implements ConversionService {
         return fileDescription;
     }
 
+    private static String parseFileExtension(String documentGuid) {
+        String extension = FilenameUtils.getExtension(documentGuid);
+        return extension == null ? null : extension.toLowerCase();
+    }
 }

@@ -73,9 +73,9 @@ public class ConversionResourcesTest {
 
     @Test
     public void convertDocxToPng() throws Exception {
-        new File("src/test/resources/Converted/calibre-page1.png").delete();
-        new File("src/test/resources/Converted/calibre-page2.png").delete();
-        new File("src/test/resources/Converted/calibre-page3.png").delete();
+        new File("src/test/resources/Converted/calibre1.png").delete();
+        new File("src/test/resources/Converted/calibre2.png").delete();
+        new File("src/test/resources/Converted/calibre3.png").delete();
 
         File testFile = new File("src/test/resources/calibre.docx");
 
@@ -91,9 +91,9 @@ public class ConversionResourcesTest {
                 .post(Entity.json(conversionRequest));
         assertThat(response.getStatus()).isEqualTo(200);
 
-        assertTrue(new File("src/test/resources/Converted/calibre-page1.png").exists());
-        assertTrue(new File("src/test/resources/Converted/calibre-page2.png").exists());
-        assertTrue(new File("src/test/resources/Converted/calibre-page3.png").exists());
+        assertTrue(new File("src/test/resources/Converted/calibre1.png").exists());
+        assertTrue(new File("src/test/resources/Converted/calibre2.png").exists());
+        assertTrue(new File("src/test/resources/Converted/calibre3.png").exists());
 
     }
 
