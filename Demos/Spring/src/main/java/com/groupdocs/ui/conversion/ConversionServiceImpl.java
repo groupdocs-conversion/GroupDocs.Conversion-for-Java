@@ -2,12 +2,8 @@ package com.groupdocs.ui.conversion;
 
 import com.google.common.collect.Ordering;
 import com.groupdocs.conversion.Converter;
-import com.groupdocs.conversion.contracts.SavePageStream;
-import com.groupdocs.conversion.contracts.documentinfo.IDocumentInfo;
-import com.groupdocs.conversion.filetypes.ImageFileType;
 import com.groupdocs.conversion.licensing.License;
 import com.groupdocs.conversion.options.convert.ConvertOptions;
-import com.groupdocs.conversion.options.convert.ImageConvertOptions;
 import com.groupdocs.ui.config.DefaultDirectories;
 import com.groupdocs.ui.config.GlobalConfiguration;
 import com.groupdocs.ui.exception.TotalGroupDocsException;
@@ -25,7 +21,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -112,7 +111,7 @@ public class ConversionServiceImpl implements ConversionService {
             String destinationPath = FilenameUtils.concat(conversionConfiguration.getResultDirectory(),path);
             String ext = FilenameUtils.getExtension(destinationPath);
             String fileNameWithoutExt = FilenameUtils.removeExtension(path);
-            if(supportedImageFormats.contains(ext)){
+            if(supportedImageFormats.contains(ext) && !"tiff".equals(ext) && !"tif".equals(ext)){
                 String zipName = fileNameWithoutExt + ".zip";
                 File zipPath = new File(FilenameUtils.concat(conversionConfiguration.getResultDirectory(),zipName));
                 File[] files = new File(conversionConfiguration.getResultDirectory()).listFiles((d, name) ->
@@ -154,17 +153,7 @@ public class ConversionServiceImpl implements ConversionService {
 
         Converter converter = new Converter(FilenameUtils.concat(conversionConfiguration.getFilesDirectory(), postedData.getGuid()));
         ConvertOptions convertOptions = converter.getPossibleConversions().getTargetConversion(destinationType).getConvertOptions();
-        if (convertOptions instanceof ImageConvertOptions) {
-            converter.convert((SavePageStream) i -> {
-                try {
-                    return new FileOutputStream(FilenameUtils.removeExtension(resultFileName) + "-page" + i + "." + destinationType);
-                } catch (FileNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
-            }, convertOptions);
-        } else {
-            converter.convert(resultFileName, convertOptions);
-        }
+        converter.convert(resultFileName, convertOptions);
     }
 
 

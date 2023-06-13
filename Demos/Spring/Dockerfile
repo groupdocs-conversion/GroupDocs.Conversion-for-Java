@@ -1,5 +1,10 @@
-FROM openjdk:8-jre-alpine
-RUN mkdir -p /home/groupdocs/app && apk add fontconfig && apk add msttcorefonts-installer && update-ms-fonts && fc-cache -f
+FROM alpine:3.14
+
+RUN  apk update \
+  && apk upgrade \
+  && apk add --update openjdk11 tzdata curl unzip bash \
+  && rm -rf /var/cache/apk/* \
+  && mkdir -p /home/groupdocs/app && apk add fontconfig && apk add msttcorefonts-installer && update-ms-fonts && fc-cache -f
 WORKDIR /home/groupdocs/app
 COPY target/release/DocumentSamples /home/groupdocs/app
 COPY target/release/Licenses /home/groupdocs/app
