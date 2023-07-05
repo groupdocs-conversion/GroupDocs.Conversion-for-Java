@@ -31,6 +31,7 @@ import com.groupdocs.conversion.examples.advanced_usage.loading.loading_document
 import com.groupdocs.conversion.examples.basic_usage.GetAllPossibleConversions;
 import com.groupdocs.conversion.examples.basic_usage.GetPossibleConversions;
 import com.groupdocs.conversion.examples.basic_usage.GetSourceDocumentInfo;
+import com.groupdocs.conversion.examples.basic_usage.convert_from_compression.ConvertFromCompression;
 import com.groupdocs.conversion.examples.basic_usage.convert_to_html.ConvertToHtml;
 import com.groupdocs.conversion.examples.basic_usage.convert_to_image.ConvertToJpg;
 import com.groupdocs.conversion.examples.basic_usage.convert_to_image.ConvertToPng;
@@ -88,6 +89,12 @@ public class RunExamples {
                 ConvertToSpreadsheet.run();
                 // Convert document to WordProcessing
                 ConvertToWordProcessing.run();
+
+                //region Convert from compression
+
+                ConvertFromCompression.run();
+
+                //endregion
 
                 // Advanced Usage
                 // Common rendering options
