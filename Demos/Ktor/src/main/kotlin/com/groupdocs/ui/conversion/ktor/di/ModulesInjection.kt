@@ -28,7 +28,6 @@ object ModulesInjection {
     }
     val usecaseBeans = module {
         singleOf(::GetLocalFilesUseCase)
-        singleOf(::AreFilesSupportedUseCase)
         singleOf(::SaveStreamToFilesDirectoryUseCase)
     }
     val managerBeans = module {
