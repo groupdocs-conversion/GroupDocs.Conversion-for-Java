@@ -1,11 +1,9 @@
 ![Convert pdf to doc or doc to pdf](https://raw.githubusercontent.com/groupdocs-conversion/groupdocs-conversion.github.io/master/resources/image/banner.png "GroupDocs.Conversion")
 # GroupDocs.Conversion for Java Spring Example
 GroupDocs.Conversion for Java Spring UI Example
-###### version 0.0.9
+###### version 23.6
 
-[![Build Status](https://travis-ci.org/groupdocs-Conversion/GroupDocs.Conversion-for-Java-Spring.svg?branch=master)](https://travis-ci.org/groupdocs-conversion/GroupDocs.Conversion-for-Java-Spring)
-[![Maintainability](https://api.codeclimate.com/v1/badges/6db148bfbdc7912b07e6/maintainability)](https://codeclimate.com/github/groupdocs-conversion/GroupDocs.Conversion-for-Java-Spring/maintainability)
-[![GitHub license](https://img.shields.io/github/license/groupdocs-Conversion/GroupDocs.Conversion-for-Java-Spring.svg)](https://github.com/groupdocs-Conversion/GroupDocs.Conversion-for-Java-Spring/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/groupdocs-Conversion/GroupDocs.Conversion-for-Java-Spring.svg)](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/blob/master/Demos/Spring/LICENSE)
 
 ## System Requirements
 - Java 8 (JDK 1.8)
@@ -62,38 +60,24 @@ You can run this sample by one of following methods
 
 #### Build from source
 
-Download [source code](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java-Spring/archive/master.zip) from github or clone this repository.
+Download [source code](https://codeload.github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/zip/master) from github or clone this repository.
 
 ```bash
-git clone https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java-Spring
-cd GroupDocs.Conversion-for-Java-Spring
+git clone https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java.git
+cd GroupDocs.Conversion-for-Java/Demos/Spring
 mvn clean spring-boot:run
 ## Open http://localhost:8080/conversion/ in your favorite browser.
 ```
 
 #### Build war from source
 
-Download [source code](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java-Spring/archive/master.zip) from github or clone this repository.
+Download [source code](https://codeload.github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/zip/master) from github or clone this repository.
 
 ```bash
-git clone https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java-Spring
-cd GroupDocs.Conversion-for-Java-Spring
+git clone https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java.git
+cd GroupDocs.Conversion-for-Java/Demos/Spring
 mvn package -P war
 ## Deploy this war on any server
-```
-
-#### Binary release (with all dependencies)
-
-Download [latest release](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java-Spring/releases/latest) from [releases page](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java-Spring/releases). 
-
-**Note**: This method is **recommended** for running this sample behind firewall.
-
-```bash
-curl -J -L -o release.tar.gz https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java-Spring/releases/download/0.0.9/release.tar.gz
-tar -xvzf release.tar.gz
-cd release
-java -jar conversion-spring-0.0.9.jar configuration.yaml
-## Open http://localhost:8080/Conversion/ in your favorite browser.
 ```
 
 #### Docker image
@@ -102,7 +86,7 @@ Use [docker](https://hub.docker.com/u/groupdocs) image.
 ```bash
 mkdir DocumentSamples
 mkdir Licenses
-docker run -p 80.0.9080 --env application.hostAddress=localhost -v `pwd`/DocumentSamples:/home/groupdocs/app/DocumentSamples -v `pwd`/Licenses:/home/groupdocs/app/Licenses groupdocs/conversion
+docker run -p 8080:8080 --name conversion-openjdk8-alpine -v "./DocumentSamples/:/home/groupdocs/app/DocumentSamples" -v "./Licenses/:/home/groupdocs/app/Licenses" --rm groupdocs/23.5-java-openjdk11-alpine-spring
 ## Open http://localhost:8080/Conversion/ in your favorite browser.
 ```
 
@@ -123,10 +107,9 @@ Please have a look at the LICENSE.md for more details
 
 ## GroupDocs Conversion on other platforms & frameworks
 
-- [Document converter](https://github.com/groupdocs-Conversion/GroupDocs.Conversion-for-Java-Dropwizard) with JAVA Dropwizard 
-- [Document converter](https://github.com/groupdocs-Conversion/GroupDocs.Conversion-for-.NET-MVC) with .NET MVC 
-- [Document converter](https://github.com/groupdocs-Conversion/GroupDocs.Conversion-for-.NET-WebForms) with .NET WebForms 
+- [Document converter](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/tree/master/Demos/Dropwizard) with JAVA Dropwizard
+- [Document converter](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/tree/master/Demos/Ktor) with Ktor framework
+- [Document converter](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-.NET/tree/master/Demos/MVC) with .NET MVC
+- [Document converter](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-.NET/tree/master/Demos/WebForms) with .NET WebForms
 
-
-
-[Home](https://www.groupdocs.com/) | [Product Page](https://products.groupdocs.com/conversion/java) | [Documentation](https://docs.groupdocs.com/conversion/java/) | [Demos](https://products.groupdocs.app/conversion/family) | [API Reference](https://apireference.groupdocs.com/java/conversion) | [Examples](https://github.com/groupdocs-conversion/GroupDocs.conversion-for-Java/tree/master/Examples) | [Blog](https://blog.groupdocs.com/category/annotation/) | [Free Support](https://forum.groupdocs.com/c/conversion) | [Temporary License](https://purchase.groupdocs.com/temporary-license)
+[Home](https://www.groupdocs.com/) | [Product Page](https://products.groupdocs.com/Conversion/java) | [Documentation](https://docs.groupdocs.com/conversion/java/) | [Demos](https://products.groupdocs.app/Conversion/family) | [API Reference](https://apireference.groupdocs.com/java/Conversion) | [Examples](https://github.com/groupdocs-Conversion/GroupDocs.Conversion-for-Java/tree/master/Examples) | [Blog](https://blog.groupdocs.com/categories/groupdocs.conversion-product-family/) | [Free Support](https://forum.groupdocs.com/c/conversion/11) | [Temporary License](https://purchase.groupdocs.com/temporary-license)
