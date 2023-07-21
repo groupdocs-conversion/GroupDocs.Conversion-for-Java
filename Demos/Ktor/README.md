@@ -3,7 +3,7 @@
 New GroupDocs.Conversion for Java Ktor UI Example
 ###### version 23.6
 
-[![GitHub license](https://img.shields.io/github/license/groupdocs-Conversion/GroupDocs.Conversion-for-Java-Spring.svg)](https://github.com/groupdocs-Conversion/GroupDocs.Conversion-for-Java-Spring/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/groupdocs-Conversion/GroupDocs.Conversion-for-Java-Spring.svg)](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/blob/master/Demos/Ktor/LICENSE)
 
 ## System Requirements
 - Java 11+ (JDK 11+)
@@ -15,7 +15,7 @@ New GroupDocs.Conversion for Java Ktor UI Example
 
 This web application allows you to convert documents between different formats using simple modern UI. While it can be used as a standalone application it also can be integrated as part of your project.
 
-**Note:** without a license application will run in trial mode, purchase [GroupDocs.Conversion for Java license](https://purchase.groupdocs.com/order-online-step-1-of-8.aspx) or request [GroupDocs.Conversion for Java temporary license](https://purchase.groupdocs.com/temporary-license).
+**Note:** without a license application will run in trial mode, purchase [GroupDocs.Conversion for Java license](https://purchase.groupdocs.com/buy) or request [GroupDocs.Conversion for Java temporary license](https://purchase.groupdocs.com/temporary-license).
 
 | Document family        | Supported formats                                                         | Supported conversions                                                                                                                                |
 | ------------------------ | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -59,21 +59,21 @@ You can run this sample by one of following methods
 
 #### Run using IDE
 
-Download [source code](https://github.com/groupdocs-Conversion/GroupDocs.Conversion-for-Java/releases/download/v23.5/groupdocs-Conversion-ktor-23.5.0.zip) from github or clone this repository.
+Download [source code](https://codeload.github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/zip/master) from github or clone this repository.
 
 ```bash
-git clone https://github.com/groupdocs-Conversion/GroupDocs.Conversion-for-Java.git
+git clone https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java.git
 cd GroupDocs.Conversion-for-Java/Demos/Ktor
 ```
 Open project in IDE. Open `Application.kt` file and run `main` method inside it. Then open [http://localhost:8080/Conversion/](http://localhost:8080/Conversion/) in your favorite browser.
 
 #### Run from command line
 
-Download [source code](https://github.com/groupdocs-Conversion/GroupDocs.Conversion-for-Java/archive/refs/heads/master.zip) from github.
+Download [source code](https://codeload.github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/zip/master) from github.
 
 Alternatively you can clone this repository using next command
 ```bash
-git clone https://github.com/groupdocs-Conversion/GroupDocs.Conversion-for-Java.git
+git clone https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java.git
 ```
 
 Run sample from Windows PowerShell or Linux Terminal using next commands
@@ -87,11 +87,11 @@ Open [http://localhost:8080/Conversion/](http://localhost:8080/Conversion/) in y
 
 #### Build distribution archive
 
-Download [source code](https://github.com/groupdocs-Conversion/GroupDocs.Conversion-for-Java/archive/refs/heads/master.zip) from github.
+Download [source code](https://codeload.github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/zip/master) from github.
 
 Alternatively you can clone this repository using next command
 ```bash
-git clone https://github.com/groupdocs-Conversion/GroupDocs.Conversion-for-Java.git
+git clone https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java.git
 ```
 
 Run sample from Windows PowerShell or Linux Terminal using next commands
@@ -110,7 +110,7 @@ Download [latest release](https://github.com/groupdocs-Conversion/GroupDocs.Conv
 **Note**: This method is **recommended** for running this sample behind firewall.
 
 ```bash
-curl -J -L -o release.tar.gz https://github.com/groupdocs-Conversion/GroupDocs.Conversion-for-Java/releases/download/v23.5/groupdocs-Conversion-ktor-23.5.0.tar
+curl -J -L -o release.tar.gz https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/archive/refs/tags/v23.6.tar.gz
 tar -xvzf release.tar.gz
 cd release/Conversion-ktor-23.6
 ## Make `bin/Conversion-ktor` file to be runnable
@@ -135,9 +135,9 @@ Please have a look at the LICENSE.md for more details
 
 ## GroupDocs Conversion on other platforms & frameworks
 
-- [Document converter](https://github.com/groupdocs-Conversion/GroupDocs.Conversion-for-Java-Dropwizard) with JAVA Dropwizard
-- [Document converter](https://github.com/groupdocs-Conversion/GroupDocs.Conversion-for-Java-Spring) with JAVA Spring
-- [Document converter](https://github.com/groupdocs-Conversion/GroupDocs.Conversion-for-.NET-MVC) with .NET MVC
-- [Document converter](https://github.com/groupdocs-Conversion/GroupDocs.Conversion-for-.NET-WebForms) with .NET WebForms
+- [Document converter](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/tree/master/Demos/Dropwizard) with JAVA Dropwizard
+- [Document converter](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/tree/master/Demos/Spring) with JAVA Spring
+- [Document converter](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-.NET/tree/master/Demos/MVC) with .NET MVC
+- [Document converter](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-.NET/tree/master/Demos/WebForms) with .NET WebForms
 
-[Home](https://www.groupdocs.com/) | [Product Page](https://products.groupdocs.com/Conversion/java) | [Documentation](https://docs.groupdocs.com/Conversion/java/) | [Demos](https://products.groupdocs.app/Conversion/family) | [API Reference](https://apireference.groupdocs.com/java/Conversion) | [Examples](https://github.com/groupdocs-Conversion/GroupDocs.Conversion-for-Java/tree/master/Examples) | [Blog](https://blog.groupdocs.com/category/Conversion/) | [Free Support](https://forum.groupdocs.com/c/Conversion) | [Temporary License](https://purchase.groupdocs.com/temporary-license)
+[Home](https://www.groupdocs.com/) | [Product Page](https://products.groupdocs.com/Conversion/java) | [Documentation](https://docs.groupdocs.com/conversion/java/) | [Demos](https://products.groupdocs.app/Conversion/family) | [API Reference](https://apireference.groupdocs.com/java/Conversion) | [Examples](https://github.com/groupdocs-Conversion/GroupDocs.Conversion-for-Java/tree/master/Examples) | [Blog](https://blog.groupdocs.com/categories/groupdocs.conversion-product-family/) | [Free Support](https://forum.groupdocs.com/c/conversion/11) | [Temporary License](https://purchase.groupdocs.com/temporary-license)
