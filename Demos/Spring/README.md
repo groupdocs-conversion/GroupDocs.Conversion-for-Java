@@ -16,7 +16,7 @@ GroupDocs.Conversion for Java Spring UI Example
 
 This web application allows you to convert documents between different formats using simple modern UI. While it can be used as a standalone application it also can be integrated as part of your project.
 
-**Note:** without a license application will run in trial mode, purchase [GroupDocs.Conversion for Java license](https://purchase.groupdocs.com/order-online-step-1-of-8.aspx) or request [GroupDocs.Conversion for Java temporary license](https://purchase.groupdocs.com/temporary-license).
+**Note:** without a license application will run in trial mode, purchase [GroupDocs.Conversion for Java license](GroupDocs.Conversion for Java license](https://purchase.groupdocs.com/buy) or request [GroupDocs.Conversion for Java temporary license](https://purchase.groupdocs.com/temporary-license).
 
 | Document family        | Supported formats                                                         | Supported conversions                                                                                                                                |
 | ------------------------ | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -69,24 +69,13 @@ mvn clean spring-boot:run
 ## Open http://localhost:8080/conversion/ in your favorite browser.
 ```
 
-#### Build war from source
-
-Download [source code](https://codeload.github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/zip/master) from github or clone this repository.
-
-```bash
-git clone https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java.git
-cd GroupDocs.Conversion-for-Java/Demos/Spring
-mvn package -P war
-## Deploy this war on any server
-```
-
 #### Docker image
 Use [docker](https://hub.docker.com/u/groupdocs) image.
 
 ```bash
 mkdir DocumentSamples
 mkdir Licenses
-docker run -p 8080:8080 --name conversion-openjdk8-alpine -v "./DocumentSamples/:/home/groupdocs/app/DocumentSamples" -v "./Licenses/:/home/groupdocs/app/Licenses" --rm groupdocs/23.5-java-openjdk11-alpine-spring
+docker run -p 8080:8080 --name conversion-openjdk11-alpine -v "./DocumentSamples/:/home/groupdocs/app/DocumentSamples" -v "./Licenses/:/home/groupdocs/app/Licenses" --rm groupdocs/23.5-java-openjdk11-alpine-spring
 ## Open http://localhost:8080/Conversion/ in your favorite browser.
 ```
 

@@ -103,21 +103,6 @@ cd GroupDocs.Conversion-for-Java/Demos/Ktor
 
 After that, go to `.\build\distributions\` directory to get distribution files.
 
-#### Binary release (with all dependencies) for Linux
-
-Download [latest release](https://github.com/groupdocs-Conversion/GroupDocs.Conversion-for-Java/releases/latest) from [releases page](https://github.com/groupdocs-Conversion/GroupDocs.Conversion-for-Java/releases).
-
-**Note**: This method is **recommended** for running this sample behind firewall.
-
-```bash
-curl -J -L -o release.tar.gz https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/archive/refs/tags/v23.6.tar.gz
-tar -xvzf release.tar.gz
-cd release/Conversion-ktor-23.6
-## Make `bin/Conversion-ktor` file to be runnable
-bin/Conversion-ktor
-## Open http://localhost:8080/Conversion/ in your favorite browser.
-```
-
 ## Configuration
 You can adjust settings in `/src/main/resources/application.conf`. Specify relative/absolute path to license file by setting `licensePath` value in `/src/main/resources/application.conf` or by setting up `LIC_PATH` environment variable
 
