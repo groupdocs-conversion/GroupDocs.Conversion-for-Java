@@ -96,8 +96,6 @@ Please have a look at the LICENSE.md for more details
 
 ## GroupDocs Conversion on other platforms & frameworks
 
-## GroupDocs Conversion on other platforms & frameworks
-
 - [Document converter](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/tree/master/Demos/Spring) with JAVA Spring
 - [Document converter](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/tree/master/Demos/Ktor) with Ktor framework
 - [Document converter](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-.NET/tree/master/Demos/MVC) with .NET MVC
