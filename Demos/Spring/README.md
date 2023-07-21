@@ -16,7 +16,7 @@ GroupDocs.Conversion for Java Spring UI Example
 
 This web application allows you to convert documents between different formats using simple modern UI. While it can be used as a standalone application it also can be integrated as part of your project.
 
-**Note:** without a license application will run in trial mode, purchase [GroupDocs.Conversion for Java license](GroupDocs.Conversion for Java license](https://purchase.groupdocs.com/buy) or request [GroupDocs.Conversion for Java temporary license](https://purchase.groupdocs.com/temporary-license).
+**Note:** without a license application will run in trial mode, purchase [GroupDocs.Conversion for Java license](https://purchase.groupdocs.com/buy) or request [GroupDocs.Conversion for Java temporary license](https://purchase.groupdocs.com/temporary-license).
 
 | Document family        | Supported formats                                                         | Supported conversions                                                                                                                                |
 | ------------------------ | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
