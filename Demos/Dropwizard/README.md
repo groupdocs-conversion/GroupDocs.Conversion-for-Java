@@ -63,7 +63,7 @@ Download [source code](https://codeload.github.com/groupdocs-conversion/GroupDoc
 
 ```bash
 git clone https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java.git
-cd GGroupDocs.Conversion-for-Java/Demos/Dropwizard
+cd GroupDocs.Conversion-for-Java/Demos/Dropwizard
 mvn clean compile exec:java
 ## Open http://localhost:8080/conversion/ in your favorite browser.
 ```
