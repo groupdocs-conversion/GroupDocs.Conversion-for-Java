@@ -41,14 +41,14 @@
 		<dependency>
 			<groupId>com.groupdocs</groupId>
 			<artifactId>groupdocs-conversion</artifactId>
-			<version>23.6</version>
+			<version>24.1</version>
 		</dependency>
 	</dependencies>
 	 <repositories>
 		<repository>
 			<id>GroupDocsJavaAPI</id>
 			<name>GroupDocs Java API</name>
-			<url>https://repository.groupdocs.com/repo/</url>
+			<url>https://releases.groupdocs.com/java/repo/</url>
 		</repository>
 	</repositories>
 	<build>
