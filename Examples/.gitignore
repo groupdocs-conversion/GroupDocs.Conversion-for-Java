@@ -1,2 +1,12 @@
-/target/
-/bin/
+target
+Resources/Output
+.classpath
+.project
+.settings/
+deploy_key
+
+.idea/
+!.idea/runConfigurations/*.xml
+
+#License files
+*.lic

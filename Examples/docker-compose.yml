@@ -1,0 +1,17 @@
+version: '3'
+services:
+  groupdocs-conversion-examples-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: groupdocs-conversion-examples-image
+    container_name: groupdocs-conversion-examples-container
+    volumes:
+      - ./Resources:/app/Resources
+      - ./src:/app/src
+      - ./pom.xml:/app/pom.xml
+      - ./GroupDocs.License.lic:/app/GroupDocs.License.lic
+    environment:
+      - GROUPDOCS_LIC_PATH=/app/GroupDocs.License.lic
+    working_dir: /app
+    command: clean test

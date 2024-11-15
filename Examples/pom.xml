@@ -1,24 +1,75 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>GroupDocs.Conversion.Examples.Java</groupId>
-	<artifactId>GroupDocs.Conversion.Examples.Java</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<properties>
-		<maven.compiler.source>8</maven.compiler.source>
-		<maven.compiler.target>8</maven.compiler.target>
-	</properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<dependencies>
+    <!-- Project information -->
+    <groupId>com.groupdocs.examples</groupId>
+    <artifactId>groupdocs-conversion-examples</artifactId>
+    <version>24.10</version>
+    <packaging>jar</packaging>
+
+    <name>GroupDocs.Conversion for Java Examples</name>
+    <description>This project demonstrates the usage of GroupDocs.Conversion for Java library.</description>
+    <url>https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java</url>
+
+    <!-- License -->
+    <licenses>
+        <license>
+            <name>GroupDocs License, Version 1.0</name>
+            <url>https://groupdocs.com/corporate/purchase/end-user-license-agreement</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <!-- Organization -->
+    <organization>
+        <name>GroupDocs</name>
+        <url>https://groupdocs.com</url>
+    </organization>
+
+    <!-- Developers -->
+    <developers>
+        <developer>
+            <id>groupdocs</id>
+            <name>GroupDocs Team</name>
+            <email>support@groupdocs.com</email>
+            <organization>GroupDocs</organization>
+            <organizationUrl>https://groupdocs.com</organizationUrl>
+        </developer>
+    </developers>
+
+    <!-- Properties -->
+    <properties>
+        <!--suppress UnresolvedMavenProperty -->
+        <groupdocs.license.path>${env.LIC_GROUPDOCS}</groupdocs.license.path>
+        <sample.files.path>${basedir}/Resources/SampleFiles</sample.files.path>
+        <sample.output.path>${basedir}/Resources/Output</sample.output.path>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <surefire.testng.verbose>3</surefire.testng.verbose>
+    </properties>
+
+    <!-- Dependencies -->
+    <dependencies>
+        <dependency>
+            <groupId>com.groupdocs</groupId>
+            <artifactId>groupdocs-conversion</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>commons-net</groupId>
             <artifactId>commons-net</artifactId>
-            <version>3.5</version>
+            <version>3.11.1</version>
         </dependency>
+
         <dependency>
-            <groupId>com.microsoft.azure</groupId>
-            <artifactId>azure-keyvault</artifactId>
-            <version>0.9.4</version>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk</artifactId>
+            <version>1.11.271</version>
         </dependency>
         <dependency>
             <groupId>com.microsoft.azure</groupId>
@@ -26,55 +77,121 @@
             <version>4.3.0</version>
         </dependency>
 
+        <!-- Test dependencies -->
         <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-s3</artifactId>
-            <version>1.11.271</version>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <!-- The latest version of TestNG that is compatible with Java 8 -->
+            <version>7.5.1</version>
+            <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
+
         <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk</artifactId>
-            <version>1.11.271</version>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.26.3</version>
+            <scope>test</scope>
         </dependency>
-		
-		<dependency>
-			<groupId>com.groupdocs</groupId>
-			<artifactId>groupdocs-conversion</artifactId>
-			<version>24.5</version>
-		</dependency>
-	</dependencies>
-	 <repositories>
-		<repository>
-			<id>GroupDocsJavaAPI</id>
-			<name>GroupDocs Java API</name>
-			<url>https://releases.groupdocs.com/java/repo/</url>
-		</repository>
-	</repositories>
-	<build>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.6.0</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>java</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<mainClass>com.groupdocs.conversion.examples.RunExamples</mainClass>
-					<cleanupDaemonThreads>false</cleanupDaemonThreads>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+
+    </dependencies>
+
+    <!-- Build Plugins -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.4.1</version>
+                <configuration>
+                    <mainClass>com.groupdocs.examples.conversion.Main</mainClass>
+                    <systemProperties>
+                        <property>
+                            <key>filesPath</key>
+                            <value>${sample.files.path}</value>
+                        </property>
+                        <property>
+                            <key>outputPath</key>
+                            <value>${sample.output.path}</value>
+                        </property>
+                        <property>
+                            <key>licensePath</key>
+                            <value>${groupdocs.license.path}</value>
+                        </property>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.0</version>
+                <configuration>
+                    <includes>
+                        <include>**/*Tests.java</include>
+                    </includes>
+                    <systemPropertyVariables>
+                        <filesPath>${sample.files.path}</filesPath>
+                        <outputPath>${sample.output.path}</outputPath>
+                        <licensePath>${groupdocs.license.path}</licensePath>
+                    </systemPropertyVariables>
+                    <properties>
+                        <property>
+                            <name>surefire.testng.verbose</name>
+                            <value>${surefire.testng.verbose}</value>
+                        </property>
+                    </properties>
+                    <failIfNoTests>true</failIfNoTests>
+                    <forkCount>0</forkCount>
+                </configuration>
+            </plugin>
+
+             <!-- Plugin to clean 'Resources/Output' folder during initialization phase -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.4.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${sample.output.path}</directory>
+                            <includes>
+                                <include>**/*.*</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+        </plugins>
+
+    </build>
+
+    <!-- Maven Repositories -->
+
+    <repositories>
+        <repository>
+            <id>GroupDocsJavaAPI</id>
+            <name>GroupDocs Java API</name>
+            <url>https://releases.groupdocs.com/java/repo/</url>
+        </repository>
+        <repository>
+            <id>mvnrepository</id>
+            <url>https://repo1.maven.org/maven2</url>
+        </repository>
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+    </repositories>
+
 </project>
