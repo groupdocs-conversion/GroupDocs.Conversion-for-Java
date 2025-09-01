@@ -20,8 +20,8 @@ public class ConvertToPdfWithAdvancedOptions {
         options.setPagesCount(1);
         options.setRotate(Rotation.On180);
         options.setDpi(300);
-        options.setWidth(1024);
-        options.setHeight(768);
+        options.setPageWidth(1024);
+        options.setPageHeight(768);
         converter.convert(convertedFile, options);
 
         System.out.print("\nPassword protected document converted successfully. \nCheck output in " + convertedFile);
