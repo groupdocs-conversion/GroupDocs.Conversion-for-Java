@@ -108,7 +108,7 @@ public class Utils {
             String fileName;
             // save from file content
             if (StringUtils.isEmpty(url)) {
-                fileName = content.getOriginalFilename();
+                fileName = PathSecurityUtils.sanitizeFileName(content.getOriginalFilename());
                 try (InputStream inputStream = content.getInputStream()) {
                     filePath = uploadFileInternal(inputStream, documentStoragePath, fileName, rewrite);
                 } catch (Exception ex) {
@@ -116,9 +116,12 @@ public class Utils {
                     throw new TotalGroupDocsException(ex.getMessage(), ex);
                 }
             } else { // save from url
+                if (!url.startsWith("http://") && !url.startsWith("https://")) {
+                    throw new TotalGroupDocsException("Only HTTP and HTTPS URLs are allowed");
+                }
                 URL fileUrl = new URL(url);
                 try (InputStream inputStream = fileUrl.openStream()) {
-                    fileName = FilenameUtils.getName(fileUrl.getPath());
+                    fileName = PathSecurityUtils.sanitizeFileName(FilenameUtils.getName(fileUrl.getPath()));
                     filePath = uploadFileInternal(inputStream, documentStoragePath, fileName, rewrite);
                 } catch (Exception ex) {
                     logger.error("Exception occurred while uploading document", ex);
@@ -143,20 +146,22 @@ public class Utils {
      * @throws IOException
      */
     public static String uploadFileInternal(InputStream uploadedInputStream, String documentStoragePath, String fileName, boolean rewrite) throws IOException {
-        String filePath = String.format("%s%s%s", documentStoragePath, File.separator, fileName);
-        File file = new File(filePath);
+        String safeFileName = PathSecurityUtils.sanitizeFileName(fileName);
+        Path targetPath = PathSecurityUtils.resolveInsideBaseDirectory(documentStoragePath, safeFileName);
+        File file = targetPath.toFile();
         // check rewrite mode
         if (rewrite) {
             // save file with rewrite if exists
-            Files.copy(uploadedInputStream, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            return filePath;
+            Files.copy(uploadedInputStream, targetPath, StandardCopyOption.REPLACE_EXISTING);
+            return targetPath.toString();
         } else {
             if (file.exists()) {
                 // get file with new name
-                file = getFreeFileName(documentStoragePath, fileName);
+                file = getFreeFileName(documentStoragePath, safeFileName);
             }
             // save file without rewriting
             Path path = file.toPath();
+            PathSecurityUtils.resolveInsideBaseDirectory(documentStoragePath, path.getFileName().toString());
             Files.copy(uploadedInputStream, path);
             return path.toString();
         }
@@ -190,15 +195,14 @@ public class Utils {
     public static File getFreeFileName(String directory, String fileName) {
         File file = null;
         try {
+            String safeFileName = PathSecurityUtils.sanitizeFileName(fileName);
             File folder = new File(directory);
             File[] listOfFiles = folder.listFiles();
             for (int i = 0; i < listOfFiles.length; i++) {
                 int number = i + 1;
-                String newFileName = FilenameUtils.removeExtension(fileName) + "-Copy(" + number + ")." + FilenameUtils.getExtension(fileName);
-                file = new File(directory + File.separator + newFileName);
-                if (file.exists()) {
-                    continue;
-                } else {
+                String newFileName = FilenameUtils.removeExtension(safeFileName) + "-Copy(" + number + ")." + FilenameUtils.getExtension(safeFileName);
+                file = PathSecurityUtils.resolveInsideBaseDirectory(directory, newFileName).toFile();
+                if (!file.exists()) {
                     break;
                 }
             }

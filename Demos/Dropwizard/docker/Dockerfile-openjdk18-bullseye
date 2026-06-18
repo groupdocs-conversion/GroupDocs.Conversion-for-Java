@@ -1,0 +1,50 @@
+# Build the project
+FROM maven:3-eclipse-temurin-21 AS builder
+COPY pom.xml /usr/local/build/pom.xml
+COPY src /usr/local/build/src
+COPY client /usr/local/build/client
+WORKDIR /usr/local/build
+RUN mvn clean package -DskipTests
+
+# Configure Docker Image
+FROM eclipse-temurin:21-jre-jammy
+
+RUN apt-get update && \
+    echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        fontconfig software-properties-common && \
+    apt-add-repository multiverse && \
+    apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        ttf-mscorefonts-installer && \
+    fc-cache -f && \
+    rm -rf /var/lib/apt/lists/* && \
+    mkdir -p /home/groupdocs/app && \
+    mkdir -p /home/groupdocs/app/DocumentSamples && \
+    mkdir -p /home/groupdocs/app/Licenses
+COPY /DocumentSamples /home/groupdocs/app/DocumentSamples
+COPY /configuration.yml /home/groupdocs/app/configuration.yml
+COPY --from=builder /usr/local/build/target/conversion-dropwizard-*.jar /home/groupdocs/app/app.jar
+WORKDIR /home/groupdocs/app
+
+ENV LIC_PATH="Licenses"
+ENV DOWNLOAD_ON=true
+ENV UPLOAD_ON=true
+ENV BROWSE_ON=true
+ENV REWRITE=true
+ENV FILES_DIR="DocumentSamples"
+ENV RESULT_DIR="DocumentSamples/Conversion/Converted"
+ENV HOST_ADDRESS=""
+
+LABEL version="26.5" \
+      maintainer="GroupDocs Team" \
+      url="https://products.groupdocs.com/conversion/java" \
+      documentation="https://docs.groupdocs.com/conversion/java" \
+      source="https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java" \
+      description="GroupDocs.Conversion for Java Dropwizard sample, based on Eclipse Temurin 21"
+
+EXPOSE 8080
+
+VOLUME [ "/home/groupdocs/app", "/home/groupdocs/app/DocumentSamples", "/home/groupdocs/app/Licenses" ]
+
+ENTRYPOINT [ "java", "-jar", "app.jar", "configuration.yml" ]

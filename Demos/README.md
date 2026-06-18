@@ -1,8 +1,17 @@
-# Demos
+# GroupDocs.Conversion for Java - Demos
 
-As GroupDocs.Conversion for Java 3.x is a UI less API having no Front-End. So an open source front end for GroupDocs.Conversion has been published. By exploring this project users can seek the knwoledge about implementation of the project and make changes according to their needs. Also it provides free scripts and skins for user's own projects.
+Demo projects showcasing [GroupDocs.Conversion for Java](https://products.groupdocs.com/conversion/java) with different frameworks.
 
+All web demos run on `http://localhost:8080/conversion/` and provide document conversion with upload, browse, and download support.
 
-Directory | Description
---------- | -----------
-[GroupDocs.Conversion-for-java-using-servlets](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/tree/master/Showcases/GroupDocs.Conversion-for-java-using-servlets)  |This UI Example has been developed for the developers who want to see the Conversion API in action while developing their simple Servlet based app.
+> **Demo only — not for production use.** Web demos in this folder illustrate GroupDocs.Conversion API capabilities. They lack production-grade security controls. Use them locally for evaluation and build your own hardened service for deployment.
+
+| Demo | Framework | Language | Run command |
+|------|-----------|----------|-------------|
+| [Spring](Spring) | Spring Boot 2.0 | Java | `mvn clean spring-boot:run` |
+| [Dropwizard](Dropwizard) | Dropwizard 1.3 | Java | `mvn clean compile exec:java` |
+| [Quarkus](Quarkus) | Quarkus | Java | `./mvnw compile quarkus:dev` |
+| [Ktor](Ktor) | Ktor | Kotlin | `./gradlew run` |
+| [Servlets](GroupDocs.Conversion-for-java-using-servlets) | Java Servlets | Java | `mvn jetty:run` |
+
+See the [main README](../README.md) for Docker images and getting started instructions.

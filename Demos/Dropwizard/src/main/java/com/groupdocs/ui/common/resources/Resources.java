@@ -3,6 +3,7 @@ package com.groupdocs.ui.common.resources;
 import com.google.common.collect.Lists;
 import com.groupdocs.ui.common.config.GlobalConfiguration;
 import com.groupdocs.ui.common.exception.TotalGroupDocsException;
+import com.groupdocs.ui.common.util.PathSecurityUtils;
 import io.dropwizard.jetty.ConnectorFactory;
 import io.dropwizard.jetty.HttpConnectorFactory;
 import io.dropwizard.server.SimpleServerFactory;
@@ -66,22 +67,25 @@ public abstract class Resources {
             if (StringUtils.isEmpty(documentUrl)) {
                 // get the InputStream to store the file
                 uploadedInputStream = inputStream;
-                fileName = fileDetail.getFileName();
+                fileName = PathSecurityUtils.sanitizeFileName(fileDetail.getFileName());
             } else {
+                if (!documentUrl.startsWith("http://") && !documentUrl.startsWith("https://")) {
+                    throw new TotalGroupDocsException("Only HTTP and HTTPS URLs are allowed");
+                }
                 // get the InputStream from the URL
                 URL url =  new URL(documentUrl);
                 uploadedInputStream = url.openStream();
-                fileName = FilenameUtils.getName(url.getPath());
+                fileName = PathSecurityUtils.sanitizeFileName(FilenameUtils.getName(url.getPath()));
             }
             // get documents storage path
             String documentStoragePath = getStoragePath(params);
-            // save the file
-            pathname = String.format("%s%s%s", documentStoragePath, File.separator, fileName);
-            File file = new File(pathname);
+            Path targetPath = PathSecurityUtils.resolveInsideBaseDirectory(documentStoragePath, fileName);
+            File file = targetPath.toFile();
             // check rewrite mode
             if (rewrite) {
                 // save file with rewrite if exists
-                Files.copy(uploadedInputStream, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                Files.copy(uploadedInputStream, targetPath, StandardCopyOption.REPLACE_EXISTING);
+                pathname = targetPath.toString();
             } else {
                 if (file.exists()){
                     // get file with new name
@@ -89,6 +93,7 @@ public abstract class Resources {
                 }
                 // save file with out rewriting
                 Path path = file.toPath();
+                PathSecurityUtils.resolveInsideBaseDirectory(documentStoragePath, path.getFileName().toString());
                 Files.copy(uploadedInputStream, path);
                 pathname = path.toString();
             }
@@ -96,7 +101,9 @@ public abstract class Resources {
             throw new TotalGroupDocsException(ex.getMessage(), ex);
         } finally {
             try {
-                uploadedInputStream.close();
+                if (uploadedInputStream != null) {
+                    uploadedInputStream.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -175,15 +182,14 @@ public abstract class Resources {
     protected File getFreeFileName(String directory, String fileName){
         File file = null;
         try {
+            String safeFileName = PathSecurityUtils.sanitizeFileName(fileName);
             File folder = new File(directory);
             File[] listOfFiles = folder.listFiles();
             for (int i = 0; i < listOfFiles.length; i++) {
                 int number = i + 1;
-                String newFileName = FilenameUtils.removeExtension(fileName) + "-Copy(" + number + ")." + FilenameUtils.getExtension(fileName);
-                file = new File(directory + File.separator + newFileName);
-                if(file.exists()) {
-                    continue;
-                } else {
+                String newFileName = FilenameUtils.removeExtension(safeFileName) + "-Copy(" + number + ")." + FilenameUtils.getExtension(safeFileName);
+                file = PathSecurityUtils.resolveInsideBaseDirectory(directory, newFileName).toFile();
+                if (!file.exists()) {
                     break;
                 }
             }

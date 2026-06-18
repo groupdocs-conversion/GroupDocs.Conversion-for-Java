@@ -10,6 +10,8 @@ App_Data/*
 node_modules
 src/main/resources/static/*
 !src/main/resources/static/.gitkeep
+!src/main/resources/static/angular/
+!src/main/resources/static/angular/**
 node/
 etc/
 package-lock.json

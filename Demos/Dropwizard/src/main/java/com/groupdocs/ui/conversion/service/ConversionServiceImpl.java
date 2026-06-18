@@ -8,6 +8,7 @@ import com.groupdocs.ui.common.config.DefaultDirectories;
 import com.groupdocs.ui.common.config.GlobalConfiguration;
 import com.groupdocs.ui.common.entity.web.request.FileTreeRequest;
 import com.groupdocs.ui.common.exception.TotalGroupDocsException;
+import com.groupdocs.ui.common.util.PathSecurityUtils;
 import com.groupdocs.ui.common.util.comparator.FileNameComparator;
 import com.groupdocs.ui.common.util.comparator.FileTypeComparator;
 import com.groupdocs.ui.conversion.config.ConversionConfiguration;
@@ -15,7 +16,6 @@ import com.groupdocs.ui.conversion.filter.DestinationTypesFilter;
 import com.groupdocs.ui.conversion.model.request.ConversionPostedData;
 import com.groupdocs.ui.conversion.model.response.ConversionTypesEntity;
 import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,6 +24,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -61,13 +62,12 @@ public class ConversionServiceImpl implements ConversionService {
      */
     @Override
     public List<ConversionTypesEntity> loadFiles(FileTreeRequest fileTreeRequest) {
-        String currentPath = fileTreeRequest.getPath();
-        if (StringUtils.isEmpty(currentPath)) {
-            currentPath = conversionConfiguration.getFilesDirectory();
-        } else {
-            currentPath = String.format("%s%s%s", conversionConfiguration.getFilesDirectory(), File.separator, currentPath);
+        Path currentPath = PathSecurityUtils.resolveInsideBaseDirectoryOrRoot(
+                conversionConfiguration.getFilesDirectory(), fileTreeRequest.getPath());
+        File directory = currentPath.toFile();
+        if (!directory.isDirectory()) {
+            throw new TotalGroupDocsException(PathSecurityUtils.ACCESS_DENIED);
         }
-        File directory = new File(currentPath);
         List<ConversionTypesEntity> fileList = new ArrayList<>();
         List<File> filesList = Arrays.asList(directory.listFiles());
         try {
@@ -98,12 +98,15 @@ public class ConversionServiceImpl implements ConversionService {
 
     @Override
     public void convert(ConversionPostedData postedData) {
-        String sourceType = FilenameUtils.getExtension(postedData.getGuid());
         String destinationType = postedData.getDestinationType();
-        String destinationFile = FilenameUtils.removeExtension(FilenameUtils.getName(postedData.getGuid())) + "." + destinationType;
-        String resultFileName = FilenameUtils.concat(conversionConfiguration.getResultDirectory(),destinationFile);
+        String sourcePath = PathSecurityUtils.resolveInsideBaseDirectoryAsString(
+                conversionConfiguration.getFilesDirectory(), postedData.getGuid());
+        String safeFileName = PathSecurityUtils.sanitizeFileName(FilenameUtils.getName(postedData.getGuid()));
+        String destinationFile = FilenameUtils.removeExtension(safeFileName) + "." + destinationType;
+        String resultFileName = PathSecurityUtils.resolveInsideBaseDirectoryAsString(
+                conversionConfiguration.getResultDirectory(), destinationFile);
 
-        Converter converter = new Converter(FilenameUtils.concat(conversionConfiguration.getFilesDirectory(), postedData.getGuid()));
+        Converter converter = new Converter(sourcePath);
         ConvertOptions convertOptions = converter.getPossibleConversions().getTargetConversion(destinationType).getConvertOptions();
         converter.convert(resultFileName, convertOptions);
     }
@@ -111,30 +114,30 @@ public class ConversionServiceImpl implements ConversionService {
     @Override
     public String download(String path) throws IOException {
         if(path != null && !path.isEmpty()){
-
-            String destinationPath = FilenameUtils.concat(conversionConfiguration.getResultDirectory(),path);
-            String ext = FilenameUtils.getExtension(destinationPath);
-            String fileNameWithoutExt = FilenameUtils.removeExtension(path);
+            String resultDirectory = conversionConfiguration.getResultDirectory();
+            Path destinationPath = PathSecurityUtils.resolveInsideBaseDirectory(resultDirectory, path);
+            String ext = FilenameUtils.getExtension(destinationPath.toString());
+            String fileNameWithoutExt = FilenameUtils.removeExtension(PathSecurityUtils.sanitizeFileName(path));
             if(supportedImageFormats.contains(ext) && !"tiff".equals(ext) && !"tif".equals(ext)){
                 String zipName = fileNameWithoutExt + ".zip";
-                File zipPath = new File(FilenameUtils.concat(conversionConfiguration.getResultDirectory(),zipName));
-                File[] files = new File(conversionConfiguration.getResultDirectory()).listFiles((d, name) ->
+                Path zipPath = PathSecurityUtils.resolveInsideBaseDirectory(resultDirectory, zipName);
+                File[] files = new File(resultDirectory).listFiles((d, name) ->
                         name.endsWith("." + ext) && name.startsWith(fileNameWithoutExt)
                 );
-                if(zipPath.exists()){
-                    zipPath.delete();
+                if(zipPath.toFile().exists()){
+                    zipPath.toFile().delete();
                 }
-                ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(zipPath));
+                ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(zipPath.toFile()));
                 for (File filePath : files) {
                     File fileToZip = filePath;
                     zipOut.putNextEntry(new ZipEntry(fileToZip.getName()));
                     Files.copy(fileToZip.toPath(), zipOut);
                 }
                 zipOut.close();
-                destinationPath = zipPath.getAbsolutePath();
+                destinationPath = zipPath;
             }
-            if(new File(destinationPath).exists()){
-                return destinationPath;
+            if(destinationPath.toFile().exists()){
+                return destinationPath.toString();
             }
         }
         throw new FileNotFoundException();

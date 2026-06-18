@@ -7,7 +7,9 @@ import com.groupdocs.ui.common.health.TemplateHealthCheck;
 import com.groupdocs.ui.conversion.resources.ConversionResources;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
+import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
 import io.dropwizard.configuration.ResourceConfigurationSourceProvider;
+import io.dropwizard.configuration.SubstitutingSourceProvider;
 import io.dropwizard.forms.MultiPartBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -74,9 +76,15 @@ public class MainService extends Application<GlobalConfiguration> {
     @Override
     public void initialize(Bootstrap<GlobalConfiguration> bootstrap) {
         if (defaultConfiguration) {
-            bootstrap.setConfigurationSourceProvider(new ResourceConfigurationSourceProvider());
+            bootstrap.setConfigurationSourceProvider(new SubstitutingSourceProvider(
+                    new ResourceConfigurationSourceProvider(),
+                    new EnvironmentVariableSubstitutor(false)
+            ));
         } else {
-            bootstrap.setConfigurationSourceProvider(new MergedConfigurationSourceProvider(DEFAULT_CONFIGURATION_FILE));
+            bootstrap.setConfigurationSourceProvider(new SubstitutingSourceProvider(
+                    new MergedConfigurationSourceProvider(DEFAULT_CONFIGURATION_FILE),
+                    new EnvironmentVariableSubstitutor(false)
+            ));
         }
         // add assets bundle in order to get resources from assets directory
         bootstrap.addBundle(new AssetsBundle());

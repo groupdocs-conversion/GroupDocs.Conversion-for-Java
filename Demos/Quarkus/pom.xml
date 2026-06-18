@@ -14,6 +14,7 @@
     <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
     <quarkus.platform.version>3.6.5</quarkus.platform.version>
     <skipITs>true</skipITs>
+    <frontend.skip>false</frontend.skip>
     <surefire-plugin.version>3.1.2</surefire-plugin.version>
   </properties>
   <dependencyManagement>
@@ -83,7 +84,7 @@
     <dependency>
       <groupId>com.groupdocs</groupId>
       <artifactId>groupdocs-conversion</artifactId>
-      <version>23.5</version>
+      <version>26.5</version>
       <type>jar</type>
     </dependency>
     <dependency>
@@ -155,20 +156,20 @@
       <plugin>
         <groupId>com.github.eirslett</groupId>
         <artifactId>frontend-maven-plugin</artifactId>
-        <version>1.6</version>
+        <version>1.15.1</version>
         <configuration>
           <workingDirectory>client</workingDirectory>
+          <skip>${frontend.skip}</skip>
+          <nodeVersion>v16.20.2</nodeVersion>
+          <npmVersion>8.19.4</npmVersion>
+          <installDirectory>target</installDirectory>
         </configuration>
         <executions>
           <execution>
-            <!-- optional: you don't really need execution ids, but it looks nice in your build log. -->
             <id>install node and npm</id>
             <goals>
               <goal>install-node-and-npm</goal>
             </goals>
-            <configuration>
-              <nodeVersion>v10.15.1</nodeVersion>
-            </configuration>
           </execution>
           <execution>
             <id>npm install</id>
@@ -176,16 +177,10 @@
               <goal>npm</goal>
             </goals>
             <configuration>
-              <arguments>install</arguments>
-            </configuration>
-          </execution>
-          <execution>
-            <id>npm update</id>
-            <goals>
-              <goal>npm</goal>
-            </goals>
-            <configuration>
-              <arguments>update</arguments>
+              <arguments>install --legacy-peer-deps</arguments>
+              <environmentVariables>
+                <NODE_OPTIONS></NODE_OPTIONS>
+              </environmentVariables>
             </configuration>
           </execution>
           <execution>
@@ -195,15 +190,9 @@
             </goals>
             <configuration>
               <arguments>run build</arguments>
-            </configuration>
-          </execution>
-          <execution>
-            <id>gulp build</id>
-            <goals>
-              <goal>gulp</goal>
-            </goals>
-            <configuration>
-              <arguments>build</arguments>
+              <environmentVariables>
+                <NODE_OPTIONS></NODE_OPTIONS>
+              </environmentVariables>
             </configuration>
           </execution>
         </executions>
@@ -229,7 +218,7 @@
     <repository>
       <id>GroupDocsJavaAPI</id>
       <name>GroupDocs Java API</name>
-      <url>https://repository.groupdocs.com/repo</url>
+      <url>https://releases.groupdocs.com/java/repo/</url>
     </repository>
   </repositories>
 </project>

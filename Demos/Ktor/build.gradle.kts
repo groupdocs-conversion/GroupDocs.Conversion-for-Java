@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "com.groupdocs.ui.conversion.ktor"
-version = "23.6"
+version = "26.5"
 
 repositories {
     mavenLocal()

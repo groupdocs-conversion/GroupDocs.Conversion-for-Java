@@ -27,6 +27,13 @@
         </dependency>
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>GroupDocs Artifact Repository</id>
+            <url>https://releases.groupdocs.com/java/repo/</url>
+        </repository>
+    </repositories>
+
     <build>
     	<resources>
 			<resource>
