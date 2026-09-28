@@ -84,7 +84,7 @@
     <dependency>
       <groupId>com.groupdocs</groupId>
       <artifactId>groupdocs-conversion</artifactId>
-      <version>26.5</version>
+      <version>26.7.1</version>
       <type>jar</type>
     </dependency>
     <dependency>
