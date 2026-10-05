@@ -42,7 +42,7 @@ kotlin {
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
 
-    implementation("com.groupdocs:groupdocs-conversion:$version")
+    implementation("com.groupdocs:groupdocs-conversion:26.9")
 
     implementation("io.insert-koin:koin-ktor:$koin_version")
 
