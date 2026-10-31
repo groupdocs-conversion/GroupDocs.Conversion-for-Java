@@ -44,17 +44,23 @@ import com.groupdocs.conversion.examples.quick_start.HelloWorld;
 import com.groupdocs.conversion.examples.quick_start.SetLicenseFromFile;
 import com.groupdocs.conversion.examples.quick_start.SetLicenseFromStream;
 import com.groupdocs.conversion.examples.quick_start.SetMeteredLicense;
+import com.groupdocs.conversion.licensing.License;
 
 public class RunExamples {
 
         public static void main(String[] args) throws Throwable
         {
 
-                System.out.println("Open RunExamples.cs. \nIn Main() method uncomment the example that you want to run.");
+                System.out.println("Open RunExamples.java. \nIn Main() method uncomment the example that you want to run.");
                 System.out.println("=====================================================");
-                
-                
-                
+
+
+                if (new java.io.File(Constants.LicensePath).isFile()) {
+                        License license = new License();
+                        license.setLicense(Constants.LicensePath);
+                } else {
+                        System.out.println("License file not found; running in evaluation mode.");
+                }
 
                 //NOTE: Please uncomment the example you want to try out
 

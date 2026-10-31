@@ -28,6 +28,6 @@ You may find following resources helpful:
 
 Follow below steps if you have product license
 
-1. Open Utilities.java.
-2. Set "licensePath" variable to your license path.
-3. Call applyLicenseFromFile method from MainClass
+1. Place your license at `Resources/GroupDocs.Conversion.lic`, or set `Constants.LicensePath` to your license file.
+2. Run `mvn compile exec:java` from the `Examples` directory.
+3. `RunExamples` applies the license when the file exists; otherwise it runs in evaluation mode.
