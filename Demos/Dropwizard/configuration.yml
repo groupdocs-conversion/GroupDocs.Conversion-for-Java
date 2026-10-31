@@ -7,7 +7,7 @@ server:
   adminContextPath: /admin
   connector:
     type: http
-    port: 8080
+    port: ${PORT:-8080}
 
 
 ################################################
@@ -16,9 +16,9 @@ server:
 application:
   # License path
   # Absolute or relative path to GroupDocs license file
-  licensePath:
+  licensePath: ${LIC_PATH:-}
   # Host name or ip for server instance
-  hostAddress: ${application.hostAddress}
+  hostAddress: ${HOST_ADDRESS:-}
 
 ################################################
 # Common configurations
@@ -27,22 +27,19 @@ common:
   # File rewriting on document uploading
   # Set false to keep both files
   # Set true to replace files with same name
-  rewrite: true
+  rewrite: ${REWRITE:-true}
   # Page navigation
   # Set false to disable document navigation (go to next, previous, last and first page)
   pageSelector: true
   # Document download
   # Set false to disable document download
-  download: true
+  download: ${DOWNLOAD_ON:-true}
   # Document upload
   # Set false to disable document upload
-  upload: true
-  # Document print
-  # Set false to disable document print
-  print: true
+  upload: ${UPLOAD_ON:-true}
   # File browser
   # Set false to disable document browse
-  browse: true
+  browse: ${BROWSE_ON:-true}
 
 
 ################################################
@@ -51,7 +48,7 @@ common:
 conversion:
   # Files directory path
   # Absolute or relative path to files directory
-  filesDirectory: DocumentSamples
+  filesDirectory: ${FILES_DIR:-DocumentSamples}
   # Result files directory path
   # Absolute path to result files directory
-  resultDirectory: ''
+  resultDirectory: ${RESULT_DIR:-DocumentSamples/Conversion/Converted}
