@@ -110,11 +110,12 @@ public class Constants {
 
     public static String getOutputDirectoryPath(String callerFilePath) {
         String outputDirectory = new File(OutputPath, callerFilePath != null ? callerFilePath : "").getPath();
+        new File(outputDirectory).mkdirs();
         return outputDirectory;
     }
 
     public static String getConvertedPath(String convertedFileName) {
-        String convertedPath = new File(OutputPath, convertedFileName).getPath();
+        String convertedPath = new File(getOutputDirectoryPath(null), convertedFileName).getPath();
         return convertedPath;
     }
 

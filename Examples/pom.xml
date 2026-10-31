@@ -5,6 +5,7 @@
 	<artifactId>GroupDocs.Conversion.Examples.Java</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>8</maven.compiler.source>
 		<maven.compiler.target>8</maven.compiler.target>
 	</properties>
@@ -41,7 +42,7 @@
 		<dependency>
 			<groupId>com.groupdocs</groupId>
 			<artifactId>groupdocs-conversion</artifactId>
-			<version>25.8</version>
+			<version>26.10</version>
 		</dependency>
 	</dependencies>
 	 <repositories>
