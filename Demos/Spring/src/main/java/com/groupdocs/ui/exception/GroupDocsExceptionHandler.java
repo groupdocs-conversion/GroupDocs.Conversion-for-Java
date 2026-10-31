@@ -9,6 +9,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import static com.groupdocs.ui.exception.PasswordExceptions.INCORRECT_PASSWORD;
 import static com.groupdocs.ui.exception.PasswordExceptions.PASSWORD_REQUIRED;
+import static com.groupdocs.ui.util.PathSecurityUtils.ACCESS_DENIED;
 
 @ControllerAdvice
 public class GroupDocsExceptionHandler extends ResponseEntityExceptionHandler {
@@ -20,6 +21,9 @@ public class GroupDocsExceptionHandler extends ResponseEntityExceptionHandler {
         exceptionEntity.setMessage(message);
         if (PASSWORD_REQUIRED.equals(message) || INCORRECT_PASSWORD.equals(message)) {
             return new ResponseEntity<>(exceptionEntity, HttpStatus.OK);
+        }
+        if (ACCESS_DENIED.equals(message)) {
+            return new ResponseEntity<>(exceptionEntity, HttpStatus.FORBIDDEN);
         }
         if (logger.isDebugEnabled()) {
             exception.printStackTrace();

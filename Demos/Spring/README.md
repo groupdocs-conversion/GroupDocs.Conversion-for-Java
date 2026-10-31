@@ -1,9 +1,19 @@
 ![Convert pdf to doc or doc to pdf](https://raw.githubusercontent.com/groupdocs-conversion/groupdocs-conversion.github.io/master/resources/image/banner.png "GroupDocs.Conversion")
 # GroupDocs.Conversion for Java Spring Example
 GroupDocs.Conversion for Java Spring UI Example
-###### version 23.6
+###### version 26.5
 
 [![GitHub license](https://img.shields.io/github/license/groupdocs-Conversion/GroupDocs.Conversion-for-Java-Spring.svg)](https://github.com/groupdocs-conversion/GroupDocs.Conversion-for-Java/blob/master/Demos/Spring/LICENSE)
+
+## Security Notice
+
+This Spring Boot sample is a **demonstration application**. It is provided to show how GroupDocs.Conversion can be integrated with a web UI.
+
+- Intended for **local development and evaluation** only
+- **Not** audited or hardened for production deployment
+- File upload, download, and document path handling must be reviewed and adapted before any external exposure
+
+When integrating GroupDocs.Conversion into your product, implement your own secure file storage, input validation, and access control — do not copy this demo directly into a public-facing service.
 
 ## System Requirements
 - Java 8 (JDK 1.8)
@@ -70,14 +80,25 @@ mvn clean spring-boot:run
 ```
 
 #### Docker image
-Use [docker](https://hub.docker.com/u/groupdocs) image.
+
+Pre-built images are published to [Docker Hub](https://hub.docker.com/r/groupdocs/conversion).
 
 ```bash
-mkdir DocumentSamples
-mkdir Licenses
-docker run -p 8080:8080 --name conversion-openjdk11-alpine -v "./DocumentSamples/:/home/groupdocs/app/DocumentSamples" -v "./Licenses/:/home/groupdocs/app/Licenses" --rm groupdocs/23.5-java-openjdk11-alpine-spring
-## Open http://localhost:8080/Conversion/ in your favorite browser.
+mkdir DocumentSamples Licenses
+docker run -p 8080:8080 --name conversion --rm \
+  -v "./DocumentSamples/:/home/groupdocs/app/DocumentSamples" \
+  -v "./Licenses/:/home/groupdocs/app/Licenses" \
+  groupdocs/conversion:26.5-java-openjdk11-bullseye-spring
+## Open http://localhost:8080/conversion/ in your favorite browser.
 ```
+
+Build locally with CI Dockerfiles:
+
+```bash
+docker build -f docker/Dockerfile-openjdk11-bullseye -t conversion-spring .
+```
+
+**Security notice:** Do not expose port `8080` to untrusted networks without authentication and additional hardening.
 
 ## Configuration
 For all methods above you can adjust settings in `configuration.yml`. By default in this sample will lookup for license file in `./Licenses` folder, so you can simply put your license file in that folder or specify relative/absolute path by setting `licensePath` value in `configuration.yml`. 
@@ -87,7 +108,9 @@ For all methods above you can adjust settings in `configuration.yml`. By default
 | Option                             | Type    |   Default value   | Description                                                                                                                                  |
 | ---------------------------------- | ------- |:-----------------:|:-------------------------------------------------------------------------------------------------------------------------------------------- |
 | **`filesDirectory`**               | String  | `DocumentSamples` | Files directory path. Indicates where uploaded and predefined files are stored. It can be absolute or relative path                          |
-| **`resultDirectory`**              | String  |                   | Absolute path to result files directory                                                                                                      |
+| **`resultDirectory`**              | String  | `DocumentSamples/Conversion/Converted` | Absolute or relative path to result files directory                                                                                                      |
+
+Environment variables (Docker): `LIC_PATH`, `FILES_DIR`, `RESULT_DIR`, `DOWNLOAD_ON`, `UPLOAD_ON`, `BROWSE_ON`, `REWRITE`, `HOST_ADDRESS`, `PORT`.
 
 ## License
 The MIT License (MIT). 

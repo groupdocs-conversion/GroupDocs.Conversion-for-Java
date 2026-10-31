@@ -14,6 +14,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <frontend.skip>false</frontend.skip>
     </properties>
 
     <dependencies>
@@ -77,7 +78,7 @@
         <dependency>
             <groupId>com.groupdocs</groupId>
             <artifactId>groupdocs-conversion</artifactId>
-            <version>23.5</version>
+            <version>26.5</version>
             <type>jar</type>
         </dependency>
         <dependency>
@@ -123,7 +124,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>2.3</version>
+                <version>2.4.3</version>
                 <configuration>
                     <filters>
                         <filter>
@@ -149,11 +150,10 @@
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>com.groupdocs.ui.common.MainService</mainClass>
                                     <manifestEntries>
-                                        <Class-Path>.</Class-Path>
-                                        <Specification-Title>GroupDocs.Total for Java Spring</Specification-Title>
+                                        <Specification-Title>GroupDocs.Conversion for Java Dropwizard</Specification-Title>
                                         <Specification-Version>${project.version}</Specification-Version>
                                         <Specification-Vendor>GroupDocs</Specification-Vendor>
-                                        <Implementation-Title>GroupDocs.Total for Java Spring</Implementation-Title>
+                                        <Implementation-Title>GroupDocs.Conversion for Java Dropwizard</Implementation-Title>
                                         <Implementation-Version>${project.version}</Implementation-Version>
                                         <Implementation-Vendor>GroupDocs</Implementation-Vendor>
                                         <Extension-Name>com.sun.media.imageio</Extension-Name>
@@ -167,20 +167,20 @@
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
-                <version>1.6</version>
+                <version>1.15.1</version>
                 <configuration>
                     <workingDirectory>client</workingDirectory>
+                    <skip>${frontend.skip}</skip>
+                    <nodeVersion>v16.20.2</nodeVersion>
+                    <npmVersion>8.19.4</npmVersion>
+                    <installDirectory>target</installDirectory>
                 </configuration>
                 <executions>
                     <execution>
-                        <!-- optional: you don't really need execution ids, but it looks nice in your build log. -->
                         <id>install node and npm</id>
                         <goals>
                             <goal>install-node-and-npm</goal>
                         </goals>
-                        <configuration>
-                            <nodeVersion>v10.15.1</nodeVersion>
-                        </configuration>
                     </execution>
                     <execution>
                         <id>npm install</id>
@@ -188,16 +188,10 @@
                             <goal>npm</goal>
                         </goals>
                         <configuration>
-                            <arguments>install</arguments>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>npm update</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>update</arguments>
+                            <arguments>install --legacy-peer-deps</arguments>
+                            <environmentVariables>
+                                <NODE_OPTIONS></NODE_OPTIONS>
+                            </environmentVariables>
                         </configuration>
                     </execution>
                     <execution>
@@ -207,15 +201,9 @@
                         </goals>
                         <configuration>
                             <arguments>run build</arguments>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>gulp build</id>
-                        <goals>
-                            <goal>gulp</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>build</arguments>
+                            <environmentVariables>
+                                <NODE_OPTIONS></NODE_OPTIONS>
+                            </environmentVariables>
                         </configuration>
                     </execution>
                 </executions>
@@ -252,7 +240,7 @@
         <repository>
             <id>GroupDocsJavaAPI</id>
             <name>GroupDocs Java API</name>
-            <url>https://repository.groupdocs.com/repo/</url>
+            <url>https://releases.groupdocs.com/java/repo/</url>
         </repository>
     </repositories>
 
