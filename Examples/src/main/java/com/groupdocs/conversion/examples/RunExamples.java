@@ -40,6 +40,11 @@ import com.groupdocs.conversion.examples.basic_usage.convert_to_presentation.Con
 import com.groupdocs.conversion.examples.basic_usage.convert_to_spreadsheet.ConvertToSpreadsheet;
 import com.groupdocs.conversion.examples.basic_usage.convert_to_word_processing.ConvertToWordProcessing;
 import com.groupdocs.conversion.examples.basic_usage.convert_to_pdf.ConvertToPdf;
+import com.groupdocs.conversion.examples.basic_usage.convert_to_pdf.ConvertMppToPdf;
+import com.groupdocs.conversion.examples.basic_usage.convert_to_html.ConvertMppToHtml;
+import com.groupdocs.conversion.examples.basic_usage.convert_to_image.ConvertMppToSvg;
+import com.groupdocs.conversion.examples.basic_usage.convert_to_image.ConvertMppToPng;
+import com.groupdocs.conversion.examples.basic_usage.convert_to_image.ConvertVsdxToPng;
 import com.groupdocs.conversion.examples.quick_start.HelloWorld;
 import com.groupdocs.conversion.examples.quick_start.SetLicenseFromFile;
 import com.groupdocs.conversion.examples.quick_start.SetLicenseFromStream;
@@ -101,6 +106,15 @@ public class RunExamples {
                 ConvertFromCompression.run();
 
                 //endregion
+
+                // MPP conversions (including custom columns from the source view)
+                ConvertMppToPdf.run();
+                ConvertMppToPng.run();
+                ConvertMppToSvg.run();
+                ConvertMppToHtml.run();
+
+                // Convert Visio diagrams to PNG, one file per page
+                //ConvertVsdxToPng.run();
 
                 // Advanced Usage
                 // Common rendering options
